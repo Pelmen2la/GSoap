@@ -1,0 +1,118 @@
+<div ng-controller="ProductFormController" uploader="uploader">
+    <div class="btn btn-default back-button" ng-click="back()">
+        <span class="icon"></span>
+        Назад
+    </div>
+
+    <img class="product-image" ng-src="{{utils.getProductImageUrl(product)}}">
+    <input class="upload-input" type="file" nv-file-select="" class="form-control" uploader="uploader"/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Название продукции</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   class="form-control"
+                   ng-model="product.name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Емкость\цена</label>
+        <div class="col-sm-10">
+            <div class="capacity-list-container" ng-repeat="capacityInfo in product.capacityList">
+                <input type="text"
+                       class="form-control capacity-input"
+                       value="capacityInfo.capacity"
+                       ng-model="capacityInfo.capacity">
+                <input type="text"
+                       class="form-control price-input"
+                       value="capacityInfo.price"
+                       ng-model="capacityInfo.price">
+                    <span class="main-sprite-icon delete-capacity-button"
+                          ng-hide="product.capacityList.indexOf(capacityInfo) == 0"
+                          ng-click="deleteCapacityInfo(capacityInfo)"></span>
+            </div>
+            <div class="btn btn-default add-capacity-button" ng-click="addCapacity()">
+                <span class="icon"></span>
+                Добавить ёмкость
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Бренд</label>
+        <div class="col-sm-10">
+            <select
+                    class="form-control"
+                    ng-model="product.brand"
+                    ng-options="brand.name as brand.name for brand in brands">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Тип</label>
+        <div class="col-sm-10">
+            <select
+                    class="form-control"
+                    ng-model="product.type"
+                    ng-options="type.value as type.label for type in stringResources.productTypes">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Свойства</label>
+        <div class="col-sm-10">
+            <div ng-repeat="property in product.properties track by $index" class="property-combo-container">
+                <select
+                        class="form-control property-select"
+                        ng-model="product.properties[$index]"
+                        ng-options="type.value as type.label for type in stringResources.productProperties">
+                </select>
+                <span class="main-sprite-icon delete-property-button"
+                      ng-click="deleteProperty($index)"></span>
+            </div>
+            <div class="btn btn-default add-property-button" ng-click="addProperty()">
+                <span class="icon"></span>
+                Добавить свойство
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Описание</label>
+        <div class="col-sm-10">
+                <textarea rows="5"
+                          class="form-control"
+                          ng-model="product.description">
+                </textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Отзывы</label>
+        <div class="col-sm-10">
+            <div class="review-container" ng-repeat="review in product.reviews track by $index">
+                <input type="text"
+                       class="form-control"
+                       ng-model="review.customerName">
+                <textarea rows="5"
+                          class="form-control"
+                          ng-model="review.text">
+                </textarea>
+                <button class="btn btn-default submit-button" type="submit" ng-click="deleteReview($index)">
+                    <span class="icon"></span>
+                    Удалить отзыв
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <button class="btn btn-default submit-button" type="submit" ng-click="submitProduct()">
+        <span class="icon"></span>
+        Сохранить
+    </button>
+</div>

@@ -1,0 +1,74 @@
+.admin-main-container .form-group {
+    overflow: auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.admin-main-container .product-image,
+.admin-main-container .brand-image,
+.admin-main-container .upload-input {
+    margin: 5px auto;
+}
+
+.admin-main-container .product-image,
+.admin-main-container .brand-image {
+    display: block;
+    width: 300px;
+    height: 200px;
+}
+
+.admin-main-container .capacity-list-container,
+.admin-main-container .property-combo-container {
+    overflow: auto;
+    width: 100%;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.admin-main-container .capacity-list-container .capacity-input,
+.admin-main-container .capacity-list-container .price-input {
+    width: 48%;
+}
+
+.admin-main-container .capacity-list-container .capacity-input {
+    float: left;
+}
+
+.admin-main-container .capacity-list-container .price-input {
+    float: right;
+}
+
+.admin-main-container .capacity-list-container .delete-capacity-button,
+.admin-main-container .property-combo-container .delete-property-button {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    cursor: pointer;
+    background-position-x: -112px;
+}
+
+.admin-main-container .property-combo-container .delete-property-button {
+    right: 20px;
+}
+
+.admin-main-container .property-select {
+    margin-bottom: 5px;
+}
+
+.admin-main-container .review-container,
+.admin-main-container .review-container .form-control {
+    margin-bottom: 5px;
+}
+
+.admin-main-container .filter-info-container {
+    margin-bottom: 40px;
+}
+
+.admin-main-container .filter-container {
+    margin-bottom: 20px;
+}
+
+.admin-main-container .filter-container,
+.admin-main-container .filter-container .filter-properties-container{
+    margin: 20px 0 20px 30px;
+}

@@ -1,0 +1,44 @@
+<div class="product-card-container">
+    <div class="btn btn-default back-button" ng-click="back()">
+        <span class="icon"></span>
+        Назад
+    </div>
+
+    <div class="product-card">
+        <h2 class="title">
+            <span class="name">{{product.name}}</span>
+            <span class="capacity">, {{utils.getProductCapacityText(product)}}</span>
+            <span class="brand" ng-show="product.brand"> - {{product.brand}}</span>
+        </h2>
+        <img src="{{utils.getProductImageUrl(product)}}">
+
+        <div class="text-container">
+            <div class="description">
+                {{product.description}}
+            </div>
+            <div class="text-footer">
+                <select
+                        class="capacity-combo"
+                        ng-model="product.selectedCapacity"
+                        ng-options="entry as entry.capacity + ' гр' for entry in product.capacityList">
+                </select>
+                <div class="product-price">{{product.selectedCapacity.price}}Р</div>
+                <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-container">
+        <div class="review" ng-repeat="review in product.reviews">
+            <div class="customer-name">{{review.customerName}}</div>
+            <div class="review-text">{{review.text}}</div>
+        </div>
+    </div>
+    Ваше имя:
+    <input name="name" type=text" class="form-control" ng-model="review.customerName" required>
+    Ваш отзыв:
+    <textarea rows="4" class="form-control" ng-model="review.text"></textarea>
+
+    <button class="btn btn-default submit-button" ng-click="onSendReviewButtonClick()">
+        Отправить отзыв
+    </button>
+</div>

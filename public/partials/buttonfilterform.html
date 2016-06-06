@@ -1,0 +1,65 @@
+<div ng-controller="ButtonFilterFormController">
+    <div class="btn btn-default back-button" ng-click="back()">
+        <span class="icon"></span>
+        Назад
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Фильтры</label>
+
+        <div class="col-sm-10">
+            <div class="filter-info-container">
+                <span>Имя группы фильтров</span>
+                <input type="text"
+                       class="form-control"
+                       ng-model="buttonFilter.name">
+
+                <div class="filter-container" ng-repeat="filter in buttonFilter.filters">
+                    <span>Имя фильтра</span>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="filter.name">
+
+                    <div class="filter-properties-container">
+                        <span>Тип</span>
+                        <select
+                                class="form-control"
+                                ng-model="filter.filterType"
+                                ng-options="type.value as type.label for type in stringResources.productTypes">
+                        </select>
+                        <span>Свойства</span>
+
+                        <div ng-repeat="property in filter.properties track by $index"
+                             class="property-combo-container">
+                            <select
+                                    class="form-control property-select"
+                                    ng-model="filter.properties[$index]"
+                                    ng-options="type.value as type.label for type in stringResources.productProperties">
+                            </select>
+                        <span class="main-sprite-icon delete-property-button"
+                              ng-click="deleteProperty(filter, property)"></span>
+                        </div>
+                        <div class="btn btn-default add-property-button" ng-click="addProperty(filter)">
+                            <span class="icon"></span>
+                            Добавить свойство
+                        </div>
+                    </div>
+                    <button class="btn btn-default"
+                            ng-click="deleteFilter(filter)">
+                        <span class="icon"></span>
+                        Удалить фильтр
+                    </button>
+                </div>
+
+                <button class="btn btn-default" ng-click="addFilter()">
+                    <span class="icon"></span>
+                    Добавить фильтр
+                </button>
+            </div>
+        </div>
+
+        <button class="btn btn-default submit-button" type="submit" ng-click="submitButtonFilter()">
+            <span class="icon"></span>
+            Сохранить
+        </button>
+    </div>

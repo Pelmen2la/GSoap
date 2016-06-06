@@ -1,0 +1,97 @@
+<div class="product-cart-page-container">
+    <table class="product-cart-grid" ng-show="cartProducts.length">
+        <tr>
+            <th></th>
+            <th colspan="3">Наименование</th>
+            <th>Ёмкость</th>
+            <th>Цена за единицу</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+        </tr>
+        <tr ng-repeat="product in cartProducts track by $index">
+            <td>
+                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product.id)">
+            </td>
+            <td colspan="3">
+                <a href='' ng-click="openProductCard(product.id)">{{product.name}}</a>
+            </td>
+            <td class="number">
+                <span>{{product.capacityInfo.capacity}}</span>
+            </td>
+            <td class="number">
+                <span>{{product.capacityInfo.price}}</span>
+            </td>
+            <td>
+                <input type="number" name="input" ng-model="product.count"
+                       min="1" max="99">
+            </td>
+            <td class="number">
+                <span>{{product.count * product.capacityInfo.price}}</span>
+            </td>
+            <td class="number">
+                <span class="main-sprite-icon delete-cart-product-button"
+                      ng-click="removeProductFromCard($index)"></span>
+            </td>
+        </tr>
+    </table>
+
+    <form name="form" novalidate>
+        <label class="control-label">Оформить заказ:</label>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Имя</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="customerInfo.name" name="name"
+                       title="{{form.name.$invalid ? 'Имя обязательно для заполнения' : '' }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">E-mail</label>
+
+            <div class="col-sm-10">
+                <input type="email" class="form-control" ng-model="customerInfo.email" name="email"
+                       title="{{form.name.$invalid ? 'E-mail обязателен для заполнения и должен быть в формате gsoap@mail.ru' : '' }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Телефон</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="customerInfo.phone"
+                       title="{{form.name.$invalid ? 'Телефон обязателен для заполнения' : '' }}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Код на скидку</label>
+
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       ng-model="customerInfo.discountNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Тип доставки</label>
+
+            <div class="col-sm-10">
+                <select
+                        class="form-control"
+                        ng-model="customerInfo.deliveryType"
+                        ng-options="type.value as type.label for type in deliveryTypes">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Адрес</label>
+
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       ng-model="customerInfo.address">
+            </div>
+        </div>
+        <button class="btn btn-default submit-button" ng-disabled="form.$invalid" ng-click="sendOrder()">
+            Заказать
+        </button>
+    </form>
+</div>

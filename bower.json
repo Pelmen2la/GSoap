@@ -1,0 +1,26 @@
+{
+  "name": "gsoap",
+  "description": "",
+  "main": "app.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-file-upload": "^2.3.2",
+    "angular-cookies": "^1.5.6"
+  },
+  "resolutions": {
+    "angular": "^1.5.5"
+  }
+}

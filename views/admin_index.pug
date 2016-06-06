@@ -1,0 +1,43 @@
+doctype html
+html(ng-app='gsoapApp')
+    head
+        meta(charset='utf-8')
+        title GoodSoap Admin
+        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='css/app.css')
+        link(rel='stylesheet', href='css/admin.css')
+    body
+        div.admin-main-container
+            div#auth
+                span #{user}
+                a(href='/logout') Выйти
+            div(class='btn btn-default add-record-button' ui-sref='newProduct') Добавить продукт
+                span.icon
+            div(class='btn btn-default add-record-button' ui-sref='newBrand') Добавить бренд
+                span.icon
+            div(class='btn btn-default add-record-button' ui-sref='newButtonFilter') Добавить фильтр
+                span.icon
+            div(class='btn btn-default add-record-button' ui-sref='orders') Заказы
+                span.icon
+
+            div(ui-view, ng-controller='AdminController')
+
+
+        script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/bower_components/angular/angular.js')
+        script(src='/bower_components/angular-resource/angular-resource.js')
+        script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
+        script(src='/bower_components/angular-file-upload/dist/angular-file-upload.js')
+        script(src='/bower_components/angular-cookies/angular-cookies.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/js/app.js')
+        script(src='/js/controllers/admin.js')
+        script(src='/js/controllers/mainproductlist.js')
+        script(src='/js/controllers/productform.js')
+        script(src='/js/controllers/brandlist.js')
+        script(src='/js/controllers/brandform.js')
+        script(src='/js/controllers/buttonfilterform.js')
+        script(src='/js/controllers/orderlist.js')
+        script(src='/js/services/models.js')
+        script(src='/js/services/utils.js')
+        script(src='/js/services/stringresources.js')

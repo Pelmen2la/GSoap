@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        title Car Service
+        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='css/login.css')
+        script.
+            window.onload = function () {
+                document.getElementsByName('hash')[0].value = location.hash;
+            };
+    body
+        form(action='/login' method='post')
+            h2 Car Service
+            if(error && error.length > 0)
+                div.alert.alert-danger #{error}
+            input(type='hidden' name='hash')
+            input(type='text' name='username' placeholder='логин' required autofocus).form-control
+            input(type='password' name='password' placeholder='пароль' required).form-control
+            div.checkbox
+                label
+                    input(type='checkbox' name='remember')
+                    | Запомнить меня
+            button(type='submit').btn.btn-block.btn-primary Войти
