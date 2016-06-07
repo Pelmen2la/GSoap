@@ -18,14 +18,13 @@
 
         <div class="navigation-menu-wrapper">
             <ul class="navigation-menu">
-                <li ng-click="changeView('index')">
-                    <a>ВСЕ ТОВАРЫ</a>
+                <li>
+                    <a ng-click="changeView('index')">ВСЕ ТОВАРЫ</a>
                 </li>
-                <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index"
-                    ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
-                    <a
-                            ng-attr-id="{{'mainListFilterButton' + $index}}" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index" >
+                    <a  ng-attr-id="{{'mainListFilterButton' + $index}}" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"
+                        ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
                         {{buttonFilter.name.toUpperCase()}}
                     </a>
                     <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">

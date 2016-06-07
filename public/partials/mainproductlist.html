@@ -1,28 +1,28 @@
 <div class="main-list">
     <div class="toolbar">
-        <span class="main-sprite-icon card-view-icon" ng-class="{ selected: isCardView }"
-              ng-click="changeView(true)"></span>
-        <span class="main-sprite-icon list-view-icon" ng-class="{ selected: !isCardView }"
-              ng-click="changeView(false)"></span>
+        Поиск
         <input id="grid-filter-input" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
+        <span class="list-changer" ng-class="{ selected: !isCardView }"
+              ng-click="changeControlMode(false)">Лист</span>
+        <span class="list-changer" ng-class="{ selected: isCardView }"
+              ng-click="changeControlMode(true)">Плитка</span>
     </div>
     <div ng-class="isCardView ? 'card-view' : 'list-view'" class="main-container" id="MainContainer">
         <div ng-repeat="product in products" class="product-container">
-            <div class="main-info-container">
-                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
-                <div class="text-container">
-                    <div class="product-name" ng-click="openProductCard(product)._id">{{product.name}}</div>
-                    <div class="product-brand" ng-click="onBrandNameClick()">{{product.brand}}</div>
-                    <div class="product-price">{{product.selectedCapacity.price}}Р</div>
-                    <div class="product-capacity">
+            <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
+
+            <div class="text-container">
+                <div class="product-name" ng-click="openProductCard(product)._id">{{product.name}}</div>
+                <div class="product-brand" ng-click="onBrandNameClick()">{{product.brand}}</div>
+                <div class="product-price">{{product.selectedCapacity.price}}Р</div>
+                <div class="product-capacity">
                     <span ng-repeat="capacityInfo in product.capacityList"
                           ng-class="{ selected: capacityInfo == product.selectedCapacity }"
                           ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} мл</span>
-                    </div>
-                    <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
                 </div>
+                <div class="product-description" ng-show="!isCardView">{{product.description}}</div>
+                <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
             </div>
-            <div class="product-description" ng-show="!isCardView">{{product.description}}</div>
         </div>
     </div>
 </div>

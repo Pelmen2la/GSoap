@@ -40,13 +40,13 @@ html {
 }
 
 .navigation-menu-wrapper ul.navigation-menu li {
-    cursor: pointer;
     display: inline;
 }
 
 .navigation-menu-wrapper ul.navigation-menu li a {
     color: black;
     padding: 10px 20px;
+    cursor: pointer;
     text-decoration: none;
     border-radius: 4px 4px 0 0;
 }
@@ -55,6 +55,17 @@ html {
 /* MainList Toolbar */
 .main-list .toolbar {
     overflow: auto;
+}
+
+.main-list .toolbar .list-changer {
+    display: inline-block;
+    cursor:pointer;
+    margin: 0 5px;
+    float: right;
+}
+
+.main-list .toolbar .list-changer.selected {
+    text-decoration: underline;
 }
 
 .main-list .toolbar .card-view-icon,
@@ -152,38 +163,32 @@ html {
 
 .main-list .card-view .product-container {
     width: 310px;
-    margin: 5px;
     height: 320px;
+    margin: 5px;
+}
+
+.main-list .list-view .product-container {
+    width: 800px;
+    height: 210px;
+    margin: 5px 100px;
 }
 
 .main-list .list-view .product-container img {
     float: left;
 }
 
-.main-list .list-view .product-container .main-info-container {
-    height: 130px;
-}
-
-.main-list .list-view .product-container .main-info-container img {
-    float: left;
-    width: 200px;
-    height: 130px;
-}
-
-.main-list .list-view .product-container .main-info-container .text-container {
+.main-list .list-view .product-container .text-container {
     float: right;
-    width: 250px;
-    height: 130px;
+    width: 490px;
+    height: 200px;
     position: relative;
     padding: 5px 10px 25px;
 }
 
 .main-list .list-view .product-container .product-description {
-    height: 100px;
-    width: 450px;
+    height: 80px;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 5px;
 }
 
 .main-list .list-view .product-container {

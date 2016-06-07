@@ -20,7 +20,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             }
         });
 
-        $scope.changeView = function(isCardView) {
+        $scope.changeControlMode = function(isCardView) {
             $scope.isCardView = isCardView;
         };
         !$scope.openProductCard && ($scope.openProductCard = function(id) {
