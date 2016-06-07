@@ -1,3 +1,7 @@
+html {
+    font: 14px / 1.4 'p22_underground', sans-serif
+}
+
 .main-sprite-icon {
     display: inline-block;
     width: 16px;
@@ -22,21 +26,39 @@
     margin: 0 auto;
 }
 
-/* MainList Toolbar */
-.main-list .toolbar {
-    height: 35px;
-}
-.main-list .toolbar .filter-buttons .dropdown {
-    float: left;
+.main-wrapper {
+    width: 960px;
+    margin: 0 auto;
 }
 
-.main-list .toolbar .filter-buttons .dropdown-menu li.selected {
-    background-color: #CCCCCC;
+/* Navigation toolbar */
+.navigation-menu-wrapper ul.navigation-menu {
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.navigation-menu-wrapper ul.navigation-menu li {
+    cursor: pointer;
+    display: inline;
+}
+
+.navigation-menu-wrapper ul.navigation-menu li a {
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+}
+/* /Navigation toolbar */
+
+/* MainList Toolbar */
+.main-list .toolbar {
+    overflow: auto;
 }
 
 .main-list .toolbar .card-view-icon,
 .main-list .toolbar .list-view-icon {
-    margin: 3px;
     cursor: pointer
 }
 
@@ -130,6 +152,7 @@
 
 .main-list .card-view .product-container {
     width: 310px;
+    margin: 5px;
     height: 320px;
 }
 
@@ -137,12 +160,30 @@
     float: left;
 }
 
-.main-list .list-view .text-container {
+.main-list .list-view .product-container .main-info-container {
+    height: 130px;
+}
+
+.main-list .list-view .product-container .main-info-container img {
+    float: left;
+    width: 200px;
+    height: 130px;
+}
+
+.main-list .list-view .product-container .main-info-container .text-container {
     float: right;
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 130px;
     position: relative;
     padding: 5px 10px 25px;
+}
+
+.main-list .list-view .product-container .product-description {
+    height: 100px;
+    width: 450px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
 }
 
 .main-list .list-view .product-container {
@@ -186,10 +227,6 @@
 
 
 /* ProductCard */
-.product-card-container {
-    width: 1000px;
-    margin: 0 auto;
-}
 
 .product-card-container .product-card {
     overflow: auto;

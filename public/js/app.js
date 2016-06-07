@@ -1,9 +1,10 @@
 angular.module('gsoapApp', ['ui.router', 'ngResource', 'gsoapApp.controllers', 'gsoapApp.services', 'angularFileUpload', 'ngCookies'])
 angular.module('gsoapApp').config(function ($stateProvider) {
     $stateProvider.state('index', {
-        url: '',
+        url: '?buttonFilter',
         templateUrl: '/partials/mainproductlist.html',
-        controller: 'MainProductListController'
+        controller: 'MainProductListController',
+        reloadOnSearch: false
     }).state('productCard', {
         url: '/products/:id/',
         templateUrl: '/partials/productcard.html',

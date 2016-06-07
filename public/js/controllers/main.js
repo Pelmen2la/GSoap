@@ -1,8 +1,10 @@
 angular.module('gsoapApp.controllers', []);
 
 angular.module('gsoapApp.controllers')
-    .controller('MainController', ['$scope', '$http', '$cookies', 'Utils', function($scope, $http, $cookies, Utils) {
+    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', 'Utils', 'ButtonFilter', function($scope, $state, $stateParams, $cookies, Utils, ButtonFilter) {
         $scope.cartProducts = $cookies.getObject('cartProducts') || [];
+        $scope.filterButtonsData = ButtonFilter.query({}, function() {
+        });
         $scope.utils = Utils;
 
         $scope.addProductToCart = function(product, count) {
@@ -20,5 +22,12 @@ angular.module('gsoapApp.controllers')
                 capacityInfo: product.selectedCapacity,
                 count: count
             });
-        }
+        };
+
+        $scope.onFilterButtonClick = function(filter) {
+            $scope.changeView('index', { buttonFilter: JSON.stringify(filter) });
+        };
+        $scope.changeView = function(name, params) {
+            $state.go(name, params, { reload: $state.current.name === name });
+        };
     }]);
