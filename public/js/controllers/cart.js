@@ -8,6 +8,6 @@ angular.module('gsoapApp.controllers')
                 price += product.capacityInfo.price * product.count;
             });
             $cookies.putObject('cartProducts', $scope.cartProducts, { expires: Utils.getNextDayDate() });
-            $('#CartText').html('Товаров в корзине: ' + count + ' на сумму ' + price + 'Р')
+            $scope.cartText = 'Товаров в корзине: ' + count + ' на сумму ' + price + 'Р';
         }, true);
     }]);

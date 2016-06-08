@@ -11,20 +11,23 @@
 
 <div ng-controller="MainController">
     <div class="main-wrapper">
-        <div ng-controller="CartController" class="cart-panel">
-            <a class="main-sprite-icon cart-icon" ui-sref='cartProductList'></a>
-            <span id="CartText"></span>
+        <div class="info-panel">
+            <div class="text-container">GOODSOAP email: mail@gsoap.ru Viber | WhatsApp +7 920 7712608</div>
+            <div class="cart-container" ng-controller="CartController">
+                <a class="main-sprite-icon cart-icon" ui-sref='cartProductList'></a>
+                <div class="cart-text">{{cartText}}</div>
+            </div>
         </div>
 
-        <div class="navigation-menu-wrapper">
-            <ul class="navigation-menu">
+        <div class="bottom-menu-wrapper">
+            <ul class="bottom-menu">
                 <li>
                     <a ng-click="changeView('index')">ВСЕ ТОВАРЫ</a>
                 </li>
-                <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index" >
-                    <a  ng-attr-id="{{'mainListFilterButton' + $index}}" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"
-                        ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
+                <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
+                    <a ng-attr-id="{{'mainListFilterButton' + $index}}" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"
+                       ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
                         {{buttonFilter.name.toUpperCase()}}
                     </a>
                     <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">
@@ -33,6 +36,9 @@
                             ng-click="onFilterButtonClick(filter)">
                             <a href="#">{{filter.name}}</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a ng-click="changeView('brands')">БРЕНДЫ</a>
                 </li>
             </ul>
         </div>

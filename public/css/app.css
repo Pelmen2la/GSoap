@@ -2,6 +2,10 @@ html {
     font: 14px / 1.4 'p22_underground', sans-serif
 }
 
+body {
+    overflow-y: scroll;
+}
+
 .main-sprite-icon {
     display: inline-block;
     width: 16px;
@@ -9,17 +13,30 @@ html {
     background-image: url(../resources/sprites/main.png);
 }
 
-.cart-panel {
-    overflow: auto;
-    border-bottom: 1px solid black;
-    text-align: right;
-    vertical-align: middle;
+.info-panel {
+    font-family: 'PT Sans', arial;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #CCCCCC;
 }
 
-.cart-panel .cart-icon {
+.info-panel .text-container {
+    float: left;
+}
+
+.info-panel .cart-container {
+    float: right;
+}
+
+.info-panel .cart-container .cart-icon {
     background-position-y: -16px;
     width: 32px;
     height: 32px;
+    float: left;
+}
+
+.info-panel .cart-container .cart-text {
+    float: left;
 }
 
 .main-list {
@@ -32,18 +49,18 @@ html {
 }
 
 /* Navigation toolbar */
-.navigation-menu-wrapper ul.navigation-menu {
+.bottom-menu-wrapper ul.bottom-menu {
     padding: 0;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
 }
 
-.navigation-menu-wrapper ul.navigation-menu li {
+.bottom-menu-wrapper ul.bottom-menu li {
     display: inline;
 }
 
-.navigation-menu-wrapper ul.navigation-menu li a {
+.bottom-menu-wrapper ul.bottom-menu li a {
     color: black;
     padding: 10px 20px;
     cursor: pointer;
