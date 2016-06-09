@@ -246,6 +246,11 @@ body {
 }
 
 .brand-list .brand-container img,
+.brand-list .brand-container h2 {
+    cursor: pointer;
+}
+
+.brand-list .brand-container img,
 .brand-list .brand-container .product-description {
     float: left;
 }

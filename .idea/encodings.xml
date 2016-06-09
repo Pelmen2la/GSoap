@@ -7,6 +7,7 @@
     <file url="file://$PROJECT_DIR$/public/js/controllers/mainproductlist.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/js/services/stringresources.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/js/services/utils.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/partials/brandcard.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/routes/debug.js" charset="UTF-8" />
   </component>
 </project>

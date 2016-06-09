@@ -5,12 +5,11 @@
         <img ng-src="{{utils.getBrandImageUrl(brand)}}">
         <div class="brand-description">{{brand.description}}</div>
     </div>
-
-
+    Поиск <input ng-model='searchFilter.name' />
     <table class="brand-product-grid" ng-show="brand.products.length">
-        <tr ng-repeat="product in brand.products">
+        <tr ng-repeat="product in brand.products | filter:searchFilter">
             <td>
-                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product.id)">
+                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
             </td>
             <td colspan="3">
                 <a href='' ng-click="openProductCard(product._id)">{{product.name}}</a>
