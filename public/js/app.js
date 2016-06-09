@@ -21,6 +21,10 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         url: '/brands/',
         templateUrl: '/partials/brandlist.html',
         controller: 'BrandListController'
+    }).state('brandCard', {
+        url: '/brands/:name/',
+        templateUrl: '/partials/brandcard.html',
+        controller: 'BrandCardController'
     }).state('newBrand', {
         url: '/brand/new',
         templateUrl: '/partials/brandform.html',

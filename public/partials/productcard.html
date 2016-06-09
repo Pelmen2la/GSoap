@@ -8,7 +8,7 @@
         <h2 class="title">
             <span class="name">{{product.name}}</span>
             <span class="capacity">, {{utils.getProductCapacityText(product)}}</span>
-            <span class="brand" ng-show="product.brand"> - {{product.brand}}</span>
+            <span class="brand" ng-show="product.brand" ng-click="openBrandCard(product.brand)"> - {{product.brand}}</span>
         </h2>
         <img src="{{utils.getProductImageUrl(product)}}">
 

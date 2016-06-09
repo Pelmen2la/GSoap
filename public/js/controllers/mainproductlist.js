@@ -26,8 +26,8 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         !$scope.openProductCard && ($scope.openProductCard = function(id) {
             $state.go('productCard', {id: id});
         });
-        $scope.onBrandNameClick = function() {
-            $state.go('brands');
+        $scope.openBrandCard = function(brand) {
+            $state.go('brandCard', { name: brand });
         };
         $scope.selectProductCapacity = function(product, capacity) {
             product.selectedCapacity = capacity;

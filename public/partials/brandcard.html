@@ -1,0 +1,31 @@
+<div class="brand-card-container">
+    <h2>{{brand.name}}</h2>
+
+    <div class="brand-info">
+        <img ng-src="{{utils.getBrandImageUrl(brand)}}">
+        <div class="brand-description">{{brand.description}}</div>
+    </div>
+
+
+    <table class="brand-product-grid" ng-show="brand.products.length">
+        <tr ng-repeat="product in brand.products">
+            <td>
+                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product.id)">
+            </td>
+            <td colspan="3">
+                <a href='' ng-click="openProductCard(product._id)">{{product.name}}</a>
+            </td>
+            <td colspan="3" class="product-capacity">
+                    <span ng-repeat="capacityInfo in product.capacityList"
+                          ng-class="{ selected: capacityInfo == product.selectedCapacity }"
+                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} мл</span>
+            </td>
+            <td class="number">
+                <span>{{product.selectedCapacity.price}}Р</span>
+            </td>
+            <td class="buy-button">
+                <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -12,6 +12,9 @@ var Brand = new mongoose.Schema({
     },
     description: {
         type: String
+    },
+    products: {
+        type: [{}]
     }
 });
 

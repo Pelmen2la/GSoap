@@ -12,8 +12,8 @@
             <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
 
             <div class="text-container">
-                <div class="product-name" ng-click="openProductCard(product)._id">{{product.name}}</div>
-                <div class="product-brand" ng-click="onBrandNameClick()">{{product.brand}}</div>
+                <div class="product-name" ng-click="openProductCard(product._id)">{{product.name}}</div>
+                <div class="product-brand" ng-click="openBrandCard(product.brand)">{{product.brand}}</div>
                 <div class="product-price">{{product.selectedCapacity.price}}Р</div>
                 <div class="product-capacity">
                     <span ng-repeat="capacityInfo in product.capacityList"

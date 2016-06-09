@@ -1,7 +1,7 @@
 <div class="brand-list">
     <div class="brand-container" ng-repeat="brand in brands">
         <h2>{{brand.name}}</h2>
-        <img ng-src="{{utils.getBrandImageUrl(brand)}}">
+        <img ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandCard(brand.name)">
         <div class="brand-description">{{brand.description}}</div>
     </div>
 </div>

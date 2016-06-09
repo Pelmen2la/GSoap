@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var Product = mongoose.model('product');
 var Brand = mongoose.model('brand');
 
 module.exports = function(app) {
@@ -10,10 +11,14 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/brands/:id', function (req, res, next) {
-        Brand.findById(req.params.id, function (err, data) {
-            if (err) return next(err);
-            res.json(data);
+    app.get('/brands/:name', function (req, res, next) {
+        Brand.find({ name: req.params.name }, function (err, data) {
+            if(err) return next(err);
+            var brand = data[0];
+            Product.find({brand: brand.name}, function(err, data) {
+                brand.set('products', data);
+                res.json(brand);
+            });
         });
     });
 
