@@ -11,7 +11,6 @@ angular.module('gsoapApp.controllers')
 
         function loadRecord(name) {
             $scope.brand = Brand.get({name: name}, function(data) {
-                debugger;
                 data.products.forEach(function(product) {
                     product.selectedCapacity = product.capacityList[0];
                 });
