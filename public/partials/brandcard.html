@@ -18,13 +18,13 @@
             <td colspan="3" class="product-capacity">
                     <span ng-repeat="capacityInfo in product.capacityList"
                           ng-class="{ selected: capacityInfo == product.selectedCapacity }"
-                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} мл</span>
+                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} РјР»</span>
             </td>
             <td class="number">
-                <span>{{product.selectedCapacity.price}}Р</span>
+                <span>{{product.selectedCapacity.price}}Р </span>
             </td>
             <td class="buy-button">
-                <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
+                <div class="product-buy-button" ng-click="addProductToCart(product)">РљСѓРїРёС‚СЊ</div>
             </td>
         </tr>
     </table>
