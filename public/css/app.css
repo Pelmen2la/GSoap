@@ -121,7 +121,7 @@ body {
 
 /* MainList Views */
 .main-list .main-container {
-    overflow: auto;
+    overflow: hidden;
 }
 
 .main-list .product-container {
