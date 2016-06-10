@@ -34,7 +34,7 @@ angular.module('gsoapAdminApp.adminControllers')
                 });
             } else {
                 $scope.buttonFilter.$save(function(result) {
-                    $state.go('indbuttonFiltersex');
+                    $state.go('buttonFilters');
                 });
             }
         };
