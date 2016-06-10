@@ -1,0 +1,28 @@
+<div class='btn btn-default add-record-button' ui-sref='newProduct'>
+    Добавить товар
+</div>
+
+Поиск <input id="grid-filter-input" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
+<table id="AdminProductList" class="admin-product-list">
+    <tr ng-repeat="product in products">
+        <td ng-click="openProductForm(product._id)">
+            <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
+        </td>
+        <td ng-click="openProductForm(product._id)" class="product-name">
+            {{product.name}}
+        </td>
+        <td ng-click="openProductBrandForm(product.brand)" class="product-brand">
+            {{product.brand}}
+        </td>
+        <td>
+            {{utils.getProductCapacityText(product)}} г<br/>
+            {{utils.getProductPricesText(product)}} р
+        </td>
+        <td>
+            <span class="main-sprite-icon edit-icon" ng-click="openProductForm(product._id)"></span>
+        </td>
+        <td>
+            <span class="main-sprite-icon delete-icon" ng-click="tryDeleteProduct(product._id)"></span>
+        </td>
+    </tr>
+</table>

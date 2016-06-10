@@ -9,7 +9,7 @@ angular.module('gsoapApp.services')
         });
     })
     .factory('Brand', function($resource) {
-        return $resource('/brands/:name', null, {
+        return $resource('/brands/:id', null, {
             update: {
                 method: 'PUT'
             }

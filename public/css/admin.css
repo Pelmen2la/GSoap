@@ -17,6 +17,48 @@
     height: 200px;
 }
 
+.admin-main-container .edit-icon {
+    background-position-x: -48px;
+}
+
+.admin-main-container .delete-icon {
+    background-position-x: -96px;
+}
+
+/* Lists */
+.admin-main-container .admin-product-list,
+.admin-main-container .admin-product-list {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.admin-main-container .admin-product-list tr td,
+.admin-main-container .admin-brand-list tr td,
+.admin-main-container .admin-button-filter-list tr td {
+    padding: 5px 10px;
+}
+
+.admin-main-container .admin-product-list tr td img,
+.admin-main-container .admin-brand-list img {
+    height: 70px;
+}
+
+.admin-main-container .admin-product-list tr .product-name,
+.admin-main-container .admin-brand-list tr td.brand-name,
+.admin-main-container .admin-button-filter-list tr td.buttonfilter-name {
+    font-weight: bold;
+}
+
+.admin-main-container .admin-product-list tr td.product-name,
+.admin-main-container .admin-product-list tr td img,
+.admin-main-container .admin-product-list tr td.product-brand,
+.admin-main-container .admin-brand-list tr td img,
+.admin-main-container .admin-brand-list tr td.brand-name,
+.admin-main-container .admin-button-filter-list tr td.buttonfilter-name {
+    cursor: pointer;
+}
+/* /Lists */
+
 .admin-main-container .capacity-list-container,
 .admin-main-container .property-combo-container {
     overflow: auto;

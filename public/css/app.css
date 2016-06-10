@@ -8,6 +8,7 @@ body {
 
 .main-sprite-icon {
     display: inline-block;
+    cursor: pointer;
     width: 16px;
     height: 16px;
     background-image: url(../resources/sprites/main.png);

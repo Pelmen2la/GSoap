@@ -1,4 +1,4 @@
-angular.module('gsoapApp.controllers')
+angular.module('gsoapAdminApp.adminControllers')
     .controller('ProductEditController', ['$scope', '$stateParams', 'Product', function($scope, $stateParams, Product) {
         $scope.product = Product.get({id: $stateParams.id}, function() {
         });

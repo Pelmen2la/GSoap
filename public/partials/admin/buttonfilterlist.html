@@ -1,0 +1,17 @@
+<div class='btn btn-default add-record-button' ui-sref='newButtonFilter'>
+    Добавить фильтр
+</div>
+
+<table class="admin-button-filter-list">
+    <tr ng-repeat="filterData in filterButtonsData">
+        <td class="buttonfilter-name" ng-click="openFilterButtonForm(filterData._id)">
+            {{filterData.name}}
+        </td>
+        <td>
+            <span class="main-sprite-icon edit-icon" ng-click="openFilterButtonForm(filterData._id)"></span>
+        </td>
+        <td>
+            <span class="main-sprite-icon delete-icon" ng-click="tryDeleteFilterButton(filterData._id)"></span>
+        </td>
+    </tr>
+</table>

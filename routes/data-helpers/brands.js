@@ -11,8 +11,8 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/brands/:name', function (req, res, next) {
-        Brand.find({ name: req.params.name }, function (err, data) {
+    app.get('/brands/:id', function (req, res, next) {
+        Brand.find({ name: req.params.id }, function (err, data) {
             if(err) return next(err);
             var brand = data[0];
             Product.find({brand: brand.name}, function(err, data) {
@@ -31,8 +31,8 @@ module.exports = function(app) {
     });
 
     app.put('/brands/:id', function (req, res, next) {
-        Brand.findByIdAndUpdate(req.params.id, req.body, {runValidators: true}, function (err, data) {
-            if (err) return next(err);
+        Brand.findByIdAndUpdate(req.params.id, req.body, {runValidators: true}, function(err, data) {
+            if(err) return next(err);
             res.json(data);
         });
     });

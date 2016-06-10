@@ -1,6 +1,6 @@
-angular.module('gsoapApp.controllers')
+angular.module('gsoapAdminApp.adminControllers')
     .controller('BrandEditController', ['$scope', '$stateParams', 'Brand', function($scope, $stateParams, Brand) {
-        $scope.brand = Brand.get({id: $stateParams.id}, function() {
+        $scope.brand = Brand.get({id: $stateParams.name}, function() {
         });
     }])
     .controller('BrandCreateController', ['$scope', 'Brand', function($scope, Brand) {

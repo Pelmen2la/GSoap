@@ -6,13 +6,10 @@ angular.module('gsoapApp.services').service('Utils', function ($resource) {
         return getImageUrl(brand, 'brands');
     };
     this.getProductCapacityText = function(product) {
-        if(!product.capacityList) {
-            return '';
-        }
-        var capacityValues = product.capacityList.map(function(entry) {
-            return entry.capacity;
-        });
-        return capacityValues.join('/') + ' г';
+        return getJoinedProperties(product.capacityList, 'capacity');
+    };
+    this.getProductPricesText = function(product) {
+        return getJoinedProperties(product.capacityList, 'price');
     };
     this.getProductPriceText = function(product) {
         if(!product.capacityList) {
@@ -33,5 +30,14 @@ angular.module('gsoapApp.services').service('Utils', function ($resource) {
 
     function getImageUrl(object, folderName) {
         return object && object.imageName ? '/resources/images/' + folderName + '/' + object.imageName : '';
+    }
+    function getJoinedProperties(objectArray, propertyName) {
+        if(!objectArray) {
+            return '';
+        }
+        var values = objectArray.map(function(entry) {
+            return entry[propertyName];
+        });
+        return values.join('/');
     }
 });

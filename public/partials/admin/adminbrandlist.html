@@ -1,0 +1,20 @@
+<div class='btn btn-default add-record-button' ui-sref='newBrand'>
+    Добавить бренд
+</div>
+
+<table class="admin-brand-list">
+    <tr ng-repeat="brand in brands">
+        <td>
+            <img ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandForm(brand.name)">
+        </td>
+        <td class="brand-name" ng-click="openBrandForm(brand.name)">
+            {{brand.name}}
+        </td>
+        <td>
+            <span class="main-sprite-icon edit-icon" ng-click="openBrandForm(brand.name)"></span>
+        </td>
+        <td>
+            <span class="main-sprite-icon delete-icon" ng-click="tryDeleteBrand(brand._id)"></span>
+        </td>
+    </tr>
+</table>

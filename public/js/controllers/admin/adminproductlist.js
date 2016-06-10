@@ -1,10 +1,8 @@
-angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', 'Product',
+angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListController', ['$scope', '$state', '$stateParams', 'Product',
     function($scope, $state, $stateParams, Product) {
-        $scope.isCardView = true;
         $scope.searchFilter = '';
         $scope.pageSize = 20;
         $scope.pageIndex = 0;
-        $scope.buttonFilter = $stateParams.buttonFilter;
         loadPageData(true);
 
         $(window).scroll(function() {
@@ -12,25 +10,26 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                 return;
             }
             var $window = $(window),
-                productContainer = $('.product-container')[0],
-                $mainContainer = $('#MainContainer');
-            if(productContainer && $mainContainer.offset().top + $mainContainer.height() -
-                productContainer.offsetHeight < $window.height() + $window.scrollTop()) {
+                $productList = $('#AdminProductList')
+            productRow = $productList.find('tr')[0];
+            if(productRow && $productList.offset().top + $productList.height() -
+                productRow.offsetHeight < $window.height() + $window.scrollTop()) {
                 loadPageData();
             }
         });
 
-        $scope.changeControlMode = function(isCardView) {
-            $scope.isCardView = isCardView;
+        $scope.openProductForm = function(id) {
+            $state.go('productForm', {id: id});
         };
-        $scope.openProductCard = function(id) {
-            $state.go('productCard', {id: id});
+        $scope.tryDeleteProduct = function(id) {
+            if(window.confirm('Вы уверены, что хотите удалить продукт?')) {
+                Product.delete({id: id}, function() {
+                    loadPageData(true);
+                });
+            }
         };
-        $scope.openBrandCard = function(brand) {
-            $state.go('brandCard', { name: brand });
-        };
-        $scope.selectProductCapacity = function(product, capacity) {
-            product.selectedCapacity = capacity;
+        $scope.openBrandForm = function(brand) {
+            $state.go('brandCard', {id: brand});
         };
         $scope.onFilterInputKeyUp = function() {
             window.clearTimeout($scope.filterTimeoutId);
@@ -43,7 +42,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             var params = {};
             $scope.dataLoading = true;
             $scope.pageIndex = resetPageIndex ? 0 : $scope.pageIndex + 1;
-            ['searchFilter', 'buttonFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
+            ['searchFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
                 params[param] = $scope[param]
             });
             Product.query(params, function(data) {
