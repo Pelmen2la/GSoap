@@ -39,6 +39,22 @@ body {
     background-position: -32px -16px;
 }
 
+.bestseller-icon {
+    display: inline-block;
+    top: 10px;
+    left: 5px;
+    width: 90px;
+    height: 30px;
+    padding: 0 5px;
+    line-height: 28px;
+    text-align: left;
+    cursor: default;
+    color: white;
+    position: absolute;
+    background: #9AC30D;
+    background: linear-gradient(to top, #9FC70B, #80AB18);
+}
+
 .info-panel {
     font-family: 'PT Sans', arial;
     height: 40px;
@@ -160,6 +176,19 @@ body {
 .main-list .product-container:hover .discount-icon {
     top: 9px;
     left: 9px;
+}
+
+.main-list .product-container.bestseller .discount-icon {
+    top: 45px;
+}
+
+.main-list .product-container.bestseller:hover .discount-icon {
+    top: 44px;
+}
+
+.main-list .product-container:hover .bestseller-icon {
+    top: 9px;
+    left: 4px;
 }
 
 .main-list .product-container img {
@@ -296,6 +325,10 @@ body {
 
 .product-card-container .product-card .product-image-container {
     position: relative;
+}
+
+.product-card-container .product-card.bestseller .discount-icon {
+    top: 45px;
 }
 
 .product-card .title .brand {

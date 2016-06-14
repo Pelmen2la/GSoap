@@ -31,6 +31,7 @@ var Product = new mongoose.Schema({
         text: String
     }],
     discount: Number,
+    isBestseller: Boolean,
     stockCount: Number,
     orderCount: Number
 });

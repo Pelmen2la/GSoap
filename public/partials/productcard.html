@@ -4,7 +4,7 @@
         Назад
     </div>
 
-    <div class="product-card">
+    <div class="product-card" ng-class="{bestseller: product.isBestseller}">
         <h2 class="title">
             <span class="name">{{product.name}}</span>
             <span class="capacity">, {{utils.getProductCapacityText(product)}}</span>
@@ -14,6 +14,7 @@
 
         <div class="product-image-container">
             <img src="{{utils.getProductImageUrl(product)}}">
+            <span class="bestseller-icon" ng-show="product.isBestseller">Хит продаж</span>
             <span class="main-sprite-icon discount-icon" ng-show="product.discount">{{product.discount}}%</span>
         </div>
         <div class="text-container">

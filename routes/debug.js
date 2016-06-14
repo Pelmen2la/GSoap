@@ -105,6 +105,10 @@ module.exports = function(app) {
         return reviews;
     }
 
+    function getIsBestseller() {
+        return !random(6);
+    }
+
     function getDiscount() {
         return random(4) ? random(25) : 0;
     }
@@ -128,6 +132,7 @@ module.exports = function(app) {
             description: getDescription(),
             reviews: getReviews(),
             discount: getDiscount(),
+            isBestseller: getIsBestseller(),
             stockCount: getStockCount(),
             orderCount: getOrderCount()
         };
@@ -152,7 +157,7 @@ module.exports = function(app) {
                 var product = new Product(getRandomProduct());
                 i++;
                 product.save(function() {
-                    i < 1000 ? createProduct() : res.json({result: 'created'});
+                    i < 100 ? createProduct() : res.json({result: 'created'});
                 });
             };
         createProduct();
