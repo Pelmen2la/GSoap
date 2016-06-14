@@ -4,6 +4,7 @@
             <th></th>
             <th colspan="3">Наименование</th>
             <th>Ёмкость</th>
+            <th>Скидка</th>
             <th>Цена за единицу</th>
             <th>Количество</th>
             <th>Сумма</th>
@@ -17,6 +18,9 @@
             </td>
             <td class="number">
                 <span>{{product.capacityInfo.capacity}}</span>
+            </td>
+            <td class="number">
+                <span>{{product.discount}}%</span>
             </td>
             <td class="number">
                 <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
