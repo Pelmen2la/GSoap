@@ -9,12 +9,13 @@
 </head>
 <body>
 
-<div ng-controller="MainController">
+<div ng-controller="MainController" class="main-div">
     <div class="main-wrapper">
         <div class="info-panel">
             <div class="text-container">GOODSOAP email: mail@gsoap.ru Viber | WhatsApp +7 920 7712608</div>
             <div class="cart-container" ng-controller="CartController">
                 <a class="main-sprite-icon cart-icon" ui-sref='cartProductList'></a>
+
                 <div class="cart-text">{{cartText}}</div>
             </div>
         </div>

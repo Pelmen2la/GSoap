@@ -1,74 +1,23 @@
 angular.module('gsoapApp.services').constant('StringResources', {
-    productTypes: [
-        {
-            value: 'tonic',
-            label: 'Тоники и гидролаты'
-        },
-        {
-            value: 'cream',
-            label: 'Кремы'
-        },
-        {
-            value: 'mask',
-            label: 'Маски'
-        },
-        {
-            value: 'shampoo',
-            label: 'Шампунь'
-        },
-        {
-            value: 'balm',
-            label: 'Бальзам'
-        },
-        {
-            value: 'hairDye',
-            label: 'Краски'
-        },
-        {
-            value: 'deodorants',
-            label: 'Дезодоранты'
-        },
-        {
-            value: 'envelopment',
-            label: 'Обертывание'
-        },
-        {
-            value: 'soap',
-            label: 'Мыло'
-        },
-        {
-            value: 'beldi',
-            label: 'Бельди'
-        },
-        {
-            value: 'showerGel',
-            label: 'Гель для душа'
-        },
-        {
-            value: 'scrub',
-            label: 'Скрабы'
-        },
-        {
-            value: 'bashSalt',
-            label: 'Соль для ванн'
-        },
-        {
-            value: 'bubbleBall',
-            label: 'Бурлящие шарики'
-        },
-        {
-            value: 'powder',
-            label: 'Пудра'
-        },
-        {
-            value: 'purification',
-            label: 'Очищение'
-        },
-        {
-            value: 'baseEssential',
-            label: 'Базовые\\эфирные'
-        }
-    ],
+    productTypes: {
+        tonic: 'Тоники и гидролаты',
+        cream: 'Кремы',
+        mask: 'Маски',
+        shampoo: 'Шампунь',
+        balm: 'Бальзам',
+        hairDye: 'Краски',
+        deodorants: 'Дезодоранты',
+        envelopment: 'Обертывание',
+        soap: 'Мыло',
+        beldi: 'Бельди',
+        showerGel: 'Гель для душа',
+        scrub: 'Скрабы',
+        bashSalt: 'Соль для ванн',
+        bubbleBall: 'Бурлящие шарики',
+        powder: 'Пудра',
+        purification: 'Очищение',
+        baseEssential: 'Базовые\\эфирные'
+    },
     productProperties: [
         {
             value: 'face',

@@ -1,12 +1,14 @@
 angular.module('gsoapApp.controllers', []);
 
 angular.module('gsoapApp.controllers')
-    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', 'Utils', 'ButtonFilter', function($scope, $state, $stateParams, $cookies, Utils, ButtonFilter) {
+    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', 'Utils', 'ButtonFilter', 'StringResources',
+        function($scope, $state, $stateParams, $cookies, Utils, ButtonFilter, StringResources) {
         $scope.cartProducts = $cookies.getObject('cartProducts') || [];
         $scope.cartText = '';
         $scope.filterButtonsData = ButtonFilter.query({}, function() {
         });
         $scope.utils = Utils;
+        $scope.stringResources = StringResources;
 
         $scope.addProductToCart = function(product, count) {
             count = count || 1;
