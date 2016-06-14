@@ -69,5 +69,8 @@ angular.module('gsoapApp.services').constant('StringResources', {
             value: 'rf',
             label: 'Доставка по РФ (бесплатно для заказов от 2500)'
         }
-    ]
+    ],
+    validationMessages: {
+        wrongProductCountTitle: 'Такого количества товара в настоящий момент нет на складе'
+    }
 });

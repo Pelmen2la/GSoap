@@ -29,7 +29,9 @@ var Product = new mongoose.Schema({
     reviews: [{
         customerName: String,
         text: String
-    }]
+    }],
+    stockCount: Number,
+    orderCount: Number
 });
 
 mongoose.model('product', Product);

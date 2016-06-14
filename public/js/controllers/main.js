@@ -23,7 +23,9 @@ angular.module('gsoapApp.controllers')
                 name: product.name,
                 imageName: product.imageName,
                 capacityInfo: product.selectedCapacity,
-                count: count
+                count: count,
+                stockCount: product.stockCount,
+                orderCount: product.orderCount
             });
         };
 

@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var Order = mongoose.model('order');
+var Product = mongoose.model('product');
 
 module.exports = function(app) {
     app.get('/orders', function (req, res) {
@@ -18,10 +19,16 @@ module.exports = function(app) {
     });
 
     app.post('/orders', function (req, res, next) {
-        var brand = new Order(req.body);
-        brand.save(function (err, data) {
+        var order = new Order(req.body);
+        order.save(function (err, order) {
+            order.products.forEach(function(product) {
+                Product.findById(product.id, function(err, productModel) {
+                    productModel.orderCount += product.count;
+                    productModel.save();
+                });
+            });
             if (err) return next(err);
-            res.json(data);
+            res.json(order);
         });
     });
 

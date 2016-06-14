@@ -105,6 +105,14 @@ module.exports = function(app) {
         return reviews;
     }
 
+    function getStockCount() {
+        return random(2) ? random(20) : 0;
+    }
+
+    function getOrderCount() {
+        return random(1) ? random(3) : 0;
+    }
+
     function getRandomProduct() {
         var product = {
             name: getProductName(),
@@ -114,7 +122,9 @@ module.exports = function(app) {
             type: getType(),
             properties: getProperties(),
             description: getDescription(),
-            reviews: getReviews()
+            reviews: getReviews(),
+            stockCount: getStockCount(),
+            orderCount: getOrderCount()
         };
         return product;
     };
@@ -137,7 +147,7 @@ module.exports = function(app) {
                 var product = new Product(getRandomProduct());
                 i++;
                 product.save(function() {
-                    i < 100 ? createProduct() : res.json({result: 'created'});
+                    i < 1000 ? createProduct() : res.json({result: 'created'});
                 });
             };
         createProduct();

@@ -312,6 +312,10 @@ body {
     margin-right: 5px;
 }
 
+.product-card .text-container .product-count.invalid {
+    color: red;
+}
+
 .product-card .text-container .product-buy-button {
     float: right;
     text-align: center;
@@ -380,6 +384,10 @@ body {
 .product-cart-page-container .product-cart-grid tr td.number,
 .brand-card-container .brand-product-grid tr td.number {
     text-align: center;
+}
+
+.product-cart-page-container .product-cart-grid tr td .product-count.invalid {
+    color: red;
 }
 
 .product-cart-page-container .product-cart-grid tr td img,

@@ -7,6 +7,8 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.product = new Product();
         $scope.product.capacityList = [{capacity: 0, price: 0}];
         $scope.product.properties = [];
+        $scope.product.stockCount = 0;
+        $scope.product.orderCount = 0;
     }])
     .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', function($scope, $state, FileUploader, Brand) {
         $scope.brands = Brand.query({}, function(data) {

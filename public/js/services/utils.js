@@ -27,6 +27,9 @@ angular.module('gsoapApp.services').service('Utils', function ($resource) {
         date.setDate(date.getDate() + 1);
         return date;
     };
+    this.isProductCountAvailable = function(product, count) {
+        return count <= product.stockCount - product.orderCount;
+    };
 
     function getImageUrl(object, folderName) {
         return object && object.imageName ? '/resources/images/' + folderName + '/' + object.imageName : '';
