@@ -20,10 +20,15 @@
                 <select
                         class="capacity-combo"
                         ng-model="product.selectedCapacity"
-                        ng-options="entry as entry.capacity + ' гр' for entry in product.capacityList">
+                        ng-options="entry as entry.capacity for entry in product.capacityList">
                 </select>
-                <div class="product-price">{{product.selectedCapacity.price}}Р</div>
-                <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
+                <span class="options-control-label">гр.</span>
+                <input type="number" name="input" ng-model="orderCount" class="product-count"
+                       min="1" max="99">
+                <span class="options-control-label">шт.</span>
+                <span class="options-control-label">Цена</span>
+                <div class="product-price">{{product.selectedCapacity.price * orderCount}}Р</div>
+                <div class="product-buy-button" ng-click="addProductToCart(product, orderCount)">Купить</div>
             </div>
         </div>
     </div>

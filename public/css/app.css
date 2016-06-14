@@ -1,9 +1,21 @@
 html {
-    font: 14px / 1.4 'p22_underground', sans-serif
+    font: 14px / 1.4 'p22_underground', sans-serif;
 }
 
 body {
     overflow-y: scroll;
+}
+
+.main-div {
+    background: url('../resources/images/background.jpg') repeat #f5fffa;
+}
+
+.main-wrapper {
+    width: 980px;
+    margin: 0 auto;
+    background: white;
+    opacity: 0.9;
+    padding: 5px 10px;
 }
 
 .main-sprite-icon {
@@ -40,16 +52,6 @@ body {
     float: left;
 }
 
-.main-div {
-    background: url('../resources/images/background.jpg') repeat #f5fffa;
-}
-
-.main-wrapper {
-    width: 960px;
-    margin: 0 auto;
-    background: white;
-    opacity: 0.9;
-}
 .main-list {
     margin: 0 auto;
 }
@@ -301,10 +303,13 @@ body {
     bottom: 0;
 }
 
+.product-card .text-container .options-control-label,
 .product-card .text-container .product-price,
-.product-card .text-container .capacity-combo{
+.product-card .text-container .capacity-combo,
+.product-card .text-container .product-count {
     float: left;
-    margin-right: 10px;
+    height: 25px;
+    margin-right: 5px;
 }
 
 .product-card .text-container .product-buy-button {

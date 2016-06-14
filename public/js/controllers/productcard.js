@@ -1,9 +1,9 @@
 angular.module('gsoapApp.controllers')
     .controller('ProductCardController', ['$scope', '$state', '$stateParams', '$http', 'Product', function ($scope, $state, $stateParams, $http, Product) {
         $scope.selectedCapacity = {};
+        $scope.orderCount = 1;
         loadRecord($stateParams.id);
         initReview();
-
 
         $scope.openBrandCard = function(brand) {
             $state.go('brandCard', { name: brand });
