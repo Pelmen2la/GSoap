@@ -26,6 +26,19 @@ body {
     background-image: url(../resources/sprites/main.png);
 }
 
+.main-sprite-icon.discount-icon {
+    top: 10px;
+    left: 10px;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    cursor: default;
+    color: white;
+    position: absolute;
+    background-position: -32px -16px;
+}
+
 .info-panel {
     font-family: 'PT Sans', arial;
     height: 40px;
@@ -136,11 +149,17 @@ body {
     padding: 5px;
     float: left;
     text-align: center;
+    position: relative;
 }
 
 .main-list .product-container:hover {
     border: 1px solid gray;
     padding: 4px;
+}
+
+.main-list .product-container:hover .discount-icon {
+    top: 9px;
+    left: 9px;
 }
 
 .main-list .product-container img {
@@ -271,9 +290,12 @@ body {
 
 
 /* ProductCard */
-
 .product-card-container .product-card {
     overflow: auto;
+}
+
+.product-card-container .product-card .product-image-container {
+    position: relative;
 }
 
 .product-card .title .brand {

@@ -8,10 +8,14 @@
         <h2 class="title">
             <span class="name">{{product.name}}</span>
             <span class="capacity">, {{utils.getProductCapacityText(product)}}</span>
-            <span class="brand" ng-show="product.brand" ng-click="openBrandCard(product.brand)"> - {{product.brand}}</span>
+            <span class="brand" ng-show="product.brand"
+                  ng-click="openBrandCard(product.brand)"> - {{product.brand}}</span>
         </h2>
-        <img src="{{utils.getProductImageUrl(product)}}">
 
+        <div class="product-image-container">
+            <img src="{{utils.getProductImageUrl(product)}}">
+            <span class="main-sprite-icon discount-icon" ng-show="product.discount">{{product.discount}}%</span>
+        </div>
         <div class="text-container">
             <div class="description">
                 {{product.description}}
@@ -29,7 +33,9 @@
                         stringResources.validationMessages.wrongProductCountTitle}}">
                 <span class="options-control-label">шт.</span>
                 <span class="options-control-label">Цена</span>
-                <div class="product-price">{{product.selectedCapacity.price * orderCount}}Р</div>
+
+                <div class="product-price">{{utils.getProductPrice(product, product.selectedCapacity) * orderCount}}Р
+                </div>
                 <div class="product-buy-button" ng-click="addProductToCart(product, orderCount)">Купить</div>
             </div>
         </div>

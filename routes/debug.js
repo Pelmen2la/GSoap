@@ -105,6 +105,10 @@ module.exports = function(app) {
         return reviews;
     }
 
+    function getDiscount() {
+        return random(4) ? random(25) : 0;
+    }
+
     function getStockCount() {
         return random(2) ? random(20) : 0;
     }
@@ -123,6 +127,7 @@ module.exports = function(app) {
             properties: getProperties(),
             description: getDescription(),
             reviews: getReviews(),
+            discount: getDiscount(),
             stockCount: getStockCount(),
             orderCount: getOrderCount()
         };

@@ -30,6 +30,7 @@ var Product = new mongoose.Schema({
         customerName: String,
         text: String
     }],
+    discount: Number,
     stockCount: Number,
     orderCount: Number
 });

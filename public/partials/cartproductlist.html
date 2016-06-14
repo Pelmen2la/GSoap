@@ -19,7 +19,7 @@
                 <span>{{product.capacityInfo.capacity}}</span>
             </td>
             <td class="number">
-                <span>{{product.capacityInfo.price}}</span>
+                <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
             </td>
             <td>
                 <input type="number" class="product-count" name="input" ng-model="product.count" min="1" max="99"
@@ -28,7 +28,7 @@
                         stringResources.validationMessages.wrongProductCountTitle}}">
             </td>
             <td class="number">
-                <span>{{product.count * product.capacityInfo.price}}</span>
+                <span>{{utils.getProductPrice(product, product.capacityInfo) * product.count}}</span>
             </td>
             <td class="number">
                 <span class="main-sprite-icon delete-cart-product-button"

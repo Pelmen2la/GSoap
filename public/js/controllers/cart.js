@@ -5,7 +5,7 @@ angular.module('gsoapApp.controllers')
                 price = 0;
             $scope.cartProducts.forEach(function(product) {
                 count += product.count;
-                price += product.capacityInfo.price * product.count;
+                price += Utils.getProductPrice(product, product.capacityInfo) * product.count;
             });
             $cookies.putObject('cartProducts', $scope.cartProducts, { expires: Utils.getNextDayDate() });
             $scope.cartText = 'Товаров в корзине: ' + count + ' на сумму ' + price + 'Р';
