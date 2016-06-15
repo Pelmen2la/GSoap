@@ -121,6 +121,10 @@ body {
     float: left;
 }
 
+.header .navigation-container .navigation-menu {
+    text-align: right;
+}
+
 .header .navigation-container .navigation-menu > a {
     color: #9AB216;
     cursor: pointer;
