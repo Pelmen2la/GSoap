@@ -11,12 +11,26 @@
 
 <div ng-controller="MainController" class="main-div">
     <div class="main-wrapper">
-        <div class="info-panel">
-            <div class="text-container">GOODSOAP email: mail@gsoap.ru Viber | WhatsApp +7 920 7712608</div>
-            <div class="cart-container" ng-controller="CartController">
-                <a class="main-sprite-icon cart-icon" ui-sref='cartProductList'></a>
-
-                <div class="cart-text">{{cartText}}</div>
+        <div class="header">
+            <div class="logo">
+                <span class="top-text">GOOD</span><br/>
+                <span class="bottom-text">SOAP</span>
+            </div>
+            <div class="contact-info">
+                <span class="email">email: mail@gsoap.ru</span><br/>
+                <span class="whatsup">Viber | WhatsApp +7-920-771-26-08</span>
+            </div>
+            <div class="navigation-container">
+                <a class="cart-container" ui-sref='cartProductList' ng-controller="CartController">
+                    <span class="main-sprite-icon cart-icon"></span>
+                    <span class="cart-text">{{cartText}}</span>
+                </a>
+                <div class="navigation-menu">
+                    <a ui-sref='about'>О нас</a>
+                    <a>Блог</a>
+                    <a ui-sref='delivery'>Доставка и оплата</a>
+                    <a>Контакты</a>
+                </div>
             </div>
         </div>
 

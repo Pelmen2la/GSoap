@@ -21,6 +21,15 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         url: '/cart/',
         templateUrl: '/partials/cartproductlist.html',
         controller: 'CartProductListController'
+    })
+        .state('about', {
+        url: '/about/',
+        templateUrl: '/partials/simplepages/about.html',
+        controller: ''
+    }).state('delivery', {
+        url: '/delivery/',
+        templateUrl: '/partials/simplepages/delivery.html',
+        controller: ''
     });
 }).run(function ($state) {
     $state.go('index');

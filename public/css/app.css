@@ -1,13 +1,16 @@
 html {
     font: 14px / 1.4 'p22_underground', sans-serif;
+    height: 100%;
 }
 
 body {
     overflow-y: scroll;
+    height: 100%;
 }
 
 .main-div {
     background: url('../resources/images/background.jpg') repeat #f5fffa;
+    min-height: 100%;
 }
 
 .main-wrapper {
@@ -55,35 +58,75 @@ body {
     background: linear-gradient(to top, #9FC70B, #80AB18);
 }
 
-.info-panel {
+/* Header */
+
+.header {
     font-family: 'PT Sans', arial;
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #CCCCCC;
+    height: 100px;
+    margin-bottom: 10px;
 }
 
-.info-panel .text-container {
+.header > div {
     float: left;
 }
 
-.info-panel .cart-container {
+.header .logo {
+    width: 100px;
+    height: 100px;
+    padding-top: 28px;
+    border-radius: 50px;
+    background-color: #9AB216;
+    text-align: center;
+    font-size: 28px;
+    line-height: 21px;
+    font-weight: bold;
+    font-family: Violet-web,tahoma,Meyrio;
+}
+
+.header .contact-info {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 30px;
+    line-height: 33px;
+}
+
+.header .logo .top-text {
+    color: white;
+}
+
+.header .navigation-container {
+    float: right;
+    line-height: 36px;
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+.header .navigation-container .cart-container {
     float: right;
 }
 
-.info-panel .cart-container .cart-icon {
+.header .navigation-container .cart-container .cart-icon {
     background-position-y: -16px;
     width: 32px;
     height: 32px;
+    margin-right: 5px;
     float: left;
 }
 
-.info-panel .cart-container .cart-text {
+.header .navigation-container .cart-container .cart-text {
+    color: black;
     float: left;
 }
 
-.main-list {
-    margin: 0 auto;
+.header .navigation-container .navigation-menu > a {
+    color: #9AB216;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
 }
+
+/* Header */
+
 
 /* Navigation toolbar */
 .bottom-menu-wrapper ul.bottom-menu {
@@ -470,5 +513,43 @@ body {
     border-color: #F97878;
 }
 /* /Cart */
+
+
+/* SimplePages */
+.simple-page {
+    line-height: 26px;
+    text-align: justify;
+}
+
+.simple-page h1 {
+    font-size: 20px;
+}
+
+.simple-page h2 {
+    font-size: 18px;
+}
+
+.simple-page .author {
+    font-weight: bold;
+    text-align: right;
+}
+
+.blocks-container {
+    overflow: auto;
+}
+.simple-page .left-block,
+.simple-page .right-block {
+    width: 50%;
+    padding: 0 30px;
+}
+
+.simple-page .left-block {
+    float: left;
+}
+
+.simple-page .right-block {
+    float: right;
+}
+/* /SimplePages */
 
 
