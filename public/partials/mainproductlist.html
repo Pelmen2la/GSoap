@@ -1,10 +1,10 @@
 <div class="main-list">
     <div class="toolbar">
         Поиск <input id="grid-filter-input" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
-        <span class="list-changer" ng-class="{ selected: !isCardView }"
-              ng-click="changeControlMode(false)">Лист</span>
-        <span class="list-changer" ng-class="{ selected: isCardView }"
-              ng-click="changeControlMode(true)">Плитка</span>
+        <span class="main-sprite-icon list-view-icon" ng-class="{ selected: !isCardView }"
+              ng-click="changeControlMode(false)"></span>
+        <span class="main-sprite-icon card-view-icon" ng-class="{ selected: isCardView }"
+              ng-click="changeControlMode(true)"></span>
     </div>
     <div ng-class="isCardView ? 'card-view' : 'list-view'" class="main-container" id="MainContainer">
         <div ng-repeat="product in products" class="product-container" ng-class="{bestseller: product.isBestseller}">

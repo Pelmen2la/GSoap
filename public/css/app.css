@@ -21,6 +21,7 @@ body {
     padding: 5px 10px;
 }
 
+/* Icons */
 .main-sprite-icon {
     display: inline-block;
     cursor: pointer;
@@ -57,6 +58,32 @@ body {
     background: #9AC30D;
     background: linear-gradient(to top, #9FC70B, #80AB18);
 }
+
+.list-view-icon,
+.card-view-icon {
+    width: 36px;
+    height: 28px;
+    float: right;
+    margin: 0 3px;
+    background-position-y: -79px;
+}
+
+.card-view-icon {
+    background-position-x: -36px;
+}
+
+.card-view-icon.selected {
+    background-position-x: 0;
+}
+
+.list-view-icon.selected {
+    background-position-x: -72px;
+}
+
+.list-view-icon {
+    background-position-x: -108px;
+}
+/* /Icons */
 
 /* Header */
 .header {
@@ -159,31 +186,7 @@ body {
 /* MainList Toolbar */
 .main-list .toolbar {
     overflow: auto;
-}
-
-.main-list .toolbar .list-changer {
-    display: inline-block;
-    cursor:pointer;
-    margin: 0 5px;
-    float: right;
-}
-
-.main-list .toolbar .list-changer.selected {
-    text-decoration: underline;
-}
-
-.main-list .toolbar .card-view-icon,
-.main-list .toolbar .list-view-icon {
-    cursor: pointer
-}
-
-.main-list .toolbar .card-view-icon.selected ,
-.main-list .toolbar .list-view-icon.selected {
-    background-color: yellow;
-}
-
-.main-list .toolbar .card-view-icon {
-    background-position-x: -16px;
+    padding: 0 5px;
 }
 /* /MainList Toolbar */
 
