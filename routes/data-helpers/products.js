@@ -5,9 +5,14 @@ var Product = mongoose.model('product');
 
 module.exports = function(app) {
     app.get('/products', function(req, res) {
-        var query = req.query;
-        Product.find(getFilters(query), null, getPagingOptions(query.pageSize, query.pageIndex), function(err, products) {
-            res.json(products);
+        var query = req.query,
+            filters = getFilters(query),
+            pagingOptions = getPagingOptions(query.pageSize, query.pageIndex);
+        Product.find(filters, null, pagingOptions, function(err, data) {
+            Product.count(filters, function (err, totalData) {
+                data.push(totalData);
+                res.json(data);
+            })
         });
     });
 

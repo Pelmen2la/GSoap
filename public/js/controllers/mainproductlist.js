@@ -4,13 +4,11 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         $scope.searchFilter = '';
         $scope.pageSize = 20;
         $scope.pageIndex = 0;
+        $scope.products = [];
         $scope.buttonFilter = $stateParams.buttonFilter;
         loadPageData(true);
 
         $(window).scroll(function() {
-            if($scope.dataLoading) {
-                return;
-            }
             var $window = $(window),
                 productContainer = $('.product-container')[0],
                 $mainContainer = $('#MainContainer');
@@ -41,6 +39,9 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
 
         function loadPageData(resetPageIndex) {
             var params = {};
+            if($scope.dataLoading || (!resetPageIndex && $scope.products.length == $scope.totalCount)) {
+                return;
+            }
             $scope.dataLoading = true;
             $scope.pageIndex = resetPageIndex ? 0 : $scope.pageIndex + 1;
             ['searchFilter', 'buttonFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
@@ -48,6 +49,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             });
             Product.query(params, function(data) {
                 $scope.dataLoading = false;
+                $scope.totalCount = data.pop();
                 data.forEach(function(product) {
                     product.selectedCapacity = product.capacityList[0];
                 });
