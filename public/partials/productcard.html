@@ -35,7 +35,7 @@
                 <span class="options-control-label">шт.</span>
                 <span class="options-control-label">Цена</span>
 
-                <div class="product-price">{{utils.getProductPrice(product, product.selectedCapacity) * orderCount}}Р
+                <div class="product-price">{{utils.getProductPrice(product, product.selectedCapacity, orderCount)}}
                 </div>
                 <div class="product-buy-button" ng-click="addProductToCart(product, orderCount)">Купить</div>
             </div>
