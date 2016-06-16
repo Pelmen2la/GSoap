@@ -475,10 +475,6 @@ body {
     margin: 0 auto;
 }
 
-.product-cart-page-container {
-    width: 700px;
-}
-
 .product-cart-page-container .product-cart-grid tr td,
 .product-cart-page-container .product-cart-grid tr th,
 .brand-card-container .brand-product-grid tr td {

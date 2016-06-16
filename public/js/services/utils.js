@@ -30,12 +30,25 @@ angular.module('gsoapApp.services').service('Utils', function ($resource) {
     this.isProductCountAvailable = function(product, count) {
         return count <= product.stockCount - product.orderCount;
     };
-    this.getProductPrice = function(product, selectedCapacity) {
-        if(!selectedCapacity) {
+    this.getProductPrice = function(product, selectedCapacity, count, skipFormat) {
+        if(!selectedCapacity || count === 0) {
             return 0;
         }
-        return (selectedCapacity.price * (1 - product.discount / 100)).toFixed(0);
+        var price = (selectedCapacity.price * (1 - product.discount / 100) * (count || 1)).toFixed(0);
+        return skipFormat ? price : this.formatPrice(price);
     };
+    this.formatPrice = function(price, withoutSign) {
+        var parts = [];
+        price = price.toString();
+        while(price.length > 3) {
+            var dotIndex = price.length - 3;
+            parts.unshift(price.substring(dotIndex));
+            price = price.substring(0, dotIndex)
+        }
+        parts.unshift(price);
+        return parts.join('.') + (withoutSign  ? '' : ' ₽');
+    };
+
 
     function getImageUrl(object, folderName) {
         return object && object.imageName ? '/resources/images/' + folderName + '/' + object.imageName : '';
