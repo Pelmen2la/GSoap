@@ -12,33 +12,34 @@
                   ng-click="openBrandCard(product.brand)"> - {{product.brand}}</span>
         </h2>
 
-        <div class="product-image-container">
+        <div class="product-info-container">
             <img src="{{utils.getProductImageUrl(product)}}">
             <span class="bestseller-icon" ng-show="product.isBestseller">Хит продаж</span>
             <span class="main-sprite-icon discount-icon" ng-show="product.discount">{{product.discount}}%</span>
-        </div>
-        <div class="text-container">
-            <div class="description">
-                {{product.description}}
-            </div>
-            <div class="text-footer">
-                <select
-                        class="capacity-combo"
-                        ng-model="product.selectedCapacity"
-                        ng-options="entry as entry.capacity for entry in product.capacityList">
-                </select>
-                <span class="options-control-label">гр.</span>
-                <input type="number" name="input" ng-model="orderCount" class="product-count" min="1" max="99"
-                       ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
-                       ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
-                        stringResources.validationMessages.wrongProductCountTitle}}">
-                <span class="options-control-label">шт.</span>
-                <span class="options-control-label">Цена</span>
 
-                <div class="product-price">{{utils.getProductPrice(product, product.selectedCapacity, orderCount)}}
-                </div>
-                <div class="product-buy-button" ng-click="addProductToCart(product, orderCount)">Купить</div>
+            <div class="text-footer">
+                <p>
+                    <select
+                            class="capacity-combo"
+                            ng-model="product.selectedCapacity"
+                            ng-options="entry as entry.capacity for entry in product.capacityList">
+                    </select>
+                    гр.
+                    <input type="number" name="input" ng-model="orderCount" class="product-count" min="1" max="99"
+                           ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
+                           ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
+                        stringResources.validationMessages.wrongProductCountTitle}}">
+                    шт.</p>
+
+                <p class="options-control-label">Цена
+                    {{utils.getProductPrice(product, product.selectedCapacity, orderCount)}}
+
+                    <span class="product-buy-button" ng-click="addProductToCart(product, orderCount)">Купить</span>
+                </p>
             </div>
+        </div>
+        <div class="description">
+            {{product.description}}
         </div>
     </div>
     <div class="reviews-container">
