@@ -46,7 +46,7 @@ body {
 .bestseller-icon {
     display: inline-block;
     top: 10px;
-    left: 5px;
+    right: 5px;
     width: 90px;
     height: 30px;
     padding: 0 5px;
@@ -231,17 +231,9 @@ body {
     left: 9px;
 }
 
-.main-list .product-container.bestseller .discount-icon {
-    top: 45px;
-}
-
-.main-list .product-container.bestseller:hover .discount-icon {
-    top: 44px;
-}
-
 .main-list .product-container:hover .bestseller-icon {
     top: 9px;
-    left: 4px;
+    right: 4px;
 }
 
 .main-list .product-container img {
