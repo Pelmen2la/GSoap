@@ -5,13 +5,14 @@
         <img ng-src="{{utils.getBrandImageUrl(brand)}}">
         <div class="brand-description">{{brand.description}}</div>
     </div>
+    <strong>Фильты:</strong>
     <div>
         <span class="category-filter-item" ng-repeat="(key, value) in categories"
               ng-class="{selected: typeFilter == key}" ng-click="onFilterButtonClick(key)">
             {{stringResources.productTypes[key] + '(' + value + ')'}}
         </span>
     </div>
-    Поиск <input ng-model='searchFilter' />
+    <strong>Поиск</strong> <input ng-model='searchFilter' />
     <table class="brand-product-grid" ng-show="brand.products.length">
         <tr ng-repeat="product in brand.products | filter: { $: searchFilter, type: typeFilter }">
             <td>

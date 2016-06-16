@@ -228,13 +228,15 @@ body {
 
 .main-list .product-container .product-name,
 .main-list .product-container .product-price,
-.main-list .product-container .product-buy-button {
+.main-list .product-container .product-buy-button,
+.brand-card-container .brand-product-grid .product-buy-button {
     font-size: 16px;
     font-weight: bold;
 }
 
 .main-list .product-container .product-buy-button,
-.product-card .product-info-container .product-buy-button{
+.product-card .product-info-container .product-buy-button,
+.brand-card-container .brand-product-grid .product-buy-button {
     width: 100px;
     height: 24px;
     text-align: center;
@@ -415,7 +417,7 @@ body {
 
 /* BrandCard */
 .brand-card-container .brand-info {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     overflow: auto;
 }
 
@@ -436,6 +438,10 @@ body {
     background: #CCCCCC;
     color: white;
     border-radius: 10px;
+}
+
+.brand-card-container .brand-product-grid {
+    margin: 15px 0;
 }
 
 .brand-card-container .brand-product-grid .product-name {
