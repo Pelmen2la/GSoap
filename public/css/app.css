@@ -83,6 +83,13 @@ body {
 .list-view-icon {
     background-position-x: -108px;
 }
+
+.product-cart-icon {
+    height: 20px;
+    width: 30px;
+    padding: 1px;
+    border: 1px solid #cccccc;
+}
 /* /Icons */
 
 /* Header */

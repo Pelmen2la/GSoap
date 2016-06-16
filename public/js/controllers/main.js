@@ -10,8 +10,9 @@ angular.module('gsoapApp.controllers')
         $scope.utils = Utils;
         $scope.stringResources = StringResources;
 
-        $scope.addProductToCart = function(product, count) {
+        $scope.onBuyProductButtonClick = function(e, product, count) {
             count = count || 1;
+            Utils.moveProductIconToCart({ left: e.pageX, top: e.pageY }, product.imageName);
             for(var entry, i = 0; entry = $scope.cartProducts[i]; i++) {
                 if(entry.name == product.name && entry.capacityInfo.capacity == product.selectedCapacity.capacity) {
                     entry.count += count;

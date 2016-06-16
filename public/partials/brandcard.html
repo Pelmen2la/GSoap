@@ -29,7 +29,7 @@
                 <span>{{utils.getProductPrice(product, product.selectedCapacity)}}</span>
             </td>
             <td class="buy-button">
-                <div class="product-buy-button" ng-click="addProductToCart(product)">Купить</div>
+                <div class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">Купить</div>
             </td>
         </tr>
     </table>

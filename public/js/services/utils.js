@@ -1,4 +1,4 @@
-angular.module('gsoapApp.services').service('Utils', function ($resource) {
+angular.module('gsoapApp.services').service('Utils', function($resource) {
     this.getProductImageUrl = function(product) {
         return getImageUrl(product, 'products');
     };
@@ -46,13 +46,39 @@ angular.module('gsoapApp.services').service('Utils', function ($resource) {
             price = price.substring(0, dotIndex)
         }
         parts.unshift(price);
-        return parts.join('.') + (withoutSign  ? '' : ' ₽');
+        return parts.join('.') + (withoutSign ? '' : ' ₽');
+    };
+    this.moveProductIconToCart = function(offset, imageName) {
+        var imageUrl = getImageUrl({ imageName: imageName }, 'products'),
+            icon = createElementFromString('<img class="product-cart-icon" src="' + imageUrl + '"></img>'),
+            $icon = $(icon),
+            targetOffset = $('#MainCartIcon').offset(),
+            leftDif = targetOffset.left - offset.left,
+            topDif = targetOffset.top - offset.top,
+            stepsCount = Math.max(Math.abs(leftDif), Math.abs(topDif)) / 10;
+        document.body.appendChild(icon);
+        var interval = window.setInterval(function() {
+            if(Math.abs(offset.top - targetOffset.top) > 10) {
+                offset.left += leftDif / stepsCount;
+                offset.top += topDif / stepsCount;
+                $icon.offset(offset);
+            } else {
+                window.clearInterval(interval);
+                document.body.removeChild(icon);
+            }
+        }, 20);
     };
 
 
-    function getImageUrl(object, folderName) {
-        return object && object.imageName ? '/resources/images/' + folderName + '/' + object.imageName : '';
-    }
+    function getImageUrl(imageName, folderName) {
+        imageName = imageName instanceof Object ? imageName.imageName : imageName;
+        return imageName ? '/resources/images/' + folderName + '/' + imageName : '';
+    };
+    function createElementFromString(s) {
+        var div = document.createElement('div');
+        div.innerHTML = s;
+        return div.firstChild;
+    };
     function getJoinedProperties(objectArray, propertyName) {
         if(!objectArray) {
             return '';
@@ -61,5 +87,5 @@ angular.module('gsoapApp.services').service('Utils', function ($resource) {
             return entry[propertyName];
         });
         return values.join('/');
-    }
+    };
 });

@@ -34,7 +34,7 @@
                 <p class="options-control-label">Цена
                     {{utils.getProductPrice(product, product.selectedCapacity, orderCount)}}
 
-                    <span class="product-buy-button" ng-click="addProductToCart(product, orderCount)">Купить</span>
+                    <span class="product-buy-button" ng-click="onBuyProductButtonClick($event, product, orderCount)">Купить</span>
                 </p>
             </div>
         </div>
