@@ -10,12 +10,13 @@
 <body>
 
 <div ng-controller="MainController" class="main-div">
-    <div class="main-wrapper">
+    <div class="header-wrapper">
         <div class="header">
             <a ui-sref='index' class="logo">
                 <span class="top-text">GOOD</span><br/>
                 <span class="bottom-text">SOAP</span>
             </a>
+
             <div class="contact-info">
                 <span class="email">email: mail@gsoap.ru</span><br/>
                 <span class="whatsup">Viber | WhatsApp +7-920-771-26-08</span>
@@ -25,6 +26,7 @@
                     <span id="MainCartIcon" class="main-sprite-icon cart-icon"></span>
                     <span class="cart-text">{{cartText}}</span>
                 </a>
+
                 <div class="navigation-menu">
                     <a ui-sref='about'>О нас</a>
                     <a>Блог</a>
@@ -33,7 +35,6 @@
                 </div>
             </div>
         </div>
-
         <div class="bottom-menu-wrapper">
             <ul class="bottom-menu">
                 <li>
@@ -57,6 +58,9 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="main-wrapper">
         <div ui-view></div>
     </div>
 </div>

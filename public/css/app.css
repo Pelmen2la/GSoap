@@ -18,7 +18,7 @@ body {
     margin: 0 auto;
     background: white;
     opacity: 0.9;
-    padding: 5px 10px;
+    padding: 160px 10px 10px;
 }
 
 /* Icons */
@@ -89,15 +89,26 @@ body {
     width: 30px;
     padding: 1px;
     border: 1px solid #cccccc;
+    z-index: 2;
 }
 /* /Icons */
 
 /* Header */
-.header {
+.header-wrapper {
     font-family: 'PT Sans', arial;
-    height: 100px;
-    margin-bottom: 20px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
 }
+
+.header-wrapper .header {
+    height: 120px;
+    width: 980px;
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+}
+
 
 .header > div {
     float: left;
@@ -175,6 +186,9 @@ body {
     text-align: center;
     font-size: 15px;
     font-weight: bold;
+    background: white;
+    width: 980px;
+    margin: 0 auto;
 }
 
 .bottom-menu-wrapper ul.bottom-menu li {
