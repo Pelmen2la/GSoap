@@ -34,8 +34,20 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
         if(!selectedCapacity || count === 0) {
             return 0;
         }
-        var price = (selectedCapacity.price * (1 - product.discount / 100) * (count || 1)).toFixed(0);
+        var price = (selectedCapacity.price * (1 - (product.discount || 0) / 100) * (count || 1)).toFixed(0);
         return skipFormat ? price : this.formatPrice(price);
+    };
+    this.getProductsInfo = function(products, skipFormat) {
+        var count = 0,
+            price = 0;
+        products.forEach(function(product) {
+            count += product.count || 1;
+            price += parseInt(this.getProductPrice(product, product.capacityInfo, product.count || 1, true));
+        }.bind(this));
+        return {
+            count: count,
+            price: skipFormat ? price : this.formatPrice(price)
+        }
     };
     this.formatPrice = function(price, withoutSign) {
         var parts = [];

@@ -40,6 +40,10 @@ angular.module('gsoapAdminApp').config(function ($stateProvider) {
         url: '/orders/',
         templateUrl: '/partials/admin/orderlist.html',
         controller: 'OrderListController'
+    }).state('orderForm', {
+        url: '/orders/:id/',
+        templateUrl: '/partials/admin/orderform.html',
+        controller: 'OrderFormController'
     });
 }).run(function ($state) {
     $state.go('index');

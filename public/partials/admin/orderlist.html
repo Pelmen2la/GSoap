@@ -1,3 +1,36 @@
-<div ng-repeat="order in orders">
-    <span>{{order.products.length}}</span>
-</div>
+<table class="admin-order-list">
+    <tr>
+        <th>Статус</th>
+        <th colspan="2">Имя</th>
+        <th colspan="2">Email</th>
+        <th>Телефон</th>
+        <th>Количество товаров</th>
+        <th>Сумма</th>
+    </tr>
+    <tr ng-repeat="order in orders">
+        <td>
+            {{order.status}}
+        </td>
+        <td colspan="2">
+            {{order.customerInfo.name}}
+        </td>
+        <td colspan="2">
+            {{order.customerInfo.email}}
+        </td>
+        <td>
+            {{order.customerInfo.phone}}
+        </td>
+        <td>
+            {{utils.getProductsInfo(order.products).count}}
+        </td>
+        <td>
+            {{utils.getProductsInfo(order.products).price}}
+        </td>
+        <td>
+            <span class="main-sprite-icon edit-icon" ng-click="openOrderForm(order._id)"></span>
+        </td>
+        <td>
+            <span class="main-sprite-icon delete-icon" ng-click="tryDeleteOrder(order._id)"></span>
+        </td>
+    </tr>
+</table>

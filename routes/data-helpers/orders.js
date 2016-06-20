@@ -20,7 +20,10 @@ module.exports = function(app) {
     });
 
     app.post('/orders', function (req, res, next) {
-        var order = new Order(req.body);
+        var orderData = req.body;
+        orderData.status = 'new';
+        orderData.date = Date.now();
+        var order = new Order(orderData);
         order.save(function (err, order) {
             order.products.forEach(function(product) {
                 Product.findById(product.id, function(err, productModel) {

@@ -52,24 +52,18 @@ angular.module('gsoapApp.services').constant('StringResources', {
             label: 'Масло'
         }
     ],
-    deliveryTypes: [
-        {
-            value: 'tulaTokareva',
-            label: 'Самовывоз, г. Тула ул. Токарева'
-        },
-        {
-            value: 'tulaLenina',
-            label: 'Самовывоз, г. Тула пр. Ленина'
-        },
-        {
-            value: 'tulaFree',
-            label: 'Бесплатная доставка по Туле (заказ от 1000 рублей)'
-        },
-        {
-            value: 'rf',
-            label: 'Доставка по РФ (бесплатно для заказов от 2500)'
-        }
-    ],
+    deliveryTypes: {
+        tulaTokareva: 'Самовывоз, г. Тула ул. Токарева',
+        tulaLenina: 'Самовывоз, г. Тула пр. Ленина',
+        tulaFree: 'Бесплатная доставка по Туле (заказ от 1000 рублей)',
+        rf: 'Доставка по РФ (бесплатно для заказов от 2500)'
+    },
+    orderStatus: {
+        new: 'Новый',
+        inProgress: 'В процессе',
+        close: 'Закрытый',
+        done: 'Выполненный'
+    },
     validationMessages: {
         wrongProductCountTitle: 'Такого количества товара в настоящий момент нет на складе'
     }

@@ -1,0 +1,75 @@
+<div ng-controller="BrandFormController" uploader="uploader">
+    <div class="btn btn-default back-button" ng-click="back()">
+        <span class="icon"></span>
+        Назад
+    </div>
+
+    <p>Статус заказа<select
+            ng-model="order.status"
+            ng-options="key as value for (key, value) in stringResources.orderStatus">
+    </select>
+    </p>
+
+    <div class="order-customer-info">
+        <p><strong>Информация о клиенте:</strong></p>
+
+        <p>
+            <strong>Имя: </strong>{{order.customerInfo.name}}
+        </p>
+
+        <p>
+            <strong>Email: </strong>{{order.customerInfo.email}}
+        </p>
+
+        <p>
+            <strong>Телефон: </strong>{{order.customerInfo.phone}}
+        </p>
+
+        <p>
+            <strong>Купон на скидку: </strong>{{order.customerInfo.discountNumber}}
+        </p>
+
+        <p>
+            <strong>Тип доставки: </strong>{{stringResources.deliveryTypes[order.customerInfo.deliveryType]}}
+        </p>
+
+        <p>
+            <strong>Купон на скидку: </strong>{{order.customerInfo.discountNumber}}
+        </p>
+    </div>
+    <strong>Список товаров:</strong>
+    <table class="admin-order-product-list">
+        <tr>
+            <th></th>
+            <th>Название</th>
+            <th>Ёмкость</th>
+            <th>Цена</th>
+            <th>Количество</th>
+        </tr>
+        <tr ng-repeat="product in order.products">
+            <td ng-click="openProductForm(product._id)">
+                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
+            </td>
+            <td ng-click="openProductForm(product._id)" class="product-name">
+                {{product.name}}
+            </td>
+            <td>
+                {{product.capacityInfo.capacity}} г
+            </td>
+            <td>
+                {{product.capacityInfo.price}} г
+            </td>
+            <td>
+                {{product.count}}
+            </td>
+        </tr>
+    </table>
+    <p>Общая цена: {{order.products ? utils.getProductsInfo(order.products).price : 0}}</p>
+
+
+
+    <button class="btn btn-default submit-button" type="submit" ng-click="submitOrder()">
+        <span class="icon"></span>
+        Сохранить
+    </button>
+</div>

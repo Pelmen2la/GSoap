@@ -6,14 +6,14 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminBrandListContr
             $state.go('brandForm', {name: name});
         };
         $scope.tryDeleteBrand = function(id) {
-            if(window.confirm('Вы уверены, что хотите удалить продукт?')) {
+            if(window.confirm('Вы уверены, что хотите удалить бренд?')) {
                 Brand.delete({id: id}, function() {
                     loadPageData();
                 });
             }
         };
 
-        function loadPageData(resetPageIndex) {
+        function loadPageData() {
             $scope.brands = Brand.query({}, function(data) {
             });
         }

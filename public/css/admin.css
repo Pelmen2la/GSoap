@@ -27,25 +27,32 @@
 
 /* Lists */
 .admin-main-container .admin-product-list,
-.admin-main-container .admin-product-list {
+.admin-main-container .admin-order-product-list {
     border-collapse: collapse;
     text-align: center;
 }
 
 .admin-main-container .admin-product-list tr td,
 .admin-main-container .admin-brand-list tr td,
-.admin-main-container .admin-button-filter-list tr td {
+.admin-main-container .admin-button-filter-list tr td,
+.admin-main-container .admin-order-list tr th,
+.admin-main-container .admin-order-list tr td,
+.admin-main-container .admin-order-product-list tr th,
+.admin-main-container .admin-order-product-list tr td {
     padding: 5px 10px;
 }
 
-.admin-main-container .admin-product-list tr td img,
-.admin-main-container .admin-brand-list img {
+.admin-main-container .admin-product-list img,
+.admin-main-container .admin-brand-list img,
+.admin-main-container .admin-order-product-list img {
     height: 70px;
 }
 
 .admin-main-container .admin-product-list tr .product-name,
 .admin-main-container .admin-brand-list tr td.brand-name,
-.admin-main-container .admin-button-filter-list tr td.buttonfilter-name {
+.admin-main-container .admin-button-filter-list tr td.buttonfilter-name,
+.admin-main-container .admin-brand-list tr .product-name,
+.admin-main-container .admin-order-product-list tr .product-name {
     font-weight: bold;
 }
 
