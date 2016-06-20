@@ -1,7 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Product = mongoose.model('product');
+var mongoose = require('mongoose'),
+    Product = mongoose.model('product'),
+    emailHelper = require('app/email-helper');
 
 module.exports = function(app) {
     app.get('/products', function(req, res) {
@@ -9,7 +10,7 @@ module.exports = function(app) {
             filters = getFilters(query),
             pagingOptions = getPagingOptions(query.pageSize, query.pageIndex);
         Product.find(filters, null, pagingOptions, function(err, data) {
-            Product.count(filters, function (err, totalData) {
+            Product.count(filters, function(err, totalData) {
                 data.push(totalData);
                 res.json(data);
             })
@@ -48,9 +49,11 @@ module.exports = function(app) {
     app.post('/products/:id/addreview', function(req, res, next) {
         Product.findById(req.params.id, function(err, product) {
             if(err) return next(err);
-            product.reviews.push(req.body);
+            var review = req.body;
+            product.reviews.push(review);
             product.save(function(err, data) {
                 if(err) return next(err);
+                emailHelper.sendReviewEmail(review, product);
                 res.json(product);
             });
         });

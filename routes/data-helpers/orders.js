@@ -1,8 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Order = mongoose.model('order');
-var Product = mongoose.model('product');
+var mongoose = require('mongoose'),
+    emailHelper = require('app/email-helper'),
+    Order = mongoose.model('order'),
+    Product = mongoose.model('product');
 
 module.exports = function(app) {
     app.get('/orders', function (req, res) {
@@ -27,6 +28,7 @@ module.exports = function(app) {
                     productModel.save();
                 });
             });
+            emailHelper.sendOrderEmail(order);
             if (err) return next(err);
             res.json(order);
         });
