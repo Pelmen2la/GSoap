@@ -6,9 +6,6 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
         loadPageData(true);
 
         $(window).scroll(function() {
-            if($scope.dataLoading) {
-                return;
-            }
             var $window = $(window),
                 $productList = $('#AdminProductList')
             productRow = $productList.find('tr')[0];
@@ -40,6 +37,9 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
 
         function loadPageData(resetPageIndex) {
             var params = {};
+            if($scope.dataLoading || (!resetPageIndex && $scope.products.length == $scope.totalCount)) {
+                return;
+            }
             $scope.dataLoading = true;
             $scope.pageIndex = resetPageIndex ? 0 : $scope.pageIndex + 1;
             ['searchFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
@@ -47,6 +47,7 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
             });
             Product.query(params, function(data) {
                 $scope.dataLoading = false;
+                $scope.totalCount = data.pop();
                 data.forEach(function(product) {
                     product.selectedCapacity = product.capacityList[0];
                 });
