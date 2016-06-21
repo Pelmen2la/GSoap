@@ -68,6 +68,8 @@ module.exports = function(app) {
     function getFilters(query) {
         var filters = [getSearchFilter(query.searchFilter)],
             buttonFilter = getButtonFilter(query.buttonFilter);
+        query.withDiscount === 'true' && filters.push({ discount: { $gt	: 0 } });
+        query.isBestseller === 'true' && filters.push({ isBestseller: true });
         buttonFilter && filters.push(buttonFilter);
         return {
             $and: filters

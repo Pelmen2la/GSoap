@@ -1,6 +1,10 @@
 <div class="main-list">
     <div class="toolbar">
-        Поиск <input id="grid-filter-input" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
+        <label for="searchFilterInput"></label>Поиск <input id="searchFilterInput" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
+        <input id="withDiscountCheckbox" type="checkbox" ng-model="withDiscount"
+               ng-change="onPropertyFilterCheckboxChange()"><label for="withDiscountCheckbox">Со скидкой</label>
+        <input id="isBestsellerCheckbox" type="checkbox" ng-model="isBestseller"
+               ng-change="onPropertyFilterCheckboxChange()"><label for="isBestsellerCheckbox">Хит продаж</label>
         <span class="main-sprite-icon list-view-icon" ng-class="{ selected: !isCardView }"
               ng-click="changeControlMode(false)"></span>
         <span class="main-sprite-icon card-view-icon" ng-class="{ selected: isCardView }"

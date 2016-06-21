@@ -1,10 +1,12 @@
 angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', 'Product',
     function($scope, $state, $stateParams, Product) {
+        $scope.products = [];
         $scope.isCardView = true;
         $scope.searchFilter = '';
         $scope.pageSize = 20;
         $scope.pageIndex = 0;
-        $scope.products = [];
+        $scope.withDiscount = !!$stateParams.withDiscount;
+        $scope.isBestseller = !!$stateParams.isBestseller;
         $scope.buttonFilter = $stateParams.buttonFilter;
         loadPageData(true);
 
@@ -36,6 +38,9 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                 loadPageData(true);
             }, 500);
         };
+        $scope.onPropertyFilterCheckboxChange = function() {
+            loadPageData(true);
+        };
 
         function loadPageData(resetPageIndex) {
             var params = {};
@@ -44,7 +49,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             }
             $scope.dataLoading = true;
             $scope.pageIndex = resetPageIndex ? 0 : $scope.pageIndex + 1;
-            ['searchFilter', 'buttonFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
+            ['searchFilter', 'buttonFilter', 'pageSize', 'pageIndex', 'withDiscount', 'isBestseller' ].forEach(function(param) {
                 params[param] = $scope[param]
             });
             Product.query(params, function(data) {
