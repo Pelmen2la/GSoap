@@ -22,9 +22,6 @@ angular.module('gsoapApp.controllers')
 
                 initReview();
             };
-            $scope.back = function() {
-                $state.go('index');
-            };
 
             function loadRecord(id) {
                 $scope.product = Product.get({id: id}, function() {
