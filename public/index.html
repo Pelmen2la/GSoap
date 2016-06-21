@@ -5,6 +5,7 @@
     <title></title>
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/angular-carousel/dist/angular-carousel.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
 </head>
 <body>
@@ -60,13 +61,25 @@
         </div>
     </div>
 
+
     <div class="main-wrapper">
+        <div class="carousel-wrapper">
+            <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls-allow-loop rn-carousel-buffered
+                rn-carousel-controls rn-carousel-auto-slide="5" rn-carousel-pause-on-hover
+                class="image carousel">
+                <li ng-repeat="image in carouselImages">
+                    <img ng-src="{{image}}"/>
+                </li>
+            </ul>
+        </div>
         <div ui-view></div>
     </div>
 </div>
 
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-touch/angular-touch.js"></script>
+<script src="../bower_components/angular-carousel/dist/angular-carousel.js"></script>
 <script src="../bower_components/angular-resource/angular-resource.js"></script>
 <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="../bower_components/angular-file-upload/dist/angular-file-upload.js"></script>

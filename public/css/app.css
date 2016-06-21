@@ -21,6 +21,40 @@ body {
     padding: 160px 10px 10px;
 }
 
+/* Carousel */
+.main-wrapper .carousel-wrapper {
+    position: relative;
+}
+
+.main-wrapper .carousel-wrapper .carousel,
+.main-wrapper .carousel-wrapper .carousel img {
+    height: 290px;
+    width: 100%;
+}
+
+.main-wrapper .carousel-wrapper .rn-carousel-controls .rn-carousel-control {
+    bottom: 10px;
+    top: initial;
+    opacity: 0.25;
+}
+
+.main-wrapper .carousel-wrapper .rn-carousel-controls .rn-carousel-control:hover {
+    opacity: 1;
+}
+
+.main-wrapper .carousel-wrapper .rn-carousel-controls .rn-carousel-control:before {
+    color: black;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    background: white;
+    text-align: center;
+}
+/* /Carousel */
+
 /* Icons */
 .main-sprite-icon {
     display: inline-block;

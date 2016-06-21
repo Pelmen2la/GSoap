@@ -5,6 +5,9 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
     this.getBrandImageUrl = function(brand) {
         return getImageUrl(brand, 'brands');
     };
+    this.getCarouselImageUrl = function(brand) {
+        return getImageUrl(brand, 'carousel');
+    };
     this.getProductCapacityText = function(product) {
         return getJoinedProperties(product.capacityList, 'capacity');
     };
@@ -42,6 +45,7 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
             price = 0;
         products.forEach(function(product) {
             count += product.count || 1;
+            debugger;
             price += parseInt(this.getProductPrice(product, product.capacityInfo, product.count || 1, true));
         }.bind(this));
         return {
