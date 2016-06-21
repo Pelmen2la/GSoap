@@ -45,7 +45,6 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
             price = 0;
         products.forEach(function(product) {
             count += product.count || 1;
-            debugger;
             price += parseInt(this.getProductPrice(product, product.capacityInfo, product.count || 1, true));
         }.bind(this));
         return {
@@ -66,18 +65,17 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
     };
     this.moveProductIconToCart = function(offset, imageName) {
         var imageUrl = getImageUrl({ imageName: imageName }, 'products'),
-            icon = createElementFromString('<img class="product-cart-icon" src="' + imageUrl + '"></img>'),
-            $icon = $(icon),
-            targetOffset = $('#MainCartIcon').offset(),
-            leftDif = targetOffset.left - offset.left,
-            topDif = targetOffset.top - offset.top,
-            stepsCount = Math.max(Math.abs(leftDif), Math.abs(topDif)) / 10;
+            icon = createElementFromString('<img class="product-cart-icon" src="' + imageUrl + '"></img>');
         document.body.appendChild(icon);
         var interval = window.setInterval(function() {
+            var targetOffset = $('#MainCartIcon').offset(),
+                leftDif = targetOffset.left - offset.left,
+                topDif = targetOffset.top - offset.top,
+                stepsCount = Math.max(Math.abs(leftDif), Math.abs(topDif)) / 10;
             if(Math.abs(offset.top - targetOffset.top) > 10) {
                 offset.left += leftDif / stepsCount;
                 offset.top += topDif / stepsCount;
-                $icon.offset(offset);
+                $(icon).offset(offset);
             } else {
                 window.clearInterval(interval);
                 document.body.removeChild(icon);
