@@ -12,7 +12,7 @@ module.exports = function (app) {
     app.use(express.static(path.join(__dirname, '..', 'public')));
     app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
     app.use(bodyParser.json());
-    app.set('views', 'views');
+    app.set('views', path.join(__dirname, '..', 'views'));
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(expressSession({
         secret: 'secret',
