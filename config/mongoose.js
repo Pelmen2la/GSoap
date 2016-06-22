@@ -1,8 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    requireTree = require('require-tree'),
-    nconf = require('nconf');
+    requireTree = require('require-tree');
 
 var models = requireTree('../models');
 
