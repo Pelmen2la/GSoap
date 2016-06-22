@@ -1,15 +1,16 @@
 'use strict';
 
-var express = require('express');
-var bodyParser = require('body-parser'),
+var express = require('express'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
     flash = require('connect-flash'),
     expressSession = require('express-session'),
     mongoose = require('mongoose'),
     MongoStore = require('connect-mongo')(expressSession);
 
 module.exports = function (app) {
-    app.use(express.static('public'));
-    app.use('/bower_components', express.static('bower_components'));
+    app.use(express.static(path.join(__dirname, '..', 'public')));
+    app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
     app.use(bodyParser.json());
     app.set('views', 'views');
     app.use(bodyParser.urlencoded({extended: false}));
