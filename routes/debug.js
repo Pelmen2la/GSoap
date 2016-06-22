@@ -110,7 +110,7 @@ module.exports = function(app) {
     }
 
     function getDiscount() {
-        return random(4) ? random(25) : 0;
+        return !random(4) ? random(25) : 0;
     }
 
     function getStockCount() {

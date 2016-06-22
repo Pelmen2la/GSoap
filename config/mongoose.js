@@ -6,11 +6,6 @@ var mongoose = require('mongoose'),
 
 var models = requireTree('../models');
 
-nconf.file({
-    file: 'mongo.yml',
-    format: require('nconf-yaml')
-});
-
 module.exports = function (app) {
-    mongoose.connect('mongodb://' + nconf.get('net:bindIp') + ':' + nconf.get('net:port') + '/gsoap');
+    mongoose.connect('mongodb://localhost:27017/gsoap');
 };
