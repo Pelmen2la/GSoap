@@ -24,7 +24,8 @@
                 <div class="product-capacity">
                     <span ng-repeat="capacityInfo in product.capacityList"
                           ng-class="{ selected: capacityInfo == product.selectedCapacity }"
-                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} мл</span>
+                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}}
+                                    {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
                 </div>
                 <div class="product-description" ng-show="!isCardView">{{product.description}}</div>
                 <div class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">Купить</div>

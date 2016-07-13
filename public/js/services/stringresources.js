@@ -18,6 +18,10 @@ angular.module('gsoapApp.services').constant('StringResources', {
         purification: 'Очищение',
         baseEssential: 'Базовые\\эфирные'
     },
+    productCapacityUnitTypes: {
+        gram: 'г',
+        milliliters: 'мл'
+    },
     productProperties: [
         {
             value: 'face',

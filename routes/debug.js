@@ -56,6 +56,10 @@ module.exports = function(app) {
         });
     }
 
+    function getRandomCapacityUnit() {
+        return arrRandom(['gram', 'milliliters']);
+    }
+
     function getBrands() {
         return ['Мастерская Олеси Мустаевой', 'Jurassic spa', 'Weleda', 'Sante', 'Mi&Ko', 'OZ!Organic Oze']
     }
@@ -126,6 +130,7 @@ module.exports = function(app) {
             name: getProductName(),
             imageName: getImageName(),
             capacityList: getCapacityList(),
+            capacityUnit: getRandomCapacityUnit(),
             brand: getRandomBrand(),
             type: getType(),
             properties: getProperties(),

@@ -14,6 +14,7 @@ var Product = new mongoose.Schema({
         capacity: Number,
         price:  Number
     }],
+    capacityUnit: String,
     brand: {
         type: String
     },

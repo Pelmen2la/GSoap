@@ -6,6 +6,8 @@ angular.module('gsoapApp.controllers')
             loadRecord($stateParams.id);
             initReview();
 
+            $scope.testHtml = 'asdf';
+
             $scope.openBrandCard = function(brand) {
                 $state.go('brandCard', {name: brand});
             };

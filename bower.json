@@ -24,7 +24,8 @@
     "angular-ui-router": "^0.2.18",
     "angular-ui-grid": "^3.1.1",
     "angular-google-maps": "^2.3.2",
-    "angular-carousel": "^1.0.1"
+    "angular-carousel": "^1.0.1",
+    "angular-sanitize": "^1.5.7"
   },
   "resolutions": {
     "angular": "^1.5.5"

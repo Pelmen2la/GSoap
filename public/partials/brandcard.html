@@ -24,7 +24,8 @@
             <td colspan="3" class="product-capacity">
                     <span ng-repeat="capacityInfo in product.capacityList"
                           ng-class="{ selected: capacityInfo == product.selectedCapacity }"
-                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} мл</span>
+                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}}
+                                    {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
             </td>
             <td class="number">
                 <span>{{utils.getProductPrice(product, product.selectedCapacity)}}</span>

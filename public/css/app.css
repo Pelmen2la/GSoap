@@ -461,6 +461,10 @@ body {
     font-weight: bold;
     display: inline-block;
 }
+
+.product-card .description {
+    white-space: pre-wrap;
+}
 /* /ProductCard */
 
 /* BrandCard */

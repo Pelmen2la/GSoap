@@ -1,4 +1,4 @@
-angular.module('gsoapApp', ['ui.router', 'ngResource', 'gsoapApp.controllers', 'gsoapApp.services', 'ngCookies', 'angular-carousel'])
+angular.module('gsoapApp', ['ui.router', 'ngResource', 'ngSanitize', 'gsoapApp.controllers', 'gsoapApp.services', 'ngCookies', 'angular-carousel'])
 angular.module('gsoapApp').config(function ($stateProvider) {
     $stateProvider.state('index', {
         url: '?buttonFilter',

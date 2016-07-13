@@ -26,6 +26,7 @@ angular.module('gsoapApp.controllers')
                     name: product.name,
                     imageName: product.imageName,
                     capacityInfo: product.selectedCapacity,
+                    capacityUnit: product.capacityUnit,
                     count: count,
                     discount: product.discount,
                     stockCount: product.stockCount,
