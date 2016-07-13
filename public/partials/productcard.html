@@ -19,7 +19,7 @@
                             ng-model="product.selectedCapacity"
                             ng-options="entry as entry.capacity for entry in product.capacityList">
                     </select>
-                    гр.
+                    {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}.
                     <input type="number" name="input" ng-model="orderCount" class="product-count" min="1" max="99"
                            ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
                            ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
