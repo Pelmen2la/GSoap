@@ -200,4 +200,21 @@ module.exports = function(app) {
             });
         });
     });
+
+    app.get('/utils/products/setproperty', function(req, res, next) {
+        var query = req.query,
+            propertyName = query.propertyName,
+            value = query.value;
+        if(!propertyName || value === undefined ) {
+            res.json('wrong params');
+        }
+        Product.find(null, function(err, data) {
+            if(err) return next(err);
+            data.forEach(function(entry) {
+                entry[propertyName] = value;
+                entry.save();
+            });
+            res.json('done');
+        });
+    });
 };
