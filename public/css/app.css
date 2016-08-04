@@ -465,6 +465,13 @@ body {
 .product-card .description {
     white-space: pre-wrap;
 }
+
+.product-card .description .additional-info {
+    float: right;
+    width: 200px;
+    overflow: auto;
+    border: 1px solid #9AB216;
+}
 /* /ProductCard */
 
 /* BrandCard */

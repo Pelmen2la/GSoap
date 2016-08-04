@@ -27,6 +27,9 @@ var Product = new mongoose.Schema({
     description: {
         type: String
     },
+    additionalInfo: {
+        type: String
+    },
     reviews: [{
         customerName: String,
         text: String

@@ -90,6 +90,17 @@ module.exports = function(app) {
         ]);
     }
 
+    function getAdditionalInfo() {
+        return random(1) ? '' : arrRandom([
+            'Глинка посоны',
+            'Содержит котят',
+            'БЕЗ ГМО',
+            'Лада седан баклажан',
+            'Какое-то фейковое инфо',
+            'Охохохо'
+        ]);;
+    }
+
     function getReviewText() {
         return arrRandom(['Отлично', 'Норма', 'Мыльцо огонь', 'Дайте два', 'Ололо затралено', 'Ябпомылся']);
     }
@@ -135,6 +146,7 @@ module.exports = function(app) {
             type: getType(),
             properties: getProperties(),
             description: getDescription(),
+            additionalInfo: getAdditionalInfo(),
             reviews: getReviews(),
             discount: getDiscount(),
             isBestseller: getIsBestseller(),
