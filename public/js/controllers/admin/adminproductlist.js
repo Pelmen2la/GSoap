@@ -45,6 +45,7 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
             ['searchFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
                 params[param] = $scope[param]
             });
+            params['showInactive'] = true;
             Product.query(params, function(data) {
                 $scope.dataLoading = false;
                 $scope.totalCount = data.pop();

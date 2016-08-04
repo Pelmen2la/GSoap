@@ -146,6 +146,13 @@
     </div>
 
     <div class="form-group">
+        <label class="col-sm-2 control-label">Товар есть в наличии (будет показываться в магазине)</label>
+        <div class="col-sm-10">
+            <input type="checkbox" ng-model="product.isActive">
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-sm-2 control-label">Отзывы</label>
         <div class="col-sm-10">
             <div class="review-container" ng-repeat="review in product.reviews track by $index">

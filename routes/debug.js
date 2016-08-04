@@ -151,7 +151,8 @@ module.exports = function(app) {
             discount: getDiscount(),
             isBestseller: getIsBestseller(),
             stockCount: getStockCount(),
-            orderCount: getOrderCount()
+            orderCount: getOrderCount(),
+            isActive: true
         };
         return product;
     };

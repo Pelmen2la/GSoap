@@ -70,6 +70,9 @@ module.exports = function(app) {
             buttonFilter = getButtonFilter(query.buttonFilter);
         query.withDiscount === 'true' && filters.push({ discount: { $gt	: 0 } });
         query.isBestseller === 'true' && filters.push({ isBestseller: true });
+        if(!query.showInactive) {
+            filters.push({ isActive: true });
+        }
         buttonFilter && filters.push(buttonFilter);
         return {
             $and: filters
