@@ -41,9 +41,10 @@ angular.module('gsoapApp.controllers')
             };
             $scope.onUpButtonClick = function() {
                 document.body.scrollTop = 0;
+                document.getElementsByTagName('HTML')[0].scrollTop = 0;
             };
 
             $(window).scroll(function() {
-                $('#upButton').css('opacity', document.body.scrollTop > 150 ? 1 : 0);
+                $('#upButton').css('opacity', document.body.scrollTop || document.getElementsByTagName('HTML')[0].scrollTop > 150 ? 1 : 0);
             });
         }]);
