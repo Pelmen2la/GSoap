@@ -125,6 +125,21 @@ body {
     border: 1px solid #cccccc;
     z-index: 2;
 }
+
+.up-button-icon {
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    position: fixed;
+    right: 30px;
+    bottom: 10px;
+    opacity: 0;
+    background-position: -97px -16px;
+    -webkit-transition: opacity 1s ease-out 0.1s;
+    -moz-transition: opacity 1s ease-out 0.1s;
+    -o-transition: opacity 1s ease-out 0.1s;
+    transition: opacity 1s ease-out 0.1s;
+}
 /* /Icons */
 
 /* Header */

@@ -33,11 +33,17 @@ angular.module('gsoapApp.controllers')
                     orderCount: product.orderCount
                 });
             };
-
             $scope.onFilterButtonClick = function(filter) {
                 $scope.changeView('index', {buttonFilter: JSON.stringify(filter)});
             };
             $scope.changeView = function(name, params) {
                 $state.go(name, params, {reload: $state.current.name === name});
             };
+            $scope.onUpButtonClick = function() {
+                document.body.scrollTop = 0;
+            };
+
+            $(window).scroll(function() {
+                $('#upButton').css('opacity', document.body.scrollTop > 150 ? 1 : 0);
+            });
         }]);
