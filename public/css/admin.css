@@ -67,7 +67,8 @@
 /* /Lists */
 
 .admin-main-container .capacity-list-container,
-.admin-main-container .property-combo-container {
+.admin-main-container .property-combo-container,
+.admin-main-container .producttype-combo-container {
     overflow: auto;
     width: 100%;
     position: relative;
@@ -88,7 +89,8 @@
 }
 
 .admin-main-container .capacity-list-container .delete-capacity-button,
-.admin-main-container .property-combo-container .delete-property-button {
+.admin-main-container .property-combo-container .delete-property-button,
+.admin-main-container .producttype-combo-container .delete-producttype-button {
     position: absolute;
     top: 8px;
     right: 10px;
@@ -96,7 +98,8 @@
     background-position-x: -112px;
 }
 
-.admin-main-container .property-combo-container .delete-property-button {
+.admin-main-container .property-combo-container .delete-property-button,
+.admin-main-container .producttype-combo-container .delete-producttype-button  {
     right: 20px;
 }
 
@@ -118,6 +121,6 @@
 }
 
 .admin-main-container .filter-container,
-.admin-main-container .filter-container .filter-properties-container{
+.admin-main-container .filter-container .filter-properties-container {
     margin: 20px 0 20px 30px;
 }

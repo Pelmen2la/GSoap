@@ -2,9 +2,9 @@
 
 var mongoose = require('mongoose');
 
-var Product = mongoose.model('product');
-var Brand = mongoose.model('brand');
-var ButtonFilter = mongoose.model('buttonFilter');
+var Product = mongoose.model('product'),
+    Brand = mongoose.model('brand'),
+    ButtonFilter = mongoose.model('buttonFilter');
 
 module.exports = function(app) {
     function random(max, min) {
@@ -212,6 +212,17 @@ module.exports = function(app) {
             if(err) return next(err);
             data.forEach(function(entry) {
                 entry[propertyName] = value;
+                entry.save();
+            });
+            res.json('done');
+        });
+    });
+
+    app.get('/utils/buttonfilters/movetoarray', function(req, res, next) {
+        ButtonFilter.find(null, function(err, data) {
+            if(err) return next(err);
+            data.forEach(function(entry) {
+                entry.productTypes = [entry.filterType];
                 entry.save();
             });
             res.json('done');

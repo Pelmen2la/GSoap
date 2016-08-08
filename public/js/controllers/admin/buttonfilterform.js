@@ -11,15 +11,21 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.addFilter = function() {
             $scope.buttonFilter.filters.push({
                 name: '',
-                type: '',
+                productTypes: [''],
                 properties: ['']
             });
         };
         $scope.deleteFilter = function(filter) {
             removeArrayMember($scope.buttonFilter.filters, filter);
         };
+        $scope.addProductType = function(filter) {
+            filter.productTypes.push('');
+        };
         $scope.addProperty = function(filter) {
             filter.properties.push('');
+        };
+        $scope.deleteProductType = function(filter, type) {
+            removeArrayMember(filter.productTypes, type);
         };
         $scope.deleteProperty = function(filter, property) {
             removeArrayMember(filter.properties, property);

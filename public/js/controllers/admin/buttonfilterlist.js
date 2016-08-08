@@ -6,7 +6,7 @@ angular.module('gsoapAdminApp.adminControllers').controller('ButtonFilterListCon
             $state.go('buttonFilterForm', {id: id});
         };
         $scope.tryDeleteFilterButton = function(id) {
-            if(window.confirm('Вы уверены, что хотите удалить группу фильров?')) {
+            if(window.confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РґР°РЅРЅСѓСЋ РіСЂСѓРїРїСѓ С„РёР»СЊС‚СЂРѕРІ?')) {
                 ButtonFilter.delete({id: id}, function() {
                     loadPageData();
                 });

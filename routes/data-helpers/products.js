@@ -92,7 +92,7 @@ module.exports = function(app) {
             return '';
         }
         filter = JSON.parse(filter);
-        var typeFilter = {type: filter.filterType},
+        var typeFilter = {type: {$in: filter.productTypes}},
             propertiesFilter = {properties: {$in: filter.properties}};
         return {$and: [typeFilter, propertiesFilter]};
     };

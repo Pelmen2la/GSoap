@@ -9,6 +9,7 @@ var ButtonFilter = new mongoose.Schema({
     filters: [{
         name: String,
         filterType: String,
+        productTypes: [String],
         properties: [String]
     }]
 });
