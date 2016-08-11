@@ -50,7 +50,7 @@
                     <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">
                         <li ng-repeat="filter in buttonFilter.filters"
                             ng-class="{ selected: filter == buttonFilter }"
-                            ng-click="onFilterButtonClick(filter)">
+                            ng-click="onFilterButtonClick(filter)" ng-show="filter.isActive">
                             <a href="#">{{filter.name}}</a></li>
                     </ul>
                 </li>

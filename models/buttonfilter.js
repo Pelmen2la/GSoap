@@ -3,14 +3,13 @@
 var mongoose = require('mongoose');
 
 var ButtonFilter = new mongoose.Schema({
-    name: {
-        type: String
-    },
+    name: String,
+    isActive: Boolean,
     filters: [{
         name: String,
-        filterType: String,
         productTypes: [String],
-        properties: [String]
+        properties: [String],
+        isActive: Boolean
     }]
 });
 

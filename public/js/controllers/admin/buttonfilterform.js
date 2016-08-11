@@ -4,13 +4,14 @@ angular.module('gsoapAdminApp.adminControllers')
         });
     }])
     .controller('ButtonFilterCreateController', ['$scope', 'ButtonFilter', function($scope, ButtonFilter) {
-        $scope.buttonFilter = new ButtonFilter();
+        $scope.buttonFilter = new ButtonFilter({ isActive: true });
         $scope.buttonFilter.filters = [];
     }])
     .controller('ButtonFilterFormController', ['$scope', '$state', function($scope, $state) {
         $scope.addFilter = function() {
             $scope.buttonFilter.filters.push({
                 name: '',
+                isActive: true,
                 productTypes: [''],
                 properties: ['']
             });

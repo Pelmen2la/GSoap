@@ -5,7 +5,11 @@ var ButtonFilter = mongoose.model('buttonFilter');
 
 module.exports = function(app) {
     app.get('/buttonFilters', function (req, res) {
-        ButtonFilter.find({}, function(err, data) {
+        var filters = {};
+        if(!req.query.showInactive) {
+            filters.isActive = true;
+        }
+        ButtonFilter.find(filters, function(err, data) {
             res.json(data);
         });
     });

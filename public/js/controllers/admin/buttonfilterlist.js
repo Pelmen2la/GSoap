@@ -14,7 +14,7 @@ angular.module('gsoapAdminApp.adminControllers').controller('ButtonFilterListCon
         };
 
         function loadPageData(resetPageIndex) {
-            $scope.filterButtonsData = ButtonFilter.query({}, function() {
+            $scope.filterButtonsData = ButtonFilter.query({ showInactive: true }, function() {
             });
         }
     }]);

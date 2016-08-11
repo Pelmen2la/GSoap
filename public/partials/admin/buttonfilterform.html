@@ -13,12 +13,17 @@
                 <input type="text"
                        class="form-control"
                        ng-model="buttonFilter.name">
-
+                <br>
+                <label>Группа фильтров активна</label>
+                <input type="checkbox" ng-model="buttonFilter.isActive">
+                <br>
                 <div class="filter-container" ng-repeat="filter in buttonFilter.filters">
                     <span>Имя фильтра</span>
                     <input type="text"
                            class="form-control"
                            ng-model="filter.name">
+                    <label>Фильтр активен</label>
+                    <input type="checkbox" ng-model="filter.isActive">
 
                     <div class="filter-properties-container">
                         <span>Типы</span>
