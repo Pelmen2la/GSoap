@@ -11,13 +11,15 @@ html(ng-app='gsoapAdminApp')
             div#auth
                 span #{user}
                 a(href='/logout') Выйти
-            div(class='btn btn-default add-record-button' ui-sref='index') Товары
+            div(class='btn btn-default top-menu-button' ui-sref='index') Товары
                 span.icon
-            div(class='btn btn-default add-record-button' ui-sref='brands') Бренды
+            div(class='btn btn-default top-menu-button' ui-sref='brands') Бренды
                 span.icon
-            div(class='btn btn-default add-record-button' ui-sref='buttonFilters') Фильтры
+            div(class='btn btn-default top-menu-button' ui-sref='buttonFilters') Фильтры
                 span.icon
-            div(class='btn btn-default add-record-button' ui-sref='orders') Заказы
+            div(class='btn btn-default top-menu-button' ui-sref='orders') Заказы
+                span.icon
+            div(class='btn btn-default top-menu-button' ui-sref='promocodes') Промокоды
                 span.icon
 
             div(ui-view, ng-controller='AdminMainController')
@@ -40,6 +42,7 @@ html(ng-app='gsoapAdminApp')
         script(src='/js/controllers/admin/buttonfilterform.js')
         script(src='/js/controllers/admin/orderlist.js')
         script(src='/js/controllers/admin/orderform.js')
+        script(src='/js/controllers/admin/promocodes.js')
         script(src='/js/services/models.js')
         script(src='/js/services/utils.js')
         script(src='/js/services/stringresources.js')

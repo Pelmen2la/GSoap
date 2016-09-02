@@ -2,7 +2,7 @@ doctype html
 html
     head
         meta(charset='utf-8')
-        title Car Service
+        title Gsoap Admin
         link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='css/login.css')
         script.
@@ -11,7 +11,7 @@ html
             };
     body
         form(action='/login' method='post')
-            h2 Car Service
+            h2 Gsoap Admin
             if(error && error.length > 0)
                 div.alert.alert-danger #{error}
             input(type='hidden' name='hash')

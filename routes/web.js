@@ -7,6 +7,7 @@ module.exports = function(app) {
     require("./data-helpers/brands")(app);
     require("./data-helpers/buttonfilters")(app);
     require("./data-helpers/orders")(app);
+    require("./data-helpers/promocodes")(app);
 
     app.get('/', function(req, res) {
         res.sendFile('../public/index.html');

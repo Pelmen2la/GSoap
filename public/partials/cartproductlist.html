@@ -71,10 +71,11 @@
             <label class="col-sm-2 control-label">Код на скидку</label>
 
             <div class="col-sm-10">
-                <input type="text"
-                       class="form-control"
-                       ng-model="customerInfo.discountNumber">
+                <input type="text" class="form-control"
+                       ng-model="customerInfo.promocode" ng-keyup="onPromocodeInputKeyUp()">
+                <label ng-class="promocodeTooltipInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeTooltipInfo.text}}</label>
             </div>
+
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Тип доставки</label>

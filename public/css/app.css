@@ -8,6 +8,14 @@ body {
     height: 100%;
 }
 
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
 .main-div {
     background: url('../resources/images/background.jpg') repeat #f5fffa;
     min-height: 100%;

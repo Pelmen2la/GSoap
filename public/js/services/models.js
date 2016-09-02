@@ -27,4 +27,10 @@ angular.module('gsoapApp.services')
                 method: 'PUT'
             }
         });
+    }).factory('Promocode', function($resource) {
+        return $resource('/promocodes/:id', null, {
+            update: {
+                method: 'PUT'
+            }
+        });
     });

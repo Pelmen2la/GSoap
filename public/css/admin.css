@@ -4,6 +4,10 @@
     border-bottom: 1px solid #CCCCCC;
 }
 
+.admin-main-container .top-menu-button {
+    margin: 10px 5px;
+}
+
 .admin-main-container .product-image,
 .admin-main-container .brand-image,
 .admin-main-container .upload-input {

@@ -18,7 +18,7 @@ var Order = new mongoose.Schema({
             type: String,
             required: true
         },
-        discountNumber: String,
+        promocode: String,
         deliveryType: String,
         address: String
     },
