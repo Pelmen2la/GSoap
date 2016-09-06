@@ -34,7 +34,7 @@
                                     ng-model="filter.productTypes[$index]"
                                     ng-options="key as value for (key, value) in stringResources.productTypes">
                             </select>
-                            <span class="main-sprite-icon delete-producttype-button"
+                            <span class="main-sprite-icon delete-button"
                               ng-click="deleteProductType(filter, productType)"></span>
                         </div>
                         <div class="btn btn-default" ng-click="addProductType(filter)">
@@ -50,7 +50,7 @@
                                     ng-model="filter.properties[$index]"
                                     ng-options="type.value as type.label for type in stringResources.productProperties">
                             </select>
-                            <span class="main-sprite-icon delete-property-button"
+                            <span class="main-sprite-icon delete-button"
                               ng-click="deleteProperty(filter, property)"></span>
                         </div>
                         <div class="btn btn-default" ng-click="addProperty(filter)">

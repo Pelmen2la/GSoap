@@ -70,13 +70,15 @@
 }
 /* /Lists */
 
-.admin-main-container .capacity-list-container,
-.admin-main-container .property-combo-container,
-.admin-main-container .producttype-combo-container {
+.admin-main-container .multi-rows-container {
     overflow: auto;
     width: 100%;
     position: relative;
     margin-bottom: 5px;
+}
+
+.admin-main-container .multi-rows-container.bought-together-combos-container {
+    overflow: initial;
 }
 
 .admin-main-container .capacity-list-container .capacity-input,
@@ -92,19 +94,16 @@
     float: right;
 }
 
-.admin-main-container .capacity-list-container .delete-capacity-button,
-.admin-main-container .property-combo-container .delete-property-button,
-.admin-main-container .producttype-combo-container .delete-producttype-button {
+.admin-main-container .delete-button {
     position: absolute;
     top: 8px;
-    right: 10px;
+    right: 40px;
     cursor: pointer;
     background-position-x: -112px;
 }
 
-.admin-main-container .property-combo-container .delete-property-button,
-.admin-main-container .producttype-combo-container .delete-producttype-button  {
-    right: 20px;
+.admin-main-container .bought-together-combo {
+    height: 30px;
 }
 
 .admin-main-container .property-select {

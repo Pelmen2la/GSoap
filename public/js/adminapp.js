@@ -1,4 +1,4 @@
-angular.module('gsoapAdminApp', ['ui.router', 'ngResource', 'gsoapAdminApp.adminControllers', 'gsoapApp.services', 'angularFileUpload', 'ngCookies'])
+angular.module('gsoapAdminApp', ['ui.router', 'ngResource', 'gsoapAdminApp.adminControllers', 'gsoapApp.services', 'angularFileUpload', 'ngCookies', 'ui.select', 'ngSanitize'])
 angular.module('gsoapAdminApp').config(function ($stateProvider) {
     $stateProvider.state('index', {
         url: '',

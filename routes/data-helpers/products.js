@@ -9,12 +9,18 @@ module.exports = function(app) {
         var query = req.query,
             filters = getFilters(query),
             pagingOptions = getPagingOptions(query.pageSize, query.pageIndex);
-        Product.find(filters, null, pagingOptions, function(err, data) {
-            Product.count(filters, function(err, totalData) {
-                data.push(totalData);
+        if(pagingOptions) {
+            Product.find(filters, null, pagingOptions, function(err, data) {
+                Product.count(filters, function(err, totalData) {
+                    data.push(totalData);
+                    res.json(data);
+                });
+            });
+        } else {
+            Product.find({}, function(err, data) {
                 res.json(data);
-            })
-        });
+            });
+        }
     });
 
     app.get('/products/:id', function(req, res, next) {
@@ -60,6 +66,9 @@ module.exports = function(app) {
     });
 
     function getPagingOptions(pageSize, pageIndex) {
+        if(!pageSize) {
+            return null;
+        }
         return {
             skip: pageSize * pageIndex,
             limit: parseInt(pageSize)

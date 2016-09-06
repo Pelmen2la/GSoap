@@ -7,33 +7,22 @@ var Product = new mongoose.Schema({
         type: String,
         required: true
     },
-    imageName: {
-        type: String
-    },
+    imageName: String,
     capacityList: [{
         capacity: Number,
         price:  Number
     }],
     capacityUnit: String,
-    brand: {
-        type: String
-    },
-    type: {
-        type: String
-    },
-    properties: {
-        type: [String]
-    },
-    description: {
-        type: String
-    },
-    additionalInfo: {
-        type: String
-    },
+    type: String,
+    brand: String,
+    properties: [String],
+    description: String,
+    additionalInfo: String,
     reviews: [{
         customerName: String,
         text: String
     }],
+    boughtTogetherProductIds: [String],
     discount: Number,
     isBestseller: Boolean,
     stockCount: Number,

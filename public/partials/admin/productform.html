@@ -19,7 +19,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Емкость\цена</label>
         <div class="col-sm-10">
-            <div class="capacity-list-container" ng-repeat="capacityInfo in product.capacityList">
+            <div class="multi-rows-container capacity-list-container" ng-repeat="capacityInfo in product.capacityList">
                 <input type="text"
                        class="form-control capacity-input"
                        value="capacityInfo.capacity"
@@ -28,7 +28,7 @@
                        class="form-control price-input"
                        value="capacityInfo.price"
                        ng-model="capacityInfo.price">
-                    <span class="main-sprite-icon delete-capacity-button"
+                    <span class="main-sprite-icon delete-button"
                           ng-hide="product.capacityList.indexOf(capacityInfo) == 0"
                           ng-click="deleteCapacityInfo(capacityInfo)"></span>
             </div>
@@ -75,16 +75,16 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Свойства</label>
         <div class="col-sm-10">
-            <div ng-repeat="property in product.properties track by $index" class="property-combo-container">
+            <div ng-repeat="property in product.properties track by $index" class="multi-rows-container">
                 <select
                         class="form-control property-select"
                         ng-model="product.properties[$index]"
                         ng-options="type.value as type.label for type in stringResources.productProperties">
                 </select>
-                <span class="main-sprite-icon delete-property-button"
-                      ng-click="deleteProperty($index)"></span>
+                <span class="main-sprite-icon delete-button"
+                      ng-click="deleteArrayMember(product.properties, $index)"></span>
             </div>
-            <div class="btn btn-default add-property-button" ng-click="addProperty()">
+            <div class="btn btn-default add-property-button" ng-click="addMemberToArray(product.properties)">
                 <span class="icon"></span>
                 Добавить свойство
             </div>
@@ -153,6 +153,32 @@
     </div>
 
     <div class="form-group">
+        <label class="col-sm-2 control-label">С этим покупают</label>
+
+        <div class="col-sm-10">
+            <div ng-repeat="boughtTogetherProductId in product.boughtTogetherProductIds track by $index"
+                 class="multi-rows-container bought-together-combos-container">
+                <ui-select ng-model="product.boughtTogetherProductIds[$index]">
+                    <ui-select-match>
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="item._id as item in fullProductsList | filter:$select.search track by $index">
+                        {{item.name}}
+                    </ui-select-choices>
+                </ui-select>
+                    <span class="main-sprite-icon delete-button"
+                          ng-click="deleteArrayMember(product.boughtTogetherProductIds, $index)"></span>
+            </div>
+            <div class="btn btn-default add-capacity-button"
+                 ng-click="addMemberToArray(product.boughtTogetherProductIds)">
+                <span class="icon"></span>
+                Добавить продукт
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-sm-2 control-label">Отзывы</label>
         <div class="col-sm-10">
             <div class="review-container" ng-repeat="review in product.reviews track by $index">
@@ -163,14 +189,13 @@
                           class="form-control"
                           ng-model="review.text">
                 </textarea>
-                <button class="btn btn-default submit-button" type="submit" ng-click="deleteReview($index)">
+                <button class="btn btn-default submit-button" type="submit" ng-click="deleteArrayMember(product.reviews, $index)">
                     <span class="icon"></span>
                     Удалить отзыв
                 </button>
             </div>
         </div>
     </div>
-
 
     <button class="btn btn-default submit-button" type="submit" ng-click="submitProduct()">
         <span class="icon"></span>

@@ -7,11 +7,14 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.product = new Product();
         $scope.product.capacityList = [{capacity: 0, price: 0}];
         $scope.product.properties = [];
+        $scope.product.boughtTogetherProductIds = [];
         $scope.product.stockCount = 0;
         $scope.product.orderCount = 0;
     }])
-    .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', function($scope, $state, FileUploader, Brand) {
+    .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', 'Product', function($scope, $state, FileUploader, Brand, Product) {
         $scope.brands = Brand.query({}, function(data) {
+        });
+        $scope.fullProductsList = Product.query({}, function(data) {
         });
         $scope.uploader = new FileUploader({
             url: 'admin/upload/product/image/'
@@ -32,6 +35,7 @@ angular.module('gsoapAdminApp.adminControllers')
                 return property;
             });
             if($scope.product._id) {
+                debugger;
                 $scope.product.$update({id: $scope.product._id}, function() {
                     $state.go('index');
                 });
@@ -44,17 +48,15 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.back = function() {
             $state.go('index');
         };
-        $scope.deleteCapacityInfo = function(capacityInfo) {
-            $scope.product.capacityList.splice($scope.product.capacityList.indexOf(capacityInfo), 1);
-        };
-        $scope.deleteProperty = function(index) {
-            $scope.product.properties.splice(index, 1);
+        $scope.deleteArrayMember = function(array, index) {
+            var properties = $scope.product.properties;
+            array.splice(index, 1);
         };
         $scope.addCapacity = function() {
-            $scope.product.capacityList.push({capacity: '', price: ''});
+            product.properties($scope.product.capacityList, {capacity: '', price: ''});
         };
-        $scope.addProperty = function() {
-            $scope.product.properties.push('');
+        $scope.addMemberToArray = function(array, member) {
+            array.push(member || '');
         };
         $scope.deleteReview = function(index) {
             $scope.product.reviews.splice(index, 1);
