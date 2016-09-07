@@ -35,7 +35,6 @@ angular.module('gsoapAdminApp.adminControllers')
                 return property;
             });
             if($scope.product._id) {
-                debugger;
                 $scope.product.$update({id: $scope.product._id}, function() {
                     $state.go('index');
                 });
