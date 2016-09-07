@@ -70,7 +70,7 @@ module.exports = function(app) {
 
     function getType() {
         return arrRandom(['tonic', 'cream', 'mask', 'shampoo', 'balm', 'hairDye', 'deodorants', 'envelopment', 'soap',
-            'beldi', 'showerGel', 'scrub', 'bashSalt', 'bubbleBall', 'powder', 'purification', 'baseEssential']);
+            'beldi', 'showerGel', 'scrub', 'bashSalt', 'bubbleBall', 'powder', 'purification', 'base', 'essential']);
     }
 
     function getProperties() {

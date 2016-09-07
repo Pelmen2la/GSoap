@@ -16,7 +16,8 @@ angular.module('gsoapApp.services').constant('StringResources', {
         bubbleBall: 'Бурлящие шарики',
         powder: 'Пудра',
         purification: 'Очищение',
-        baseEssential: 'Базовые\\эфирные'
+        base: 'Базовые',
+        essential: 'Эфирные'
     },
     productCapacityUnitTypes: {
         gram: 'г',
