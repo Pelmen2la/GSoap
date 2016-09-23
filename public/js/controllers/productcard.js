@@ -3,6 +3,7 @@ angular.module('gsoapApp.controllers')
         function($scope, $state, $stateParams, $http, $cookies, Product, Utils) {
             $scope.selectedCapacity = {};
             $scope.orderCount = 1;
+            $scope.selectedTabName = 'description';
             loadRecord($stateParams.id);
             initReview();
 
@@ -21,6 +22,9 @@ angular.module('gsoapApp.controllers')
                 });
 
                 initReview();
+            };
+            $scope.onTabClick = function(tabName) {
+                $scope.selectedTabName = tabName;
             };
 
             function loadRecord(id) {

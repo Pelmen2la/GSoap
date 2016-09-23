@@ -1,6 +1,8 @@
 angular.module('gsoapApp.controllers').controller('CartProductListController', ['$scope', '$http', '$state', 'StringResources', 'Order',
     function($scope, $http, $state, StringResources, Order) {
-        $scope.customerInfo = {};
+        $scope.customerInfo = {
+            deliveryType: 'self'
+        };
         $scope.promocodeTooltipInfo = {
             text: '',
             cssCls: ''

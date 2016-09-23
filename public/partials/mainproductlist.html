@@ -1,35 +1,20 @@
-<div class="main-list">
-    <div class="toolbar">
-        <label for="searchFilterInput"></label>Поиск <input id="searchFilterInput" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
-        <input id="withDiscountCheckbox" type="checkbox" ng-model="withDiscount"
-               ng-change="onPropertyFilterCheckboxChange()"><label for="withDiscountCheckbox">Со скидкой</label>
-        <input id="isBestsellerCheckbox" type="checkbox" ng-model="isBestseller"
-               ng-change="onPropertyFilterCheckboxChange()"><label for="isBestsellerCheckbox">Хит продаж</label>
-        <span class="main-sprite-icon list-view-icon" ng-class="{ selected: !isCardView }"
-              ng-click="changeControlMode(false)"></span>
-        <span class="main-sprite-icon card-view-icon" ng-class="{ selected: isCardView }"
-              ng-click="changeControlMode(true)"></span>
-    </div>
-    <div ng-class="isCardView ? 'card-view' : 'list-view'" class="main-container" id="MainContainer">
-        <div ng-repeat="product in products" class="product-container" ng-class="{bestseller: product.isBestseller}">
-            <div class="image-container">
-                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
-                <span class="main-sprite-icon discount-icon" ng-show="product.discount">{{product.discount}}%</span>
-                <span class="bestseller-icon" ng-show="product.isBestseller">Хит продаж</span>
-            </div>
-            <div class="text-container">
-                <div class="product-name" ng-click="openProductCard(product._id)">{{product.name}}</div>
-                <div class="product-brand" ng-click="openBrandCard(product.brand)">{{product.brand}}</div>
-                <div class="product-price">{{utils.getProductPrice(product, product.selectedCapacity)}}</div>
-                <div class="product-capacity">
-                    <span ng-repeat="capacityInfo in product.capacityList"
-                          ng-class="{ selected: capacityInfo == product.selectedCapacity }"
-                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}}
-                                    {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
-                </div>
-                <div class="product-description" ng-show="!isCardView">{{product.description}}</div>
-                <div class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">Купить</div>
-            </div>
+<div class="products-container">
+    <div ng-repeat="product in products track by $index" class="product-container"
+         ng-class="{bestseller: product.isBestseller}">
+        <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
+        <a class="product-name" ng-click="openProductCard(product._id)">{{product.name}}</a>
+        <div class="product-price"><b>{{utils.getProductPrice(product, product.selectedCapacity)}}</b></div>
+        <ul class="product-capacity">
+            <li ng-repeat="capacityInfo in product.capacityList">
+                <button ng-class="{ selected: capacityInfo == product.selectedCapacity }"
+                        ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}} мл
+                </button>
+            </li>
+        </ul>
+        <div class="product-buy-button-container" ng-click="onBuyProductButtonClick($event, product)">
+            <button ng-click="onBuyProductButtonClick($event, product)">
+                <img src="/resources/images/icons/cart.png"><span>Купить</span>
+            </button>
         </div>
     </div>
 </div>

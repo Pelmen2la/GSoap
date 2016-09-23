@@ -10,17 +10,20 @@ var Order = new mongoose.Schema({
             type: String,
             required: true
         },
-        email: {
-            type: String,
-            required: true
-        },
         phone: {
             type: String,
             required: true
         },
+        email: {
+            type: String,
+            required: true
+        },
+        city: String,
+        postIndex: String,
+        fullAddress: String,
         promocode: String,
-        deliveryType: String,
-        address: String
+        description: String,
+        deliveryType: String
     },
     products: [{
         id: String,

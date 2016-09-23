@@ -1,3 +1,77 @@
+<form class="cart-page" name="form"  novalidate>
+    <h1>Оформить заказ</h1>
+    <table ng-show="cartProducts.length" class="products-grid">
+        <tr>
+            <th colspan="3">Наименование</th>
+            <th>Ёмкость</th>
+            <th>Скидка</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+        </tr>
+        <tr ng-repeat="product in cartProducts track by $index">
+            <td colspan="3" >
+                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product.id)">
+                <a href='' ng-click="openProductCard(product.id)">{{product.name}}</a>
+            </td>
+            <td>
+                <span>{{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
+            </td>
+            <td>
+                <span>{{product.discount}}%</span>
+            </td>
+            <td>
+                <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
+            </td>
+            <td>
+                <input type="number" name="input" ng-model="product.count" min="1" max="99"
+                       ng-class="{invalid: !utils.isProductCountAvailable(product, product.count)}"
+                       ng-attr-title="{{utils.isProductCountAvailable(product, product.count) ? '' :
+                        stringResources.validationMessages.wrongProductCountTitle}}">
+            </td>
+            <td class="total-price">
+                <span>{{utils.getProductPrice(product, product.capacityInfo, product.count)}}</span>
+                <button class="delete-button"
+                      ng-click="removeProductFromCard($index)"></button>
+            </td>
+        </tr>
+    </table>
+    <div class="left-order-container">
+        <h2>Введите ваши контактные данные</h2>
+        <input placeholder="Имя и фамилия" ng-model="customerInfo.name" required>
+        <input placeholder="Номер телефона" ng-model="customerInfo.phone" required>
+        <input placeholder="Электронная почта"ng-model="customerInfo.email" required>
+        <input placeholder="Город" ng-model="customerInfo.city">
+        <input placeholder="Индекс" ng-model="customerInfo.postIndex">
+        <input placeholder="Полный адрес" ng-model="customerInfo.fullAddress">
+        <input placeholder="Код на скидку" ng-model="customerInfo.promocode" ng-keyup="onPromocodeInputKeyUp()">
+        <span ng-class="promocodeTooltipInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeTooltipInfo.text}}</span>
+        <textarea placeholder="Комментарий к заказу" ng-model="customerInfo.description"></textarea>
+    </div>
+    <div class="right-order-container">
+        <h2>Доставка</h2>
+        <label for="selfRadio" ng-class="{selected: customerInfo.deliveryType === 'self'}">
+            <input type="radio" ng-model="customerInfo.deliveryType" value="self" id="selfRadio" ng-model="customerInfo.deliveryType">
+            <p>
+                <b>Самовывоз</b><br><br>
+                <b>Пункты вывоза:</b><br><br>
+                - Проспект Ленина (ост. Гоголевская)<br>
+                - Улица Токарева (Заречье)<br>
+            </p>
+        </label>
+        <label for="deliveryRadio" ng-class="{selected: customerInfo.deliveryType === 'delivery'}">
+            <input type="radio" ng-model="customerInfo.deliveryType" value="delivery" id="deliveryRadio" ng-model="customerInfo.deliveryType">
+            <p>
+                <b>По России</b><br><br>
+                Стоимость доставки 1000р.
+            </p>
+        </label>
+    </div>
+    <button class="submit-button" ng-disabled="form.$invalid" ng-click="sendOrder()">
+        Заказать
+    </button>
+</form>
+<!--
 <div class="product-cart-page-container">
     <table class="product-cart-grid" ng-show="cartProducts.length">
         <tr>
@@ -101,4 +175,4 @@
             Заказать
         </button>
     </form>
-</div>
+</div>-->

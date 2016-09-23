@@ -11,10 +11,11 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         loadPageData(true);
 
         $(window).scroll(function() {
+            return;
             var $window = $(window),
                 productContainer = $('.product-container')[0],
-                $mainContainer = $('#MainContainer');
-            if(productContainer && $mainContainer.offset().top + $mainContainer.height() -
+                $page = $('.page');
+            if(productContainer && $page.offset().top + $page.height() -
                 productContainer.offsetHeight < $window.height() + $window.scrollTop()) {
                 loadPageData();
             }

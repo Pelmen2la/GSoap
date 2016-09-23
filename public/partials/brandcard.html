@@ -1,37 +1,43 @@
-<div class="brand-card-container">
-    <h2>{{brand.name}}</h2>
+<div class="brand-card">
 
     <div class="brand-info">
         <img ng-src="{{utils.getBrandImageUrl(brand)}}">
-        <div class="brand-description">{{brand.description}}</div>
+        <h1>{{brand.name}}</h1>
+        <p>{{brand.description}}</p>
     </div>
-    <strong>Фильты:</strong>
-    <div>
-        <span class="category-filter-item" ng-repeat="(key, value) in categories"
+
+    <h2>Продукты</h2>
+
+    <div class="filters-panel">
+        <button class="category-filter-button" ng-repeat="(key, value) in categories"
               ng-class="{selected: typeFilter == key}" ng-click="onFilterButtonClick(key)">
-            {{stringResources.productTypes[key] + '(' + value + ')'}}
-        </span>
+            {{stringResources.productTypes[key] + ' (' + value + ')'}}
+        </button>
     </div>
-    <strong>Поиск</strong> <input ng-model='searchFilter' />
-    <table class="brand-product-grid" ng-show="brand.products.length">
+    <input ng-model='searchFilter' class="search-input" placeholder="Поиск" />
+
+    <table class="products-grid without-header" ng-show="brand.products.length">
         <tr ng-repeat="product in brand.products | filter: { $: searchFilter, type: typeFilter }">
             <td>
                 <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
             </td>
-            <td colspan="3" class="product-name">
+            <td colspan="2" class="product-name">
                 <a href='' ng-click="openProductCard(product._id)">{{product.name}}</a>
             </td>
-            <td colspan="3" class="product-capacity">
-                    <span ng-repeat="capacityInfo in product.capacityList"
-                          ng-class="{ selected: capacityInfo == product.selectedCapacity }"
-                          ng-click="selectProductCapacity(product, capacityInfo)">{{capacityInfo.capacity}}
-                                    {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
+            <td class="product-capacity">
+                <select
+                        ng-model="product.selectedCapacity"
+                        ng-options="entry as entry.capacity for entry in product.capacityList">
+                </select>
+                {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}
             </td>
-            <td class="number">
+            <td>
                 <span>{{utils.getProductPrice(product, product.selectedCapacity)}}</span>
             </td>
-            <td class="buy-button">
-                <div class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">Купить</div>
+            <td>
+                <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">
+                    <img src="/resources/images/icons/cart.png"><span>Купить</span>
+                </button>
             </td>
         </tr>
     </table>

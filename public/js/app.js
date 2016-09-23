@@ -2,6 +2,11 @@ angular.module('gsoapApp', ['ui.router', 'ngResource', 'ngSanitize', 'gsoapApp.c
 angular.module('gsoapApp').config(function ($stateProvider) {
     $stateProvider.state('index', {
         url: '?buttonFilter',
+        templateUrl: '/partials/main.html',
+        controller: 'MainProductListController',
+        reloadOnSearch: false
+    }).state('products', {
+        url: '/products?buttonFilter',
         templateUrl: '/partials/mainproductlist.html',
         controller: 'MainProductListController',
         reloadOnSearch: false
@@ -21,8 +26,7 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         url: '/cart/',
         templateUrl: '/partials/cartproductlist.html',
         controller: 'CartProductListController'
-    })
-        .state('about', {
+    }).state('about', {
         url: '/about/',
         templateUrl: '/partials/simplepages/about.html',
         controller: ''

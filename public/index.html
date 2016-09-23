@@ -10,78 +10,147 @@
 </head>
 <body>
 
-<div ng-controller="MainController" class="main-div">
-    <div class="header-wrapper">
-        <div class="header">
-            <a ui-sref='index' class="logo">
-                <span class="top-text">GOOD</span><br/>
-                <span class="bottom-text">SOAP</span>
+<div ng-controller="MainController" class="page">
+    <div class="header">
+        <div>
+            <a href="/">
+                <img src="/resources/images/logo.png" class="logo">
+
+                <p class="shop-name">
+                    <span>Магазин</span> <br/>
+                    <span>натуральной</span> <br/>
+                    <span>косметики</span>
+                </p>
             </a>
 
-            <div class="contact-info">
-                <span class="email">email: mail@gsoap.ru</span><br/>
-                <span class="whatsup">Viber | WhatsApp +7-920-771-26-08</span>
-            </div>
-            <div class="navigation-container">
-                <a class="cart-container" ui-sref='cartProductList' ng-controller="CartController">
-                    <span id="MainCartIcon" class="main-sprite-icon cart-icon"></span>
-                    <span class="cart-text">{{cartText}}</span>
-                </a>
+            <p class="cart-text" ng-controller="CartController">
+                <a ui-sref='cartProductList'>Корзина покупок</a><br/>
+                <span class="cart-info">{{cartText}}</span>
+            </p>
+            <a ui-sref='cartProductList'>
+                <img src="/resources/images/icons/cart.png" class="cart-image" id="MainCartIcon">
+            </a>
 
-                <div class="navigation-menu">
-                    <a ui-sref='about'>О нас</a>
+            <p class="phone-block">
+                <span>Звонок бесплатный</span><br/>
+                <b class="phone">8(800)555 35 35</b>
+            </p>
+        </div>
+        <ul class="navigation-menu">
+            <li>
+                <a href="/#/about/">О нас</a>
+            </li>
+            <li>
+                <a>Блог</a>
+            </li>
+            <li>
+                <a href="/#/delivery/">Доставка и оплата</a>
+            </li>
+            <li>
+                <a>Контакты</a>
+            </li>
+        </ul>
+        <ul class="products-menu">
+            <li>
+                <button ng-click="changeView('products')">Все товары</button>
+            </li>
+            <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
+                <button type="button" ng-attr-id="{{'mainListFilterButton' + $index}}"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
+                    {{buttonFilter.name}}<span class="caret-icon"></span>
+                </button>
+                <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">
+                    <li>{{buttonFilter.name}}<span class="caret-icon"></span><div class="mask"></div></li>
+                    <li ng-repeat="filter in buttonFilter.filters"
+                        ng-class="{ selected: filter == buttonFilter }"
+                        ng-click="onFilterButtonClick(filter)">
+                        <a href="#">{{filter.name}}</a><div class="mask"></div></li>
+                </ul>
+            </li>
+            <li>
+                <button ng-click="changeView('brands')">Бренды</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper" ui-view>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="info-container">
+        <div class="contacts">
+            <h3>Контакты</h3>
+            <br>
+            <p>
+            GOODSOAP<br>
+            магазин натуральной косметики<br>
+                <br>
+                Пункт выдачи<br>
+                улица Пушкина, дом 34<br>
+                г. Тула<br>
+                <br>
+                <b>8(800)555 55 55</b><br>
+                <br>
+                info@gsoap.ru
+            </p>
+        </div>
+        <div class="information">
+            <h3>Контакты</h3>
+            <br>
+            <ul>
+                <li>
+                    <a>Бестселлеры</a>
+                </li>
+                <li>
+                    <a>Новики</a>
+                </li>
+                <li>
+                    <a>Акции</a>
+                </li>
+                <li>
+                    <a href="/#/delivery/">Доставка</a>
+                </li>
+                <li>
+                    <a href="/#/about/">О нас</a>
+                </li>
+            </ul>
+        </div>
+        <div class="usefull">
+            <h3>Полезное</h3>
+            <br>
+            <ul>
+                <li>
                     <a>Блог</a>
-                    <a ui-sref='delivery'>Доставка и оплата</a>
-                    <a>Контакты</a>
-                </div>
-            </div>
-        </div>
-        <div class="bottom-menu-wrapper">
-            <ul class="bottom-menu">
-                <li>
-                    <a ng-click="changeView('index')">ВСЕ ТОВАРЫ</a>
-                </li>
-                <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
-                    <a ng-attr-id="{{'mainListFilterButton' + $index}}" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"
-                       ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
-                        {{buttonFilter.name.toUpperCase()}}
-                    </a>
-                    <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">
-                        <li ng-repeat="filter in buttonFilter.filters"
-                            ng-class="{ selected: filter == buttonFilter }"
-                            ng-click="onFilterButtonClick(filter)" ng-show="filter.isActive">
-                            <a href="#">{{filter.name}}</a></li>
-                    </ul>
                 </li>
                 <li>
-                    <a ng-click="changeView('brands')">БРЕНДЫ</a>
+                    <a>Статьи</a>
                 </li>
             </ul>
         </div>
-    </div>
-
-
-    <div class="main-wrapper">
-        <div class="carousel-wrapper">
-            <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls-allow-loop rn-carousel-buffered
-                rn-carousel-controls rn-carousel-auto-slide="5" rn-carousel-pause-on-hover
-                class="image carousel">
-                <li ng-repeat="image in carouselImages">
-                    <img ng-src="{{image}}"/>
-                </li>
-            </ul>
+        <div class="social-networks">
+            <h3>Мы в соц сетях</h3>
+            <br>
+            <p>
+                <a href="https://vk.com/goodsoapvtule">
+                    <img src="/resources/images/icons/vk.png" class="cart-image"><br>
+                </a>
+                <br>
+                <img src="/resources/images/logo.png"><br>
+                <br>
+                2016 © <b>GOODSOAP</b><br>
+                магазин натуральной косметики
+            </p>
         </div>
-        <div ui-view></div>
     </div>
-    <div id="upButton" class="main-sprite-icon up-button-icon" ng-click="onUpButtonClick()"></div>
 </div>
 
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="../bower_components/angular-touch/angular-touch.js"></script>
-<script src="../bower_components/angular-carousel/dist/angular-carousel.js"></script>
+<script src="../bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
 <script src="../bower_components/angular-resource/angular-resource.js"></script>
 <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="../bower_components/angular-file-upload/dist/angular-file-upload.js"></script>

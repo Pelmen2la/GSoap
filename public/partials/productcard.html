@@ -1,60 +1,106 @@
-<div class="product-card-container">
-    <div class="product-card" ng-class="{bestseller: product.isBestseller}">
-        <h2 class="title">
-            <span class="name">{{product.name}}</span>
-            <span class="capacity">, {{utils.getProductCapacityText(product)}}</span>
-            <span class="brand" ng-show="product.brand"
-                  ng-click="openBrandCard(product.brand)"> - {{product.brand}}</span>
-        </h2>
+    <div class="product-card">
+        <img src="{{utils.getProductImageUrl(product)}}">
 
-        <div class="product-info-container">
-            <img src="{{utils.getProductImageUrl(product)}}">
-            <span class="bestseller-icon" ng-show="product.isBestseller">Хит продаж</span>
-            <span class="main-sprite-icon discount-icon" ng-show="product.discount">{{product.discount}}%</span>
+        <h1>{{product.name}}</h1>
 
-            <div class="text-footer">
-                <p>
-                    <select
-                            class="capacity-combo"
-                            ng-model="product.selectedCapacity"
-                            ng-options="entry as entry.capacity for entry in product.capacityList">
-                    </select>
-                    {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}.
-                    <input type="number" name="input" ng-model="orderCount" class="product-count" min="1" max="99"
-                           ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
-                           ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
+        <div class="control-panel">
+            <b>{{utils.getProductPrice(product, product.selectedCapacity, 1, false, true)}}</b>
+            <select
+                    ng-model="product.selectedCapacity"
+                    ng-options="entry as entry.capacity for entry in product.capacityList">
+            </select>
+            {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}
+            <input type="number" name="input" ng-model="orderCount" min="1" max="99"
+                   ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
+                   ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
                         stringResources.validationMessages.wrongProductCountTitle}}">
-                    шт.</p>
-
-                <p class="options-control-label">Цена
-                    {{utils.getProductPrice(product, product.selectedCapacity, orderCount)}}
-
-                    <span class="product-buy-button" ng-click="onBuyProductButtonClick($event, product, orderCount)">Купить</span>
-                </p>
+            шт.
+            <div class="product-buy-button">
+                <button ng-click="onBuyProductButtonClick($event, product)">Добавить в корзину</button>
+                <img src="/resources/images/icons/cart.png" class="cart-image">
             </div>
         </div>
-        <div class="description">
-            <div class="additional-info" ng-show="product.additionalInfo">{{product.additionalInfo}}</div>
+        <span class="old-price" ng-show="product.discount">{{utils.getProductPrice(product, product.selectedCapacity, 1)}}</span><br>
+        <ul class="tab-control">
+            <li ng-class="{selected: selectedTabName == 'description'}" ng-click="onTabClick('description')">
+                Описание
+            </li>
+            <li ng-class="{selected: selectedTabName == 'use'}" ng-click="onTabClick('use')">
+                Применение
+            </li>
+            <li ng-class="{selected: selectedTabName == 'ingredients'}" ng-click="onTabClick('ingredients')">
+                Ингридиенты
+            </li>
+            <li ng-class="{selected: selectedTabName == 'reviews'}" ng-click="onTabClick('reviews')">
+                Отзывы
+            </li>
+        </ul>
+        <p ng-hide="selectedTabName !== 'description'">
             {{product.description}}
-        </div>
+        </p>
+        <p ng-hide="selectedTabName !== 'use'">
+            {{product.use}}
+        </p>
+        <p ng-hide="selectedTabName !== 'ingredients'">
+            {{product.ingredients}}
+        </p>
     </div>
-    <div class="reviews-container">
-        <div class="review" ng-repeat="review in product.reviews">
-            <div class="customer-name">{{review.customerName}}</div>
-            <div class="review-text">{{review.text}}</div>
-        </div>
-    </div>
-    <div ng-show="reviewsAllowed">
-        Ваше имя:
-        <input name="name" type=text" class="form-control" ng-model="review.customerName" required>
-        Ваш отзыв:
-        <textarea rows="4" class="form-control" ng-model="review.text"></textarea>
 
-        <button class="btn btn-default submit-button" ng-click="onSendReviewButtonClick()">
-            Отправить отзыв
-        </button>
-    </div>
-    <span ng-show="!reviewsAllowed">
-        Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.
-    </span>
-</div>
+    <!--    <div class="product-card" ng-class="{bestseller: product.isBestseller}">
+            <h2 class="title">
+                <span class="name">{{product.name}}</span>
+                <span class="capacity">, {{utils.getProductCapacityText(product)}}</span>
+                <span class="brand" ng-show="product.brand"
+                      ng-click="openBrandCard(product.brand)"> - {{product.brand}}</span>
+            </h2>
+
+            <div class="product-info-container">
+
+                <span class="bestseller-icon" ng-show="product.isBestseller">Хит продаж</span>
+                <span class="main-sprite-icon discount-icon" ng-show="product.discount">{{product.discount}}%</span>
+
+                <div class="text-footer">
+                    <p>
+                        <select
+                                class="capacity-combo"
+                                ng-model="product.selectedCapacity"
+                                ng-options="entry as entry.capacity for entry in product.capacityList">
+                        </select>
+                        {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}.
+                        <input type="number" name="input" ng-model="orderCount" class="product-count" min="1" max="99"
+                               ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
+                               ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
+                            stringResources.validationMessages.wrongProductCountTitle}}">
+                        шт.</p>
+
+                    <p class="options-control-label">Цена
+                        {{utils.getProductPrice(product, product.selectedCapacity, orderCount)}}
+
+                        <span class="product-buy-button" ng-click="onBuyProductButtonClick($event, product, orderCount)">Купить</span>
+                    </p>
+                </div>
+            </div>
+            <div class="description">
+                <div class="additional-info" ng-show="product.additionalInfo">{{product.additionalInfo}}</div>
+                {{product.description}}
+            </div>
+        </div>
+        <div class="reviews-container">
+            <div class="review" ng-repeat="review in product.reviews">
+                <div class="customer-name">{{review.customerName}}</div>
+                <div class="review-text">{{review.text}}</div>
+            </div>
+        </div>
+        <div ng-show="reviewsAllowed">
+            Ваше имя:
+            <input name="name" type=text" class="form-control" ng-model="review.customerName" required>
+            Ваш отзыв:
+            <textarea rows="4" class="form-control" ng-model="review.text"></textarea>
+
+            <button class="btn btn-default submit-button" ng-click="onSendReviewButtonClick()">
+                Отправить отзыв
+            </button>
+        </div>
+        <span ng-show="!reviewsAllowed">
+            Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.
+        </span>-->

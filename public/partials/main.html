@@ -1,0 +1,58 @@
+    <div class="carousel-wrapper">
+        <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls-allow-loop rn-carousel-buffered
+            rn-carousel-controls rn-carousel-auto-slide="5" rn-carousel-pause-on-hover
+            class="image carousel">
+            <li ng-repeat="image in carouselImages">
+                <img ng-src="{{image}}"/>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="advantages-panel">
+        <li>
+            <img src="/resources/images/icons/car.png" class="cart-image">
+            <p>
+                <b>Бесплатная доставка</b><br>
+                по РФ от 2500 руб.
+            </p>
+        </li>
+        <li>
+            <img src="/resources/images/icons/wallet.png" class="cart-image">
+            <p>
+                <b>Без суммы</b><br>
+                минимального заказа
+            </p>
+        </li>
+        <li>
+            <img src="/resources/images/icons/wheelbarrow.png" class="cart-image">
+            <p>
+                <b>Быстрая отгрузка</b><br>
+                вашего заказа
+            </p>
+        </li>
+        <li>
+            <img src="/resources/images/icons/certificate.png" class="cart-image">
+            <p>
+                <b>Гарантия качества</b><br>
+                всех товаров
+            </p>
+        </li>
+    </ul>
+
+    <div ng-include src="'/partials/mainproductlist.html'"></div>
+
+        <div class="main-text">
+        <h1>Магазин натуральной косметики <span class="green-text">GOOD</span>SOAP</h1>
+
+        <p>
+            <img src="/resources/images/maintext.png">
+            Натуральная косметика выгодно отличается от остальных косметических
+            продуктов тем, что в её составе содержатся природные компоненты. Очевидно, чтотакая косметика является
+            незаменимы источником красоты и здоровья.<br>
+            <br>
+            Включение в состав косметических средств натуральных компонентов сегодня широко распространено среди
+            производителей, поэтому мы имеем возможность представить в интернет-магазине большой ассортимент натуральной
+            косметики. Отдельного внимания заслуживает косметика ручной работы, ведь это эксклюзивные косметические
+            средства, изготовленные вручную из качественных компонентов с особым теплом и любовью.
+        </p>
+    </div>

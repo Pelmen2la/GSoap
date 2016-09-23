@@ -5,6 +5,6 @@ angular.module('gsoapApp.controllers')
                 price = 0,
                 productsInfo = Utils.getProductsInfo($scope.cartProducts);
             $cookies.putObject('cartProducts', $scope.cartProducts, { expires: Utils.getNextDayDate() });
-            $scope.cartText = 'Товаров в корзине: ' + productsInfo.count + ' на сумму ' + productsInfo.price;
+            $scope.cartText = productsInfo.count + ' шт. на ' + productsInfo.price;
         }, true);
     }]);

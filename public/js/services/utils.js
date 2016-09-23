@@ -33,11 +33,12 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
     this.isProductCountAvailable = function(product, count) {
         return count <= product.stockCount - product.orderCount;
     };
-    this.getProductPrice = function(product, selectedCapacity, count, skipFormat) {
+    this.getProductPrice = function(product, selectedCapacity, count, skipFormat, withDiscount) {
         if(!selectedCapacity || count === 0) {
             return 0;
         }
-        var price = (selectedCapacity.price * (1 - (product.discount || 0) / 100) * (count || 1)).toFixed(0);
+        var discount = withDiscount ? product.discount || 0 : 0,
+            price = (selectedCapacity.price * (1 - discount / 100) * (count || 1)).toFixed(0);
         return skipFormat ? price : this.formatPrice(price);
     };
     this.getProductsInfo = function(products, skipFormat) {
@@ -61,11 +62,11 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
             price = price.substring(0, dotIndex)
         }
         parts.unshift(price);
-        return parts.join('.') + (withoutSign ? '' : ' ₽');
+        return parts.join('.') + (withoutSign ? '' : ' руб.');
     };
     this.moveProductIconToCart = function(offset, imageName) {
         var imageUrl = getImageUrl({ imageName: imageName }, 'products'),
-            icon = createElementFromString('<img class="product-cart-icon" src="' + imageUrl + '"></img>');
+            icon = createElementFromString('<img class="product-fly-icon" src="' + imageUrl + '"></img>');
         document.body.appendChild(icon);
         var interval = window.setInterval(function() {
             var targetOffset = $('#MainCartIcon').offset(),
