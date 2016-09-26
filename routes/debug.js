@@ -35,8 +35,10 @@ module.exports = function(app) {
         return arrRandom(['для лица', 'для тела', 'для ног', 'для детей', 'для волос']);
     }
 
+
     function getProductName() {
-        return [getRandomName(), getRandomNumber(), getRandomAppointment()].join(' ');
+        var name = [getRandomName(), getRandomNumber(), getRandomAppointment()].join(' ');
+        return name + name + name;
     }
 
     function getImageName(index) {
