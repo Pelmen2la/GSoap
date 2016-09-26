@@ -375,20 +375,26 @@ ul {
 	height: 2.307692em; /* 30 / 13 */
 }
 
-@media (max-width: 960px) {
-	.advantages-panel li {
-		text-align: center;
-	}
-	.advantages-panel li > img {
-		display: block;
-		margin: 0 auto;
-	}
-}
-
 .advantages-panel li p {
 	vertical-align: top;
 	text-align: left;
 	line-height: 1.153846em; /* 15 / 13 */
+}
+
+@media (max-width: 960px) {
+	.advantages-panel li,
+	.advantages-panel li:first-child,
+	.advantages-panel li:last-child,
+	.advantages-panel li p,
+	.advantages-panel li:first-child p,
+	.advantages-panel li:last-child p {
+		text-align: center;
+	}
+
+	.advantages-panel li > img {
+		display: block;
+		margin: 0 auto;
+	}
 }
 /* /Advantages panel */
 
