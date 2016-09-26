@@ -213,6 +213,7 @@ ul {
 
 .products-menu {
 	font-size: 1.384615em; /* 18 / 13 */
+	margin-bottom: 3em; /* 18 * 1.5 * 2 / 18*/
 	font-family: MuseoSansBold;
 	list-style: none;
 }
@@ -220,6 +221,7 @@ ul {
 .products-menu > li {
 	float: left;
 	margin-right: 4.042553%; /* 38 / 940 */
+	margin-bottom: 0.5em; /* 9 / 18 */
 }
 
 .products-menu > li .caret-icon {
@@ -260,6 +262,7 @@ ul {
 	position: relative;
 	font-size: 0.722222em; /* 13 / 18 */
 	padding: 1.384615em 1.461538em; /* 18 / 13 / 2, 19 / 13 */
+	white-space: nowrap;
 	border-color: #E6E6E6;
 	border-style: solid;
 	border-width: 0 0.055555em; /* 1 / 18 */
@@ -379,8 +382,8 @@ ul {
 	position: relative;
 }
 
-.product-container .img {
-	height: 54.692556%;
+.product-container img {
+	height: 13.846153em; /* 180 / 13 */
 	cursor: pointer;
 	margin: 0 auto;
 }
