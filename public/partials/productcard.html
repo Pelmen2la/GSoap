@@ -35,14 +35,11 @@
                 Отзывы
             </li>
         </ul>
-        <p ng-hide="selectedTabName !== 'description'">
-            {{product.description}}
+        <p ng-hide="selectedTabName !== 'description'" ng-bind-html="product.description">
         </p>
-        <p ng-hide="selectedTabName !== 'use'">
-            {{product.use}}
+        <p ng-hide="selectedTabName !== 'use'" ng-bind-html="product.use">
         </p>
-        <p ng-hide="selectedTabName !== 'ingredients'">
-            {{product.ingredients}}
+        <p ng-hide="selectedTabName !== 'ingredients'" ng-bind-html="product.ingredients">
         </p>
     </div>
 

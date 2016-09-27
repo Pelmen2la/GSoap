@@ -125,9 +125,23 @@
         <label class="col-sm-2 control-label">Описание</label>
 
         <div class="col-sm-10">
-                <textarea rows="5"
-                          ng-model="product.description">
-                </textarea>
+            <text-angular ng-model="product.description"></text-angular>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Применение</label>
+
+        <div class="col-sm-10">
+            <text-angular ng-model="product.use"></text-angular>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Ингридиенты</label>
+
+        <div class="col-sm-10">
+            <text-angular ng-model="product.ingredients"></text-angular>
         </div>
     </div>
 

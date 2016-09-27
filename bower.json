@@ -26,7 +26,9 @@
     "angular-google-maps": "^2.3.2",
     "angular-carousel": "^1.0.1",
     "angular-sanitize": "^1.5.8",
-    "angular-ui-select": "^0.19.4"
+    "angular-ui-select": "^0.19.4",
+    "textAngular": "^1.5.10",
+    "components-font-awesome": "^4.6.3"
   },
   "resolutions": {
     "angular": "^1.5.5"

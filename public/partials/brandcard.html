@@ -3,7 +3,7 @@
     <div class="brand-info">
         <img ng-src="{{utils.getBrandImageUrl(brand)}}">
         <h1>{{brand.name}}</h1>
-        <p>{{brand.description}}</p>
+        <p ng-bind-html="brand.description"></p>
     </div>
 
     <h2>Продукты</h2>

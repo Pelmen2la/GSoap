@@ -17,6 +17,8 @@ var Product = new mongoose.Schema({
     brand: String,
     properties: [String],
     description: String,
+    use: String,
+    ingredients: String,
     additionalInfo: String,
     reviews: [{
         customerName: String,

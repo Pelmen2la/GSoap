@@ -38,7 +38,7 @@ module.exports = function(app) {
 
     function getProductName() {
         var name = [getRandomName(), getRandomNumber(), getRandomAppointment()].join(' ');
-        return name + name + name;
+        return name;
     }
 
     function getImageName(index) {
@@ -100,7 +100,7 @@ module.exports = function(app) {
             'Лада седан баклажан',
             'Какое-то фейковое инфо',
             'Охохохо'
-        ]);;
+        ]);
     }
 
     function getReviewText() {
@@ -148,6 +148,8 @@ module.exports = function(app) {
             type: getType(),
             properties: getProperties(),
             description: getDescription(),
+            use: getDescription(),
+            ingredients: getDescription(),
             additionalInfo: getAdditionalInfo(),
             reviews: getReviews(),
             discount: getDiscount(),
