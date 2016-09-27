@@ -1,129 +1,187 @@
-.admin-main-container .form-group {
-    overflow: auto;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #CCCCCC;
+/* Reset CSS */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button:focus,
+input:focus,
+select:focus {
+    outline: 0;
+}
+/* /Reset CSS */
+
+b {
+    font-weight: bold;
+}
+img {
+    max-width: 100%;
 }
 
-.admin-main-container .top-menu-button {
-    margin: 10px 5px;
+body {
+    font-size: 16px;
 }
 
-.admin-main-container .product-image,
-.admin-main-container .brand-image,
-.admin-main-container .upload-input {
-    margin: 5px auto;
+button {
+    border: 1px solid #8AA108;
+    background: none;
+    height: 1.5em;
+    border-radius: 0.75em;
+    margin: 0.3125em; /* 5 / 16 */
 }
 
-.admin-main-container .product-image,
-.admin-main-container .brand-image {
-    display: block;
-    width: 300px;
-    height: 200px;
+input[type=text],
+input[type=date],
+select,
+textarea {/**/
+    border: 1px solid #8AA108;
+    padding-left: 5px;
 }
 
-.admin-main-container .edit-icon {
+.main-sprite-icon {
+    background-image: url('../resources/sprites/main.png');
+    width: 16px;
+    height: 16px;
+    margin: 4px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.edit-icon {
     background-position-x: -48px;
 }
 
-.admin-main-container .delete-icon {
+.delete-icon {
     background-position-x: -96px;
 }
 
-/* Lists */
-.admin-main-container .admin-product-list,
-.admin-main-container .admin-order-product-list {
-    border-collapse: collapse;
-    text-align: center;
-}
-
-.admin-main-container .admin-product-list tr td,
-.admin-main-container .admin-brand-list tr td,
-.admin-main-container .admin-button-filter-list tr td,
-.admin-main-container .admin-order-list tr th,
-.admin-main-container .admin-order-list tr td,
-.admin-main-container .admin-order-product-list tr th,
-.admin-main-container .admin-order-product-list tr td {
-    padding: 5px 10px;
-}
-
-.admin-main-container .admin-product-list img,
-.admin-main-container .admin-brand-list img,
-.admin-main-container .admin-order-product-list img {
-    height: 70px;
-}
-
-.admin-main-container .admin-product-list tr .product-name,
-.admin-main-container .admin-brand-list tr td.brand-name,
-.admin-main-container .admin-button-filter-list tr td.buttonfilter-name,
-.admin-main-container .admin-brand-list tr .product-name,
-.admin-main-container .admin-order-product-list tr .product-name {
-    font-weight: bold;
-}
-
-.admin-main-container .admin-product-list tr td.product-name,
-.admin-main-container .admin-product-list tr td img,
-.admin-main-container .admin-product-list tr td.product-brand,
-.admin-main-container .admin-brand-list tr td img,
-.admin-main-container .admin-brand-list tr td.brand-name,
-.admin-main-container .admin-button-filter-list tr td.buttonfilter-name {
-    cursor: pointer;
-}
-/* /Lists */
-
-.admin-main-container .multi-rows-container {
-    overflow: auto;
-    width: 100%;
-    position: relative;
-    margin-bottom: 5px;
-}
-
-.admin-main-container .multi-rows-container.bought-together-combos-container {
-    overflow: initial;
-}
-
-.admin-main-container .capacity-list-container .capacity-input,
-.admin-main-container .capacity-list-container .price-input {
-    width: 48%;
-}
-
-.admin-main-container .capacity-list-container .capacity-input {
-    float: left;
-}
-
-.admin-main-container .capacity-list-container .price-input {
-    float: right;
-}
-
-.admin-main-container .delete-button {
-    position: absolute;
-    top: 8px;
-    right: 40px;
-    cursor: pointer;
+.remove-icon {
     background-position-x: -112px;
 }
 
-.admin-main-container .bought-together-combo {
-    height: 30px;
+.add-icon {
+    background-position-x: -64px;
 }
 
-.admin-main-container .property-select {
-    margin-bottom: 5px;
+.list {
+    max-width: 1024px;
+    min-width: 640px;
+    width: 100%;
 }
 
-.admin-main-container .review-container,
-.admin-main-container .review-container .form-control {
-    margin-bottom: 5px;
+.list td {
+    vertical-align: middle;
+    padding: 4px;
 }
 
-.admin-main-container .filter-info-container {
-    margin-bottom: 40px;
+.list .main-image {
+    height: 3em;
+    vertical-align: middle;
 }
 
-.admin-main-container .filter-container {
-    margin-bottom: 20px;
+.edit-page .back-button {
+    display: block;
 }
 
-.admin-main-container .filter-container,
-.admin-main-container .filter-container .filter-properties-container {
-    margin: 20px 0 20px 30px;
+.edit-page > .main-image,
+.edit-page .upload-input {
+    margin: 4px auto;
+    display: block;
+}
+
+.edit-page .form-group {
+    padding: 3px 0;
+    margin: 3px 0;
+    border-bottom: 1px solid #CCCCCC;
+    overflow: auto;
+}
+
+.edit-page .form-group .form-control {
+    margin: 4px 0;
+}
+
+.edit-page input[type=text],
+.edit-page select {
+    width: 100%;
+    height: 2em;
+}
+
+.edit-page textarea {
+    width: 100%;
+}
+
+.edit-page input.half-width-input {
+    width: 49%;
+    display: inline-block;
+}
+
+.edit-page input.half-width-input:last-child {
+    float: right;
+}
+
+.edit-page .inputs-wrapper {
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.edit-page .inputs-wrapper .main-sprite-icon {
+    position: absolute;
+    right: 14px;
+    top: 6px;
+}
+
+.edit-page .review-wrapper > * {
+    margin: 4px 0;
+}
+
+.edit-page .filter-container,
+.edit-page .filter-container .filter-properties-container {
+    margin-top: 20px;
+    margin-left: 30px;
+    padding-left: 10px;
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.edit-page .order-customer-info {
+    line-height: 1.5em;
 }

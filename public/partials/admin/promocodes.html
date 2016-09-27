@@ -1,9 +1,4 @@
 <div ng-controller="PromocodesController">
-    <div class="btn btn-default back-button" ng-click="back()">
-        <span class="icon"></span>
-        Назад
-    </div>
-
     <div class="form-inline">
         <div class="form-group">
             <label for="PromocodeCode">Промокод:</label>
@@ -13,10 +8,10 @@
             <label for="PromocodeDate">Действителен до:</label>
             <input type="date" class="form-control" id="PromocodeDate" ng-model="promocode.date">
         </div>
-        <button class="btn btn-default" ng-click="submitPromocode()">Submit</button>
+        <button ng-click="submitPromocode()">Создать промокод</button>
     </div>
 
-    <table class="admin-order-list">
+    <table class="list">
         <tr>
             <th>Код</th>
             <th>Дата</th>

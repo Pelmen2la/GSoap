@@ -1,12 +1,12 @@
-<div class='btn btn-default add-record-button' ui-sref='newProduct'>
+<button class='add-record-button' ui-sref='newProduct'>
     Добавить товар
-</div>
+</button>
 
 Поиск <input id="grid-filter-input" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
-<table id="AdminProductList" class="admin-product-list">
+<table id="AdminProductList" class="list">
     <tr ng-repeat="product in products">
         <td ng-click="openProductForm(product._id)">
-            <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
+            <img class="main-image" ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
         </td>
         <td ng-click="openProductForm(product._id)" class="product-name">
             {{product.name}}

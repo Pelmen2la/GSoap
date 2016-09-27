@@ -4,7 +4,6 @@ html(ng-app='gsoapAdminApp')
         meta(charset='utf-8')
         title GoodSoap Admin
         link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
-        link(rel='stylesheet', href='css/app.css')
         link(rel='stylesheet', href='css/admin.css')
         link(rel='stylesheet', href='/bower_components/angular-ui-select/dist/select.css')
     body
@@ -12,15 +11,15 @@ html(ng-app='gsoapAdminApp')
             div#auth
                 span #{user}
                 a(href='/logout') Выйти
-            div(class='btn btn-default top-menu-button' ui-sref='index') Товары
+            button(class='top-menu-button' ui-sref='index') Товары
                 span.icon
-            div(class='btn btn-default top-menu-button' ui-sref='brands') Бренды
+            button(class='top-menu-button' ui-sref='brands') Бренды
                 span.icon
-            div(class='btn btn-default top-menu-button' ui-sref='buttonFilters') Фильтры
+            button(class='top-menu-button' ui-sref='buttonFilters') Фильтры
                 span.icon
-            div(class='btn btn-default top-menu-button' ui-sref='orders') Заказы
+            button(class='top-menu-button' ui-sref='orders') Заказы
                 span.icon
-            div(class='btn btn-default top-menu-button' ui-sref='promocodes') Промокоды
+            button(class='top-menu-button' ui-sref='promocodes') Промокоды
                 span.icon
 
             div(ui-view, ng-controller='AdminMainController')
