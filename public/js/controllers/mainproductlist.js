@@ -49,6 +49,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                     product.selectedCapacity = product.capacityList[0];
                 });
                 $scope.products = data;
+                document.body.scrollTop = $('.products-container').offset().top
             });
         }
     }]);
