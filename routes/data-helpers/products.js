@@ -8,7 +8,7 @@ module.exports = function(app) {
     app.get('/products', function(req, res) {
         var query = req.query,
             filters = getFilters(query),
-            pagingOptions = getPagingOptions(query.pageSize, query.pageIndex);
+            pagingOptions = getPagingOptions(JSON.parse(query.pagingOptions));
         if(pagingOptions) {
             Product.find(filters, null, pagingOptions, function(err, data) {
                 Product.count(filters, function(err, totalData) {
@@ -65,13 +65,13 @@ module.exports = function(app) {
         });
     });
 
-    function getPagingOptions(pageSize, pageIndex) {
-        if(!pageSize) {
+    function getPagingOptions(pagingOptions) {
+        if(!pagingOptions.pageSize) {
             return null;
         }
         return {
-            skip: pageSize * pageIndex,
-            limit: parseInt(pageSize)
+            skip: pagingOptions.pageSize * (pagingOptions.pageIndex - 1),
+            limit: parseInt(pagingOptions.pageSize)
         };
     };
     function getFilters(query) {

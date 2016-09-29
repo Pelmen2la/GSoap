@@ -1,25 +1,16 @@
 angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', 'Product',
     function($scope, $state, $stateParams, Product) {
         $scope.products = [];
-        $scope.isCardView = true;
         $scope.searchFilter = '';
-        $scope.pageSize = 20;
-        $scope.pageIndex = 0;
+        $scope.pagingOptions = {
+            pageIndex: 1,
+            pageSize: 24,
+            totalItemsCount: 0
+        };
         $scope.withDiscount = !!$stateParams.withDiscount;
         $scope.isBestseller = !!$stateParams.isBestseller;
         $scope.buttonFilter = $stateParams.buttonFilter;
-        loadPageData(true);
-
-        $(window).scroll(function() {
-            return;
-            var $window = $(window),
-                productContainer = $('.product-container')[0],
-                $page = $('.page');
-            if(productContainer && $page.offset().top + $page.height() -
-                productContainer.offsetHeight < $window.height() + $window.scrollTop()) {
-                loadPageData();
-            }
-        });
+        loadPageData();
 
         $scope.changeControlMode = function(isCardView) {
             $scope.isCardView = isCardView;
@@ -42,28 +33,22 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         $scope.onPropertyFilterCheckboxChange = function() {
             loadPageData(true);
         };
+        $scope.onPagerClick = function(pageIndex) {
+            $scope.pagingOptions.pageIndex = pageIndex;
+            loadPageData();
+        };
 
-        function loadPageData(resetPageIndex) {
+        function loadPageData() {
             var params = {};
-            if($scope.dataLoading || (!resetPageIndex && $scope.products.length == $scope.totalCount)) {
-                return;
-            }
-            $scope.dataLoading = true;
-            $scope.pageIndex = resetPageIndex ? 0 : $scope.pageIndex + 1;
-            ['searchFilter', 'buttonFilter', 'pageSize', 'pageIndex', 'withDiscount', 'isBestseller' ].forEach(function(param) {
+            ['searchFilter', 'buttonFilter', 'pagingOptions', 'withDiscount', 'isBestseller' ].forEach(function(param) {
                 params[param] = $scope[param]
             });
             Product.query(params, function(data) {
-                $scope.dataLoading = false;
-                $scope.totalCount = data.pop();
+                $scope.pagingOptions.totalItemsCount = data.pop();
                 data.forEach(function(product) {
                     product.selectedCapacity = product.capacityList[0];
                 });
-                if($scope.pageIndex === 0) {
-                    $scope.products = data;
-                } else {
-                    $scope.products = $scope.products.concat(data);
-                }
+                $scope.products = data;
             });
         }
     }]);

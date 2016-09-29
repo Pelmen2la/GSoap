@@ -28,7 +28,8 @@
     "angular-sanitize": "^1.5.8",
     "angular-ui-select": "^0.19.4",
     "textAngular": "^1.5.10",
-    "components-font-awesome": "^4.6.3"
+    "components-font-awesome": "^4.6.3",
+    "angular-paging": "^2.2.2"
   },
   "resolutions": {
     "angular": "^1.5.5"

@@ -3,6 +3,7 @@
          ng-class="{bestseller: product.isBestseller}">
         <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
         <a class="product-name" ng-click="openProductCard(product._id)">{{product.name}}</a>
+
         <div class="product-price"><b>{{utils.getProductPrice(product, product.selectedCapacity)}}</b></div>
         <ul class="product-capacity">
             <li ng-repeat="capacityInfo in product.capacityList">
@@ -17,4 +18,11 @@
             </button>
         </div>
     </div>
+</div>
+<div paging
+     page="pagingOptions.pageIndex"
+     page-size="pagingOptions.pageSize"
+     total="pagingOptions.totalItemsCount"
+     paging-action="onPagerClick(page)",
+     class="page-control">
 </div>

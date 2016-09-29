@@ -435,10 +435,6 @@ ul {
 	margin: 0 auto;
 }
 
-.product-container .text-container {
-
-}
-
 .product-container .product-name {
 	display: block;
 	height: 3.692307em; /* 16 * 3 / 13 */
@@ -481,7 +477,6 @@ ul {
 	color: #8AA108;
 }
 
-
 .product-container .product-buy-button-container {
 	display: none;
 	padding-bottom: 1.153846em; /* 15 / 13 */
@@ -514,6 +509,22 @@ ul {
 .product-container .product-buy-button-container span {
 	height: 1.384615em; /* 18 / 13 */
 	vertical-align: middle;
+}
+
+.page-control {
+	background: white;
+	padding: 0 7.272727%; /* 80 / 1100 */
+}
+
+.page-control .pagination>li>a {
+	color: black;
+	border: none;
+	border-radius: 0;
+}
+
+.page-control .pagination>.active>a {
+	color: white;
+	background-color: #9FAC28;
 }
 
 /* Footer */
