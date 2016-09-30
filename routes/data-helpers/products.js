@@ -24,9 +24,13 @@ module.exports = function(app) {
     });
 
     app.get('/products/:id', function(req, res, next) {
-        Product.findById(req.params.id, function(err, data) {
+        Product.findById(req.params.id, function(err, productData) {
             if(err) return next(err);
-            res.json(data);
+            Product.find({ _id: { $in: productData.boughtTogetherProductIds } }, null, null, function(err, boughtTogetherProductsData) {
+                productData = productData.toObject();
+                productData.boughtTogetherProducts = boughtTogetherProductsData;
+                res.json(productData);
+            });
         });
     });
 

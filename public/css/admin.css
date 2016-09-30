@@ -94,6 +94,10 @@ textarea {/**/
     overflow: auto;
 }
 
+.edit-page .form-group.with-ui-select {
+    padding-bottom: 100px;
+}
+
 .edit-page .form-group .form-control {
     margin: 4px 0;
 }

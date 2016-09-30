@@ -1,6 +1,5 @@
 angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', 'Product',
     function($scope, $state, $stateParams, Product) {
-        $scope.products = [];
         $scope.searchFilter = '';
         $scope.pagingOptions = {
             pageIndex: 1,
@@ -10,7 +9,10 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         $scope.withDiscount = !!$stateParams.withDiscount;
         $scope.isBestseller = !!$stateParams.isBestseller;
         $scope.buttonFilter = $stateParams.buttonFilter;
-        loadPageData();
+        if(!$scope.products) {
+            $scope.products = [];
+            loadPageData();
+        }
 
         $scope.changeControlMode = function(isCardView) {
             $scope.isCardView = isCardView;
@@ -36,6 +38,11 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         $scope.onPagerClick = function(pageIndex) {
             $scope.pagingOptions.pageIndex = pageIndex;
             loadPageData();
+        };
+        $scope.someFn = function()
+        {
+            var a = $scope;
+            debugger;
         };
 
         function loadPageData() {

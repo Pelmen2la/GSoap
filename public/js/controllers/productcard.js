@@ -4,6 +4,7 @@ angular.module('gsoapApp.controllers')
             $scope.selectedCapacity = {};
             $scope.orderCount = 1;
             $scope.selectedTabName = 'description';
+            $scope.products = [];
             loadRecord($stateParams.id);
             initReview();
 
@@ -30,6 +31,10 @@ angular.module('gsoapApp.controllers')
             function loadRecord(id) {
                 $scope.product = Product.get({id: id}, function() {
                     $scope.product.selectedCapacity = $scope.product.capacityList[0];
+                    $scope.product.boughtTogetherProducts.forEach(function(product) {
+                        product.selectedCapacity = product.capacityList[0];
+                    });
+                    $scope.products = $scope.product.boughtTogetherProducts;
                 });
                 $scope.reviewsAllowed = isReviewsAllowed(getReviewTimes()[id]);
             };

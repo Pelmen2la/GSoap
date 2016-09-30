@@ -409,6 +409,13 @@ ul {
 	overflow: auto;
 	background: white;
 }
+
+.bought-together-container .products-container,
+.bought-together-container .products-container .product-container,
+.bought-together-container .products-container .product-container .product-buy-button-container {
+	background: none;
+}
+
 .product-container {
 	width: 22.557172%; /* 217 / 962 */
 	margin: 0.923076em 1.143451%; /* 24 / 2 / 13 , 22 / 2 / 962 */
@@ -676,6 +683,10 @@ ul {
 
 .product-card p {
 	margin-top: 2em; /* 26 / 13 */
+}
+
+.bought-together-header {
+	padding: 1.923076em 7.272727%; /* 25 / 13, 80 / 1100 */
 }
 /* /Product card */
 
