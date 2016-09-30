@@ -8,7 +8,7 @@ module.exports = function(app) {
     app.get('/products', function(req, res) {
         var query = req.query,
             filters = getFilters(query),
-            pagingOptions = getPagingOptions(JSON.parse(query.pagingOptions));
+            pagingOptions = getPagingOptions(query.pagingOptions ? JSON.parse(query.pagingOptions) : {});
         if(pagingOptions) {
             Product.find(filters, null, pagingOptions, function(err, data) {
                 Product.count(filters, function(err, totalData) {
@@ -70,7 +70,7 @@ module.exports = function(app) {
             return null;
         }
         return {
-            skip: pagingOptions.pageSize * (pagingOptions.pageIndex - 1),
+            skip: pagingOptions.pageSize * ((pagingOptions.pageIndex || 1) - 1),
             limit: parseInt(pagingOptions.pageSize)
         };
     };
