@@ -37,15 +37,12 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         };
         $scope.onPagerClick = function(pageIndex) {
             $scope.pagingOptions.pageIndex = pageIndex;
-            loadPageData();
-        };
-        $scope.someFn = function()
-        {
-            var a = $scope;
-            debugger;
+            loadPageData(function() {
+                document.body.scrollTop = $('.products-container').offset().top
+            });
         };
 
-        function loadPageData() {
+        function loadPageData(callback) {
             var params = {};
             ['searchFilter', 'buttonFilter', 'pagingOptions', 'withDiscount', 'isBestseller' ].forEach(function(param) {
                 params[param] = $scope[param]
@@ -56,7 +53,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                     product.selectedCapacity = product.capacityList[0];
                 });
                 $scope.products = data;
-                document.body.scrollTop = $('.products-container').offset().top
+                callback && callback();
             });
         }
     }]);
