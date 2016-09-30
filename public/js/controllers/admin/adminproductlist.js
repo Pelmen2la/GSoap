@@ -1,8 +1,10 @@
 angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListController', ['$scope', '$state', '$stateParams', 'Product',
     function($scope, $state, $stateParams, Product) {
         $scope.searchFilter = '';
-        $scope.pageSize = 20;
-        $scope.pageIndex = 0;
+        $scope.pagingOptions = {
+            pageSize: 20,
+            pageIndex: 1
+        };
         loadPageData(true);
 
         $(window).scroll(function() {
@@ -37,22 +39,22 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
 
         function loadPageData(resetPageIndex) {
             var params = {};
-            if($scope.dataLoading || (!resetPageIndex && $scope.products.length == $scope.totalCount)) {
+            if($scope.dataLoading || (!resetPageIndex && $scope.products.length === $scope.pagingOptions.totalCount)) {
                 return;
             }
             $scope.dataLoading = true;
-            $scope.pageIndex = resetPageIndex ? 0 : $scope.pageIndex + 1;
-            ['searchFilter', 'pageSize', 'pageIndex'].forEach(function(param) {
+            $scope.pagingOptions.pageIndex = resetPageIndex ? 1 : $scope.pagingOptions.pageIndex + 1;
+            ['searchFilter', 'pagingOptions'].forEach(function(param) {
                 params[param] = $scope[param]
             });
             params['showInactive'] = true;
             Product.query(params, function(data) {
                 $scope.dataLoading = false;
-                $scope.totalCount = data.pop();
+                $scope.pagingOptions.totalCount = data.pop();
                 data.forEach(function(product) {
                     product.selectedCapacity = product.capacityList[0];
                 });
-                if($scope.pageIndex === 0) {
+                if($scope.pagingOptions.pageIndex === 1) {
                     $scope.products = data;
                 } else {
                     $scope.products = $scope.products.concat(data);
