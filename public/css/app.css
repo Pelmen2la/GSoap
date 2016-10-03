@@ -72,8 +72,26 @@ select:focus {
 }
 /* /Museo font */
 
+/* Noto font */
+@font-face {
+    font-family: "NotoSansRegular";
+    url("../fonts/NotoSans/notosans.woff") format("woff"),
+    url("../fonts/NotoSans/notosans.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "NotoSansBold";
+	url("../fonts/NotoSans/notosansbold.woff") format("woff"),
+    url("../fonts/NotoSans/notosansbold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+/* /Museo font */
+
 body {
-	font-family: MuseoSansRegular;
+	font-family: 'NotoSansRegular', Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	background: url('../resources/images/main-background.png') #F7F7F7 no-repeat;
 	background-size: contain;
@@ -85,8 +103,9 @@ body {
 	}
 }
 
-b {
-	font-family: MuseoSansBold;
+b,
+strong {
+	font-weight: bold;
 }
 
 a,
@@ -101,12 +120,12 @@ h1 {
 
 h2 {
 	font-size: 1.230769em; /* 16 / 13 */
-	font-family: MuseoSansBold;
+	font-weight: bold;
 }
 
 h3 {
 	font-size: 1.153846em; /* 15 / 13 */
-	font-family: MuseoSansBold;
+	font-weight: bold;
 }
 
 a:hover {
@@ -231,7 +250,7 @@ ul {
 .products-menu {
 	font-size: 1.384615em; /* 18 / 13 */
 	margin-bottom: 3em; /* 18 * 1.5 * 2 / 18*/
-	font-family: MuseoSansBold;
+	font-weight: bold;
 	list-style: none;
 }
 
