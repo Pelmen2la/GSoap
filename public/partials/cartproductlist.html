@@ -54,11 +54,9 @@
     </table>
     <div class="left-order-container">
         <h2>Введите ваши контактные данные</h2>
-        <input placeholder="Имя и фамилия" ng-model="customerInfo.name" required>
-        <input placeholder="Номер телефона" ng-model="customerInfo.phone" required>
-        <input placeholder="Электронная почта"ng-model="customerInfo.email" required>
-        <input placeholder="Город" ng-model="customerInfo.city">
-        <input placeholder="Индекс" ng-model="customerInfo.postIndex">
+        <input placeholder="Имя и фамилия" ng-model="customerInfo.name">
+        <input placeholder="Номер телефона *" ng-model="customerInfo.phone" title="поле обязательно для заполнения" required>
+        <input placeholder="Электронная почта *"ng-model="customerInfo.email" title="поле обязательно для заполнения" required>
         <input placeholder="Полный адрес" ng-model="customerInfo.fullAddress">
         <input placeholder="Код на скидку" ng-model="customerInfo.promocode" ng-keyup="onPromocodeInputKeyUp()">
         <span ng-class="promocodeTooltipInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeTooltipInfo.text}}</span>

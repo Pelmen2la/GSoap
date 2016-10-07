@@ -833,6 +833,10 @@ ul {
 }
 
 .cart-page .left-order-container textarea {
+	padding: 0.769230em 0; /* 10 / 13 */
+}
+
+.cart-page .left-order-container textarea {
 	resize: none;
 	height: 6.846153em; /* 89 / 13 */
 }
@@ -912,7 +916,7 @@ ul {
 	display: block;
 	width: 50%; /* 470 / 940 */
 	padding-left: 8.510638%; /* 80 / 940 */
-	line-height: 1.153846em; /* 15 / 13 */
+	line-height: 1.5em;
 }
 
 .delivery-page .left-info-container {
