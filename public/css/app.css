@@ -893,6 +893,10 @@ ul {
 .simple-page h1 {
 	margin: 1.384615em 0; /* 36 / 26 */
 }
+
+.simple-page p {
+	text-indent: 10px;
+}
 /* /Simple page */
 
 /* Delivery page */
