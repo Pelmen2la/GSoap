@@ -42,6 +42,25 @@
         </p>
         <p ng-hide="selectedTabName !== 'ingredients'" ng-bind-html="product.ingredients">
         </p>
+        <div ng-hide="selectedTabName !== 'reviews'" class="reviews-container">
+            <p class="review" ng-repeat="review in product.reviews">
+                <b>{{review.customerName}}</b><br>
+                <br>
+                {{review.text}}
+            </p>
+        </div>
+        <div ng-show="reviewsAllowed && selectedTabName === 'reviews'" class="send-review-container">
+            <h3>Оставить отзыв</h3>
+            <input name="name" type=text" ng-model="review.customerName" placeholder="Ваше имя">
+            <textarea rows="4" ng-model="review.text" placeholder="Ваш отзыв"></textarea>
+
+            <button ng-click="onSendReviewButtonClick()">
+                Отправить отзыв
+            </button>
+        </div>
+        <p ng-show="!reviewsAllowed && selectedTabName === 'reviews'" class="no-send-review-message">
+            Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.
+        </p>
     </div>
     <h2 class="bought-together-header" ng-show="products.length">С этим товаром покупают</h2>
     <div ng-controller="MainProductListController" ng-include src="'/partials/mainproductlist.html'"

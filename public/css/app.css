@@ -45,7 +45,8 @@ table {
 }
 button:focus,
 input:focus,
-select:focus {
+select:focus,
+textarea:focus{
     outline: 0;
 }
 /* /Reset CSS */
@@ -143,7 +144,8 @@ button:active	 {
 }
 
 select,
-input {
+input,
+textarea {
 	border: 2px solid #A5B73F;
 }
 
@@ -642,10 +644,10 @@ ul {
 	height: 67.567567%; /* 25 / 37 */
 	width: 5.319148%; /* 50 / 940 */
 	min-width: 50px;
-	border: 2px solid #A5B73F;
 }
 
-.product-card .product-buy-button {
+.product-card .product-buy-button,
+.product-card .send-review-container button {
 	width: 19.787234%; /* 186 / 940 */
 	min-width: 90px;
 	max-width: 150px;
@@ -708,6 +710,34 @@ ul {
 	margin-top: 2em; /* 26 / 13 */
 }
 
+.product-card .reviews-container {
+	padding-top: 0.384615em; /* 5 / 13 */
+	clear: both;
+}
+
+.product-card .send-review-container,
+.product-card .no-send-review-message {
+	border-top: 1px solid #A5B73F;
+}
+
+.product-card .send-review-container,
+.product-card .send-review-container > * {
+	margin-top: 0.769230em; /* 10 / 13 */
+	display: block;
+}
+
+.product-card .send-review-container input {
+	width: 21.2765%; /* 200 / 940 */
+}
+
+.product-card .send-review-container textarea {
+	width: 100%;
+}
+
+.product-card .no-send-review-message {
+	padding-top: 0.769230em; /* 10 / 13 */
+}
+
 .bought-together-header {
 	padding: 1.923076em 7.272727%; /* 25 / 13, 80 / 1100 */
 }
@@ -757,7 +787,6 @@ ul {
 }
 
 .products-grid td input {
-	border: 2px solid #A5B73F;
 	width: 4.384615em; /* 57 / 13 */
 }
 
@@ -788,7 +817,6 @@ ul {
 	height: 2.615384em; /* 34 / 13 */
 	margin: 0.461538em 0; /* 12 / 2 / 13 */
 	padding-left:  1.860465%; /* 16 / 860 */
-	border: 2px solid #A5B73F;
 	display: block;
 }
 
@@ -941,7 +969,6 @@ ul {
 }
 
 .brand-card .search-input {
-	border: 2px solid #A5B73F;
 	height: 1.923076em; /* 25 / 13 */
 	width: 31.914893%; /* 300 / 940 */
 	padding-left: 0.425531%; /* 4 / 940 */
