@@ -1,4 +1,4 @@
-<form class="cart-page" name="form"  novalidate>
+<form class="cart-page" name="form"  novalidate ng-show="cartProducts.length">
     <h1>Оформить заказ</h1>
     <table ng-show="cartProducts.length" class="products-grid">
         <tr>
@@ -35,6 +35,22 @@
                       ng-click="removeProductFromCard($index)"></button>
             </td>
         </tr>
+        <tr ng-class="{invisible : customerInfo.deliveryType !== 'delivery'}">
+            <td colspan="3">Стоимость доставки</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>200 руб.</td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>Общая стоимость</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{getTotalCost()}} руб.</td>
+        </tr>
     </table>
     <div class="left-order-container">
         <h2>Введите ваши контактные данные</h2>
@@ -63,7 +79,7 @@
             <input type="radio" ng-model="customerInfo.deliveryType" value="delivery" id="deliveryRadio" ng-model="customerInfo.deliveryType">
             <p>
                 <b>По России</b><br><br>
-                Стоимость доставки 1000р.
+                Стоимость доставки 250 руб. <b>Бесплатно</b> при заказе от 1000р.
             </p>
         </label>
     </div>
@@ -71,108 +87,4 @@
         Заказать
     </button>
 </form>
-<!--
-<div class="product-cart-page-container">
-    <table class="product-cart-grid" ng-show="cartProducts.length">
-        <tr>
-            <th></th>
-            <th colspan="3">Наименование</th>
-            <th>Ёмкость</th>
-            <th>Скидка</th>
-            <th>Цена за единицу</th>
-            <th>Количество</th>
-            <th>Сумма</th>
-        </tr>
-        <tr ng-repeat="product in cartProducts track by $index">
-            <td>
-                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product.id)">
-            </td>
-            <td colspan="3" class="product-name">
-                <a href='' ng-click="openProductCard(product.id)">{{product.name}}</a>
-            </td>
-            <td class="number">
-                <span>{{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
-            </td>
-            <td class="number">
-                <span>{{product.discount}}%</span>
-            </td>
-            <td class="number">
-                <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
-            </td>
-            <td>
-                <input type="number" class="product-count" name="input" ng-model="product.count" min="1" max="99"
-                       ng-class="{invalid: !utils.isProductCountAvailable(product, product.count)}"
-                       ng-attr-title="{{utils.isProductCountAvailable(product, product.count) ? '' :
-                        stringResources.validationMessages.wrongProductCountTitle}}">
-            </td>
-            <td class="number">
-                <span>{{utils.getProductPrice(product, product.capacityInfo, product.count)}}</span>
-            </td>
-            <td class="number">
-                <span class="main-sprite-icon delete-cart-product-button"
-                      ng-click="removeProductFromCard($index)"></span>
-            </td>
-        </tr>
-    </table>
-
-    <form name="form" novalidate>
-        <label class="control-label">Оформить заказ:</label>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Имя</label>
-
-            <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="customerInfo.name" name="name"
-                       title="{{form.name.$invalid ? 'Имя обязательно для заполнения' : '' }}" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">E-mail</label>
-
-            <div class="col-sm-10">
-                <input type="email" class="form-control" ng-model="customerInfo.email" name="email"
-                       title="{{form.name.$invalid ? 'E-mail обязателен для заполнения и должен быть в формате gsoap@mail.ru' : '' }}" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Телефон</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" ng-model="customerInfo.phone"
-                       title="{{form.name.$invalid ? 'Телефон обязателен для заполнения' : '' }}" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Код на скидку</label>
-
-            <div class="col-sm-10">
-                <input type="text" class="form-control"
-                       ng-model="customerInfo.promocode" ng-keyup="onPromocodeInputKeyUp()">
-                <label ng-class="promocodeTooltipInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeTooltipInfo.text}}</label>
-            </div>
-
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Тип доставки</label>
-
-            <div class="col-sm-10">
-                <select
-                        class="form-control"
-                        ng-model="customerInfo.deliveryType"
-                        ng-options="key as value for (key, value) in deliveryTypes">
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Адрес</label>
-
-            <div class="col-sm-10">
-                <input type="text"
-                       class="form-control"
-                       ng-model="customerInfo.address">
-            </div>
-        </div>
-        <button class="btn btn-default submit-button" ng-disabled="form.$invalid" ng-click="sendOrder()">
-            Заказать
-        </button>
-    </form>
-</div>-->
+<p class="no-products-in-cart-text" ng-show="!cartProducts.length">В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из <a href="#/products">списка</a></p>

@@ -1,13 +1,11 @@
 angular.module('gsoapApp.controllers').controller('CartProductListController', ['$scope', '$http', '$state', 'StringResources', 'Order',
     function($scope, $http, $state, StringResources, Order) {
         $scope.customerInfo = {
-            deliveryType: 'self'
         };
         $scope.promocodeTooltipInfo = {
             text: '',
             cssCls: ''
         };
-            $scope.deliveryTypes = StringResources.deliveryTypes;
 
         $scope.openProductCard = function(id) {
             $state.go('productCard', {id: id});
@@ -42,5 +40,18 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
                 $scope.$parent.cartProducts = [];
                 $state.go('index');
             });
-        }
+        };
+        $scope.getDeliveryCost= function() {
+            return getProductsCost() >= 1000 || $scope.customerInfo.deliveryType !== 'delivery' ? 0 : 250;
+        };
+        $scope.getTotalCost = function() {
+            return getProductsCost() + $scope.getDeliveryCost();
+        };
+
+        function getProductsCost() {
+            return $scope.cartProducts.reduce(function(accum, currentVal) {
+                accum += currentVal.count * currentVal.capacityInfo.price;
+                return accum;
+            }, 0);
+        };
     }]);
