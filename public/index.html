@@ -52,20 +52,20 @@
         </ul>
         <ul class="products-menu">
             <li>
-                <button ng-click="changeView('products')">Все товары</button>
+                <button><a ng-href="#/products" ng-click="onButtonFilterClick()">Все товары</a></button>
             </li>
             <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
                 <button type="button" ng-attr-id="{{'mainListFilterButton' + $index}}"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        ng-click="onButtonFilterMainButtonClick(buttonFilter._id)">
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{buttonFilter.name}}<span class="caret-icon"></span>
                 </button>
                 <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">
                     <li>{{buttonFilter.name}}<span class="caret-icon"></span><div class="mask"></div></li>
                     <li ng-repeat="filter in buttonFilter.filters"
-                        ng-class="{ selected: filter == buttonFilter }"
-                        ng-click="onFilterButtonClick(filter)">
-                        <a href="#">{{filter.name}}</a><div class="mask"></div></li>
+                        ng-class="{ selected: filter == buttonFilter }">
+                        <a ng-href="#/products?buttonFilter={{filter}}" ng-click="onButtonFilterClick()">{{filter.name}}</a>
+                        <div class="mask"></div>
+                    </li>
                 </ul>
             </li>
             <li>

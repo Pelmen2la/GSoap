@@ -34,7 +34,7 @@ angular.module('gsoapApp.controllers')
                 });
             };
             $scope.onFilterButtonClick = function(filter) {
-                $scope.changeView('index', {buttonFilter: JSON.stringify(filter)});
+                $scope.changeView('products');
             };
             $scope.changeView = function(name, params) {
                 $state.go(name, params, {reload: $state.current.name === name});
@@ -42,6 +42,11 @@ angular.module('gsoapApp.controllers')
             $scope.onUpButtonClick = function() {
                 document.body.scrollTop = 0;
                 document.getElementsByTagName('HTML')[0].scrollTop = 0;
+            };
+            $scope.onButtonFilterClick = function() {
+                window.setTimeout(function() {
+                    $state.reload();
+                }, 0);
             };
 
             $(window).scroll(function() {

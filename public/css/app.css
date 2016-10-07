@@ -278,6 +278,10 @@ ul {
 	visibility: hidden;
 }
 
+.products-menu a {
+	color: black;
+}
+
 .products-menu .dropdown-menu {
 	font-size: 1em; /* override bootstrap */
 	background: none;
