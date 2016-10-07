@@ -35,7 +35,7 @@
                       ng-click="removeProductFromCard($index)"></button>
             </td>
         </tr>
-        <tr ng-class="{invisible : customerInfo.deliveryType !== 'delivery'}">
+        <tr ng-class="{invisible : !getDeliveryCost()}">
             <td colspan="3">Стоимость доставки</td>
             <td></td>
             <td></td>
@@ -79,7 +79,8 @@
             <input type="radio" ng-model="customerInfo.deliveryType" value="delivery" id="deliveryRadio" ng-model="customerInfo.deliveryType">
             <p>
                 <b>По России</b><br><br>
-                Стоимость доставки 250 руб. <b>Бесплатно</b> при заказе от 1000р.
+                Стоимость доставки 250 руб. <b>Бесплатно</b> при заказе от 2500р.<br>
+                <span ng-show="!!getDeliveryCost()">Добавьте продуктов на сумму {{2500 - getProductsCost()}} руб. и доставка будет за наш счет.</span>
             </p>
         </label>
     </div>

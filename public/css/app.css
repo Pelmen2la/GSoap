@@ -912,6 +912,7 @@ ul {
 	display: block;
 	width: 50%; /* 470 / 940 */
 	padding-left: 8.510638%; /* 80 / 940 */
+	line-height: 1.153846em; /* 15 / 13 */
 }
 
 .delivery-page .left-info-container {

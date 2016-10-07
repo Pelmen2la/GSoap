@@ -41,17 +41,16 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
                 $state.go('index');
             });
         };
-        $scope.getDeliveryCost= function() {
-            return getProductsCost() >= 1000 || $scope.customerInfo.deliveryType !== 'delivery' ? 0 : 250;
-        };
-        $scope.getTotalCost = function() {
-            return getProductsCost() + $scope.getDeliveryCost();
-        };
-
-        function getProductsCost() {
+        $scope.getProductsCost = function() {
             return $scope.cartProducts.reduce(function(accum, currentVal) {
                 accum += currentVal.count * currentVal.capacityInfo.price;
                 return accum;
             }, 0);
+        };
+        $scope.getDeliveryCost = function() {
+            return $scope.getProductsCost() >= 2500 || $scope.customerInfo.deliveryType !== 'delivery' ? 0 : 250;
+        };
+        $scope.getTotalCost = function() {
+            return $scope.getProductsCost() + $scope.getDeliveryCost();
         };
     }]);
