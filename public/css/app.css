@@ -1051,6 +1051,7 @@ ul {
 .article-card .article-text-wrapper {
 	margin: 0 auto;
 	max-width: 1000px;
+	line-height: 1.5em;
 }
 
 .article-card .article-text-wrapper img {
