@@ -1034,7 +1034,8 @@ ul {
 }
 
 .articles-page .article-container img {
-	height: 7.692307em; /* 100 / 13 */
+	width: 10.638297%; /* 100 / 950 */
+	max-height: 100%;
 	margin-right: 0.541914%; /* 5 / 940 */
 	float: left;
 }
@@ -1047,14 +1048,19 @@ ul {
 	overflow: auto;
 }
 
-.article-card img {
+.article-card .article-text-wrapper {
+	margin: 0 auto;
+	max-width: 1000px;
+}
+
+.article-card .article-text-wrapper img {
 	width: 33.829787%; /* 318 / 940 */
 	margin-right: 5.957446%; /* 56 / 940 */
 	border: 1px solid #E9F1BE;
 	float: left;
 }
 
-.article-card p {
+.article-card .article-text-wrapper p {
 	margin-top: 2.076923em; /* 27 / 13 */
 }
 /* /Brand card */
