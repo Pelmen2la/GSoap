@@ -51,8 +51,8 @@ angular.module('gsoapAdminApp.adminControllers')
             var properties = $scope.product.properties;
             array.splice(index, 1);
         };
-        $scope.addCapacity = function() {
-            product.properties($scope.product.capacityList, {capacity: '', price: ''});
+        $scope.addCapacity = function(product) {
+            $scope.addMemberToArray($scope.product.capacityList, {capacity: '', price: ''});
         };
         $scope.addMemberToArray = function(array, member) {
             array.push(member || '');
