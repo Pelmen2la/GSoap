@@ -22,6 +22,14 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         url: '/brands/:name/',
         templateUrl: '/partials/brandcard.html',
         controller: 'BrandCardController'
+    }).state('articles', {
+        url: '/articles/',
+        templateUrl: '/partials/articlelist.html',
+        controller: 'ArticleListController'
+    }).state('articleCard', {
+        url: '/articles/:id/',
+        templateUrl: '/partials/articlecard.html',
+        controller: 'ArticleCardController'
     }).state('cartProductList', {
         url: '/cart/',
         templateUrl: '/partials/cartproductlist.html',
@@ -33,6 +41,10 @@ angular.module('gsoapApp').config(function ($stateProvider) {
     }).state('delivery', {
         url: '/delivery/',
         templateUrl: '/partials/simplepages/delivery.html',
+        controller: ''
+    }).state('contacts', {
+        url: '/contacts/',
+        templateUrl: '/partials/simplepages/contacts.html',
         controller: ''
     });
 }).run(function ($state) {

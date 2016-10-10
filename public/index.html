@@ -41,13 +41,13 @@
                 <a href="/#/about/">О нас</a>
             </li>
             <li>
-                <a>Блог</a>
+                <a ng-href="#/articles/">Блог</a>
             </li>
             <li>
                 <a href="/#/delivery/">Доставка и оплата</a>
             </li>
             <li>
-                <a>Контакты</a>
+                <a href="#/contacts/">Контакты</a>
             </li>
         </ul>
         <ul class="products-menu">
@@ -69,7 +69,9 @@
                 </ul>
             </li>
             <li>
-                <button ng-click="changeView('brands')">Бренды</button>
+                <button>
+                    <a ng-href="#/brands/">Бренды</a>
+                </button>
             </li>
         </ul>
     </div>
@@ -97,7 +99,7 @@
             </p>
         </div>
         <div class="information">
-            <h3>Контакты</h3>
+            <h3>Информация</h3>
             <br>
             <ul>
                 <li>
@@ -122,7 +124,7 @@
             <br>
             <ul>
                 <li>
-                    <a>Блог</a>
+                    <a ng-href="#/articles/">Блог</a>
                 </li>
                 <li>
                     <a>Статьи</a>
@@ -164,8 +166,11 @@
 <script src="js/controllers/main.js"></script>
 <script src="js/controllers/mainproductlist.js"></script>
 <script src="js/controllers/brandlist.js"></script>
+<script src="js/controllers/articlelist.js"></script>
+<script src="js/controllers/articlelist.js"></script>
 <script src="js/controllers/productcard.js"></script>
 <script src="js/controllers/brandcard.js"></script>
+<script src="js/controllers/articlecard.js"></script>
 <script src="js/controllers/cartproductlist.js"></script>
 <script src="js/controllers/cart.js"></script>
 <script src="js/services/models.js"></script>

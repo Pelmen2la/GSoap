@@ -23,6 +23,8 @@ html(ng-app='gsoapAdminApp')
                 span.icon
             button(class='top-menu-button' ui-sref='promocodes') Промокоды
                 span.icon
+            button(class='top-menu-button' ui-sref='articles') Статьи
+                span.icon
 
             div(ui-view, ng-controller='AdminMainController')
 
@@ -44,6 +46,8 @@ html(ng-app='gsoapAdminApp')
         script(src='/js/controllers/admin/productform.js')
         script(src='/js/controllers/admin/adminbrandlist.js')
         script(src='/js/controllers/admin/brandform.js')
+        script(src='/js/controllers/admin/adminarticlelist.js')
+        script(src='/js/controllers/admin/articleform.js')
         script(src='/js/controllers/admin/buttonfilterlist.js')
         script(src='/js/controllers/admin/buttonfilterform.js')
         script(src='/js/controllers/admin/orderlist.js')

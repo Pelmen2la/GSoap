@@ -1,0 +1,11 @@
+<div class="articles-page">
+    <h1>Блог</h1>
+    <div class="article-container" ng-repeat="article in articles">
+        <a ng-href="#/articles/{{article._id}}/">
+            <img ng-src="{{utils.getArticleImageUrl(article)}}">
+            <h2>{{article.name}}</h2>
+        </a>
+
+        <p class="article-description" ng-bind-html="article.description"></p>
+    </div>
+</div>

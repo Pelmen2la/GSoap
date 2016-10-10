@@ -24,6 +24,18 @@ angular.module('gsoapAdminApp').config(function ($stateProvider) {
         url: '/brand/new',
         templateUrl: '/partials/admin/brandform.html',
         controller: 'BrandCreateController'
+    }).state('articles', {
+        url: '/articles/',
+        templateUrl: '/partials/admin/adminarticlelist.html',
+        controller: 'AdminArticleListController'
+    }).state('articleForm', {
+        url: '/article/edit/:id/',
+        templateUrl: '/partials/admin/articleform.html',
+        controller: 'ArticleEditController'
+    }).state('newArticle', {
+        url: '/article/new',
+        templateUrl: '/partials/admin/articleform.html',
+        controller: 'ArticleCreateController'
     }).state('buttonFilters', {
         url: '/buttonfilters/',
         templateUrl: '/partials/admin/buttonfilterlist.html',

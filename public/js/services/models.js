@@ -15,6 +15,13 @@ angular.module('gsoapApp.services')
             }
         });
     })
+    .factory('Article', function($resource) {
+        return $resource('/articles/:id', null, {
+            update: {
+                method: 'PUT'
+            }
+        });
+    })
     .factory('ButtonFilter', function($resource) {
         return $resource('/buttonFilters/:id', null, {
             update: {

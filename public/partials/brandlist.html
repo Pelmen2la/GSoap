@@ -3,6 +3,6 @@
     <div class="brand-container" ng-repeat="brand in brands">
         <img ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandCard(brand.name)">
         <h2 ng-click="openBrandCard(brand.name)">{{brand.name}}</h2>
-        <div class="brand-description">{{brand.description}}</div>
+        <p class="brand-description" ng-bind-html="brand.description"></p>
     </div>
 </div>

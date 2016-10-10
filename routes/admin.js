@@ -56,6 +56,10 @@ module.exports = function(app) {
         tryUploadFile('public/resources/images/brands/', req, res);
     });
 
+    app.post('/admin/upload/article/image/', multerInstance.single('file'), function(req, res) {
+        tryUploadFile('public/resources/images/articles/', req, res);
+    });
+
     function tryUploadFile(targetPath, req, res) {
         function getImageName() {
             var name = req.file.originalname;
@@ -69,6 +73,9 @@ module.exports = function(app) {
         var imageName = getImageName(req.file.originalname);
         var suffix = '';
 
+        if(!fs.existsSync(targetPath)) {
+            fs.mkdirSync(targetPath);
+        }
         while(fs.existsSync(getTargetPath())) {
             suffix = parseInt(suffix + 1);
         }

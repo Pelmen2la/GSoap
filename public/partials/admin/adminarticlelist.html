@@ -1,0 +1,20 @@
+<button ui-sref='newArticle'>
+    Добавить статью
+</button>
+
+<table class="list">
+    <tr ng-repeat="article in articles">
+        <td>
+            <img class="main-image" ng-src="{{utils.getArticleImageUrl(article)}}" ng-click="openArticleForm(article.name)">
+        </td>
+        <td class="article-name" ng-click="openArticleForm(article.name)">
+            {{article.name}}
+        </td>
+        <td>
+            <span class="main-sprite-icon edit-icon" ng-click="openArticleForm(article._id)"></span>
+        </td>
+        <td>
+            <span class="main-sprite-icon delete-icon" ng-click="tryDeleteArticle(article._id)"></span>
+        </td>
+    </tr>
+</table>
