@@ -429,6 +429,8 @@ ul {
 /* /Advantages panel */
 
 /* Main page */
+
+/* Products Container */
 .products-container {
 	padding: 0 6.272727% 2.692307em; /* (80 - 22 / 2)  / 1100, 35 / 13 */
 	margin: 0 auto;
@@ -559,6 +561,63 @@ ul {
 	color: white;
 	background-color: #9FAC28;
 }
+/* /Products Container */
+
+/* Subscribe block */
+.subscribe-block {
+	background: url('../resources/images/main-background.png') #F7F7F7 no-repeat;
+	background-position-y: -227px;
+	margin: 0 7.272727%; /* 80 / 1100 */
+	padding: 3.191489% 2em; /* 30 / 940, 26 / 13 */
+}
+
+.subscribe-block > * {
+	display: inline-block;
+}
+
+.subscribe-block p {
+	background: white;
+	line-height: 1.153846em; /* 45 / 3 /13 */
+}
+
+.subscribe-block .input-container {
+	float: right;
+	position: relative;
+	width: 42.553191%; /* 400 / 940 */
+}
+
+.subscribe-block .input-container input {
+	height: 3.846153em; /* 50 / 13 */
+	border-radius: 1.923076em; /* 25 / 13 */
+	padding: 0 14.5%; /* 58 / 400 */
+	width: 100%;
+}
+
+.subscribe-block .input-container img {
+	position: absolute;
+	left: 5.75%; /* 23 / 400 */
+	top: 1.615384em; /* 21 / 13 */
+}
+
+.subscribe-block .input-container button {
+	position: absolute;
+	right: 5.75%; /* 23 / 400 */
+	top: 1em; /* 13 / 13 */
+	height: 2em; /* 26 / 13 */
+	width: 2em; /* == height */
+	border-radius: 1em; /* 26 / 2 /13 */
+	background: #9AAB27;
+	color: white;
+	cursor: pointer;
+}
+
+.subscribe-block .input-container button[disabled] {
+	color: #CCCCCC;
+	background: #FBFFE4;
+	cursor: pointer;
+}
+/* /Subscribe block */
+
 
 /* Footer */
 .footer {

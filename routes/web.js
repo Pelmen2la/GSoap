@@ -1,6 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    emailHelper = require('app/email-helper');
 
 module.exports = function(app) {
     require("./data-helpers/products")(app);
@@ -12,5 +13,13 @@ module.exports = function(app) {
 
     app.get('/', function(req, res) {
         res.sendFile('../public/index.html');
+    });
+
+    app.post('/subscribe/', function(req, res) {
+        emailHelper.sendEmail('Новая подписка', req.body.email, function() {
+            res.json({
+                success: true
+            });
+        });
     });
 };

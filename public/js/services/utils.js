@@ -86,6 +86,13 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
             }
         }, 20);
     };
+    this.validateEmail = function(v) {
+        var vArr = v.split('@');
+        if(v.length > 254 || vArr.length !== 2) {
+            return false;
+        }
+        return vArr[0].match(/[\wа-яА-Я\+\.\_\-\!]+/) && vArr[1].match(/[\wа-яА-Я]+\.[A-Za-zа-яА-Я]+/) && vArr[1].length <= 64;
+    };
 
 
     function getImageUrl(imageName, folderName) {

@@ -78,6 +78,20 @@
 
     <div class="main-wrapper" ui-view>
     </div>
+
+    <div class="subscribe-block">
+        <img src="/resources/images/logo.png" class="logo">
+        <p>
+            Получайте информацию об<br/>
+            эксклюзивных подарках и акциях<br/>
+            при подписке на наши новости
+        </p>
+        <div class="input-container">
+            <img src="/resources/images/icons/mail.png">
+            <input placeholder="Введите свой e-mail" ng-model="subscribeEmail" title="Введите e-mail в формате: mail@gsoap.ru">
+            <button ng-disabled="!utils.validateEmail(subscribeEmail)" ng-click="onSubscribeButtonClick()">+</button>
+        </div>
+    </div>
 </div>
 
 <div class="footer">

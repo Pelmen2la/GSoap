@@ -1,11 +1,12 @@
 angular.module('gsoapApp.controllers', []);
 
 angular.module('gsoapApp.controllers')
-    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', 'Utils', 'ButtonFilter', 'StringResources',
-        function($scope, $state, $stateParams, $cookies, Utils, ButtonFilter, StringResources) {
+    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', '$http', 'Utils', 'ButtonFilter', 'StringResources',
+        function($scope, $state, $stateParams, $cookies, $http, Utils, ButtonFilter, StringResources) {
             $scope.cartProducts = $cookies.getObject('cartProducts') || [];
             $scope.cartText = '';
             $scope.carouselIndex = 1;
+            $scope.subscribeEmail = '';
             $scope.carouselImages = ['skidki_tut.jpg', 'podarok.jpg', 'dostavka_po_rf.jpg'].map(Utils.getCarouselImageUrl);
             $scope.filterButtonsData = ButtonFilter.query({}, function() {
             });
@@ -47,6 +48,18 @@ angular.module('gsoapApp.controllers')
                 window.setTimeout(function() {
                     $state.reload();
                 }, 0);
+            };
+            $scope.onSubscribeButtonClick = function() {
+                if($scope.utils.validateEmail($scope.subscribeEmail)) {
+                    $http({
+                        method: 'POST',
+                        url: '/subscribe/',
+                        data: { email: $scope.subscribeEmail }
+                    }).then(function() {
+                        $scope.subscribeEmail = '';
+                    }, function() {
+                    });
+                }
             };
 
             $(window).scroll(function() {
