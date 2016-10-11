@@ -566,7 +566,7 @@ ul {
 /* Subscribe block */
 .subscribe-block {
 	background: url('../resources/images/main-background.png') #F7F7F7 no-repeat;
-	background-position-y: -227px;
+	background-position-y: -290px;
 	margin: 0 7.272727%; /* 80 / 1100 */
 	padding: 3.191489% 2em; /* 30 / 940, 26 / 13 */
 }
@@ -632,6 +632,10 @@ ul {
 	margin: 0 -5.454545%; /* 120 / 2 / 1100 */
 	overflow: auto;
 	background: white;
+}
+
+.main-text h1 {
+	margin-bottom: 0.384615em; /* 10 / 26 */
 }
 
 .main-text .green-text {
