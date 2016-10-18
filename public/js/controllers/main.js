@@ -7,7 +7,7 @@ angular.module('gsoapApp.controllers')
             $scope.cartText = '';
             $scope.carouselIndex = 1;
             $scope.subscribeEmail = '';
-            $scope.carouselImages = ['skidki_tut.jpg', 'podarok.jpg', 'dostavka_po_rf.jpg'].map(Utils.getCarouselImageUrl);
+            $scope.carouselImages = ['NewLogona.jpg'].map(Utils.getCarouselImageUrl);
             $scope.filterButtonsData = ButtonFilter.query({}, function() {
             });
             $scope.utils = Utils;
