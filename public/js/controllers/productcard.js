@@ -8,9 +8,6 @@ angular.module('gsoapApp.controllers')
             loadRecord($stateParams.id);
             initReview();
 
-            $scope.openBrandCard = function(brand) {
-                $state.go('brandCard', {name: brand});
-            };
             $scope.onSendReviewButtonClick = function() {
                 $http({
                     method: 'POST',

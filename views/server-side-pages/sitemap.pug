@@ -1,0 +1,13 @@
+h1 Карта сайта
+h2 Продукты
+each product in productsData
+  a(href=  '#!/products/' + product._id + '/')= product.name
+  <br>
+h2 Блог
+each article in acticlesData
+  a(href=  '#!/articles/' + article._id + '/')= article.name
+  <br>
+h2 Бренды
+each brand in brandsData
+  a(href=  '#!/brands/' + brand._id + '/')= brand.name
+  <br>

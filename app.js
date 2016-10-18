@@ -1,8 +1,11 @@
 'use strict';
 
-var express = require('express');
+var express = require('express'),
+    path = require('path');
 
 var app = express();
+
+global.appRoot = path.resolve(__dirname);
 
 require('./config/index')(app);
 require('./routes/index')(app);

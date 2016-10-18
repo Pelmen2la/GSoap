@@ -14,15 +14,6 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             loadPageData();
         }
 
-        $scope.changeControlMode = function(isCardView) {
-            $scope.isCardView = isCardView;
-        };
-        $scope.openProductCard = function(id) {
-            $state.go('productCard', {id: id});
-        };
-        $scope.openBrandCard = function(brand) {
-            $state.go('brandCard', { name: brand });
-        };
         $scope.selectProductCapacity = function(product, capacity) {
             product.selectedCapacity = capacity;
         };

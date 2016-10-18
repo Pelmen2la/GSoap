@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Acticle = mongoose.model('article');
+var mongoose = require('mongoose'),
+    Acticle = mongoose.model('article');
 
 module.exports = function(app) {
     app.get('/articles', function (req, res) {

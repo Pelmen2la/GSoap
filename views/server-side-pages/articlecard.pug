@@ -1,0 +1,8 @@
+extends index.pug
+
+block content0
+  .article-card
+    .article-text-wrapper
+      img(src= '/resources/images/articles/' + article.imageName ng-src='{{utils.getArticleImageUrl(article)}}')
+      h1= article.name
+      p(ng-bind-html='article.description')!= article.description

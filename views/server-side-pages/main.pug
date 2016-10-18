@@ -1,0 +1,51 @@
+extends mainproductlist.pug
+
+block content1
+  .carousel-wrapper
+    ul.image.carousel(rn-carousel='', rn-carousel-index='carouselIndex', rn-carousel-controls-allow-loop='', rn-carousel-buffered='', rn-carousel-controls='', rn-carousel-auto-slide='5', rn-carousel-pause-on-hover='')
+      li(ng-repeat='image in carouselImages')
+        img(ng-src='{{image}}')
+  ul.advantages-panel
+    li
+      img.cart-image(src='/resources/images/icons/car.png')
+      p
+        b Бесплатная доставка
+        br
+        |                 по РФ от 2500 руб.
+    li
+      img.cart-image(src='/resources/images/icons/wallet.png')
+      p
+        b Без суммы
+        br
+        |                 минимального заказа
+    li
+      img.cart-image(src='/resources/images/icons/wheelbarrow.png')
+      p
+        b Быстрая отгрузка
+        br
+        |                 вашего заказа
+    li
+      img.cart-image(src='/resources/images/icons/certificate.png')
+      p
+        b Гарантия качества
+        br
+        |                 всех товаров
+
+
+block content2
+  .main-text
+    h1
+      | Магазин натуральной косметики
+      span.green-text GOOD
+      | SOAP
+    p
+      img(src='/resources/images/maintext.png')
+      |             Натуральная косметика выгодно отличается от остальных косметических
+      |             продуктов тем, что в её составе содержатся природные компоненты. Очевидно, чтотакая косметика является
+      |             незаменимы источником красоты и здоровья.
+      br
+      br
+      |             Включение в состав косметических средств натуральных компонентов сегодня широко распространено среди
+      |             производителей, поэтому мы имеем возможность представить в интернет-магазине большой ассортимент натуральной
+      |             косметики. Отдельного внимания заслуживает косметика ручной работы, ведь это эксклюзивные косметические
+      |             средства, изготовленные вручную из качественных компонентов с особым теплом и любовью.

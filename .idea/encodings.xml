@@ -13,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/public/js/services/utils.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/partials/brandcard.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/routes/debug.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/routes/server-side-web.js" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

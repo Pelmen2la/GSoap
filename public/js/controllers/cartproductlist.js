@@ -7,9 +7,6 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
             cssCls: ''
         };
 
-        $scope.openProductCard = function(id) {
-            $state.go('productCard', {id: id});
-        };
         $scope.removeProductFromCard = function(index) {
             confirm('Вы действительно хотите удалить продукт из заказа?') && $scope.cartProducts.splice(index, 1);
         };

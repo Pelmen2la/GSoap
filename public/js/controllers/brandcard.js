@@ -7,9 +7,6 @@ angular.module('gsoapApp.controllers')
         $scope.onFilterButtonClick = function(type) {
             $scope.typeFilter = $scope.typeFilter == type ? '' : type;
         };
-        $scope.openProductCard = function(id) {
-            $state.go('productCard', {id: id});
-        };
         $scope.selectProductCapacity = function(product, capacity) {
             product.selectedCapacity = capacity;
         };

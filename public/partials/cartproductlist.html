@@ -11,8 +11,10 @@
         </tr>
         <tr ng-repeat="product in cartProducts track by $index">
             <td colspan="3" >
-                <img ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product.id)">
-                <a href='' ng-click="openProductCard(product.id)">{{product.name}}</a>
+                <a ng-href="#/products/{{product.id}}/">
+                    <img ng-src="{{utils.getProductImageUrl(product)}}">
+                </a>
+                <a ng-href="#/products/{{product.id}}/">{{product.name}}</a>
             </td>
             <td>
                 <span>{{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>

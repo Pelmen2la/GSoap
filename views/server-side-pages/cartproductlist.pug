@@ -1,0 +1,86 @@
+extends index.pug
+
+block content0
+  form.cart-page(name='form', novalidate='', ng-show='cartProducts.length')
+    h1 Оформить заказ
+    table.products-grid(ng-show='cartProducts.length')
+      tr
+        th(colspan='3') Наименование
+        th Ёмкость
+        th Скидка
+        th Цена
+        th Количество
+        th Стоимость
+      tr(ng-repeat='product in cartProducts track by $index')
+        td(colspan='3')
+          img(ng-src='{{utils.getProductImageUrl(product)}}', ng-click='openProductCard(product.id)')
+          a(href='', ng-click='openProductCard(product.id)') {{product.name}}
+        td
+          span
+            | {{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}
+        td
+          span {{product.discount}}%
+        td
+          span {{utils.getProductPrice(product, product.capacityInfo)}}
+        td
+          input(type='number', name='input', ng-model='product.count', min='1', max='99', ng-class='{invalid: !utils.isProductCountAvailable(product, product.count)}', ng-attr-title="{{utils.isProductCountAvailable(product, product.count) ? '' :\
+          stringResources.validationMessages.wrongProductCountTitle}}")
+        td.total-price
+          span {{utils.getProductPrice(product, product.capacityInfo, product.count)}}
+          button.delete-button(ng-click='removeProductFromCard($index)')
+      tr(ng-class='{invisible : !getDeliveryCost()}')
+        td(colspan='3') Стоимость доставки
+        td
+        td
+        td
+        td
+        td {{getDeliveryCost()}} руб.
+      tr
+        td(colspan='3')
+          b Общая стоимость
+        td
+        td
+        td
+        td
+        td {{getTotalCost()}} руб.
+    .left-order-container
+      h2 Введите ваши контактные данные
+      input(placeholder='Имя и фамилия', ng-model='customerInfo.name')
+      input(placeholder='Номер телефона *', ng-model='customerInfo.phone', title='поле обязательно для заполнения', required='')
+      input(placeholder='Электронная почта *', ng-model='customerInfo.email', title='поле обязательно для заполнения', required='')
+      input(placeholder='Полный адрес', ng-model='customerInfo.fullAddress')
+      input(placeholder='Код на скидку', ng-model='customerInfo.promocode', ng-keyup='onPromocodeInputKeyUp()')
+      span(ng-class="promocodeTooltipInfo.isAvailable ? 'valid' : 'invalid'") {{promocodeTooltipInfo.text}}
+      textarea(placeholder='Комментарий к заказу', ng-model='customerInfo.description')
+    .right-order-container
+      h2 Доставка
+      label(for='selfRadio', ng-class="{selected: customerInfo.deliveryType === 'self'}")
+        input#selfRadio(type='radio', ng-model='customerInfo.deliveryType', value='self')
+        p
+          b Тула
+          br
+          br
+          b Пункты вывоза:
+          br
+          br
+          |                 - Проспект Ленина (ост. Гоголевская)
+          br
+          |                 - Улица Токарева (Заречье)
+          br
+      label(for='deliveryRadio', ng-class="{selected: customerInfo.deliveryType === 'delivery'}")
+        input#deliveryRadio(type='radio', ng-model='customerInfo.deliveryType', value='delivery')
+        p
+          b По России
+          br
+          br
+          |                 Стоимость доставки 250 руб.
+          b Бесплатно
+          |  при заказе от 2500р.
+          br
+          span(ng-show='!!getDeliveryCost()')
+            | Добавьте продуктов на сумму {{2500 - getProductsCost()}} руб. и доставка будет за наш счет.
+    button.submit-button(ng-disabled='form.$invalid', ng-click='sendOrder()')
+      | Заказать
+  p.no-products-in-cart-text(ng-show='!cartProducts.length')
+    | В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из
+    a(href='#!/products') списка

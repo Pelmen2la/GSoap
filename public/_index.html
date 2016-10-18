@@ -2,6 +2,7 @@
 <html lang="en" ng-app="gsoapApp">
 <head>
     <meta charset="UTF-8">
+    <meta name="fragment" content="!">.
     <title></title>
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +42,7 @@
                 <a href="/#/about/">О нас</a>
             </li>
             <li>
-                <a ng-href="#/articles/">Блог</a>
+                <a href="#/articles/">Блог</a>
             </li>
             <li>
                 <a href="/#/delivery/">Доставка и оплата</a>
@@ -52,7 +53,7 @@
         </ul>
         <ul class="products-menu">
             <li>
-                <button><a ng-href="#/products" ng-click="onButtonFilterClick()">Все товары</a></button>
+                <button><a href="#/products" ng-click="onButtonFilterClick()">Все товары</a></button>
             </li>
             <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
                 <button type="button" ng-attr-id="{{'mainListFilterButton' + $index}}"

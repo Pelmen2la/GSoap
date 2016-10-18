@@ -1,0 +1,28 @@
+extends index.pug
+
+block content0
+  block content1
+  div(ng-controller='MainProductListController')
+    .products-container
+      each product in products
+        .product-container(ng-repeat='product in products track by $index', ng-class='{bestseller: product.isBestseller}')
+          a(href=  '#!/products/' + product._id + '/')
+            img(src= '/resources/images/products/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}',)
+          a.product-name(href=  '#!/products/' + product._id + '/')= product.name
+          .product-price
+            b= product.capacityList[0].price + ' руб.'
+          ul.product-capacity
+            each capacityInfo in product.capacityList
+              li(ng-repeat='capacityInfo in product.capacityList')
+                button(ng-class='{ selected: capacityInfo == product.selectedCapacity }', ng-click='selectProductCapacity(product, capacityInfo)')= capacityInfo.capacity + ' мл'
+          .product-buy-button-container
+            button(ng-click='onBuyProductButtonClick($event, product)')
+              img(src='/resources/images/icons/cart.png')
+              span Купить
+    .page-control.ng-scope.ng-isolate-scope(paging='', page='pagingOptions.pageIndex', page-size='pagingOptions.pageSize', total='pagingOptions.totalItemsCount', paging-action='onPagerClick(page)', hide-if-empty='true')
+      ul.pagination(data-ng-hide='Hide', data-ng-class='ulClass')
+        - for (var i = 1; i <= productsTotalCount / 20; i++)
+          li.ng-scope.active(title= 'Page ' + i, data-ng-class='Item.liClass', data-ng-repeat='Item in List')
+            a.ng-binding(href='', data-ng-class='Item.aClass', data-ng-click='Item.action()', data-ng-bind='Item.value')= i
+  block content2
+
