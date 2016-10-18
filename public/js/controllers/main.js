@@ -5,7 +5,7 @@ angular.module('gsoapApp.controllers')
         function($scope, $state, $stateParams, $cookies, $http, Utils, ButtonFilter, StringResources) {
             $scope.cartProducts = $cookies.getObject('cartProducts') || [];
             $scope.cartText = '';
-            $scope.carouselIndex = 1;
+            $scope.carouselIndex = 0;
             $scope.subscribeEmail = '';
             $scope.carouselImages = ['NewLogona.jpg'].map(Utils.getCarouselImageUrl);
             $scope.filterButtonsData = ButtonFilter.query({}, function() {
