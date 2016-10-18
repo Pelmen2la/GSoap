@@ -1,0 +1,153 @@
+doctype html
+html(lang='en', ng-app='gsoapApp')
+  head
+    meta(charset='UTF-8')
+    title
+    link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    link(href='../bower_components/angular-carousel/dist/angular-carousel.css', rel='stylesheet')
+    link(href='../css/app.css', rel='stylesheet')
+  body
+    .page(ng-controller='MainController')
+      .header
+        div
+          a(href='/')
+            img.logo(src='/resources/images/logo.png')
+            p.shop-name
+              span Магазин
+              br
+              span натуральной
+              br
+              span косметики
+          p.cart-text(ng-controller='CartController')
+            a(ui-sref='cartProductList') Корзина покупок
+            br
+            span.cart-info {{cartText}}
+          a(ui-sref='cartProductList')
+            img#MainCartIcon.cart-image(src='/resources/images/icons/cart.png')
+          p.phone-block
+            span What's App | Viber
+            br
+            b.phone 8(920)771-26-08
+        ul.navigation-menu
+          li
+            a(href='/#!/about') О нас
+          li
+            a(ng-href='#!/articles') Блог
+          li
+            a(href='/#!/delivery') Доставка и оплата
+          li
+            a(href='#!/contacts') Контакты
+        ul.products-menu
+          li
+            button
+              a(ng-href='#/products', ng-click='onButtonFilterClick()') Все товары
+          li.dropdown(ng-repeat='buttonFilter in filterButtonsData track by $index')
+            button(type='button', ng-attr-id="{{'mainListFilterButton' + $index}}", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | {{buttonFilter.name}}
+              span.caret-icon
+            ul.dropdown-menu(ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}")
+              li
+                | {{buttonFilter.name}}
+                span.caret-icon
+                .mask
+              li(ng-repeat='filter in buttonFilter.filters', ng-class='{ selected: filter == buttonFilter }')
+                a(ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()') {{filter.name}}
+                .mask
+          li
+            button
+              a(ng-href='#/brands/') Бренды
+
+      block content0
+
+      .subscribe-block
+        img.logo(src='/resources/images/logo.png')
+        p
+          | Полезные новости, информация о
+          br
+          |             новинках и закрытых распродажах
+          br
+          |             Подпишитесь :)
+        .input-container
+          img(src='/resources/images/icons/mail.png')
+          input(placeholder='Введите свой e-mail', ng-model='subscribeEmail', title='Введите e-mail в формате: mail@gsoap.ru')
+          button(ng-disabled='!utils.validateEmail(subscribeEmail)', ng-click='onSubscribeButtonClick()') +
+    .footer
+      .info-container
+        .contacts
+          h3 Контакты
+          br
+          p
+            | GOODSOAP
+            br
+            |             магазин натуральной косметики
+            br
+            br
+            |                 Пункт выдачи
+            br
+            |                 улица Токарева, дом 89
+            br
+            |                 г. Тула
+            br
+            br
+            b 8(920)771-26-08
+            br
+            br
+            |                 mail@gsoap.ru
+        .information
+          h3 Информация
+          br
+          ul
+            li
+              a(href='/#!/delivery') Доставка
+            li
+              a(href='/#!/about') О нас
+        .usefull
+          h3 Полезное
+          br
+          ul
+            li
+              a(ng-href='#!/articles') Блог
+            li
+              a(ng-href='#!/sitemap') Карта сайта
+        .social-networks
+          h3 Мы в соц сетях
+          br
+          p
+            a(href='https://vk.com/goodsoapvtule')
+              img.cart-image(src='/resources/images/icons/vk.png')
+            a(href='https://www.instagram.com/_goodsoap/')
+              img.cart-image(src='/resources/images/icons/inst.png')
+              br
+            br
+            img(src='/resources/images/logo.png')
+            br
+            br
+            |                 2015 © 
+            b GOODSOAP
+            br
+            |                 магазин натуральной косметики
+    script(src='../bower_components/jquery/dist/jquery.min.js')
+    script(src='../bower_components/fakeangular/angular.min.js')
+    script(src='../bower_components/angular-sanitize/angular-sanitize.min.js')
+    script(src='../bower_components/angular-touch/angular-touch.js')
+    script(src='../bower_components/angular-carousel/dist/angular-carousel.min.js')
+    script(src='../bower_components/angular-resource/angular-resource.js')
+    script(src='../bower_components/angular-ui-router/release/angular-ui-router.js')
+    script(src='../bower_components/angular-file-upload/dist/angular-file-upload.js')
+    script(src='../bower_components/angular-paging/dist/paging.min.js')
+    script(src='../bower_components/angular-cookies/angular-cookies.js')
+    script(src='../bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='../js/app.js')
+    script(src='../js/controllers/main.js')
+    script(src='../js/controllers/mainproductlist.js')
+    script(src='../js/controllers/brandlist.js')
+    script(src='../js/controllers/articlelist.js')
+    script(src='../js/controllers/articlelist.js')
+    script(src='../js/controllers/productcard.js')
+    script(src='../js/controllers/brandcard.js')
+    script(src='../js/controllers/articlecard.js')
+    script(src='../js/controllers/cartproductlist.js')
+    script(src='../js/controllers/cart.js')
+    script(src='../js/services/models.js')
+    script(src='../js/services/utils.js')
+    script(src='../js/services/stringresources.js')
