@@ -1093,7 +1093,7 @@ ul {
 
 .articles-page .article-container {
 	width: 100%;
-	height: 8.230769em; /* 107 / 13 */
+	height: 7.230769em; /* 1.230769(h2) * 1.5 + 4 * 1.5 */
 	overflow: hidden;
 	margin: 3.076923em 0; /* 40 / 13 */
 }
