@@ -1,6 +1,6 @@
 extends mainproductlist.pug
 
-block content1
+block aboveproductslist
   .carousel-wrapper
     ul.image.carousel(rn-carousel='', rn-carousel-index='carouselIndex', rn-carousel-controls-allow-loop='', rn-carousel-buffered='', rn-carousel-controls='', rn-carousel-auto-slide='5', rn-carousel-pause-on-hover='')
       li(ng-repeat='image in carouselImages')
@@ -32,7 +32,7 @@ block content1
         |                 всех товаров
 
 
-block content2
+block underproductslist
   .main-text
     h1
       | Магазин натуральной косметики

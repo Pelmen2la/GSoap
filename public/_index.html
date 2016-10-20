@@ -8,6 +8,44 @@
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/angular-carousel/dist/angular-carousel.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
+
+    <title>Интернет-магазин натуральной, декоративной, органической косметики и ингредиентов для нее GOODSOAP с
+        бесплатной доставкой на дом по всей России: Краснодар, Санкт-Петербург, Москва и другие города</title>
+    <meta name="description"
+          content="Интернет-магазин GOODSOAP занимается продажей декоративной, органической косметики и ингредиентов для нее с бесплатной доставкой на дом в Краснодаре, Санкт-Петербурге, Москве и других города России.">
+    <meta name="keywords"
+          content="Интернет-магазин, натуральный, декоративный, органический, косметика, ингредиент, GOODSOAP, бесплатный, доставка, дом, Россия, Краснодар, Санкт-Петербург, Москва">
+
+    <script type="text/javascript"> (function(d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter40322900 = new Ya.Metrika({
+                    id: 40322900,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true,
+                    trackHash: true
+                });
+            } catch(e) {
+            }
+        });
+        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function() {
+            n.parentNode.insertBefore(s, n);
+        };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+        if(w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks"); </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/40322900" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+
 </head>
 <body>
 
@@ -39,21 +77,21 @@
         </div>
         <ul class="navigation-menu">
             <li>
-                <a href="/#/about/">О нас</a>
+                <a href="#!/about/">О нас</a>
             </li>
             <li>
-                <a href="#/articles/">Блог</a>
+                <a href="#!/articles/">Блог</a>
             </li>
             <li>
-                <a href="/#/delivery/">Доставка и оплата</a>
+                <a href="#!/delivery/">Доставка и оплата</a>
             </li>
             <li>
-                <a href="#/contacts/">Контакты</a>
+                <a href="#!/contacts/">Контакты</a>
             </li>
         </ul>
         <ul class="products-menu">
             <li>
-                <button><a href="#/products" ng-click="onButtonFilterClick()">Все товары</a></button>
+                <button><a href="#!/products" ng-click="onButtonFilterClick()">Все товары</a></button>
             </li>
             <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
                 <button type="button" ng-attr-id="{{'mainListFilterButton' + $index}}"
@@ -64,14 +102,14 @@
                     <li>{{buttonFilter.name}}<span class="caret-icon"></span><div class="mask"></div></li>
                     <li ng-repeat="filter in buttonFilter.filters"
                         ng-class="{ selected: filter == buttonFilter }">
-                        <a ng-href="#/products?buttonFilter={{filter}}" ng-click="onButtonFilterClick()">{{filter.name}}</a>
+                        <a ng-href="#!/products?buttonFilter={{filter}}" ng-click="onButtonFilterClick()">{{filter.name}}</a>
                         <div class="mask"></div>
                     </li>
                 </ul>
             </li>
             <li>
                 <button>
-                    <a ng-href="#/brands/">Бренды</a>
+                    <a ng-href="#!/brands/">Бренды</a>
                 </button>
             </li>
         </ul>
@@ -118,10 +156,10 @@
             <br>
             <ul>
                 <li>
-                    <a href="/#/delivery/">Доставка</a>
+                    <a href="/#!/delivery/">Доставка</a>
                 </li>
                 <li>
-                    <a href="/#/about/">О нас</a>
+                    <a href="/#!/about/">О нас</a>
                 </li>
             </ul>
         </div>
@@ -130,7 +168,7 @@
             <br>
             <ul>
                 <li>
-                    <a ng-href="#/articles/">Блог</a>
+                    <a ng-href="#!/articles/">Блог</a>
                 </li>
             </ul>
         </div>

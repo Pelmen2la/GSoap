@@ -1,7 +1,7 @@
 extends index.pug
 
-block content0
-  block content1
+block maincontent
+  block aboveproductslist
   div(ng-controller='MainProductListController')
     .products-container
       each product in products
@@ -24,5 +24,5 @@ block content0
         - for (var i = 1; i <= productsTotalCount / 20; i++)
           li.ng-scope.active(title= 'Page ' + i, data-ng-class='Item.liClass', data-ng-repeat='Item in List')
             a.ng-binding(href='', data-ng-class='Item.aClass', data-ng-click='Item.action()', data-ng-bind='Item.value')= i
-  block content2
+  block underproductslist
 

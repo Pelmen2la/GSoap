@@ -1,6 +1,9 @@
 extends mainproductlist.pug
 
-block content1
+block title
+  = productData.name
+
+block aboveproductslist
   .product-card
     img(src= '/resources/images/products/' + productData.imageName)
     h1= productData.name

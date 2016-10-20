@@ -2,10 +2,49 @@ doctype html
 html(lang='en', ng-app='gsoapApp')
   head
     meta(charset='UTF-8')
-    title
     link(href='../bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     link(href='../bower_components/angular-carousel/dist/angular-carousel.css', rel='stylesheet')
     link(href='../css/app.css', rel='stylesheet')
+
+    title
+      block title
+        | Интернет-магазин натуральной, декоративной, органической косметики и ингредиентов для нее GOODSOAP с
+        | бесплатной доставкой на дом по всей России: Краснодар, Санкт-Петербург, Москва и другие города
+    meta(name='description', content='Интернет-магазин GOODSOAP занимается продажей декоративной, органической косметики и ингредиентов для нее с бесплатной доставкой на дом в Краснодаре, Санкт-Петербурге, Москве и других города России.')
+    meta(name='keywords', content='Интернет-магазин, натуральный, декоративный, органический, косметика, ингредиент, GOODSOAP, бесплатный, доставка, дом, Россия, Краснодар, Санкт-Петербург, Москва')
+
+
+  script(type='text/javascript').
+    (function(d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+    try {
+    w.yaCounter40322900 = new Ya.Metrika({
+    id: 40322900,
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true,
+    trackHash: true
+    });
+    } catch(e) {
+    }
+    });
+    var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function() {
+    n.parentNode.insertBefore(s, n);
+    };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+    if(w.opera == "[object Opera]") {
+    d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+    f();
+    }
+    })(document, window, "yandex_metrika_callbacks");
+  noscript
+    div
+      img(src='https://mc.yandex.ru/watch/40322900', style='position:absolute; left:-9999px;', alt='')
+
   body
     .page(ng-controller='MainController')
       .header
@@ -57,7 +96,7 @@ html(lang='en', ng-app='gsoapApp')
             button
               a(ng-href='#/brands/') Бренды
 
-      block content0
+      block maincontent
 
       .subscribe-block
         img.logo(src='/resources/images/logo.png')

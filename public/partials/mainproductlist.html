@@ -1,10 +1,10 @@
 <div class="products-container">
     <div ng-repeat="product in products track by $index" class="product-container"
          ng-class="{bestseller: product.isBestseller}">
-        <a ng-href="#/products/{{product._id}}/">
+        <a ng-href="#!/products/{{product._id}}/">
             <img ng-src="{{utils.getProductImageUrl(product)}}">
         </a>
-        <a ng-href="#/products/{{product._id}}/" class="product-name">{{product.name}}</a>
+        <a ng-href="#!/products/{{product._id}}/" class="product-name">{{product.name}}</a>
 
         <div class="product-price"><b>{{utils.getProductPrice(product, product.selectedCapacity)}}</b></div>
         <ul class="product-capacity">

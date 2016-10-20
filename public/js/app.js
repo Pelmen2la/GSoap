@@ -6,44 +6,44 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         controller: 'MainProductListController',
         reloadOnSearch: false
     }).state('products', {
-        url: '/products?buttonFilter',
+        url: '/!/products?buttonFilter',
         templateUrl: '/partials/mainproductlist.html',
         controller: 'MainProductListController',
         reloadOnSearch: false
     }).state('productCard', {
-        url: '/products/:id/',
+        url: '/!/products/:id/',
         templateUrl: '/partials/productcard.html',
         controller: 'ProductCardController'
     }).state('brands', {
-        url: '/brands/',
+        url: '/!/brands/',
         templateUrl: '/partials/brandlist.html',
         controller: 'BrandListController'
     }).state('brandCard', {
-        url: '/brands/:name/',
+        url: '/!/brands/:name/',
         templateUrl: '/partials/brandcard.html',
         controller: 'BrandCardController'
     }).state('articles', {
-        url: '/articles/',
+        url: '/!/articles/',
         templateUrl: '/partials/articlelist.html',
         controller: 'ArticleListController'
     }).state('articleCard', {
-        url: '/articles/:id/',
+        url: '/!/articles/:id/',
         templateUrl: '/partials/articlecard.html',
         controller: 'ArticleCardController'
     }).state('cartProductList', {
-        url: '/cart/',
+        url: '/!/cart/',
         templateUrl: '/partials/cartproductlist.html',
         controller: 'CartProductListController'
     }).state('about', {
-        url: '/about/',
+        url: '/!/about/',
         templateUrl: '/partials/simplepages/about.html',
         controller: ''
     }).state('delivery', {
-        url: '/delivery/',
+        url: '/!/delivery/',
         templateUrl: '/partials/simplepages/delivery.html',
         controller: ''
     }).state('contacts', {
-        url: '/contacts/',
+        url: '/!/contacts/',
         templateUrl: '/partials/simplepages/contacts.html',
         controller: ''
     });

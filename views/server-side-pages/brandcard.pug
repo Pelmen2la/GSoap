@@ -1,6 +1,9 @@
 extends index.pug
 
-block content0
+block title
+  = brand.name
+
+block maincontent
     .brand-card
       .brand-info
         img(src= '/resources/images/brands/' + brand.imageName ng-src='{{utils.getBrandImageUrl(brand)}}')

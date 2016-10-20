@@ -11,10 +11,10 @@
         </tr>
         <tr ng-repeat="product in cartProducts track by $index">
             <td colspan="3" >
-                <a ng-href="#/products/{{product.id}}/">
+                <a ng-href="#!/products/{{product.id}}/">
                     <img ng-src="{{utils.getProductImageUrl(product)}}">
                 </a>
-                <a ng-href="#/products/{{product.id}}/">{{product.name}}</a>
+                <a ng-href="#!/products/{{product.id}}/">{{product.name}}</a>
             </td>
             <td>
                 <span>{{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
@@ -88,4 +88,4 @@
         Заказать
     </button>
 </form>
-<p class="no-products-in-cart-text" ng-show="!cartProducts.length">В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из <a href="#/products">списка</a></p>
+<p class="no-products-in-cart-text" ng-show="!cartProducts.length">В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из <a href="#!/products">списка</a></p>
