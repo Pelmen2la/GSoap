@@ -91,6 +91,7 @@ textarea:focus{
 body {
 	font-family: 'NotoSansRegular', Arial, Helvetica, sans-serif;
 	font-size: 13px;
+	line-height: 1.5em;
 	background: url('../resources/images/main-background.png') #F7F7F7 no-repeat;
 	background-size: contain;
 }
@@ -188,6 +189,7 @@ ul {
 	padding: 1.923076em 7.272727%; /* 25 / 13, 80 / 1100 */
 	margin: 0 auto;
 	background-color: white;
+	line-height: 1em;
 }
 
 .header > div {
@@ -195,7 +197,7 @@ ul {
 }
 
 .header .logo,
-.header .shop-name {
+.header .shop-name {/**/
 	float: left;
 }
 
