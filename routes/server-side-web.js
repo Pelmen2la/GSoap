@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     Article = mongoose.model('article'),
     Brand = mongoose.model('brand'),
+    ButtonFilter = mongoose.model('buttonFilter'),
     Product = mongoose.model('product');
 
 module.exports = {
@@ -138,7 +139,10 @@ function sendSiteMapResult(req, res, queryString) {
 
 function sendResult(res, pageName, params) {
     params.stringResources = getStringResources();
-    res.render('server-side-pages/' + pageName + '.pug', params);
+    ButtonFilter.find({}, function(err, data) {
+        params.filterButtonsData = data;
+        res.render('server-side-pages/' + pageName + '.pug', params);
+    });
 };
 
 function getStringResources() {

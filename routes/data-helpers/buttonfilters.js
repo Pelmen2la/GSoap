@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var ButtonFilter = mongoose.model('buttonFilter');
+var mongoose = require('mongoose'),
+    ButtonFilter = mongoose.model('buttonFilter');
 
 module.exports = function(app) {
     app.get('/buttonFilters', function (req, res) {

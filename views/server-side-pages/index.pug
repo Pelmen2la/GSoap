@@ -69,32 +69,34 @@ html(lang='en', ng-app='gsoapApp')
             b.phone 8(920)771-26-08
         ul.navigation-menu
           li
-            a(href='/#!/about') О нас
+            a(href='#!/about') О нас
           li
             a(ng-href='#!/articles') Блог
           li
-            a(href='/#!/delivery') Доставка и оплата
+            a(href='#!/delivery') Доставка и оплата
           li
             a(href='#!/contacts') Контакты
         ul.products-menu
           li
             button
               a(ng-href='#/products', ng-click='onButtonFilterClick()') Все товары
-          li.dropdown(ng-repeat='buttonFilter in filterButtonsData track by $index')
-            button(type='button', ng-attr-id="{{'mainListFilterButton' + $index}}", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-              | {{buttonFilter.name}}
-              span.caret-icon
-            ul.dropdown-menu(ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}")
-              li
-                | {{buttonFilter.name}}
+          for buttonFilter in filterButtonsData
+            li.dropdown(ng-repeat='buttonFilter in filterButtonsData track by $index')
+              button(type='button', ng-attr-id="{{'mainListFilterButton' + $index}}", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                = buttonFilter.name
                 span.caret-icon
-                .mask
-              li(ng-repeat='filter in buttonFilter.filters', ng-class='{ selected: filter == buttonFilter }')
-                a(ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()') {{filter.name}}
-                .mask
+              ul.dropdown-menu(ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}")
+                li
+                  = buttonFilter.name
+                  span.caret-icon
+                  .mask
+                for filter in buttonFilter.filters
+                  li(ng-repeat='filter in buttonFilter.filters', ng-class='{ selected: filter == buttonFilter }')
+                    a(href= '#!/products?buttonFilter=' + JSON.stringify(filter) ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()')= filter.name
+                    .mask
           li
             button
-              a(ng-href='#/brands/') Бренды
+              a(ng-href='#!/brands/') Бренды
 
       block maincontent
 
@@ -137,9 +139,9 @@ html(lang='en', ng-app='gsoapApp')
           br
           ul
             li
-              a(href='/#!/delivery') Доставка
+              a(href='#!/delivery') Доставка
             li
-              a(href='/#!/about') О нас
+              a(href='#!/about') О нас
         .usefull
           h3 Полезное
           br
