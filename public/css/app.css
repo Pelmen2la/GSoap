@@ -347,6 +347,7 @@ ul {
 /* Carousel */
 .carousel-wrapper {
     position: relative;
+	background: white;
 }
 
 .carousel-wrapper .carousel {
@@ -445,10 +446,10 @@ ul {
 	padding: 0 6.272727% 2.692307em; /* (80 - 22 / 2)  / 1100, 35 / 13 */
 	margin: 0 auto;
 	overflow: auto;
-	background: white;
 }
 
 .products-list-search-input {
+	margin-top: 1em; /* 13 / 13 */
 	margin-left: 7.272727%; /* 80 / 1100 */
 	width: 27.272727%; /* 300 / 1100 */
 }
@@ -568,7 +569,6 @@ ul {
 }
 
 .page-control {
-	background: white;
 	padding: 0 7.272727%; /* 80 / 1100 */
 }
 
@@ -587,6 +587,7 @@ ul {
 /* Subscribe block */
 .subscribe-block {
 	background: url('../resources/images/main-background.png') #F7F7F7 no-repeat;
+	background-color: white;
 	background-position-y: -290px;
 	margin: 0 7.272727%; /* 80 / 1100 */
 	padding: 3.191489% 2em; /* 30 / 940, 26 / 13 */
