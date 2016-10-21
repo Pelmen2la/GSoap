@@ -78,8 +78,7 @@ html(lang='en', ng-app='gsoapApp')
             a(href='#!/contacts') Контакты
         ul.products-menu
           li
-            button
-              a(ng-href='#/products', ng-click='onButtonFilterClick()') Все товары
+            a(ng-href='#/products', ng-click='onButtonFilterClick()') Все товары
           for buttonFilter in filterButtonsData
             li.dropdown(ng-repeat='buttonFilter in filterButtonsData track by $index')
               button(type='button', ng-attr-id="{{'mainListFilterButton' + $index}}", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
@@ -95,8 +94,8 @@ html(lang='en', ng-app='gsoapApp')
                     a(href= '#!/products?buttonFilter=' + JSON.stringify(filter) ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()')= filter.name
                     .mask
           li
-            button
-              a(ng-href='#!/brands/') Бренды
+            a(ng-href='#!/brands/') Бренды
+
 
       block maincontent
 
@@ -178,6 +177,7 @@ html(lang='en', ng-app='gsoapApp')
     script(src='../bower_components/angular-paging/dist/paging.min.js')
     script(src='../bower_components/angular-cookies/angular-cookies.js')
     script(src='../bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='../bower_components/mobile-detect/mobile-detect.min.js')
     script(src='../js/app.js')
     script(src='../js/controllers/main.js')
     script(src='../js/controllers/mainproductlist.js')

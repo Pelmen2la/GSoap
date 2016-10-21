@@ -91,7 +91,7 @@
         </ul>
         <ul class="products-menu">
             <li>
-                <button><a href="#!/products" ng-click="onButtonFilterClick()">Все товары</a></button>
+                <a href="#!/products" ng-click="onButtonFilterClick()">Все товары</a>
             </li>
             <li class="dropdown" ng-repeat="buttonFilter in filterButtonsData track by $index">
                 <button type="button" ng-attr-id="{{'mainListFilterButton' + $index}}"
@@ -108,9 +108,7 @@
                 </ul>
             </li>
             <li>
-                <button>
-                    <a ng-href="#!/brands/">Бренды</a>
-                </button>
+                <a ng-href="#!/brands/">Бренды</a>
             </li>
         </ul>
     </div>
