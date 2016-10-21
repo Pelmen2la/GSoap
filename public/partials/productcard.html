@@ -64,5 +64,5 @@
     </div>
     <h2 class="bought-together-header" ng-show="products.length">С этим товаром покупают</h2>
     <div ng-controller="MainProductListController" ng-include src="'/partials/mainproductlist.html'"
-         ng-init="hideFilterControls=true;" class="bought-together-container">
+         ng-init="hideFilterControls=true;" class="bought-together-container" ng-show="products.length">
     </div>

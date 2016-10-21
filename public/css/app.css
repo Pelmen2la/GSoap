@@ -585,11 +585,14 @@ ul {
 /* /Products Container */
 
 /* Subscribe block */
+.subscribe-block-wrapper {
+	background: white;
+}
+
 .subscribe-block {
 	background: url('../resources/images/main-background.png') #F7F7F7 no-repeat;
 	background-color: white;
 	background-position-y: -290px;
-	margin: 0 7.272727%; /* 80 / 1100 */
 	padding: 3.191489% 2em; /* 30 / 940, 26 / 13 */
 }
 
@@ -649,7 +652,8 @@ ul {
 	overflow: auto;
 }
 
-.main-text {
+.main-text,
+.subscribe-block-wrapper {
 	padding: 2.461538em 12.727272%; /* 32 / 13, (60 + 80) / 1100 */
 	margin: 0 -5.454545%; /* 120 / 2 / 1100 */
 	overflow: auto;
