@@ -1,14 +1,14 @@
 angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', 'Product',
     function($scope, $state, $stateParams, Product) {
-        $scope.searchFilter = '';
         $scope.pagingOptions = {
             pageIndex: 1,
             pageSize: 24,
             totalItemsCount: 0
         };
-        $scope.withDiscount = !!$stateParams.withDiscount;
-        $scope.isBestseller = !!$stateParams.isBestseller;
-        $scope.buttonFilter = $stateParams.buttonFilter;
+        $scope.filters = {
+            searchFilter: '',
+            buttonFilter: $stateParams.buttonFilter
+        }
         if(!$scope.products) {
             $scope.products = [];
             loadPageData();
@@ -18,13 +18,11 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             product.selectedCapacity = capacity;
         };
         $scope.onFilterInputKeyUp = function() {
+            $scope.pagingOptions.pageIndex = 0;
             window.clearTimeout($scope.filterTimeoutId);
             $scope.filterTimeoutId = window.setTimeout(function() {
-                loadPageData(true);
+                loadPageData();
             }, 500);
-        };
-        $scope.onPropertyFilterCheckboxChange = function() {
-            loadPageData(true);
         };
         $scope.onPagerClick = function(pageIndex) {
             $scope.pagingOptions.pageIndex = pageIndex;
@@ -35,9 +33,10 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
 
         function loadPageData(callback) {
             var params = {};
-            ['searchFilter', 'buttonFilter', 'pagingOptions', 'withDiscount', 'isBestseller' ].forEach(function(param) {
-                params[param] = $scope[param]
+            ['searchFilter', 'buttonFilter'].forEach(function(param) {
+                params[param] = $scope.filters[param];
             });
+            params['pagingOptions'] = $scope.pagingOptions;
             Product.query(params, function(data) {
                 $scope.pagingOptions.totalItemsCount = data.pop();
                 data.forEach(function(product) {

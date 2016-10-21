@@ -20,7 +20,7 @@
         <tr ng-repeat="product in brand.products | filter: { $: searchFilter, type: typeFilter }">
             <td>
                 <a ng-href="#!/products/{{product._id}}/">
-                    <img ng-src="{{utils.getProductImageUrl(product)}}"">
+                    <img ng-src="{{utils.getProductImageUrl(product)}}">
                 </a>
             </td>
             <td colspan="2" class="product-name">

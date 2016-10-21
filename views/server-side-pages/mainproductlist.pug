@@ -3,6 +3,7 @@ extends index.pug
 block maincontent
   block aboveproductslist
   div(ng-controller='MainProductListController')
+    input.products-list-search-input(placeholder='Поиск', ng-model='filters.searchFilter', ng-keyup='onFilterInputKeyUp()', ng-hide='hideFilterControls')
     .products-container
       each product in products
         .product-container(ng-repeat='product in products track by $index', ng-class='{bestseller: product.isBestseller}')
