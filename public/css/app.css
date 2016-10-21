@@ -214,11 +214,13 @@ ul {
 }
 
 .header .logo {
+	height: 3em;
 	margin-right: 5.957446%; /* 56 / 940 */
 }
 
 .header .phone-block {
 	margin-right: 3.404255%; /* 32 / 940 */
+	line-height: 1.3em;
 }
 
 .header .phone-block .phone {
@@ -227,6 +229,7 @@ ul {
 
 .header .cart-image {
 	margin-right: 1.382978%; /* 13 / 940 */
+	height: 2.461538em; /* 32 / 13 */
 	cursor: pointer;
 }
 
