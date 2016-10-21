@@ -84,7 +84,7 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
                 window.clearInterval(interval);
                 document.body.removeChild(icon);
             }
-        }, 20);
+        }, 10);
     };
     this.validateEmail = function(v) {
         var vArr = v.split('@');

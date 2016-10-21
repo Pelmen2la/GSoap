@@ -193,7 +193,7 @@ ul {
 }
 
 .header > div {
-	overflow: auto;
+	overflow: hidden;
 }
 
 .header .logo,
@@ -537,6 +537,12 @@ ul {
 	z-index: 1;
 }
 
+.mobile .product-container .product-buy-button-container {
+	position: inherit;
+	display: block;
+	margin: 0;
+}
+
 .product-container:hover .product-buy-button-container {
 	display: block;
 }
@@ -706,7 +712,7 @@ ul {
 
 .product-card .control-panel {
 	height: 2.846153em; /* 37 / 13 */
-	line-height: 2.846153em; /* 37 / 13 */
+	line-height: 2.846153em;/**/ /* 37 / 13 */
 	margin-top: 2.076923em; /* 27 / 13 */
 }
 
