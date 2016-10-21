@@ -20,7 +20,7 @@
                 <span>{{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
             </td>
             <td>
-                <span>{{product.discount}}%</span>
+                <span ng-show="product.discount">{{product.discount}}%</span>
             </td>
             <td>
                 <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
