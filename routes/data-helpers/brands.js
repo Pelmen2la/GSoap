@@ -16,7 +16,7 @@ module.exports = function(app) {
             if(err) return next(err);
             var brand = data[0];
             Product.find({brand: brand.name}, function(err, data) {
-                brand.set('products', data);
+                brand.products = data;
                 res.json(brand);
             });
         });

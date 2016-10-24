@@ -24,6 +24,7 @@ angular.module('gsoapAdminApp.adminControllers')
                     $state.go('brands');
                 });
             } else {
+                $scope.brand.products = [];
                 $scope.brand.$save(function(result) {
                     $state.go('brands');
                 });
