@@ -315,11 +315,11 @@ ul {
 .products-menu .dropdown-menu li {
 	position: relative;
 	font-size: 0.722222em; /* 13 / 18 */
-	padding: 1.384615em 1.461538em; /* 18 / 13 / 2, 19 / 13 */
 	white-space: nowrap;
 	border-color: #E6E6E6;
 	border-style: solid;
 	border-width: 0 0.055555em; /* 1 / 18 */
+	padding: 0;
 	cursor: pointer;
 }
 
@@ -328,7 +328,7 @@ ul {
 }
 
 .products-menu .dropdown-menu li a {
-	padding: 0;
+	padding: 1.384615em 1.461538em; /* 18 / 13 / 2, 19 / 13 */
 	margin: 0;
 }
 
