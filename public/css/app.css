@@ -152,6 +152,7 @@ img {
 }
 
 ul {
+	list-style-position: inside;
 	list-style-image: url('../resources/images/icons/list-arrow-separator.png');
 }
 
