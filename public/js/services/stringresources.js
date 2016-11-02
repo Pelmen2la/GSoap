@@ -55,6 +55,10 @@ angular.module('gsoapApp.services').constant('StringResources', {
         {
             value: 'oil',
             label: 'Масло'
+        },
+        {
+            value: 'oral',
+            label: 'Для полости рта'
         }
     ],
     deliveryTypes: {

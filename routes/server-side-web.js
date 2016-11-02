@@ -203,6 +203,10 @@ function getStringResources() {
             {
                 value: 'oil',
                 label: 'Масло'
+            },
+            {
+                value: 'oral',
+                label: 'Для полости рта'
             }
         ],
         deliveryTypes: {
