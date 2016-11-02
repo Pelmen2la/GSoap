@@ -19,12 +19,12 @@ angular.module('gsoapAdminApp.adminControllers')
         };
 
         $scope.submitBrand = function() {
+            $scope.brand.products = [];
             if($scope.brand._id) {
                 $scope.brand.$update({id: $scope.brand._id}, function() {
                     $state.go('brands');
                 });
             } else {
-                $scope.brand.products = [];
                 $scope.brand.$save(function(result) {
                     $state.go('brands');
                 });
