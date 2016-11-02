@@ -10,10 +10,7 @@
                     ng-options="entry as entry.capacity for entry in product.capacityList">
             </select>
             {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}
-            <input type="number" name="input" ng-model="orderCount" min="1" max="99"
-                   ng-class="{invalid: !utils.isProductCountAvailable(product, orderCount)}"
-                   ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
-                        stringResources.validationMessages.wrongProductCountTitle}}">
+            <input type="number" name="input" ng-model="orderCount" min="1">
             шт.
             <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)" ng-show="product.isActive">
                 <img src="/resources/images/icons/cart.png" class="cart-image">

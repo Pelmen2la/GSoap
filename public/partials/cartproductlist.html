@@ -26,10 +26,7 @@
                 <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
             </td>
             <td>
-                <input type="number" name="input" ng-model="product.count" min="1" max="99"
-                       ng-class="{invalid: !utils.isProductCountAvailable(product, product.count)}"
-                       ng-attr-title="{{utils.isProductCountAvailable(product, product.count) ? '' :
-                        stringResources.validationMessages.wrongProductCountTitle}}">
+                <input type="number" name="input" ng-model="product.count" min="1">
             </td>
             <td class="total-price">
                 <span>{{utils.getProductPrice(product, product.capacityInfo, product.count)}}</span>
