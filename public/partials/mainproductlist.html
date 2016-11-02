@@ -16,11 +16,13 @@
                 </button>
             </li>
         </ul>
-        <div class="product-buy-button-container">
-            <button ng-click="onBuyProductButtonClick($event, product)">
+        <div class="product-buy-button-container" >
+            <button ng-click="onBuyProductButtonClick($event, product)" ng-show="product.isActive">
                 <img src="/resources/images/icons/cart.png"><span>Купить</span>
             </button>
+            <span ng-show="!product.isActive">Нет в наличии</span>
         </div>
+
     </div>
 </div>
 <div paging

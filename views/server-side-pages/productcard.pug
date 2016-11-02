@@ -16,9 +16,12 @@ block aboveproductslist
       input(type='number', name='input', ng-model='orderCount', min='1', max='99', ng-class='{invalid: !utils.isProductCountAvailable(product, orderCount)}', ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :\
       stringResources.validationMessages.wrongProductCountTitle}}")
       |             шт.
-      button.product-buy-button(ng-click='onBuyProductButtonClick($event, product)')
-        img.cart-image(src='/resources/images/icons/cart.png')
-        span Купить
+      if productData.isActive
+        button.product-buy-button(ng-click='onBuyProductButtonClick($event, product)')
+          img.cart-image(src='/resources/images/icons/cart.png')
+          span Купить
+      else
+        span.not-active-label Нет в наличии
     span.old-price(ng-show='productData.discount')= (productData.capacityList[0].price * (100 - productData.discount || 0) / 100) + 'руб.'
     br
     ul.tab-control

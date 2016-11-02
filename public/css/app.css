@@ -537,6 +537,7 @@ ul {
 	background: white;
 	width: 100%;
 	z-index: 1;
+	color: #8AA108;
 }
 
 .mobile .product-container .product-buy-button-container {
@@ -555,7 +556,6 @@ ul {
 	max-width: 130px;
 	border: 2px solid #8AA108;
 	border-radius: 1.423076em; /* height / 2 */
-	color: #8AA108;
 	cursor: pointer;
 }
 
@@ -728,6 +728,10 @@ ul {
 
 .product-card .control-panel b {
 	font-size: 1.846153em; /* 24 / 13 */
+}
+
+.product-card .control-panel .not-active-label {
+	color: #8AA108;
 }
 
 .product-card select,

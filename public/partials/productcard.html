@@ -15,10 +15,11 @@
                    ng-attr-title="{{utils.isProductCountAvailable(product, orderCount) ? '' :
                         stringResources.validationMessages.wrongProductCountTitle}}">
             шт.
-            <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">
+            <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)" ng-show="product.isActive">
                 <img src="/resources/images/icons/cart.png" class="cart-image">
                 <span>Купить</span>
             </button>
+            <span ng-show="!product.isActive" class="not-active-label">Нет в наличии</span>
 
         </div>
         <span class="old-price" ng-show="product.discount">{{utils.getProductPrice(product, product.selectedCapacity, 1)}}</span><br>
