@@ -24,9 +24,9 @@ angular.module('gsoapAdminApp.adminControllers').controller('PromocodesControlle
         $state.go('brands');
     };
     $scope.getBrandName = function(brandId) {
-        return $scope.brands.find(function(brand) {
+        return brandId ? $scope.brands.find(function(brand) {
             return brand._id === brandId;
-        }).name;
+        }).name : '';
     };
 
     function loadPageData() {
