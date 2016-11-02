@@ -1,6 +1,6 @@
 <div class="brands-page">
     <h1>Бренды</h1>
-    <div class="brand-container" ng-repeat="brand in brands">
+    <div class="brand-container" ng-repeat="brand in brands | orderBy: 'name'">
         <a ng-href="#!/brands/{{brand.name}}/">
             <img ng-src="{{utils.getBrandImageUrl(brand)}}">
             <h2>{{brand.name}}</h2>
