@@ -165,7 +165,8 @@ function getStringResources() {
             powder: 'Пудра',
             purification: 'Очищение',
             base: 'Базовые',
-            essential: 'Эфирные'
+            essential: 'Эфирные',
+            oral: 'Для полости рта'
         },
         productCapacityUnitTypes: {
             gram: 'г',
@@ -203,10 +204,6 @@ function getStringResources() {
             {
                 value: 'oil',
                 label: 'Масло'
-            },
-            {
-                value: 'oral',
-                label: 'Для полости рта'
             }
         ],
         deliveryTypes: {

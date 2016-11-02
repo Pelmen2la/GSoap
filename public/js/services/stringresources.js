@@ -17,7 +17,8 @@ angular.module('gsoapApp.services').constant('StringResources', {
         powder: 'Пудра',
         purification: 'Очищение',
         base: 'Базовые',
-        essential: 'Эфирные'
+        essential: 'Эфирные',
+        oral: 'Для полости рта'
     },
     productCapacityUnitTypes: {
         gram: 'г',
@@ -55,10 +56,6 @@ angular.module('gsoapApp.services').constant('StringResources', {
         {
             value: 'oil',
             label: 'Масло'
-        },
-        {
-            value: 'oral',
-            label: 'Для полости рта'
         }
     ],
     deliveryTypes: {
