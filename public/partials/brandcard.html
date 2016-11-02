@@ -37,9 +37,10 @@
                 <span>{{utils.getProductPrice(product, product.selectedCapacity)}}</span>
             </td>
             <td>
-                <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)">
+                <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)" ng-show="product.isActive">
                     <img src="/resources/images/icons/cart.png"><span>Купить</span>
                 </button>
+                <span class="not-active-label" ng-show="!product.isActive">Нет в наличии</span>
             </td>
         </tr>
     </table>

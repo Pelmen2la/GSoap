@@ -1108,6 +1108,10 @@ ul {
 	height: 1.384615em; /* 18 / 13 */
 	vertical-align: middle;
 }
+
+.products-grid .not-active-label {
+	color: #869804;
+}
 /* /Brand card */
 
 /* Articles page */
