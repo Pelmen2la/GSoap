@@ -49,7 +49,7 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
             price = 0;
         products.forEach(function(product) {
             count += product.count || 1;
-            price += parseInt(this.getProductPrice(product, product.capacityInfo, product.count || 1, true));
+            price += parseInt(this.getProductPrice(product, product.capacityInfo, product.count || 1, true, true));
         }.bind(this));
         return {
             count: count,
