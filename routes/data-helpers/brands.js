@@ -15,7 +15,7 @@ module.exports = function(app) {
         Brand.find({ name: req.params.id }, function (err, data) {
             if(err) return next(err);
             var brand = data[0];
-            Product.find({brand: brand.name}, function(err, data) {
+            Product.find({brandId: brand._id}, function(err, data) {
                 brand = brand.toObject();
                 brand.products = data;
                 res.json(brand);

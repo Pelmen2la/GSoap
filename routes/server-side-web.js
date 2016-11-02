@@ -78,7 +78,7 @@ function sendBrandListResult(req, res, queryString) {
 function sendBrandCardResult(req, res, brandName) {
     Brand.find({name: brandName}, function(err, data) {
         var brand = data[0];
-        Product.find({brand: brand.name}, function(err, productsData) {
+        Product.find({brandId: brand._id}, function(err, productsData) {
             var productCategories = {};
             productsData.forEach(function(product) {
                 var type = product.type;

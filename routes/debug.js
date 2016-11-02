@@ -222,6 +222,23 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/utils/products/brandstoids', function(req, res, next) {
+        Brand.find({}, function(err, brandData) {
+            var brandsHash = {};
+            brandData.forEach(function(brand) {
+                brandsHash[brand.name] = brand._id;
+            });
+            Product.find(null, function(err, data) {
+                if(err) return next(err);
+                data.forEach(function(entry) {
+                    entry.brandId = brandsHash[entry.brand];
+                    entry.save();
+                });
+                res.json('done');
+            });
+        });
+    });
+
     app.get('/utils/buttonfilters/movetoarray', function(req, res, next) {
         ButtonFilter.find(null, function(err, data) {
             if(err) return next(err);

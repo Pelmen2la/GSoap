@@ -35,7 +35,8 @@ angular.module('gsoapApp.controllers')
                     count: count,
                     discount: product.discount,
                     stockCount: product.stockCount,
-                    orderCount: product.orderCount
+                    orderCount: product.orderCount,
+                    brandId: product.brandId
                 });
             };
             $scope.onFilterButtonClick = function(filter) {

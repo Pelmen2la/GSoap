@@ -42,7 +42,7 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
         }
         var discount = withDiscount ? product.discount || 0 : 0,
             price = (selectedCapacity.price * (1 - discount / 100) * (count || 1)).toFixed(0);
-        return skipFormat ? price : this.formatPrice(price);
+        return skipFormat ? parseInt(price) : this.formatPrice(price);
     };
     this.getProductsInfo = function(products, skipFormat) {
         var count = 0,

@@ -53,8 +53,8 @@
         <label class="col-sm-2 control-label">Бренд</label>
 
         <div class="col-sm-10">
-            <select ng-model="product.brand"
-                    ng-options="brand.name as brand.name for brand in brands">
+            <select ng-model="product.brandId"
+                    ng-options="brand._id as brand.name for brand in brands">
             </select>
         </div>
     </div>

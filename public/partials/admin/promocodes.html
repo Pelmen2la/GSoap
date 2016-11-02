@@ -1,13 +1,24 @@
 <div ng-controller="PromocodesController">
     <div class="form-inline">
         <div class="form-group">
-            <label for="PromocodeCode">Промокод:</label>
-            <input type="text" class="form-control" id="PromocodeCode" ng-model="promocode.code">
+            <label>Промокод:</label>
+            <input type="text" class="form-control" ng-model="promocode.code">
         </div>
         <div class="form-group">
-            <label for="PromocodeDate">Действителен до:</label>
-            <input type="date" class="form-control" id="PromocodeDate" ng-model="promocode.date">
+            <label>Действителен до:</label>
+            <input type="date" class="form-control" ng-model="promocode.date">
         </div>
+        <div class="form-group">
+            <label>Скидка</label>
+            <input type="number" class="form-control" ng-model="promocode.discount">
+        </div>
+        <div class="form-group">
+            <label>Бренд</label>
+            <select class="form-control" ng-model="promocode.brandId"
+                    ng-options="brand._id as brand.name for brand in brands">
+            </select>
+        </div>
+
         <button ng-click="submitPromocode()">Создать промокод</button>
     </div>
 
@@ -15,6 +26,8 @@
         <tr>
             <th>Код</th>
             <th>Дата</th>
+            <th>Скидка</th>
+            <th>Бренд</th>
         </tr>
         <tr ng-repeat="promocode in promocodes">
             <td>
@@ -22,6 +35,12 @@
             </td>
             <td>
                 {{promocode.date.split('T')[0]}}
+            </td>
+            <td>
+                {{promocode.discount}}
+            </td>
+            <td>
+                {{getBrandName(promocode.brandId)}}
             </td>
             <td>
                 <span class="main-sprite-icon delete-icon" ng-click="tryDeletePromocode(promocode._id)"></span>

@@ -24,7 +24,9 @@ module.exports = function(app) {
                     isAvailableByDate = !date || Date.now() < date.getTime();
                 res.json({
                     isAvailable: isAvailableByDate,
-                    message: isAvailableByDate ? 'Промокод действителен' : 'Время действия промокода истекло'
+                    message: isAvailableByDate ? 'Промокод действителен' : 'Время действия промокода истекло',
+                    brandId: isAvailableByDate ? promocode.brandId : '',
+                    discount: isAvailableByDate ? promocode.discount : ''
                 });
             }
         });

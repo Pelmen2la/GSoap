@@ -2,7 +2,7 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
     function($scope, $http, $state, StringResources, Order) {
         $scope.customerInfo = {
         };
-        $scope.promocodeTooltipInfo = {
+        $scope.promocodeInfo = {
             text: '',
             cssCls: ''
         };
@@ -17,11 +17,13 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
                     method: 'GET',
                     url: '/promocodes/isavailable/' + $scope.customerInfo.promocode
                 }).then(function(response) {
-                        $scope.promocodeTooltipInfo = {
-                            text: response.data.message,
-                            isAvailable: response.data.isAvailable
+                        var data = response.data;
+                        $scope.promocodeInfo = {
+                            text: data.message,
+                            isAvailable: data.isAvailable,
+                            brandId: data.brandId,
+                            discount: data.discount
                         };
-                        window.promocodeTooltipInfo = $scope.promocodeTooltipInfo;
                     }, function() {
                     }
                 );
@@ -39,8 +41,11 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
             });
         };
         $scope.getProductsCost = function() {
-            return $scope.cartProducts.reduce(function(accum, currentVal) {
-                accum += currentVal.count * currentVal.capacityInfo.price;
+            return $scope.cartProducts.reduce(function(accum, product) {
+                var price = $scope.utils.getProductPrice(product, product.capacityInfo, product.count, true, true),
+                    info = $scope.promocodeInfo,
+                    discount = (info.discount && (!info.brandId || info.brandId == product.brandId)) ? info.discount : 0;
+                accum += price * (100 - discount) / 100;
                 return accum;
             }, 0);
         };

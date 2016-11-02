@@ -9,7 +9,7 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
 
         $(window).scroll(function() {
             var $window = $(window),
-                $productList = $('#AdminProductList')
+                $productList = $('#AdminProductList');
             productRow = $productList.find('tr')[0];
             if(productRow && $productList.offset().top + $productList.height() -
                 productRow.offsetHeight < $window.height() + $window.scrollTop()) {

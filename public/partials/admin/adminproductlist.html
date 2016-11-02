@@ -11,9 +11,6 @@
         <td ng-click="openProductForm(product._id)" class="product-name">
             {{product.name}}
         </td>
-        <td ng-click="openProductBrandForm(product.brand)" class="product-brand">
-            {{product.brand}}
-        </td>
         <td>
             {{utils.getProductCapacityText(product)}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}<br/>
             {{utils.getProductPricesText(product)}} р

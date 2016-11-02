@@ -61,7 +61,7 @@
         <input placeholder="Электронная почта *"ng-model="customerInfo.email" title="поле обязательно для заполнения" required>
         <input placeholder="Полный адрес" ng-model="customerInfo.fullAddress">
         <input placeholder="Код на скидку" ng-model="customerInfo.promocode" ng-keyup="onPromocodeInputKeyUp()">
-        <span ng-class="promocodeTooltipInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeTooltipInfo.text}}</span>
+        <span ng-class="promocodeInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeInfo.text}}</span>
         <textarea placeholder="Комментарий к заказу" ng-model="customerInfo.description"></textarea>
     </div>
     <div class="right-order-container">
