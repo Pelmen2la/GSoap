@@ -451,6 +451,8 @@ ul {
 
 .products-list-search-input {
 	margin-top: 1em; /* 13 / 13 */
+	font-size: 1.333333em; /* 16 / 13 */
+	text-indent: 5px;
 	margin-left: 7.272727%; /* 80 / 1100 */
 	width: 27.272727%; /* 300 / 1100 */
 }
@@ -655,7 +657,7 @@ ul {
 
 .main-text,
 .subscribe-block-wrapper {
-	padding: 2.461538em 12.727272%; /* 32 / 13, (60 + 80) / 1100 */
+	padding: 2.461538em 7.272727%; /* 32 / 13, 80 / 1100 */
 	margin: 0 -5.454545%; /* 120 / 2 / 1100 */
 	overflow: auto;
 	background: white;
