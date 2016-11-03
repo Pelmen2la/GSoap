@@ -894,6 +894,10 @@ ul {
 	width: 4.384615em; /* 57 / 13 */
 }
 
+.products-grid td input[type=number] {
+	text-align: center;
+}
+
 .products-grid td .delete-button {
 	width: 0.692307em; /* 9 / 13 */
 	height: 0.692307em; /* 9 / 13 */
