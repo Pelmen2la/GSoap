@@ -561,12 +561,17 @@ ul {
 	cursor: pointer;
 }
 
+.product-container .not-available-label {
+	display: inline-block;
+	height: 2.846153em; /* 37 / 13 */
+}
+
 .product-container .product-buy-button-container img {
 	padding-right: 0.846153em; /* 11 / 13 */
 }
 
-.product-container .product-buy-button-container img,
-.product-container .product-buy-button-container span {
+.product-container .product-buy-button-container button img,
+.product-container .product-buy-button-container button span {
 	height: 1.384615em; /* 18 / 13 */
 	vertical-align: middle;
 }
