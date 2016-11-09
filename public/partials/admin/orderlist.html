@@ -9,7 +9,7 @@
     </tr>
     <tr ng-repeat="order in orders">
         <td>
-            {{order.status}}
+            {{stringResources.orderStatus[order.status]}}
         </td>
         <td colspan="2">
             {{order.customerInfo.name}}
