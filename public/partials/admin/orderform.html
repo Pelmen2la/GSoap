@@ -3,22 +3,26 @@
         Назад
     </button>
 
-    <p>Статус заказа<select
+    <p>Статус заказа
+        <select
             ng-model="order.status"
             ng-options="key as value for (key, value) in stringResources.orderStatus">
-    </select>
+        </select>
     </p>
-
+    <br>
+    <b>Информация о клиенте:</b>
     <div class="order-customer-info">
-        <p><b>Информация о клиенте:</b><br>
+        <p>
             <b>Имя: </b>{{order.customerInfo.name}}<br>
             <b>Email: </b>{{order.customerInfo.email}}<br>
             <b>Телефон: </b>{{order.customerInfo.phone}}<br>
             <b>Купон на скидку: </b>{{order.customerInfo.promocode}}<br>
             <b>Тип доставки: </b>{{stringResources.deliveryTypes[order.customerInfo.deliveryType]}}<br>
-            <b>Купон на скидку: </b>{{order.customerInfo.promocode}}
+            <b>Адрес: </b>{{order.customerInfo.fullAddress}}<br>
+            <b>Комментарий: </b>{{order.customerInfo.description}}<br>
         </p>
     </div>
+    <br>
     <strong>Список товаров:</strong>
     <table class="list">
         <tr>

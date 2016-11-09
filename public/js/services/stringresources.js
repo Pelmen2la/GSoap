@@ -59,10 +59,8 @@ angular.module('gsoapApp.services').constant('StringResources', {
         }
     ],
     deliveryTypes: {
-        tulaTokareva: 'Самовывоз, г. Тула ул. Токарева',
-        tulaLenina: 'Самовывоз, г. Тула пр. Ленина',
-        tulaFree: 'Бесплатная доставка по Туле (заказ от 1000 рублей)',
-        rf: 'Доставка по РФ (бесплатно для заказов от 2500)'
+        self: 'Самовывоз, г. Тула',
+        delivery: 'Дотавка по РФ'
     },
     orderStatus: {
         new: 'Новый',

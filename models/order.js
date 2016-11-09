@@ -7,8 +7,7 @@ var Order = new mongoose.Schema({
     date: Number,
     customerInfo: {
         name: {
-            type: String,
-            required: true
+            type: String
         },
         phone: {
             type: String,
@@ -18,8 +17,6 @@ var Order = new mongoose.Schema({
             type: String,
             required: true
         },
-        city: String,
-        postIndex: String,
         fullAddress: String,
         promocode: String,
         description: String,
@@ -34,8 +31,7 @@ var Order = new mongoose.Schema({
             price: Number
         },
         count: Number
-    }],
-    description: String
+    }]
 });
 
 mongoose.model('order', Order);
