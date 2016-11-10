@@ -812,6 +812,11 @@ ul {
 	margin-top: 2em; /* 26 / 13 */
 }
 
+.product-card .content,
+.product-card .content p {
+	font-size: 16px !important;
+}
+
 .product-card .reviews-container {
 	padding-top: 0.384615em; /* 5 / 13 */
 	clear: both;

@@ -34,11 +34,11 @@
                 Отзывы
             </li>
         </ul>
-        <p ng-hide="selectedTabName !== 'description'" ng-bind-html="product.description">
+        <p class="content" ng-hide="selectedTabName !== 'description'" ng-bind-html="product.description">
         </p>
-        <p ng-hide="selectedTabName !== 'use'" ng-bind-html="product.use">
+        <p class="content" ng-hide="selectedTabName !== 'use'" ng-bind-html="product.use">
         </p>
-        <p ng-hide="selectedTabName !== 'ingredients'" ng-bind-html="product.ingredients">
+        <p class="content"ng-hide="selectedTabName !== 'ingredients'" ng-bind-html="product.ingredients">
         </p>
         <div ng-hide="selectedTabName !== 'reviews'" class="reviews-container">
             <p class="review" ng-repeat="review in product.reviews">
