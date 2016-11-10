@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 
 var Order = new mongoose.Schema({
     status: String,
+    orderIndex: Number,
     date: Number,
     customerInfo: {
         name: {

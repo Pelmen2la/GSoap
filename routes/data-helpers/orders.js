@@ -24,16 +24,19 @@ module.exports = function(app) {
         orderData.status = 'new';
         orderData.date = Date.now();
         var order = new Order(orderData);
-        order.save(function (err, order) {
-            order.products.forEach(function(product) {
-                Product.findById(product.id, function(err, productModel) {
-                    productModel.orderCount += product.count;
-                    productModel.save();
+        Order.find({}, null, {limit: 1, sort: {orderIndex: -1}}, function(err, lastOrderData) {
+            var index = lastOrderData[0].orderIndex;
+            order.orderIndex = index ? (index + 1) : 11160001;
+            order.save(function(err, order) {
+                order.products.forEach(function(product) {
+                    Product.findById(product.id, function(err, productModel) {
+                        productModel.orderCount += product.count;
+                        productModel.save();
+                    });
                 });
+                emailHelper.sendOrderEmail(order);
+                res.json(order);
             });
-            emailHelper.sendOrderEmail(order);
-            if (err) return next(err);
-            res.json(order);
         });
     });
 

@@ -1,5 +1,6 @@
 <table class="list">
     <tr>
+        <th>Номер</th>
         <th>Статус</th>
         <th colspan="2">Имя</th>
         <th colspan="2">Email</th>
@@ -8,6 +9,9 @@
         <th>Сумма</th>
     </tr>
     <tr ng-repeat="order in orders">
+        <td>
+            {{order.orderIndex || ''}}
+        </td>
         <td>
             {{stringResources.orderStatus[order.status]}}
         </td>
