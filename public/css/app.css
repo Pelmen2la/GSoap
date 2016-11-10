@@ -160,6 +160,7 @@ ul {
 	color: red;
 }
 
+.green-colored-text,
 .valid {
 	color: #8AA108;
 }
@@ -851,15 +852,22 @@ ul {
 /* /Product card */
 
 /* Cart page */
-.no-products-in-cart-text,
+.cart-info-text,
 .cart-page {
 	padding: 1.923076em 7.272727%; /* 25 / 13, 80 / 1100 */
 	background: white;
 	overflow: auto;
 }
 
-.no-products-in-cart-text {
+.cart-info-text {
 	font-size: 1.538461em; /* 20 / 13 */
+	line-height: 1.5em;
+}
+
+.cart-info-text .success-order-image {
+	max-height: 20em;
+	display: block;
+	margin: 0 auto;
 }
 
 .cart-page h2 {

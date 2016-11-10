@@ -35,7 +35,7 @@ module.exports = function(app) {
                     });
                 });
                 emailHelper.sendOrderEmail(order);
-                res.json(order);
+                res.json({ orderIndex : order.orderIndex });
             });
         });
     });

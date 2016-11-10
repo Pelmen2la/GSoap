@@ -3,8 +3,8 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.order = Order.get({id: $stateParams.id}, function(data) {
         });
         $scope.submitOrder = function() {
-            $scope.order.$update({id: $scope.order._id}, function() {
-                $state.go('orders');
+            $scope.order.$update({id: $scope.order._id}, function(data) {
+                $scope.orderId = data;
             });
         };
         $scope.back = function() {

@@ -35,9 +35,9 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
                 customerInfo: $scope.customerInfo,
                 products: $scope.cartProducts
             });
-            order.$save(function() {
+            order.$save(function(data) {
                 $scope.$parent.cartProducts = [];
-                $state.go('index');
+                $scope.oderIndex = data.orderIndex;
             });
         };
         $scope.getProductsCost = function() {

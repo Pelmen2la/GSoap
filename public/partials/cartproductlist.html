@@ -85,4 +85,10 @@
         Заказать
     </button>
 </form>
-<p class="no-products-in-cart-text" ng-show="!cartProducts.length">В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из <a href="#!/products">списка</a></p>
+<p class="cart-info-text" ng-show="oderIndex">
+    <img class="success-order-image" src="/resources/images/success-order.jpg">
+    Ваш заказ № <b class="green-colored-text">{{oderIndex}}</b> принят на обработку. В ближайшее время с Вами свяжется менеджер для уточнения деталей
+    доставки.
+    Благодарим за выбор магазина <span class="green-colored-text">GOOD</span>SOAP.
+</p>
+<p class="cart-info-text" ng-show="!cartProducts.length">В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из <a href="#!/products">списка</a></p>
