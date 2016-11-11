@@ -11,43 +11,47 @@ module.exports = {
         var escapedFragmentPaths = escapedFragment.split('?'),
             pageName = escapedFragmentPaths[0],
             queryString = escapedFragmentPaths.length > 1 ? escapedFragmentPaths[2] : '';
-        if(pageName === '/articles') {
-            sendArticleListResult(req, res, queryString);
-            return;
-        }
-        if(pageName.match(/\/articles\/.+\//)) {
-            sendArticleCardResult(req, res, pageName.split('/')[2]);
-            return;
-        }
-        if(pageName === '/brands') {
-            sendBrandListResult(req, res, queryString);
-            return;
-        }
-        if(pageName.match(/\/brands\/.+\//)) {
-            sendBrandCardResult(req, res, pageName.split('/')[2]);
-            return;
-        }
-        if(pageName === '/cart') {
-            sendResult(res, 'cartproductlist', {});
-            return;
-        }
-        if(pageName === '') {
+        try {
+            if(pageName === '/articles') {
+                sendArticleListResult(req, res, queryString);
+                return;
+            }
+            if(pageName.match(/\/articles\/.+\//)) {
+                sendArticleCardResult(req, res, pageName.split('/')[2]);
+                return;
+            }
+            if(pageName === '/brands') {
+                sendBrandListResult(req, res, queryString);
+                return;
+            }
+            if(pageName.match(/\/brands\/.+\//)) {
+                sendBrandCardResult(req, res, pageName.split('/')[2]);
+                return;
+            }
+            if(pageName === '/cart') {
+                sendResult(res, 'cartproductlist', {});
+                return;
+            }
+            if(pageName === '') {
+                sendMainPageResult(req, res, queryString);
+                return;
+            }
+            if(pageName === '/products') {
+                sendProductListResult(req, res, queryString);
+                return;
+            }
+            if(pageName.match(/\/products\/\w+\//)) {
+                sendProductCardResult(req, res, pageName.split('/')[2]);
+                return;
+            }
+            if(pageName === '/sitemap') {
+                sendSiteMapResult(req, res, queryString);
+                return;
+            }
+            sendResult(res, 'simplepages' + pageName, {});
+        } catch(err) {
             sendMainPageResult(req, res, queryString);
-            return;
         }
-        if(pageName === '/products') {
-            sendProductListResult(req, res, queryString);
-            return;
-        }
-        if(pageName.match(/\/products\/\w+\//)) {
-            sendProductCardResult(req, res, pageName.split('/')[2]);
-            return;
-        }
-        if(pageName === '/sitemap') {
-            sendSiteMapResult(req, res, queryString);
-            return;
-        }
-        sendResult(res, 'simplepages' + pageName, {});
     }
 };
 

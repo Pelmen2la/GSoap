@@ -20,7 +20,7 @@ block maincontent
             td
               img(src= '/resources/images/products/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}', ng-click='openProductCard(product._id)')
             td.product-name(colspan='2')
-              a(href=  '#!/products/' + product._id + '/')= product.name
+              a(href=  '/#!/products/' + product._id + '/')= product.name
             td.product-capacity
               select(ng-model='product.selectedCapacity', ng-options='entry as entry.capacity for entry in product.capacityList')
                 for capacityInfo in product.capacityList

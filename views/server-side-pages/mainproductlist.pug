@@ -7,7 +7,7 @@ block maincontent
     .products-container
       each product in products
         .product-container(ng-repeat='product in products track by $index', ng-class='{bestseller: product.isBestseller}')
-          a(href=  '#!/products/' + product._id + '/')
+          a(href=  '/#!/products/' + product._id + '/')
             img(src= '/resources/images/products/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}',)
           a.product-name(href=  '#!/products/' + product._id + '/')= product.name
           .product-price
