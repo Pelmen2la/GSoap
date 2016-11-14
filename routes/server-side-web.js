@@ -170,7 +170,8 @@ function getStringResources() {
             purification: 'Очищение',
             base: 'Базовые',
             essential: 'Эфирные',
-            oral: 'Для полости рта'
+            oral: 'Для полости рта',
+            packaging: 'Упаковка'
         },
         productCapacityUnitTypes: {
             gram: 'г',
@@ -208,6 +209,14 @@ function getStringResources() {
             {
                 value: 'oil',
                 label: 'Масло'
+            },
+            {
+                value: 'packaging',
+                label: 'Упаковка'
+            },
+            {
+                value: 'Sale',
+                label: 'Распродажа'
             }
         ],
         deliveryTypes: {
