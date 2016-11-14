@@ -39,7 +39,7 @@ module.exports = function(app) {
                         productModel.save();
                     });
                 });
-                //emailHelper.sendOrderEmail(order);
+                emailHelper.sendOrderEmail(order);
                 res.json({ orderIndex : order.orderIndex });
             });
         });
