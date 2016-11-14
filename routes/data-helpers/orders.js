@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
     emailHelper = require('app/email-helper'),
+    promocodes = require('./promocodes'),
     Order = mongoose.model('order'),
     Product = mongoose.model('product');
 
@@ -15,7 +16,11 @@ module.exports = function(app) {
     app.get('/orders/:id', function (req, res, next) {
         Order.findById(req.params.id, function (err, data) {
             if (err) return next(err);
-            res.json(data);
+            promocodes.getPromocodeInfo(data.customerInfo.promocode, function(info) {
+                data = data.toObject();
+                data.promocodeInfo = info;
+                res.json(data);
+            });
         });
     });
 
@@ -34,7 +39,7 @@ module.exports = function(app) {
                         productModel.save();
                     });
                 });
-                emailHelper.sendOrderEmail(order);
+                //emailHelper.sendOrderEmail(order);
                 res.json({ orderIndex : order.orderIndex });
             });
         });

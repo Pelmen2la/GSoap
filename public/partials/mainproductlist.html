@@ -8,7 +8,7 @@
         </a>
         <a ng-href="#!/products/{{product._id}}/" class="product-name">{{product.name}}</a>
 
-        <div class="product-price"><b>{{utils.getProductPrice(product, product.selectedCapacity)}}</b></div>
+        <div class="product-price"><b>{{utils.getProductPrice(product, product.selectedCapacity, 1)}}</b></div>
         <ul class="product-capacity">
             <li ng-repeat="capacityInfo in product.capacityList">
                 <button ng-class="{ selected: capacityInfo == product.selectedCapacity }"

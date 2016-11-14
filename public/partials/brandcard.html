@@ -34,7 +34,7 @@
                 {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}
             </td>
             <td>
-                <span>{{utils.getProductPrice(product, product.selectedCapacity)}}</span>
+                <span>{{utils.getProductPrice(product, product.selectedCapacity, 1)}}</span>
             </td>
             <td>
                 <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)" ng-show="product.isActive">

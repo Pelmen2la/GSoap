@@ -32,7 +32,7 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         controller: 'ArticleCardController'
     }).state('cartProductList', {
         url: '/!/cart/',
-        templateUrl: '/partials/cartproductlist.html',
+        templateUrl: '/partials/cart.html',
         controller: 'CartProductListController'
     }).state('about', {
         url: '/!/about/',

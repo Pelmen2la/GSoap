@@ -14,45 +14,18 @@
     <b>Информация о клиенте:</b>
     <div class="order-customer-info">
         <p>
-            <b>Имя: </b>{{order.customerInfo.name}}<br>
-            <b>Email: </b>{{order.customerInfo.email}}<br>
+            <b>Имя: </b>{{customerInfo.name}}<br>
+            <b>Email: </b>{{customerInfo.email}}<br>
             <b>Телефон: </b>{{order.customerInfo.phone}}<br>
-            <b>Купон на скидку: </b>{{order.customerInfo.promocode}}<br>
-            <b>Тип доставки: </b>{{stringResources.deliveryTypes[order.customerInfo.deliveryType]}}<br>
-            <b>Адрес: </b>{{order.customerInfo.fullAddress}}<br>
-            <b>Комментарий: </b>{{order.customerInfo.description}}<br>
+            <b>Купон на скидку: </b>{{customerInfo.promocode}}<br>
+            <b>Тип доставки: </b>{{stringResources.deliveryTypes[customerInfo.deliveryType]}}<br>
+            <b>Адрес: </b>{{order.fullAddress}}<br>
+            <b>Комментарий: </b>{{customerInfo.description}}<br>
         </p>
     </div>
     <br>
-    <strong>Список товаров:</strong>
-    <table class="list">
-        <tr>
-            <th></th>
-            <th>Название</th>
-            <th>Ёмкость</th>
-            <th>Цена</th>
-            <th>Количество</th>
-        </tr>
-        <tr ng-repeat="product in order.products">
-            <td ng-click="openProductForm(product._id)">
-                <img class="main-image" ng-src="{{utils.getProductImageUrl(product)}}" ng-click="openProductCard(product._id)">
-            </td>
-            <td ng-click="openProductForm(product._id)" class="product-name">
-                {{product.name}}
-            </td>
-            <td>
-                {{product.capacityInfo.capacity}} г\мл
-            </td>
-            <td>
-                {{product.capacityInfo.price}} р
-            </td>
-            <td>
-                {{product.count}}
-            </td>
-        </tr>
-    </table>
-    <p>Общая цена: {{order.products ? utils.getProductsInfo(order.products).price : 0}}</p>
 
+    <div ng-include src="'/partials/cartproductlist.html'"></div>
 
 
     <button type="submit" ng-click="submitOrder()">

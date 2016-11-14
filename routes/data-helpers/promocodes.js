@@ -11,25 +11,9 @@ module.exports = function(app) {
     });
 
     app.get('/promocodes/isavailable/:code', function (req, res, next) {
-        Promocode.find({ code: req.params.code }, function (err, data) {
-            if(err) return next(err);
-            if(!data.length) {
-                res.json({
-                    isAvailable: false,
-                    message: 'Промокод не найден'
-                });
-            } else {
-                var promocode = data[0],
-                    date = promocode.get('date'),
-                    isAvailableByDate = !date || Date.now() < date.getTime();
-                res.json({
-                    isAvailable: isAvailableByDate,
-                    message: isAvailableByDate ? 'Промокод действителен' : 'Время действия промокода истекло',
-                    brandId: isAvailableByDate ? promocode.brandId : '',
-                    discount: isAvailableByDate ? promocode.discount : ''
-                });
-            }
-        });
+        getPromocodeInfo(req.params.code, function(info) {
+            res.json(info);
+        })
     });
 
 
@@ -61,4 +45,32 @@ module.exports = function(app) {
             res.json(data);
         });
     });
-}
+};
+
+module.exports.getPromocodeInfo = getPromocodeInfo;
+
+function getPromocodeInfo(promocode, callback) {
+    if(!promocode) {
+        callback({});
+        return;
+    };
+    Promocode.find({code: promocode}, function(err, data) {
+        if(err) return next(err);
+        if(!data.length) {
+            callback({
+                isAvailable: false,
+                message: 'Промокод не найден'
+            });
+        } else {
+            var promocode = data[0],
+                date = promocode.get('date'),
+                isAvailableByDate = !date || Date.now() < date.getTime();
+            callback({
+                isAvailable: isAvailableByDate,
+                message: isAvailableByDate ? 'Промокод действителен' : 'Время действия промокода истекло',
+                brandId: isAvailableByDate ? promocode.brandId : '',
+                discount: isAvailableByDate ? promocode.discount : ''
+            });
+        }
+    });
+};

@@ -1,6 +1,4 @@
-<form class="cart-page" name="form"  novalidate ng-show="cartProducts.length">
-    <h1>Оформить заказ</h1>
-    <table ng-show="cartProducts.length" class="products-grid">
+    <table ng-show="cartProducts.length" class="products-grid list">
         <tr>
             <th colspan="3">Наименование</th>
             <th>Ёмкость</th>
@@ -11,10 +9,10 @@
         </tr>
         <tr ng-repeat="product in cartProducts track by $index">
             <td colspan="3" >
-                <a ng-href="#!/products/{{product.id}}/">
-                    <img ng-src="{{utils.getProductImageUrl(product)}}">
+                <a ng-href="/#!/products/{{product.id}}/">
+                    <img class="main-image" ng-src="{{utils.getProductImageUrl(product)}}">
                 </a>
-                <a ng-href="#!/products/{{product.id}}/">{{product.name}}</a>
+                <a ng-href="/#!/products/{{product.id}}/">{{product.name}}</a>
             </td>
             <td>
                 <span>{{product.capacityInfo.capacity}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}</span>
@@ -23,24 +21,25 @@
                 <span ng-show="product.discount">{{product.discount}}%</span>
             </td>
             <td>
-                <span>{{utils.getProductPrice(product, product.capacityInfo)}}</span>
+                <span>{{utils.getProductPrice(product, product.capacityInfo, 1)}}</span>
             </td>
             <td>
-                <input type="number" name="input" ng-model="product.count" min="1">
+                <input type="number" name="input" ng-model="product.count" min="1" ng-show="!readOnlyProductList">
+                <span ng-show="readOnlyProductList">{{product.count}}</span>
             </td>
             <td class="total-price">
-                <span>{{utils.getProductPrice(product, product.capacityInfo, product.count)}}</span>
+                <span>{{utils.getProductPrice(product, product.capacityInfo, product.count, false, true)}}</span>
                 <button class="delete-button"
-                      ng-click="removeProductFromCard($index)"></button>
+                      ng-click="removeProductFromCard($index)" ng-show="!readOnlyProductList"></button>
             </td>
         </tr>
-        <tr ng-class="{invisible : !getDeliveryCost()}">
+        <tr ng-class="{invisible : !utils.getDeliveryCost(cartProducts, promocodeInfo, customerInfo.deliveryType)}">
             <td colspan="3">Стоимость доставки</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td>{{getDeliveryCost()}} руб.</td>
+            <td>{{utils.getDeliveryCost(cartProducts, promocodeInfo, customerInfo.deliveryType)}} руб.</td>
         </tr>
         <tr>
             <td colspan="3"><b>Общая стоимость</b></td>
@@ -48,47 +47,6 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>{{getTotalCost()}} руб.</td>
+            <td>{{utils.getTotalCost(cartProducts, promocodeInfo, customerInfo.deliveryType)}}</td>
         </tr>
     </table>
-    <div class="left-order-container">
-        <h2>Введите ваши контактные данные</h2>
-        <input placeholder="Имя и фамилия" ng-model="customerInfo.name">
-        <input placeholder="Номер телефона *" ng-model="customerInfo.phone" title="поле обязательно для заполнения" required>
-        <input placeholder="Электронная почта *"ng-model="customerInfo.email" title="поле обязательно для заполнения" required>
-        <input placeholder="Полный адрес" ng-model="customerInfo.fullAddress">
-        <input placeholder="Код на скидку" ng-model="customerInfo.promocode" ng-keyup="onPromocodeInputKeyUp()">
-        <span ng-class="promocodeInfo.isAvailable ? 'valid' : 'invalid'">{{promocodeInfo.text}}</span>
-        <textarea placeholder="Комментарий к заказу" ng-model="customerInfo.description"></textarea>
-    </div>
-    <div class="right-order-container">
-        <h2>Доставка</h2>
-        <label for="selfRadio" ng-class="{selected: customerInfo.deliveryType === 'self'}">
-            <input type="radio" ng-model="customerInfo.deliveryType" value="self" id="selfRadio" ng-model="customerInfo.deliveryType">
-            <p>
-                <b>Тула</b><br><br>
-                <b>Пункты вывоза:</b><br><br>
-                - Проспект Ленина (ост. Гоголевская)<br>
-                - Улица Токарева (Заречье)<br>
-            </p>
-        </label>
-        <label for="deliveryRadio" ng-class="{selected: customerInfo.deliveryType === 'delivery'}">
-            <input type="radio" ng-model="customerInfo.deliveryType" value="delivery" id="deliveryRadio" ng-model="customerInfo.deliveryType">
-            <p>
-                <b>По России</b><br><br>
-                Стоимость доставки 250 руб. <b>Бесплатно</b> при заказе от 2500р.<br>
-                <span ng-show="!!getDeliveryCost()">Добавьте продуктов на сумму {{2500 - getProductsCost()}} руб. и доставка будет за наш счет.</span>
-            </p>
-        </label>
-    </div>
-    <button class="submit-button" ng-disabled="form.$invalid" ng-click="sendOrder()">
-        Заказать
-    </button>
-</form>
-<p class="cart-info-text" ng-show="oderIndex">
-    <img class="success-order-image" src="/resources/images/success-order.jpg">
-    Ваш заказ № <b class="green-colored-text">{{oderIndex}}</b> принят на обработку. В ближайшее время с Вами свяжется менеджер для уточнения деталей
-    доставки.
-    Благодарим за выбор магазина <span class="green-colored-text">GOOD</span>SOAP.
-</p>
-<p class="cart-info-text" ng-show="!cartProducts.length">В вашей корзине нет добавленных товаров, пожалуйста выберите товары для заказа из <a href="#!/products">списка</a></p>

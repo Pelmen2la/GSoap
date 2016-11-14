@@ -37,7 +37,7 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
         return count <= product.stockCount - product.orderCount;
     };
     this.getProductPrice = function(product, selectedCapacity, count, skipFormat, withDiscount) {
-        if(!selectedCapacity || count === 0) {
+        if(!selectedCapacity || !count) {
             return 0;
         }
         var discount = withDiscount ? product.discount || 0 : 0,
@@ -46,10 +46,11 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
     };
     this.getProductsInfo = function(products, skipFormat) {
         var count = 0,
-            price = 0;
+            price = 0,
+            me = this;
         products.forEach(function(product) {
             count += product.count || 1;
-            price += parseInt(this.getProductPrice(product, product.capacityInfo, product.count || 1, true, true));
+            price += parseInt(me.getProductPrice(product, product.capacityInfo, product.count || 1, true, true));
         }.bind(this));
         return {
             count: count,
@@ -92,6 +93,21 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
             return false;
         }
         return vArr[0].match(/[\wа-яА-Я\+\.\_\-\!]+/) && vArr[1].match(/[\wа-яА-Я]+\.[A-Za-zа-яА-Я]+/) && vArr[1].length <= 64;
+    };
+    this.getProductsCost = function(products, promocodeInfo) {
+        var me = this;
+        return products.reduce(function(accum, product) {
+            var price = me.getProductPrice(product, product.capacityInfo, product.count, true, true),
+                discount = (promocodeInfo.discount && (!promocodeInfo.brandId || promocodeInfo.brandId == product.brandId)) ? promocodeInfo.discount : 0;
+            accum += Math.trunc(price * (100 - discount) / 100);
+            return accum;
+        }, 0);
+    };
+    this.getDeliveryCost = function(products, promocodeInfo, deliveryType) {
+        return this.getProductsCost(products, promocodeInfo) >= 2500 || deliveryType !== 'delivery' ? 0 : 250;
+    };
+    this.getTotalCost = function(products, promocodeInfo, deliveryType) {
+        return this.formatPrice(this.getProductsCost(products, promocodeInfo) + this.getDeliveryCost(products, promocodeInfo, deliveryType));
     };
 
 
