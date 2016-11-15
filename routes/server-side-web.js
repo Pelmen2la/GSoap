@@ -119,12 +119,12 @@ function sendProductListResult(req, res, queryString, pageName) {
 
 function sendProductCardResult(req, res, productId) {
     Product.findById(productId, function(err, productData) {
-        Product.find({_id: {$in: productData.boughtTogetherProductIds}}, null, null, function(err, boughtTogetherProductsData) {
+        Product.find({_id: {$in: productData.boughtTogetherProductIds || []}}, null, null, function(err, boughtTogetherProductsData) {
             productData = productData.toObject();
             sendResult(res, 'productcard', {
                 productData: productData,
-                products: boughtTogetherProductsData,
-                productsTotalCount: boughtTogetherProductsData.length
+                products: boughtTogetherProductsData || [],
+                productsTotalCount: boughtTogetherProductsData.length || 0
             });
         });
     });

@@ -28,7 +28,7 @@ module.exports = function(app) {
             if(err) return next(err);
             Product.find({ _id: { $in: productData.boughtTogetherProductIds } }, null, null, function(err, boughtTogetherProductsData) {
                 productData = productData.toObject();
-                productData.boughtTogetherProducts = boughtTogetherProductsData;
+                productData.boughtTogetherProducts = boughtTogetherProductsData || [];
                 res.json(productData);
             });
         });
