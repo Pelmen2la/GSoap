@@ -82,8 +82,8 @@ function sendBrandListResult(req, res, queryString) {
     });
 };
 
-function sendBrandCardResult(req, res, brandName) {
-    Brand.find({name: brandName}, function(err, data) {
+function sendBrandCardResult(req, res, brandId) {
+    Brand.find({_id: brandId}, function(err, data) {
         var brand = data[0];
         Product.find({brandId: brand._id}, function(err, productsData) {
             var productCategories = {};
