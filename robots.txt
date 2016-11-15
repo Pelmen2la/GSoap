@@ -1,5 +1,6 @@
 Host: gsoap.ru
 
+User-Agent: *
 Disallow: /katalog/*
 Disallow: /images/*
 Disallow: /*.php
