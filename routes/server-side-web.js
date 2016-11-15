@@ -11,12 +11,15 @@ module.exports = {
         var escapedFragmentPaths = escapedFragment.split('?'),
             pageName = escapedFragmentPaths[0],
             queryString = escapedFragmentPaths.length > 1 ? escapedFragmentPaths[2] : '';
+        if(pageName[pageName.length - 1] === '/') {
+            pageName = pageName.substring(0, pageName.length - 1);
+        }
         try {
             if(pageName === '/articles') {
                 sendArticleListResult(req, res, queryString);
                 return;
             }
-            if(pageName.match(/\/articles\/.+\//)) {
+            if(pageName.match(/\/articles\/.+/)) {
                 sendArticleCardResult(req, res, pageName.split('/')[2]);
                 return;
             }
@@ -24,7 +27,7 @@ module.exports = {
                 sendBrandListResult(req, res, queryString);
                 return;
             }
-            if(pageName.match(/\/brands\/.+\//)) {
+            if(pageName.match(/\/brands\/.+/)) {
                 sendBrandCardResult(req, res, pageName.split('/')[2]);
                 return;
             }
@@ -40,7 +43,7 @@ module.exports = {
                 sendProductListResult(req, res, queryString);
                 return;
             }
-            if(pageName.match(/\/products\/\w+\//)) {
+            if(pageName.match(/\/products\/\w+/)) {
                 sendProductCardResult(req, res, pageName.split('/')[2]);
                 return;
             }
