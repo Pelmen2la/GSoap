@@ -1,0 +1,6 @@
+Host: gsoap.ru
+
+Disallow: /katalog/*
+Disallow: /images/*
+Disallow: /*.php
+Disallow: /*.html
