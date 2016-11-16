@@ -30,7 +30,8 @@ var Product = new mongoose.Schema({
     isBestseller: Boolean,
     stockCount: Number,
     orderCount: Number,
-    isActive: Boolean
+    isActive: Boolean,
+    isHiddenInList: Boolean
 });
 
 mongoose.model('product', Product);

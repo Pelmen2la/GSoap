@@ -37,7 +37,6 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                 params[param] = $scope.filters[param];
             });
             params['pagingOptions'] = $scope.pagingOptions;
-            params['showInactive'] = true;
             Product.query(params, function(data) {
                 $scope.pagingOptions.totalItemsCount = data.pop();
                 data.forEach(function(product) {
