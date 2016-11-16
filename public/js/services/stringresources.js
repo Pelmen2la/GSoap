@@ -10,7 +10,7 @@ angular.module('gsoapApp.services').constant('StringResources', {
         envelopment: 'Обертывание',
         soap: 'Мыло',
         beldi: 'Бельди',
-        showerGel: 'Гель для душа',
+        showerGel: 'Гель',
         scrub: 'Скрабы',
         bashSalt: 'Соль для ванн',
         bubbleBall: 'Бурлящие шарики',
@@ -19,7 +19,12 @@ angular.module('gsoapApp.services').constant('StringResources', {
         base: 'Базовые',
         essential: 'Эфирные',
         oral: 'Для полости рта',
-        packaging: 'Упаковка'
+        packaging: 'Упаковка',
+        spray: 'Спрей',
+        foam: 'Пена',
+        powder2: 'Порошок',
+        milk: 'Молочко',
+        means: 'Средства'
     },
     productCapacityUnitTypes: {
         gram: 'г',
@@ -65,6 +70,14 @@ angular.module('gsoapApp.services').constant('StringResources', {
         {
             value: 'Sale',
             label: 'Распродажа'
+        },
+        {
+            value: 'Children',
+            label: 'Для детей'
+        },
+        {
+            value: 'Home',
+            label: 'Для дома'
         }
     ],
     deliveryTypes: {
