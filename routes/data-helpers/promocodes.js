@@ -69,7 +69,8 @@ function getPromocodeInfo(promocode, callback) {
                 isAvailable: isAvailableByDate,
                 message: isAvailableByDate ? 'Промокод действителен' : 'Время действия промокода истекло',
                 brandId: isAvailableByDate ? promocode.brandId : '',
-                discount: isAvailableByDate ? promocode.discount : ''
+                discount: isAvailableByDate ? promocode.discount : '',
+                productType: isAvailableByDate ? promocode.productType : ''
             });
         }
     });

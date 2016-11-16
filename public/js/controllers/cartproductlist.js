@@ -22,7 +22,8 @@ angular.module('gsoapApp.controllers').controller('CartProductListController', [
                             text: data.message,
                             isAvailable: data.isAvailable,
                             brandId: data.brandId,
-                            discount: data.discount
+                            discount: data.discount,
+                            productType: data.productType
                         };
                     }, function() {
                     }

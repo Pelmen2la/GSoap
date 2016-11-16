@@ -98,8 +98,9 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
         var me = this;
         return products.reduce(function(accum, product) {
             var price = me.getProductPrice(product, product.capacityInfo, product.count, true, true),
-                discount = (promocodeInfo.discount && (!promocodeInfo.brandId || promocodeInfo.brandId == product.brandId)) ? promocodeInfo.discount : 0;
-            accum += Math.trunc(price * (100 - discount) / 100);
+                promocodeDiscount = (!promocodeInfo.brandId || promocodeInfo.brandId == product.brandId) &&
+                            (!promocodeInfo.productType || promocodeInfo.productType == product.type) ? (promocodeInfo.discount || 0) : 0;
+            accum += Math.trunc(price * (100 - promocodeDiscount) / 100);
             return accum;
         }, 0);
     };

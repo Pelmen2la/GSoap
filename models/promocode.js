@@ -12,7 +12,8 @@ var PromocodeScheme = new mongoose.Schema({
         type: Date
     },
     discount: Number,
-    brandId: String
+    brandId: String,
+    productType: String
 });
 
 mongoose.model('promocode', PromocodeScheme);

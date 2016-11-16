@@ -18,6 +18,13 @@
                     ng-options="brand._id as brand.name for brand in brands">
             </select>
         </div>
+        <div class="form-group">
+            <label>Тип продукта</label>
+
+            <select class="form-control" ng-model="promocode.productType"
+                    ng-options="key as value for (key, value) in stringResources.productTypes">
+            </select>
+        </div>
 
         <button ng-click="submitPromocode()">Создать промокод</button>
     </div>
@@ -28,6 +35,7 @@
             <th>Дата</th>
             <th>Скидка</th>
             <th>Бренд</th>
+            <th>Тип продукта</th>
         </tr>
         <tr ng-repeat="promocode in promocodes">
             <td>
@@ -41,6 +49,9 @@
             </td>
             <td>
                 {{getBrandName(promocode.brandId)}}
+            </td>
+            <td>
+                {{stringResources.productTypes[promocode.productType]}}
             </td>
             <td>
                 <span class="main-sprite-icon delete-icon" ng-click="tryDeletePromocode(promocode._id)"></span>
