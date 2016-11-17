@@ -7,6 +7,7 @@ var Product = new mongoose.Schema({
         type: String,
         required: true
     },
+    id: String,
     imageName: String,
     capacityList: [{
         capacity: Number,

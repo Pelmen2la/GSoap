@@ -11,6 +11,7 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.product.stockCount = 0;
         $scope.product.orderCount = 0;
         $scope.product.isHiddenInList = false;
+        $scope.product.imageName = 'product-default-image.jpg';
     }])
     .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', 'Product', function($scope, $state, FileUploader, Brand, Product) {
         $scope.brands = Brand.query({}, function(data) {
