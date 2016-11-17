@@ -10,6 +10,7 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.product.boughtTogetherProductIds = [];
         $scope.product.stockCount = 0;
         $scope.product.orderCount = 0;
+        $scope.product.isHiddenInList = false;
     }])
     .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', 'Product', function($scope, $state, FileUploader, Brand, Product) {
         $scope.brands = Brand.query({}, function(data) {
