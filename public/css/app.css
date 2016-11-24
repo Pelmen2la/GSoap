@@ -504,6 +504,13 @@ ul {
 	margin: 4.147465% auto; /* 9 / 217 */
 }
 
+.product-container .product-price span {
+	display: inline-block;
+	margin-right: 5px;
+	color: #959595;
+	text-decoration: line-through;
+}
+
 .product-container .product-capacity {
 	margin: 1.382488% auto 8.75576%; /* 3 / 217, 19 / 217 */
 	white-space: nowrap;
