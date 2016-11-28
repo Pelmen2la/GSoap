@@ -269,6 +269,6 @@ module.exports = function(app) {
             text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
             text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
         }
-        return text.replace(/[`\s]/g, '');
+        return text.replace(/\W/g, '');
     }
 };
