@@ -24,13 +24,8 @@ module.exports = function(app) {
     });
 
     app.get('/products/:id', function(req, res, next) {
-        Product.findById(req.params.id, function(err, productData) {
-            if(err) return next(err);
-            Product.find({ _id: { $in: productData.boughtTogetherProductIds } }, null, null, function(err, boughtTogetherProductsData) {
-                productData = productData.toObject();
-                productData.boughtTogetherProducts = boughtTogetherProductsData || [];
-                res.json(productData);
-            });
+        getProductDataById(req.params.id, function(data) {
+            res.json(data);
         });
     });
 
@@ -43,22 +38,24 @@ module.exports = function(app) {
     });
 
     app.put('/products/:id', function(req, res, next) {
-        Product.findByIdAndUpdate(req.params.id, req.body, {runValidators: true}, function(err, data) {
-            if(err) return next(err);
-            res.json(data);
+        findById(req.params.id, function(productData) {
+            Product.findByIdAndUpdate(productData._id, req.body, {runValidators: true}, function(data) {
+                res.json(data);
+            });
         });
     });
 
     app.delete('/products/:id', function(req, res, next) {
-        Product.findByIdAndRemove(req.params.id, function(err, data) {
-            if(err) return next(err);
-            res.json(data);
+        findById(req.params.id, function(productData) {
+            Product.findByIdAndRemove(productData._id, function(err, data) {
+                if(err) return next(err);
+                res.json(data);
+            });
         });
     });
 
     app.post('/products/:id/addreview', function(req, res, next) {
-        Product.findById(req.params.id, function(err, product) {
-            if(err) return next(err);
+        findById(req.params.id, function(product) {
             var review = req.body;
             product.reviews.push(review);
             product.save(function(err, data) {
@@ -68,6 +65,28 @@ module.exports = function(app) {
             });
         });
     });
+
+    function findById(id, callback) {
+        var conditions = [{ id: id }];
+        parseInt(id) && conditions.push({_id: id });
+        Product.find({ $or: conditions }, null, null, function(err, data) {
+            callback(data[0]);
+        });
+    };
+    
+    function getProductDataById(id, callback) {
+        findById(id, function(productData) {
+            if(productData) {
+                Product.find({_id: {$in: productData.boughtTogetherProductIds}}, null, null, function(err, boughtTogetherProductsData) {
+                    productData = productData.toObject();
+                    productData.boughtTogetherProducts = boughtTogetherProductsData || [];
+                    callback(productData);
+                });
+            } else {
+                callback({});
+            }
+        });
+    };
 
     function getPagingOptions(pagingOptions) {
         if(!pagingOptions.pageSize) {
@@ -108,5 +127,10 @@ module.exports = function(app) {
         var typeFilter = {type: {$in: filter.productTypes}},
             propertiesFilter = {properties: {$in: filter.properties}};
         return {$and: [typeFilter, propertiesFilter]};
+    };
+
+    return {
+        findById: findById,
+        getProductDataById: getProductDataById
     };
 }

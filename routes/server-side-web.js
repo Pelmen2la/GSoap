@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    Products = require('./data-helpers/products'),
     Article = mongoose.model('article'),
     Brand = mongoose.model('brand'),
     ButtonFilter = mongoose.model('buttonFilter'),
@@ -118,15 +119,12 @@ function sendProductListResult(req, res, queryString, pageName) {
 };
 
 function sendProductCardResult(req, res, productId) {
-    Product.findById(productId, function(err, productData) {
-        Product.find({_id: {$in: productData.boughtTogetherProductIds || []}}, null, null, function(err, boughtTogetherProductsData) {
-            productData = productData.toObject();
-            boughtTogetherProductsData = boughtTogetherProductsData || [];
-            sendResult(res, 'productcard', {
-                productData: productData,
-                products: boughtTogetherProductsData,
-                productsTotalCount: boughtTogetherProductsData.length
-            });
+    getProductDataById(productId, function(productData) {
+        var boughtTogetherProductsData = data.boughtTogetherProducts || [];
+        sendResult(res, 'productcard', {
+            productData: productData,
+            products: boughtTogetherProductsData,
+            productsTotalCount: boughtTogetherProductsData.length
         });
     });
 };

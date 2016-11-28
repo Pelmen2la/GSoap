@@ -19,12 +19,12 @@
     <table class="products-grid without-header" ng-show="brand.products.length">
         <tr ng-repeat="product in brand.products | filter: { $: searchFilter, type: typeFilter }">
             <td>
-                <a ng-href="#!/products/{{product._id}}/">
+                <a ng-href="#!/products/{{product.id || product._id}}/">
                     <img ng-src="{{utils.getProductImageUrl(product)}}">
                 </a>
             </td>
             <td colspan="2" class="product-name">
-                <a ng-href="#!/products/{{product._id}}/">{{product.name}}</a>
+                <a ng-href="#!/products/{{product.id || product._id}}/">{{product.name}}</a>
             </td>
             <td class="product-capacity">
                 <select

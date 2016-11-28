@@ -27,7 +27,7 @@ angular.module('gsoapApp.controllers')
                     }
                 }
                 $scope.cartProducts.push({
-                    id: product._id,
+                    id: product.id || product._id,
                     name: product.name,
                     imageName: product.imageName,
                     capacityInfo: product.selectedCapacity,

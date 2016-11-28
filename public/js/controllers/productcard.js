@@ -11,11 +11,11 @@ angular.module('gsoapApp.controllers')
             $scope.onSendReviewButtonClick = function() {
                 $http({
                     method: 'POST',
-                    url: '/products/' + $scope.product._id + '/addreview',
+                    url: '/products/' + $scope.product.getId() + '/addreview',
                     data: $scope.review
                 }).then(function(data) {
-                    addReviewCookie($scope.product._id);
-                    loadRecord($scope.product._id);
+                    addReviewCookie($scope.product.getId());
+                    loadRecord($scope.product.getId());
                 }, function() {
                 });
 

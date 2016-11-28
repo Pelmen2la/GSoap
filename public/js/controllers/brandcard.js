@@ -1,5 +1,5 @@
 angular.module('gsoapApp.controllers')
-    .controller('BrandCardController', ['$scope', '$state', '$stateParams', 'Brand', function($scope, $state, $stateParams, Brand) {
+    .controller('BrandCardController', ['$scope', '$state', '$stateParams', 'Brand', function($scope, $state, $stateParams, Brand, Product) {
         loadRecord($stateParams.name);
         $scope.searchFilter = '';
         $scope.typeFilter = '';
