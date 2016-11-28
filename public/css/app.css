@@ -685,7 +685,7 @@ ul {
 }
 
 .main-text img {
-	float: left;
+	float: right;
 	margin: 2.857142%; /* 28 / 980 */
 }
 
