@@ -691,6 +691,7 @@ ul {
 
 .main-text p {
 	line-height: 1.846153em; /* 24 / 13 */
+	margin: 1em 0;
 }
 
 .footer .info-container {
