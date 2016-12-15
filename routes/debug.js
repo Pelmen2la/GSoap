@@ -156,7 +156,8 @@ module.exports = function(app) {
             isBestseller: getIsBestseller(),
             stockCount: getStockCount(),
             orderCount: getOrderCount(),
-            isActive: true
+            isActive: true,
+            isHiddenInList: false
         };
         return product;
     };

@@ -31,9 +31,12 @@ module.exports = function(app) {
         orderData.date = Date.now();
         var order = new Order(orderData);
         Order.find({}, null, {limit: 1, sort: {orderIndex: -1}}, function(err, lastOrderData) {
-            var index = lastOrderData[0].orderIndex;
+            var index = lastOrderData.length ? lastOrderData[0].orderIndex : 11160000;
             order.orderIndex = index ? (index + 1) : 11160001;
             order.save(function(err, order) {
+                emailHelper.sendOrderEmail(order, function() {
+                    res.json({orderIndex: order.orderIndex});
+                });
                 order.products.forEach(function(product) {
                     Products.getProductDataById(product.id, function(productData) {
                         Product.findById(productData._id, function(err, productModel) {
@@ -43,9 +46,6 @@ module.exports = function(app) {
                             }
                         });
                     });
-                });
-                emailHelper.sendOrderEmail(order, function() {
-                    res.json({orderIndex: order.orderIndex});
                 });
             });
         });
