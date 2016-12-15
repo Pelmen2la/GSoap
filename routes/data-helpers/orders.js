@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
     emailHelper = require('app/email-helper'),
     promocodes = require('./promocodes'),
     Order = mongoose.model('order'),
-    Product = mongoose.model('product');
+    Product = mongoose.model('product'),
+    Products = require('./products');
 
 module.exports = function(app) {
     app.get('/orders', function (req, res) {
@@ -34,9 +35,13 @@ module.exports = function(app) {
             order.orderIndex = index ? (index + 1) : 11160001;
             order.save(function(err, order) {
                 order.products.forEach(function(product) {
-                    Product.findById(product.id, function(err, productModel) {
-                        productModel.orderCount += product.count;
-                        productModel.save();
+                    Products.getProductDataById(product.id, function(productData) {
+                        Product.findById(productData._id, function(err, productModel) {
+                            if(productModel) {
+                                productModel.orderCount += product.count;
+                                productModel.save();
+                            }
+                        });
                     });
                 });
                 emailHelper.sendOrderEmail(order, function() {
