@@ -92,7 +92,7 @@ html(lang='en', ng-app='gsoapApp')
                   .mask
                 for filter in buttonFilter.filters
                   li(ng-repeat='filter in buttonFilter.filters', ng-class='{ selected: filter == buttonFilter }')
-                    a(href= '#!/products?buttonFilter=' + JSON.stringify(filter) ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()')= filter.name
+                    a(href= '/#!/products?buttonFilter=' + JSON.stringify(filter) ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()')= filter.name
                     .mask
           li
             a(ng-href='#!/brands/') Бренды

@@ -4,7 +4,7 @@ block title
 h1 Карта сайта
 h2 Продукты
 each product in productsData
-  a(href=  '/#!/products/' + (product.id || product._id) + '/')= product.name
+  a(href=  '/?_escaped_fragment_=/products/' + (product.id || product._id) + '/')= product.name
   <br>
 h2 Блог
 each article in acticlesData
