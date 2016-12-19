@@ -65,72 +65,70 @@ module.exports = function(app) {
             });
         });
     });
+};
 
-    function findById(id, callback) {
-        var conditions = [{ id: id }];
-        parseInt(id) && conditions.push({_id: id });
-        Product.find({ $or: conditions }, null, null, function(err, data) {
-            callback(data[0]);
-        });
-    };
-    
-    function getProductDataById(id, callback) {
-        findById(id, function(productData) {
-            if(productData) {
-                Product.find({_id: {$in: productData.boughtTogetherProductIds}}, null, null, function(err, boughtTogetherProductsData) {
-                    productData = productData.toObject();
-                    productData.boughtTogetherProducts = boughtTogetherProductsData || [];
-                    callback(productData);
-                });
-            } else {
-                callback({});
-            }
-        });
-    };
+module.exports.findById = findById;
+module.exports.getProductDataById = getProductDataById;
 
-    function getPagingOptions(pagingOptions) {
-        if(!pagingOptions.pageSize) {
-            return null;
-        }
-        return {
-            skip: pagingOptions.pageSize * ((pagingOptions.pageIndex || 1) - 1),
-            limit: parseInt(pagingOptions.pageSize)
-        };
-    };
-    function getFilters(query) {
-        var filters = [getSearchFilter(query.searchFilter)],
-            buttonFilter = getButtonFilter(query.buttonFilter);
-        query.withDiscount === 'true' && filters.push({ discount: { $gt	: 0 } });
-        query.isBestseller === 'true' && filters.push({ isBestseller: true });
-        if(!query.showHiddenItems) {
-            filters.push({ isHiddenInList: false });
-        }
-        buttonFilter && filters.push(buttonFilter);
-        return {
-            $and: filters
-        }
-    };
-    function getSearchFilter(filterString) {
-        var searchFilterFields = ['name', 'brand', 'description'],
-            searchFilter = searchFilterFields.map(function(field) {
-                var filter = {};
-                filter[field] = {"$regex": filterString, "$options": "i"}
-                return filter;
+function findById(id, callback) {
+    var conditions = [{id: id}];
+    parseInt(id) && conditions.push({_id: id});
+    Product.find({$or: conditions}, null, null, function(err, data) {
+        callback(data[0]);
+    });
+};
+
+function getProductDataById(id, callback) {
+    findById(id, function(productData) {
+        if(productData) {
+            Product.find({_id: {$in: productData.boughtTogetherProductIds}}, null, null, function(err, boughtTogetherProductsData) {
+                productData = productData.toObject();
+                productData.boughtTogetherProducts = boughtTogetherProductsData || [];
+                callback(productData);
             });
-        return {$or: searchFilter};
-    };
-    function getButtonFilter(filter) {
-        if(!filter) {
-            return '';
+        } else {
+            callback({});
         }
-        filter = JSON.parse(filter);
-        var typeFilter = {type: {$in: filter.productTypes}},
-            propertiesFilter = {properties: {$in: filter.properties}};
-        return {$and: [typeFilter, propertiesFilter]};
-    };
+    });
+};
 
+function getPagingOptions(pagingOptions) {
+    if(!pagingOptions.pageSize) {
+        return null;
+    }
     return {
-        findById: findById,
-        getProductDataById: getProductDataById
+        skip: pagingOptions.pageSize * ((pagingOptions.pageIndex || 1) - 1),
+        limit: parseInt(pagingOptions.pageSize)
     };
-}
+};
+function getFilters(query) {
+    var filters = [getSearchFilter(query.searchFilter)],
+        buttonFilter = getButtonFilter(query.buttonFilter);
+    query.withDiscount === 'true' && filters.push({discount: {$gt: 0}});
+    query.isBestseller === 'true' && filters.push({isBestseller: true});
+    if(!query.showHiddenItems) {
+        filters.push({isHiddenInList: false});
+    }
+    buttonFilter && filters.push(buttonFilter);
+    return {
+        $and: filters
+    }
+};
+function getSearchFilter(filterString) {
+    var searchFilterFields = ['name', 'brand', 'description'],
+        searchFilter = searchFilterFields.map(function(field) {
+            var filter = {};
+            filter[field] = {"$regex": filterString, "$options": "i"}
+            return filter;
+        });
+    return {$or: searchFilter};
+};
+function getButtonFilter(filter) {
+    if(!filter) {
+        return '';
+    }
+    filter = JSON.parse(filter);
+    var typeFilter = {type: {$in: filter.productTypes}},
+        propertiesFilter = {properties: {$in: filter.properties}};
+    return {$and: [typeFilter, propertiesFilter]};
+};

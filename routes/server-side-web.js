@@ -119,7 +119,7 @@ function sendProductListResult(req, res, queryString, pageName) {
 };
 
 function sendProductCardResult(req, res, productId) {
-    getProductDataById(productId, function(productData) {
+    Products.getProductDataById(productId, function(productData) {
         var boughtTogetherProductsData = data.boughtTogetherProducts || [];
         sendResult(res, 'productcard', {
             productData: productData,
