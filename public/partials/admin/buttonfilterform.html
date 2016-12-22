@@ -22,6 +22,10 @@
                     <input type="text"
                            class="form-control"
                            ng-model="filter.name">
+                    <span>ID фильтра (будет в ссылке)</span>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="filter.id">
                     <label>Фильтр активен</label>
                     <input type="checkbox" ng-model="filter.isActive">
 
@@ -55,6 +59,11 @@
                             Добавить свойство
                         </button>
                     </div>
+                    <span class="toggle-text-visibility-button" ng-click="onFilterTogglePageTextVisibilityClick(filter)">
+                        {{filter.pageTextVisible ? 'Скрыть текст' :'Показать текст страницы для фильтра';}}
+                    </span>
+                    <br>
+                    <text-angular ng-model="filter.pageText" ng-show="filter.pageTextVisible"></text-angular>
                     <button ng-click="deleteFilter(filter)">
                         Удалить фильтр
                     </button>

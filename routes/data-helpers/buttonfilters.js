@@ -42,4 +42,26 @@ module.exports = function(app) {
             res.json(data);
         });
     });
-}
+
+    app.get('/buttonFilters/get_filter_text/:filterId', function(req, res, next) {
+        getFilter(req.params.filterId, function(filter) {
+            res.json(filter.pageText);
+        });
+    });
+};
+
+module.exports.getFilter = getFilter;
+
+function getFilter (filterId, callback) {
+    ButtonFilter.find({}, function(err, buttonFilters) {
+        for(var buttonFilter, i = 0; buttonFilter = buttonFilters[i]; i++) {
+            for(var filter, j = 0; filter = buttonFilter.filters[j]; j++) {
+                if(filter.id === filterId) {
+                    callback(filter);
+                    return;
+                }
+            }
+        }
+        callback({});
+    });
+};

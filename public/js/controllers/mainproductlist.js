@@ -1,5 +1,5 @@
-angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', 'Product',
-    function($scope, $state, $stateParams, Product) {
+angular.module('gsoapApp.controllers').controller('MainProductListController', ['$scope', '$state', '$stateParams', '$http', 'Product',
+    function($scope, $state, $stateParams, $http, Product) {
         $scope.pagingOptions = {
             pageIndex: 1,
             pageSize: 24,
@@ -7,7 +7,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         };
         $scope.filters = {
             searchFilter: '',
-            buttonFilter: $stateParams.buttonFilter
+            buttonFilterId: $stateParams.buttonFilterId
         }
         if(!$scope.products) {
             $scope.products = [];
@@ -33,7 +33,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
 
         function loadPageData(callback) {
             var params = {};
-            ['searchFilter', 'buttonFilter'].forEach(function(param) {
+            ['searchFilter', 'buttonFilterId'].forEach(function(param) {
                 params[param] = $scope.filters[param];
             });
             params['pagingOptions'] = $scope.pagingOptions;
@@ -43,6 +43,15 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                     product.selectedCapacity = product.capacityList[0];
                 });
                 $scope.products = data;
+                if(params.buttonFilterId) {
+                    $http({
+                        method: 'GET',
+                        url: '/buttonFilters/get_filter_text/' + params.buttonFilterId,
+                    }).then(function(res) {
+                        $scope.mainText = res.data;
+                    }, function() {
+                    });
+                }
                 callback && callback();
             });
         }

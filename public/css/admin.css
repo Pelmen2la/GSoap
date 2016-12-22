@@ -145,6 +145,13 @@ textarea {/**/
     border-bottom: 1px solid #CCCCCC;
 }
 
+.edit-page .filter-container .toggle-text-visibility-button {
+    color: #8AA108;
+    text-decoration: underline;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 .edit-page .order-customer-info {
     line-height: 1.5em;
     padding-left: 10px;

@@ -2,25 +2,27 @@
 
 var mongoose = require('mongoose'),
     Product = mongoose.model('product'),
+    buttonFilters =require('./buttonfilters'),
     emailHelper = require('app/email-helper');
 
 module.exports = function(app) {
     app.get('/products', function(req, res) {
         var query = req.query,
-            filters = getFilters(query),
             pagingOptions = getPagingOptions(query.pagingOptions ? JSON.parse(query.pagingOptions) : {});
-        if(pagingOptions) {
-            Product.find(filters, null, pagingOptions, function(err, data) {
-                Product.count(filters, function(err, totalData) {
-                    data.push(totalData);
+        getFilters(query, function(filters) {
+            if(pagingOptions) {
+                Product.find(filters, null, pagingOptions, function(err, data) {
+                    Product.count(filters, function(err, totalData) {
+                        data.push(totalData);
+                        res.json(data);
+                    });
+                });
+            } else {
+                Product.find({}, function(err, data) {
                     res.json(data);
                 });
-            });
-        } else {
-            Product.find({}, function(err, data) {
-                res.json(data);
-            });
-        }
+            }
+        });
     });
 
     app.get('/products/:id', function(req, res, next) {
@@ -101,17 +103,23 @@ function getPagingOptions(pagingOptions) {
         limit: parseInt(pagingOptions.pageSize)
     };
 };
-function getFilters(query) {
-    var filters = [getSearchFilter(query.searchFilter)],
-        buttonFilter = getButtonFilter(query.buttonFilter);
+function getFilters(query, callback) {
+    var filters = [getSearchFilter(query.searchFilter)];
     query.withDiscount === 'true' && filters.push({discount: {$gt: 0}});
     query.isBestseller === 'true' && filters.push({isBestseller: true});
     if(!query.showHiddenItems) {
         filters.push({isHiddenInList: false});
     }
-    buttonFilter && filters.push(buttonFilter);
-    return {
+    filters = {
         $and: filters
+    };
+    if(query.buttonFilterId) {
+        buttonFilters.getFilter(query.buttonFilterId, function(filter) {
+            filters.$and.push(getButtonFilter(filter));
+            callback(filters)
+        });
+    } else {
+        callback(filters)
     }
 };
 function getSearchFilter(filterString) {
@@ -127,7 +135,6 @@ function getButtonFilter(filter) {
     if(!filter) {
         return '';
     }
-    filter = JSON.parse(filter);
     var typeFilter = {type: {$in: filter.productTypes}},
         propertiesFilter = {properties: {$in: filter.properties}};
     return {$and: [typeFilter, propertiesFilter]};
