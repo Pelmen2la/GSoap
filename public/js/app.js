@@ -6,7 +6,7 @@ angular.module('gsoapApp').config(function ($stateProvider) {
         controller: 'MainProductListController',
         reloadOnSearch: false
     }).state('products', {
-        url: '/!/products_catalog/:buttonFilterId',
+        url: '/!/naturalnaya_kosmetika/:buttonFilterId',
         templateUrl: '/partials/mainproductlist.html',
         controller: 'MainProductListController'
     }).state('productCard', {

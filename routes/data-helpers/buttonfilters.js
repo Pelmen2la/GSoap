@@ -10,6 +10,11 @@ module.exports = function(app) {
             filters.isActive = true;
         }
         ButtonFilter.find(filters, function(err, data) {
+            data.forEach(function(buttonFilter) {
+                buttonFilter.filters.forEach(function(filter) {
+                    filter.pageText = '';
+                });
+            });
             res.json(data);
         });
     });
