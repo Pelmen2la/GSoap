@@ -7,9 +7,9 @@ block maincontent
     .products-container
       each product in products
         .product-container(ng-repeat='product in products track by $index', ng-class='{bestseller: product.isBestseller}')
-          a(href=  '/#!/products/' + product._id + '/')
+          a(href=  '/#!/products/' + product.id + '/')
             img(src= '/resources/images/products/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}',)
-          a.product-name(href=  '#!/products/' + product._id + '/')= product.name
+          a.product-name(href=  '/#!/products/' + product.id + '/')= product.name
           .product-price
             b= product.capacityList[0].price + ' руб.'
           ul.product-capacity
@@ -29,4 +29,4 @@ block maincontent
           li.ng-scope.active(title= 'Page ' + i, data-ng-class='Item.liClass', data-ng-repeat='Item in List')
             a.ng-binding(href='', data-ng-class='Item.aClass', data-ng-click='Item.action()', data-ng-bind='Item.value')= i
   block underproductslist
-
+    .main-text!= pageText

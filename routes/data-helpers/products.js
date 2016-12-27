@@ -9,19 +9,8 @@ module.exports = function(app) {
     app.get('/products', function(req, res) {
         var query = req.query,
             pagingOptions = getPagingOptions(query.pagingOptions ? JSON.parse(query.pagingOptions) : {});
-        getFilters(query, function(filters) {
-            if(pagingOptions) {
-                Product.find(filters, null, pagingOptions, function(err, data) {
-                    Product.count(filters, function(err, totalData) {
-                        data.push(totalData);
-                        res.json(data);
-                    });
-                });
-            } else {
-                Product.find({}, function(err, data) {
-                    res.json(data);
-                });
-            }
+        getProducts(query, null, pagingOptions, function(data) {
+            res.json(data);
         });
     });
 
@@ -71,6 +60,7 @@ module.exports = function(app) {
 
 module.exports.findById = findById;
 module.exports.getProductDataById = getProductDataById;
+module.exports.getProducts = getProducts;
 
 function findById(id, callback) {
     var conditions = [{id: id}];
@@ -79,7 +69,6 @@ function findById(id, callback) {
         callback(data[0]);
     });
 };
-
 function getProductDataById(id, callback) {
     findById(id, function(productData) {
         if(productData) {
@@ -93,7 +82,6 @@ function getProductDataById(id, callback) {
         }
     });
 };
-
 function getPagingOptions(pagingOptions) {
     if(!pagingOptions.pageSize) {
         return null;
@@ -103,19 +91,45 @@ function getPagingOptions(pagingOptions) {
         limit: parseInt(pagingOptions.pageSize)
     };
 };
-function getFilters(query, callback) {
-    var filters = [getSearchFilter(query.searchFilter)];
-    query.withDiscount === 'true' && filters.push({discount: {$gt: 0}});
-    query.isBestseller === 'true' && filters.push({isBestseller: true});
-    if(!query.showHiddenItems) {
-        filters.push({isHiddenInList: false});
+function getProducts(query, buttonFilterId, pagingOptions, callback) {
+    getFilters(query, buttonFilterId, function(filters) {
+        if(pagingOptions) {
+            Product.find(filters, null, pagingOptions, function(err, data) {
+                Product.count(filters, function(err, totalData) {
+                    data.push(totalData);
+                    callback(data);
+                });
+            });
+        } else {
+            Product.find(filters, function(err, data) {
+                callback(data);
+            });
+        }
+    });
+};
+function getFilters(query, buttonFilterId, callback) {
+    if(query) {
+        var filters = [getSearchFilter(query.searchFilter)];
+        buttonFilterId = buttonFilterId || query.buttonFilterId;
+        query.withDiscount === 'true' && filters.push({discount: {$gt: 0}});
+        query.isBestseller === 'true' && filters.push({isBestseller: true});
+        if(!query.showHiddenItems) {
+            filters.push({isHiddenInList: false});
+        }
+        filters = {
+            $and: filters
+        };
     }
-    filters = {
-        $and: filters
-    };
-    if(query.buttonFilterId) {
-        buttonFilters.getFilter(query.buttonFilterId, function(filter) {
-            filters.$and.push(getButtonFilter(filter));
+
+    if(buttonFilterId) {
+        buttonFilters.getFilter(buttonFilterId, function(filter) {
+            if(!filters) {
+                filters = {
+                    $and: [getButtonFilter(filter)]
+                };
+            } else {
+                filters.$and.push(getButtonFilter(filter));
+            }
             callback(filters)
         });
     } else {

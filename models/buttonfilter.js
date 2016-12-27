@@ -11,6 +11,11 @@ var ButtonFilter = new mongoose.Schema({
         productTypes: [String],
         properties: [String],
         pageText: String,
+        seoData: {
+            title: String,
+            keywords: String,
+            description: String
+        },
         isActive: Boolean
     }]
 });

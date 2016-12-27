@@ -8,10 +8,15 @@ html(lang='en', ng-app='gsoapApp')
 
     title
       block title
-        | Интернет-магазин натуральной, декоративной, органической косметики и ингредиентов для нее GOODSOAP с
-        | бесплатной доставкой на дом по всей России: Краснодар, Санкт-Петербург, Москва и другие города
-    meta(name='description', content='Интернет-магазин GOODSOAP занимается продажей декоративной, органической косметики и ингредиентов для нее с бесплатной доставкой на дом в Краснодаре, Санкт-Петербурге, Москве и других города России.')
-    meta(name='keywords', content='Интернет-магазин, натуральный, декоративный, органический, косметика, ингредиент, GOODSOAP, бесплатный, доставка, дом, Россия, Краснодар, Санкт-Петербург, Москва')
+        - if (seoData && seoData.title) {
+          = seoData.title
+        - }
+        - else {
+          | Интернет-магазин натуральной, декоративной, органической косметики и ингредиентов для нее GOODSOAP с
+          | бесплатной доставкой на дом по всей России: Краснодар, Санкт-Петербург, Москва и другие города
+        - }
+    meta(name='description', content= seoData && seoData.description ? seoData.description : 'Интернет-магазин GOODSOAP занимается продажей декоративной, органической косметики и ингредиентов для нее с бесплатной доставкой на дом в Краснодаре, Санкт-Петербурге, Москве и других города России.')
+    meta(name='keywords', content= seoData && seoData.keywords ? seoData.keywords : 'Интернет-магазин, натуральный, декоративный, органический, косметика, ингредиент, GOODSOAP, бесплатный, доставка, дом, Россия, Краснодар, Санкт-Петербург, Москва')
     meta(name='yandex-verification', content='56d99a0007992094')
 
 
@@ -79,7 +84,7 @@ html(lang='en', ng-app='gsoapApp')
             a(href='/#!/contacts') Контакты
         ul.products-menu
           li
-            a(ng-href='#/products', ng-click='onButtonFilterClick()') Все товары
+            a(href='/#!/naturalnaya_kosmetika', ng-click='onButtonFilterClick()') Все товары
           for buttonFilter in filterButtonsData
             li.dropdown(ng-repeat='buttonFilter in filterButtonsData track by $index')
               button(type='button', ng-attr-id="{{'mainListFilterButton' + $index}}", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
@@ -92,10 +97,10 @@ html(lang='en', ng-app='gsoapApp')
                   .mask
                 for filter in buttonFilter.filters
                   li(ng-repeat='filter in buttonFilter.filters', ng-class='{ selected: filter == buttonFilter }')
-                    a(href= '/#!/products?buttonFilter=' + JSON.stringify(filter) ng-href='#/products?buttonFilter={{filter}}', ng-click='onButtonFilterClick()')= filter.name
+                    a(href= '/?_escaped_fragment_=/naturalnaya_kosmetika/' + filter.id ng-href='/?_escaped_fragment_=naturalnaya_kosmetika/{{filter.id}}', ng-click='onButtonFilterClick()')= filter.name
                     .mask
           li
-            a(ng-href='#!/brands/') Бренды
+            a(href='/#!/brands/') Бренды
 
 
       block maincontent

@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
     Products = require('./data-helpers/products'),
+    ButtonFilters = require('./data-helpers/buttonfilters'),
     Article = mongoose.model('article'),
     Brand = mongoose.model('brand'),
     ButtonFilter = mongoose.model('buttonFilter'),
@@ -40,8 +41,12 @@ module.exports = {
                 sendMainPageResult(req, res, queryString);
                 return;
             }
-            if(pageName === '/products') {
+            if(pageName === '/naturalnaya_kosmetika') {
                 sendProductListResult(req, res, queryString);
+                return;
+            }
+            if(pageName.match(/\/naturalnaya_kosmetika\/\w+/)) {
+                sendProductListResult(req, res, queryString, null, pageName.split('/')[2]);
                 return;
             }
             if(pageName.match(/\/products\/\w+/)) {
@@ -106,14 +111,24 @@ module.exports = {
             sendProductListResult(req, res, queryString, 'main');
         };
 
-        function sendProductListResult(req, res, queryString, pageName) {
-            Product.find({}, null, {skip: 0, limit: 20}, function(err, data) {
-                Product.count({}, function(err, totalCount) {
-                    sendResult(res, pageName || 'mainproductlist', {
-                        products: data,
-                        productsTotalCount: totalCount
+        function sendProductListResult(req, res, queryString, pageName, filterId) {
+            Products.getProducts(null, filterId, {skip: 0, limit: 20}, function(productsData) {
+                var totalProductsCount = productsData.pop();
+                if(filterId) {
+                    ButtonFilters.getFilter(filterId, function(filterData) {
+                        sendResult(res, pageName || 'mainproductlist', {
+                            products: productsData,
+                            totalProductsCount: totalProductsCount,
+                            pageText: filterData.pageText,
+                            seoData: filterData.seoData
+                        });
                     });
-                });
+                } else {
+                    sendResult(res, pageName || 'mainproductlist', {
+                        products: productsData,
+                        totalProductsCount: totalProductsCount
+                    });
+                }
             });
         };
 
@@ -144,6 +159,7 @@ module.exports = {
 
         function sendResult(res, pageName, params) {
             params.stringResources = getStringResources();
+            params.title = params.title;
             ButtonFilter.find({}, function(err, data) {
                 params.filterButtonsData = data;
                 res.render('server-side-pages/' + pageName + '.pug', params);

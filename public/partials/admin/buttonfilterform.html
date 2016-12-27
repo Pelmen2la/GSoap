@@ -59,11 +59,26 @@
                             Добавить свойство
                         </button>
                     </div>
-                    <span class="toggle-text-visibility-button" ng-click="onFilterTogglePageTextVisibilityClick(filter)">
-                        {{filter.pageTextVisible ? 'Скрыть текст' :'Показать текст страницы для фильтра';}}
+                    <span class="toggle-text-visibility-button" ng-click="onAdvancedSettingsButtonClick(filter)">
+                        {{filter.advancedSettingsVisible ? 'Скрыть расширенные настройки' :'Показать расширенные настройки';}}
                     </span>
                     <br>
-                    <text-angular ng-model="filter.pageText" ng-show="filter.pageTextVisible"></text-angular>
+
+                    <div ng-show="filter.advancedSettingsVisible">
+                        <span>SEO Title</span>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="filter.seoData.title">
+                        <span>SEO Description</span>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="filter.seoData.description">
+                        <span>SEO Keywords</span>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="filter.seoData.keywords">
+                        <text-angular ng-model="filter.pageText"></text-angular>
+                    </div>
                     <button ng-click="deleteFilter(filter)">
                         Удалить фильтр
                     </button>

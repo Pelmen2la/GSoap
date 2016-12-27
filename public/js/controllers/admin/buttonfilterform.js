@@ -31,8 +31,8 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.deleteProperty = function(filter, property) {
             removeArrayMember(filter.properties, property);
         };
-        $scope.onFilterTogglePageTextVisibilityClick = function(filter) {
-            filter.pageTextVisible = !filter.pageTextVisible;
+        $scope.onAdvancedSettingsButtonClick = function(filter) {
+            filter.advancedSettingsVisible = !filter.advancedSettingsVisible;
         };
         $scope.back = function() {
             $state.go('buttonFilters');
