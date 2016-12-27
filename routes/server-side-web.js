@@ -135,10 +135,29 @@ module.exports = {
         function sendProductCardResult(req, res, productId) {
             Products.getProductDataById(productId, function(productData) {
                 var boughtTogetherProductsData = productData.boughtTogetherProducts || [];
-                sendResult(res, 'productcard', {
-                    productData: productData,
-                    products: boughtTogetherProductsData,
-                    productsTotalCount: boughtTogetherProductsData.length
+                getProductSeoData(productData, function(productSeoData) {
+                    sendResult(res, 'productcard', {
+                        productData: productData,
+                        products: boughtTogetherProductsData,
+                        productsTotalCount: boughtTogetherProductsData.length,
+                        seoData: productSeoData
+                    });
+                });
+            });
+        };
+
+        function getProductSeoData(productData, callback) {
+            Brand.findById(productData.brandId, function(err, brandData) {
+                var descriptionArr = productData.description.split('.'),
+                    description = descriptionArr[0] || '' + descriptionArr[1] || '',
+                    properties = productData.properties.map(function(prop) {
+                        return getStringResources().productProperties[prop]
+                    }),
+                    type = getStringResources().productTypes[productData.type];
+                callback({
+                    title: productData.name + 'от бренда ' + brandData.name,
+                    description: description,
+                    keywords: [productData.name, brandData.name, type].concat(properties).join(', ')
                 });
             });
         };
@@ -199,56 +218,20 @@ module.exports = {
                     gram: 'г',
                     milliliters: 'мл'
                 },
-                productProperties: [
-                    {
-                        value: 'face',
-                        label: 'Для лица'
-                    },
-                    {
-                        value: 'hair',
-                        label: 'Для волос'
-                    },
-                    {
-                        value: 'body',
-                        label: 'Для тела'
-                    },
-                    {
-                        value: 'hands',
-                        label: 'Для рук и ногтей'
-                    },
-                    {
-                        value: 'legs',
-                        label: 'Для ног'
-                    },
-                    {
-                        value: 'bath',
-                        label: 'Для ванны и душа'
-                    },
-                    {
-                        value: 'decorativeCosmetics',
-                        label: 'Декоративная косметика'
-                    },
-                    {
-                        value: 'oil',
-                        label: 'Масло'
-                    },
-                    {
-                        value: 'packaging',
-                        label: 'Упаковка'
-                    },
-                    {
-                        value: 'Sale',
-                        label: 'Распродажа'
-                    },
-                    {
-                        value: 'Children',
-                        label: 'Для детей'
-                    },
-                    {
-                        value: 'Home',
-                        label: 'Для дома'
-                    }
-                ],
+                productProperties: {
+                    face: 'Для лица',
+                    hair: 'Для волос',
+                    body: 'Для тела',
+                    hands: 'Для рук и ногтей',
+                    legs: 'Для ног',
+                    bath: 'Для ванны и душа',
+                    decorativeCosmetics: 'Декоративная косметика',
+                    oil: 'Масло',
+                    packaging: 'Упаковка',
+                    Sale: 'Распродажа',
+                    Children: 'Для детей',
+                    Home: 'Для дома'
+                },
                 deliveryTypes: {
                     tulaTokareva: 'Самовывоз, г. Тула ул. Токарева',
                     tulaLenina: 'Самовывоз, г. Тула пр. Ленина',

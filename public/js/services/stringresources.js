@@ -30,56 +30,20 @@ angular.module('gsoapApp.services').constant('StringResources', {
         gram: 'г',
         milliliters: 'мл'
     },
-    productProperties: [
-        {
-            value: 'face',
-            label: 'Для лица'
-        },
-        {
-            value: 'hair',
-            label: 'Для волос'
-        },
-        {
-            value: 'body',
-            label: 'Для тела'
-        },
-        {
-            value: 'hands',
-            label: 'Для рук и ногтей'
-        },
-        {
-            value: 'legs',
-            label: 'Для ног'
-        },
-        {
-            value: 'bath',
-            label: 'Для ванны и душа'
-        },
-        {
-            value: 'decorativeCosmetics',
-            label: 'Декоративная косметика'
-        },
-        {
-            value: 'oil',
-            label: 'Масло'
-        },
-        {
-            value: 'packaging',
-            label: 'Упаковка'
-        },
-        {
-            value: 'Sale',
-            label: 'Распродажа'
-        },
-        {
-            value: 'Children',
-            label: 'Для детей'
-        },
-        {
-            value: 'Home',
-            label: 'Для дома'
-        }
-    ],
+    productProperties: {
+        face: 'Для лица',
+        hair: 'Для волос',
+        body: 'Для тела',
+        hands: 'Для рук и ногтей',
+        legs: 'Для ног',
+        bath: 'Для ванны и душа',
+        decorativeCosmetics: 'Декоративная косметика',
+        oil: 'Масло',
+        packaging: 'Упаковка',
+        Sale: 'Распродажа',
+        Children: 'Для детей',
+        Home: 'Для дома'
+    },
     deliveryTypes: {
         self: 'Самовывоз, г. Тула',
         delivery: 'Дотавка по РФ'
