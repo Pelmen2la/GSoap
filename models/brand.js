@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 
 var Brand = new mongoose.Schema({
+    id: String,
     name: {
         type: String,
         required: true

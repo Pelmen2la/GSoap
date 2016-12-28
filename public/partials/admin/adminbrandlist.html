@@ -5,9 +5,9 @@
 <table class="list">
     <tr ng-repeat="brand in brands">
         <td>
-            <img class="main-image" ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandForm(brand.name)">
+            <img class="main-image" ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandForm(brand.id)">
         </td>
-        <td class="brand-name" ng-click="openBrandForm(brand.name)">
+        <td class="brand-name" ng-click="openBrandForm(brand.id)">
             {{brand.name}}
         </td>
         <td>

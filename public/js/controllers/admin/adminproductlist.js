@@ -28,7 +28,7 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
             }
         };
         $scope.openBrandForm = function(brand) {
-            $state.go('brandCard', {id: brand});
+            $state.go('brandCard', {id: id});
         };
         $scope.onFilterInputKeyUp = function() {
             window.clearTimeout($scope.filterTimeoutId);

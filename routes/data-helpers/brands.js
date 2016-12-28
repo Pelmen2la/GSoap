@@ -12,7 +12,7 @@ module.exports = function(app) {
     });
 
     app.get('/brands/:id', function (req, res, next) {
-        Brand.find({ name: req.params.id }, function (err, data) {
+        Brand.find({ id: req.params.id }, function (err, data) {
             if(err) return next(err);
             var brand = data[0];
             Product.find({brandId: brand._id}, function(err, data) {

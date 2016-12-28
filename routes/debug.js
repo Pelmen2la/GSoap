@@ -224,19 +224,13 @@ module.exports = function(app) {
     });
 
     app.get('/utils/products/brandstoids', function(req, res, next) {
-        Brand.find({}, function(err, brandData) {
+        Brand.find({}, function(err, brandsData) {
             var brandsHash = {};
-            brandData.forEach(function(brand) {
-                brandsHash[brand.name] = brand._id;
+            brandsData.forEach(function(brand) {
+                brand.id = transliterate(brand.name);
+                brand.save();
             });
-            Product.find(null, function(err, data) {
-                if(err) return next(err);
-                data.forEach(function(entry) {
-                    entry.brandId = brandsHash[entry.brand];
-                    entry.save();
-                });
-                res.json('done');
-            });
+            res.json('done');
         });
     });
 
