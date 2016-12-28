@@ -101,7 +101,8 @@ module.exports = {
                     sendResult(res, 'brandcard', {
                         brand: brand,
                         productsData: productsData,
-                        productCategories: productCategories
+                        productCategories: productCategories,
+                        seoData: brand.seoData
                     });
                 });
             });
@@ -178,7 +179,6 @@ module.exports = {
 
         function sendResult(res, pageName, params) {
             params.stringResources = getStringResources();
-            params.title = params.title;
             ButtonFilter.find({}, function(err, data) {
                 params.filterButtonsData = data;
                 res.render('server-side-pages/' + pageName + '.pug', params);

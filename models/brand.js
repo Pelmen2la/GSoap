@@ -7,11 +7,12 @@ var Brand = new mongoose.Schema({
         type: String,
         required: true
     },
-    imageName: {
-        type: String
-    },
-    description: {
-        type: String
+    imageName: String,
+    description: String,
+    seoData: {
+        title: String,
+        keywords: String,
+        description: String
     }
 });
 
