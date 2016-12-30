@@ -2,8 +2,8 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminBrandListContr
     function($scope, $state, Brand) {
         loadPageData();
 
-        $scope.openBrandForm = function(name) {
-            $state.go('brandForm', {name: name});
+        $scope.openBrandForm = function(id) {
+            $state.go('brandForm', {id: id});
         };
         $scope.tryDeleteBrand = function(id) {
             if(window.confirm('Вы уверены, что хотите удалить бренд?')) {

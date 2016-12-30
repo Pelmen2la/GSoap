@@ -17,7 +17,7 @@ angular.module('gsoapAdminApp').config(function ($stateProvider) {
         templateUrl: '/partials/admin/adminbrandlist.html',
         controller: 'AdminBrandListController'
     }).state('brandForm', {
-        url: '/brand/edit/:name/',
+        url: '/brand/edit/:id/',
         templateUrl: '/partials/admin/brandform.html',
         controller: 'BrandEditController'
     }).state('newBrand', {
