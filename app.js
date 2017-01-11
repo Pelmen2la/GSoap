@@ -1,9 +1,11 @@
 'use strict';
 
-var express = require('express'),
-    path = require('path');
+var compression = require('compression'),
+    express = require('express'),
+    path = require('path'),
+    app = express();
 
-var app = express();
+app.use(compression());
 
 global.appRoot = path.resolve(__dirname);
 
