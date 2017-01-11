@@ -4,7 +4,8 @@
     <div ng-repeat="product in products track by $index" class="product-container"
          ng-class="{bestseller: product.isBestseller}">
         <a ng-href="#!/products/{{product.id || product._id}}/">
-            <img ng-src="{{utils.getProductImageUrl(product)}}">
+            <img class="label-image" ng-src="{{utils.getProductLabelImageUrl(product)}}" ng-show="utils.getProductLabelImageUrl(product)">
+            <img class="main-image" ng-src="{{utils.getProductImageUrl(product)}}">
         </a>
         <a ng-href="#!/products/{{product.id || product._id}}/" class="product-name">{{product.name}}</a>
 

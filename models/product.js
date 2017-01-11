@@ -29,6 +29,7 @@ var Product = new mongoose.Schema({
     boughtTogetherProductIds: [String],
     discount: Number,
     isBestseller: Boolean,
+    isNovelty: Boolean,
     stockCount: Number,
     orderCount: Number,
     isActive: Boolean,

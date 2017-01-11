@@ -2,6 +2,17 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
     this.getProductImageUrl = function(product) {
         return getImageUrl(product, 'products');
     };
+    this.getProductLabelImageUrl = function(product) {
+        var imageName = ''
+        if(product.discount) {
+            imageName = 'discount.png';
+        } else if(product.isBestseller) {
+            imageName = 'bestseller.png';
+        } else if(product.isNovelty) {
+            imageName = 'novelty.png';
+        }
+        return getImageUrl(imageName, 'productlabels');
+    };
     this.getBrandImageUrl = function(brand) {
         return getImageUrl(brand, 'brands');
     };

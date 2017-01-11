@@ -8,7 +8,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
         $scope.filters = {
             searchFilter: '',
             buttonFilterId: $stateParams.buttonFilterId
-        }
+        };
         if(!$scope.products) {
             $scope.products = [];
             loadPageData();
