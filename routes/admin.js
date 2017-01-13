@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     passport = require('passport'),
     authMw = require('../middlewares/auth'),
     multer = require('multer'),
-    Jimp = require('jimp');
+    Jimp = require('app/jimp');
 
 var Product = mongoose.model('product'),
     Brand = mongoose.model('brand'),
