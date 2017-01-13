@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     fs = require('fs'),
     path = require('path'),
-    Jimp = require('app/jimp');
+    Jimp = require('jimp');
 
 var Product = mongoose.model('product'),
     Brand = mongoose.model('brand'),
