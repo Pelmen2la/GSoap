@@ -2,50 +2,20 @@
 <html lang="en" ng-app="gsoapApp">
 <head>
     <meta charset="UTF-8">
-    <meta name="fragment" content="!">.
+    <meta name="fragment" content="!">
+    .
 
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/angular-carousel/dist/angular-carousel.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
 
-    <title>Интернет-магазин натуральной, декоративной, органической косметики с бесплатной доставкой по всей России: Краснодар, Санкт-Петербург, Москва и другие города.</title>
+    <title>Интернет-магазин натуральной, декоративной, органической косметики с бесплатной доставкой по всей России:
+        Краснодар, Санкт-Петербург, Москва и другие города.</title>
     <meta name="description"
           content="Интернет-магазин GOODSOAP занимается продажей декоративной, органической косметики и ингредиентов для нее с бесплатной доставкой на дом в Краснодаре, Санкт-Петербурге, Москве и других города России.">
     <meta name="keywords"
           content="Интернет-магазин, натуральный, декоративный, органический, косметика, ингредиент, GOODSOAP, бесплатный, доставка, дом, Россия, Краснодар, Санкт-Петербург, Москва">
-    <meta name="yandex-verification" content="56d99a0007992094" />
-
-    <script type="text/javascript"> (function(d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter40322900 = new Ya.Metrika({
-                    id: 40322900,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true,
-                    webvisor: true,
-                    trackHash: true
-                });
-            } catch(e) {
-            }
-        });
-        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function() {
-            n.parentNode.insertBefore(s, n);
-        };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
-        if(w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks"); </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/40322900" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-
-
+    <meta name="yandex-verification" content="56d99a0007992094"/>
 </head>
 <body>
 
@@ -99,10 +69,14 @@
                     {{buttonFilter.name}}<span class="caret-icon"></span>
                 </button>
                 <ul class="dropdown-menu" ng-attr-aria-labelledby="{{'mainListFilterButton' + $index}}">
-                    <li>{{buttonFilter.name}}<span class="caret-icon"></span><div class="mask"></div></li>
+                    <li>{{buttonFilter.name}}<span class="caret-icon"></span>
+
+                        <div class="mask"></div>
+                    </li>
                     <li ng-repeat="filter in buttonFilter.filters"
                         ng-class="{ selected: filter == buttonFilter }">
                         <a ng-href="#!/naturalnaya_kosmetika/{{filter.id}}" ng-click="onButtonFilterClick()">{{filter.name}}</a>
+
                         <div class="mask"></div>
                     </li>
                 </ul>
@@ -142,9 +116,10 @@
         <div class="contacts">
             <h3>Контакты</h3>
             <br>
+
             <p>
-            GOODSOAP<br>
-            магазин натуральной косметики<br>
+                GOODSOAP<br>
+                магазин натуральной косметики<br>
                 <br>
                 Пункт выдачи<br>
                 улица Токарева, дом 89<br>
@@ -179,6 +154,7 @@
         <div class="social-networks">
             <h3>Мы в соц сетях</h3>
             <br>
+
             <p>
                 <a href="https://vk.com/goodsoapvtule">
                     <img src="/resources/images/icons/vk.png" class="cart-image">
@@ -195,6 +171,38 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript"> (function(d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter40322900 = new Ya.Metrika({
+                id: 40322900,
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true,
+                trackHash: true
+            });
+        } catch(e) {
+        }
+    });
+    var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function() {
+        n.parentNode.insertBefore(s, n);
+    };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+    if(w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+        f();
+    }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/40322900" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+
 
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/angular/angular.min.js"></script>
