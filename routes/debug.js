@@ -253,6 +253,17 @@ module.exports = function(app) {
         res.json('processing');
     });
 
+    app.get('/utils/products/createsmallimages/:filename', function(req, res, next) {
+        var imagesFolderPath = './public/resources/images/products/',
+            fileName = req.params.filename;
+        Jimp.read(path.join(imagesFolderPath, fileName), function(err, image) {
+            var isAutoHeight = image.bitmap.height < image.bitmap.width,
+                targetPath = path.join(imagesFolderPath, 'small', fileName);
+            image.resize(isAutoHeight ? 400 : Jimp.AUTO, isAutoHeight ? Jimp.AUTO : 400).quality(60).write(targetPath);
+        });
+        res.json('processing');
+    });
+
     app.get('/utils/buttonfilters/movetoarray', function(req, res, next) {
         ButtonFilter.find(null, function(err, data) {
             if(err) return next(err);
