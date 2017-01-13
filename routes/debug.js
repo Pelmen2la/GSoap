@@ -253,13 +253,27 @@ module.exports = function(app) {
         res.json('processing');
     });
 
-    app.get('/utils/products/createsmallimages/:filename', function(req, res, next) {
-        var imagesFolderPath = './public/resources/images/products/',
-            fileName = req.params.filename;
-        Jimp.read(path.join(imagesFolderPath, fileName), function(err, image) {
-            var isAutoHeight = image.bitmap.height < image.bitmap.width,
-                targetPath = path.join(imagesFolderPath, 'small', fileName);
-            image.resize(isAutoHeight ? 400 : Jimp.AUTO, isAutoHeight ? Jimp.AUTO : 400).quality(60).write(targetPath);
+    app.get('/utils/products/createsmallimages/:pageindex', function(req, res, next) {
+        var imagesFolderPath = './public/resources/images/products/';
+        fs.readdir(imagesFolderPath, function(err, files) {
+            var pageIndex = parseInt(req.params.pageindex),
+                startIndex = pageIndex * 50,
+                endIndex = startIndex + 50;
+            for(var i = startIndex; i <= endIndex; i++) {
+                if(files.length <= i) {
+                    break;
+                }
+                var fileName = files[i];
+                if(fileName.toLowerCase().indexOf('.') > -1) {
+                    (function(fileName) {
+                        Jimp.read(path.join(imagesFolderPath, fileName), function(err, image) {
+                            var isAutoHeight = image.bitmap.height < image.bitmap.width,
+                                targetPath = path.join(imagesFolderPath, 'small', fileName);
+                            image.resize(isAutoHeight ? 400 : Jimp.AUTO, isAutoHeight ? Jimp.AUTO : 400).quality(60).write(targetPath);
+                        });
+                    })(fileName);
+                }
+            };
         });
         res.json('processing');
     });
