@@ -1,14 +1,16 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var passport = require('passport');
-var authMw = require('../middlewares/auth');
-var multer = require('multer');
+var mongoose = require('mongoose'),
+    passport = require('passport'),
+    authMw = require('../middlewares/auth'),
+    multer = require('multer'),
+    Jimp = require('jimp');
 
-var Product = mongoose.model('product');
-var Brand = mongoose.model('brand');
-var multerInstance = multer({ dest: 'upload/' });
-var fs = require('fs');
+var Product = mongoose.model('product'),
+    Brand = mongoose.model('brand'),
+    multerInstance = multer({ dest: 'upload/' }),
+    path = require('path'),
+    fs = require('fs');
 
 
 module.exports = function(app) {
@@ -62,16 +64,16 @@ module.exports = function(app) {
 
     function tryUploadFile(targetPath, req, res) {
         function getImageName() {
-            var name = req.file.originalname;
-            var dotPos = name.lastIndexOf('.');
+            var name = req.file.originalname,
+                dotPos = name.lastIndexOf('.');
             return [name.slice(0, dotPos), suffix, name.slice(dotPos)].join('');
         }
         function getTargetPath() {
             return targetPath + getImageName();
         }
-        var tmp_path = req.file.path;
-        var imageName = getImageName(req.file.originalname);
-        var suffix = '';
+        var tmp_path = req.file.path,
+            imageName = getImageName(),
+            suffix = '';
 
         if(!fs.existsSync(targetPath)) {
             fs.mkdirSync(targetPath);
@@ -84,6 +86,15 @@ module.exports = function(app) {
         var dest = fs.createWriteStream(getTargetPath());
         src.pipe(dest);
         src.on('end', function() {
+            var smallImagesTargetPath = path.join(targetPath, 'small');
+            if(!fs.existsSync(smallImagesTargetPath)) {
+                fs.mkdirSync(smallImagesTargetPath);
+            }
+            Jimp.read(getTargetPath(), function(err, image) {
+                var isAutoHeight = image.bitmap.height < image.bitmap.width,
+                    smallImageTargetPath = path.join(smallImagesTargetPath, getImageName());
+                image.resize(isAutoHeight ? 400 : Jimp.AUTO, isAutoHeight ? Jimp.AUTO : 400).quality(60).write(smallImageTargetPath);
+            });
             res.json({
                 success: true,
                 imageName: getImageName()

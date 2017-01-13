@@ -13,14 +13,6 @@ module.exports = function(app) {
     require("./data-helpers/promocodes")(app);
     require("./data-helpers/articles")(app);
 
-    app.all('*', function(req, res, next) {
-        try {
-            next();
-        } catch(err) {
-            res.sendFile(path.join(appRoot, '/public/_index.html'));
-        }
-    });
-
     app.get('/', function(req, res) {
         if(req.query._escaped_fragment_ !== undefined) {
             serverSideWeb.sendServerSideRenderingResult(req, res, req.query._escaped_fragment_);

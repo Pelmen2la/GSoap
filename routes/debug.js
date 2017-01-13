@@ -1,6 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    fs = require('fs'),
+    path = require('path'),
+    Jimp = require('jimp');
 
 var Product = mongoose.model('product'),
     Brand = mongoose.model('brand'),
@@ -232,6 +235,22 @@ module.exports = function(app) {
             });
             res.json('done');
         });
+    });
+
+    app.get('/utils/products/createsmallimages', function(req, res, next) {
+        var imagesFolderPath = './public/resources/images/products/';
+        fs.readdir(imagesFolderPath, function(err, files) {
+            files.forEach(function(fileName) {
+                if(fileName.indexOf('.jpg') > -1 || fileName.indexOf('.png') > -1) {
+                    Jimp.read(path.join(imagesFolderPath, fileName), function(err, image) {
+                        var isAutoHeight = image.bitmap.height < image.bitmap.width,
+                            targetPath = path.join(imagesFolderPath, 'small', fileName);
+                        image.resize(isAutoHeight ? 400 : Jimp.AUTO, isAutoHeight ? Jimp.AUTO : 400).quality(60).write(targetPath);
+                    });
+                }
+            });
+        });
+        res.json('processing');
     });
 
     app.get('/utils/buttonfilters/movetoarray', function(req, res, next) {
