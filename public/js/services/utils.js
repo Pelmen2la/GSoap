@@ -1,6 +1,6 @@
 angular.module('gsoapApp.services').service('Utils', function($resource) {
     this.getProductImageUrl = function(product) {
-        return getImageUrl(product, 'products');
+        return getImageUrl(product, 'products/small');
     };
     this.getProductLabelImageUrl = function(product) {
         var imageName = ''
