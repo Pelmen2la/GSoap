@@ -221,6 +221,8 @@
             <div class="review-wrapper" ng-repeat="review in product.reviews track by $index">
                 <input type="text"
                        ng-model="review.customerName">
+                <input type="text"
+                       ng-model="review.customerEmail">
                 <textarea rows="5"
                           ng-model="review.text">
                 </textarea>

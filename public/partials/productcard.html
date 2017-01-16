@@ -50,9 +50,10 @@
         <div ng-show="reviewsAllowed && selectedTabName === 'reviews'" class="send-review-container">
             <h3>Оставить отзыв</h3>
             <input name="name" type=text" ng-model="review.customerName" placeholder="Ваше имя">
+            <input name="name" type=text" ng-model="review.customerEmail" placeholder="Ваше Email *">
             <textarea rows="4" ng-model="review.text" placeholder="Ваш отзыв"></textarea>
 
-            <button ng-click="onSendReviewButtonClick()">
+            <button ng-disabled="!utils.validateEmail(review.customerEmail)" ng-click="onSendReviewButtonClick()">
                 Отправить отзыв
             </button>
         </div>

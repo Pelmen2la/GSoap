@@ -43,8 +43,9 @@ block aboveproductslist
     .send-review-container(ng-show="reviewsAllowed && selectedTabName === 'reviews'")
       h3 Оставить отзыв
       input(name='name', type='text"', ng-model='review.customerName', placeholder='Ваше имя')
+      input(name='name', type='text"', ng-model='review.customerEmail', placeholder='Ваше Email *')
       textarea(rows='4', ng-model='review.text', placeholder='Ваш отзыв')
-      button(ng-click='onSendReviewButtonClick()')
+      button(ng-disabled='!utils.validateEmail(review.customerEmail)', ng-click='onSendReviewButtonClick()')
         | Отправить отзыв
     p.no-send-review-message(ng-show="!reviewsAllowed && selectedTabName === 'reviews'")
       | Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.

@@ -99,7 +99,8 @@ angular.module('gsoapApp.services').service('Utils', function($resource) {
         }, 10);
     };
     this.validateEmail = function(v) {
-        var vArr = v.split('@');
+        var v = v || '',
+            vArr = v.split('@');
         if(v.length > 254 || vArr.length !== 2) {
             return false;
         }

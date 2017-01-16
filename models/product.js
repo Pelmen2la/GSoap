@@ -24,6 +24,7 @@ var Product = new mongoose.Schema({
     additionalInfo: String,
     reviews: [{
         customerName: String,
+        customerEmail: String,
         text: String
     }],
     boughtTogetherProductIds: [String],

@@ -856,6 +856,10 @@ ul {
 	width: 100%;
 }
 
+.product-card .send-review-container button[disabled] {
+	opacity: 0.5;
+}
+
 .product-card .no-send-review-message {
 	padding-top: 0.769230em; /* 10 / 13 */
 }
