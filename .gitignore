@@ -3,3 +3,4 @@ bower_components/
 node_modules/*
 !node_modules/app
 db/
+public/js/index.js
