@@ -4,3 +4,4 @@ node_modules/*
 !node_modules/app
 db/
 public/js/index.js
+public/js/index-min.js
