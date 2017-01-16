@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    csso = require('gulp-csso'),
+    cleanCSS = require('gulp-clean-css'),
     imagemin = require('gulp-imagemin'),
     minify = require('gulp-minify'),
     uglify = require('gulp-uglify'),
@@ -27,4 +27,19 @@ gulp.task('js', function() {
     ])
         .pipe(concat('index.js'))
         .pipe(gulp.dest('./public/js'));
+});
+
+gulp.task('css', function() {
+    gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.min.css',
+        './bower_components/angular-carousel/dist/angular-carousel.css',
+        './public/css/app.css'
+    ])
+        .pipe(cleanCSS())
+        .pipe(concat('index.css'))
+        .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('app', function() {
+    gulp.run('js');
+    gulp.run('css');
 });
