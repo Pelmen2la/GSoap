@@ -13,7 +13,7 @@ angular.module('gsoapApp.controllers')
             $scope.utils = Utils;
             $scope.stringResources = StringResources;
 
-            if((new MobileDetect(window.navigator.userAgent)).mobile()) {
+            if(true || (new MobileDetect(window.navigator.userAgent)).mobile()) {
                 $('body').addClass('mobile');
             }
 

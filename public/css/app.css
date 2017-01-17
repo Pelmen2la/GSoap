@@ -477,7 +477,8 @@ body:not(.mobile) .page {
 }
 
 body.mobile .product-container {
-	width: 47.684210% /* (950 - 22 * 2) / 2 / 950 */
+	width: 47.684210%; /* (950 - 22 * 2) / 2 / 950 */
+	font-size: 1.538461em; /* 20 / 13 */
 }
 
 @media (max-width: 1024px) {
@@ -589,6 +590,10 @@ body.mobile .product-container {
 
 .product-container .product-buy-button-container img {
 	padding-right: 0.846153em; /* 11 / 13 */
+}
+
+body.mobile .product-container .product-buy-button-container img {
+	padding-right: 0.55em; /* 11 / 20 */
 }
 
 .product-container .product-buy-button-container button img,
