@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     emailHelper = require('app/email-helper'),
     path = require('path'),
+    fs = require('fs'),
     serverSideWeb = require("./server-side-web");
 
 module.exports = function(app) {
@@ -18,7 +19,12 @@ module.exports = function(app) {
             serverSideWeb.sendServerSideRenderingResult(req, res, req.query._escaped_fragment_);
             return;
         }
-        res.sendFile(path.join(appRoot, '/public/_index.html'));
+        fs.readFile(path.join(appRoot, '/public/_index.html'), 'utf8', function(err, indexHtml) {
+            fs.readFile(path.join(appRoot, '/public/css/index.css'), 'utf8', function(err, indexCss) {
+                res.send(indexHtml.replace('{{css}}', indexCss));
+            });
+        });
+
     });
 
     app.post('/subscribe/', function(req, res) {
