@@ -1,9 +1,9 @@
-angular.module('gsoapApp.services').service('Utils', function($resource) {
+angular.module('gsoapApp.services').service('Utils', function() {
     this.getProductImageUrl = function(product, isFullSize) {
         return getImageUrl(product, 'products' + (isFullSize ? '' : '/small'));
     };
     this.getProductLabelImageUrl = function(product) {
-        var imageName = ''
+        var imageName = '';
         if(product.discount) {
             imageName = 'discount.png';
         } else if(product.isBestseller) {

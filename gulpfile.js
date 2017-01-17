@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('js', function() {
-    gulp.src(['./bower_components/jquery/dist/jquery.min.js',
+   gulp.src(['./bower_components/jquery/dist/jquery.min.js',
         './bower_components/angular/angular.min.js',
         './bower_components/angular-sanitize/angular-sanitize.min.js',
         './bower_components/angular-touch/angular-touch.js',
@@ -25,6 +25,7 @@ gulp.task('js', function() {
         './public/js/services/*.js',
         './public/js/app.js'
     ])
+        .pipe(uglify({ mangle: false }))
         .pipe(concat('index.js'))
         .pipe(gulp.dest('./public/js'));
 });
