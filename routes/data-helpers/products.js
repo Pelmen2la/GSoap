@@ -113,6 +113,7 @@ function getFilters(query, buttonFilterId, callback) {
         buttonFilterId = buttonFilterId || query.buttonFilterId;
         query.withDiscount === 'true' && filters.push({discount: {$gt: 0}});
         query.isBestseller === 'true' && filters.push({isBestseller: true});
+        query.isNovelty === 'true' && filters.push({isNovelty: true});
         if(!query.showHiddenItems) {
             filters.push({isHiddenInList: false});
         }
