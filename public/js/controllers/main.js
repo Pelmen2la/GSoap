@@ -13,10 +13,6 @@ angular.module('gsoapApp.controllers')
             $scope.utils = Utils;
             $scope.stringResources = StringResources;
 
-            if((new MobileDetect(window.navigator.userAgent)).mobile()) {
-                $('body').addClass('mobile');
-            }
-
             $scope.onBuyProductButtonClick = function(e, product, count) {
                 count = count || 1;
                 Utils.moveProductIconToCart({left: e.pageX, top: e.pageY}, product.imageName);

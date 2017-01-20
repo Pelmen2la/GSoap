@@ -19,7 +19,6 @@ gulp.task('js', function() {
         './bower_components/angular-paging/dist/paging.min.js',
         './bower_components/angular-cookies/angular-cookies.js',
         './bower_components/bootstrap/dist/js/bootstrap.js',
-        './bower_components/mobile-detect/mobile-detect.min.js',
         './public/js/controllers/main.js',
         './public/js/controllers/*.js',
         '!./public/js/controllers/admin',

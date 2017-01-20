@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
     emailHelper = require('app/email-helper'),
     path = require('path'),
     fs = require('fs'),
-    serverSideWeb = require("./server-side-web");
+    serverSideWeb = require("./server-side-web"),
+    MobileDetect = require('mobile-detect');
 
 module.exports = function(app) {
     require("./data-helpers/products")(app);
@@ -21,7 +22,8 @@ module.exports = function(app) {
         }
         fs.readFile(path.join(appRoot, '/public/_index.html'), 'utf8', function(err, indexHtml) {
             fs.readFile(path.join(appRoot, '/public/css/index.css'), 'utf8', function(err, indexCss) {
-                res.send(indexHtml.replace('{{css}}', indexCss));
+                var md = new MobileDetect(req.headers['user-agent']);
+                res.send(indexHtml.replace('{{css}}', indexCss).replace('{{mobileClass}}', md.mobile() ? 'mobile' : ''));
             });
         });
 
