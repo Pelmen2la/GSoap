@@ -457,6 +457,27 @@ body:not(.mobile) .page {
 	display: none;
 }
 
+.main-product-list-filters-panel label {
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 1.333333em; /* 16 / 13 */;
+	padding: 0.5em; /* 16 / 2 */
+	margin: 1em;
+	border: 2px dotted #8AA108;;
+	border-radius: 5px/**/;
+}
+
+.main-product-list-filters-panel label:hover {
+	color: #8AA108;
+}
+
+.main-product-list-filters-panel label.selected {
+	border-style: solid;
+	background: #8AA108;
+	color: white;
+}
+
 .products-list-search-input {
 	font-size: 1.333333em; /* 16 / 13 */
 	text-indent: 5px;
@@ -1129,8 +1150,7 @@ body:not(.mobile) .subscribe-block {
 	padding: 1em 1.914893%; /* 13 / 13, 18 / 940 */
 }
 
-.brand-card .filters-panel button,
-.main-product-list-filters-panel label {
+.brand-card .filters-panel button {
 	font-size: 1.230769em; /* 16 / 13 */
 	height: 1.5625em; /* 25 / 16 */
 	padding-right: 3.510638%; /* 33 / 940*/
@@ -1139,8 +1159,7 @@ body:not(.mobile) .subscribe-block {
 	text-decoration: underline;
 }
 
-.brand-card .filters-panel button.selected,
-.main-product-list-filters-panel label.selected {
+.brand-card .filters-panel button.selected {
 	color: #8AA108;
 	text-decoration: none;
 }
