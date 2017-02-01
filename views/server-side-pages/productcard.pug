@@ -28,26 +28,25 @@ block aboveproductslist
         | Применение
       li(ng-class="{selected: selectedTabName == 'ingredients'}", ng-click="onTabClick('ingredients')")
         | Ингредиенты
-      li(ng-class="{selected: selectedTabName == 'reviews'}", ng-click="onTabClick('reviews')")
-        | Отзывы
     p(ng-hide="selectedTabName !== 'description'", ng-bind-html='productData.description')!= productData.description
     p(ng-hide="selectedTabName !== 'use'", ng-bind-html='productData.use')!= productData.use
     p(ng-hide="selectedTabName !== 'ingredients'", ng-bind-html='productData.ingredients')!= productData.ingredients
-    .reviews-container(ng-hide="selectedTabName !== 'reviews'")
+    .reviews-container
+      h2= Отзывы
       for review in productData.reviews
         p.review(ng-repeat='review in productData.reviews')
           b= review.customerName
           br
           br
           = review.text
-    .send-review-container(ng-show="reviewsAllowed && selectedTabName === 'reviews'")
+    .send-review-container(ng-show="reviewsAllowed")
       h3 Оставить отзыв
       input(name='name', type='text"', ng-model='review.customerName', placeholder='Ваше имя')
       input(name='name', type='text"', ng-model='review.customerEmail', placeholder='Ваше Email *')
       textarea(rows='4', ng-model='review.text', placeholder='Ваш отзыв')
       button(ng-disabled='!utils.validateEmail(review.customerEmail)', ng-click='onSendReviewButtonClick()')
         | Отправить отзыв
-    p.no-send-review-message(ng-show="!reviewsAllowed && selectedTabName === 'reviews'")
+    p.no-send-review-message(ng-show="!reviewsAllowed")
       | Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.
   - if (totalProductsCount > 0) {
     h2.bought-together-header(ng-show='products.length') С этим товаром покупают

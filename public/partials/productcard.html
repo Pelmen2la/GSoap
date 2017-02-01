@@ -30,9 +30,6 @@
             <li ng-class="{selected: selectedTabName == 'ingredients'}" ng-click="onTabClick('ingredients')">
                 Ингредиенты
             </li>
-            <li ng-class="{selected: selectedTabName == 'reviews'}" ng-click="onTabClick('reviews')">
-                Отзывы
-            </li>
         </ul>
         <p class="content" ng-hide="selectedTabName !== 'description'" ng-bind-html="product.description">
         </p>
@@ -40,14 +37,15 @@
         </p>
         <p class="content"ng-hide="selectedTabName !== 'ingredients'" ng-bind-html="product.ingredients">
         </p>
-        <div ng-hide="selectedTabName !== 'reviews'" class="reviews-container">
+        <div class="reviews-container">
+            <h2>Отзывы</h2>
             <p class="review" ng-repeat="review in product.reviews">
                 <b>{{review.customerName}}</b><br>
                 <br>
                 {{review.text}}
             </p>
         </div>
-        <div ng-show="reviewsAllowed && selectedTabName === 'reviews'" class="send-review-container">
+        <div ng-show="reviewsAllowed" class="send-review-container">
             <h3>Оставить отзыв</h3>
             <input name="name" type=text" ng-model="review.customerName" placeholder="Ваше имя">
             <input name="name" type=text" ng-model="review.customerEmail" placeholder="Ваше Email *">
@@ -57,7 +55,7 @@
                 Отправить отзыв
             </button>
         </div>
-        <p ng-show="!reviewsAllowed && selectedTabName === 'reviews'" class="no-send-review-message">
+        <p ng-show="!reviewsAllowed" class="no-send-review-message">
             Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.
         </p>
     </div>

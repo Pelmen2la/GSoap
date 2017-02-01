@@ -842,7 +842,7 @@ body:not(.mobile) .subscribe-block {
 }
 
 .product-card .tab-control li {
-	width: 25%; /* 100 / 4 */
+	width: 33%; /* 100 / 3 */
 	display: block;
 	border-bottom: 2px solid #849D01;
 	float: left;
@@ -878,8 +878,17 @@ body:not(.mobile) .subscribe-block {
 	clear: both;
 }
 
+.product-card .reviews-container h2 {
+	margin: 1em 0;
+}
+
+.product-card .reviews-container .review b {
+	color: #A5B73F;
+}
+
 .product-card .send-review-container,
 .product-card .no-send-review-message {
+	clear: both;
 	border-top: 1px solid #A5B73F;
 }
 
