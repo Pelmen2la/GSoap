@@ -138,6 +138,9 @@ function getFilters(query, buttonFilterId, callback) {
     }
 };
 function getSearchFilter(filterString) {
+    if(!filterString) {
+        return {}
+    }
     var searchFilterFields = ['name', 'brand', 'description'],
         searchFilter = searchFilterFields.map(function(field) {
             var filter = {};
