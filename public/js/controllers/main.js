@@ -3,7 +3,7 @@ angular.module('gsoapApp.controllers', []);
 angular.module('gsoapApp.controllers')
     .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', '$http', 'Utils', 'ButtonFilter', 'StringResources',
         function($scope, $state, $stateParams, $cookies, $http, Utils, ButtonFilter, StringResources) {
-            $scope.cartProducts = $cookies.getObject('cartProducts') || [];
+            ensureProductsInCart();
             $scope.cartText = '';
             $scope.carouselIndex = 0;
             $scope.subscribeEmail = '';
@@ -14,6 +14,7 @@ angular.module('gsoapApp.controllers')
             $scope.stringResources = StringResources;
 
             $scope.onBuyProductButtonClick = function(e, product, count) {
+                ensureProductsInCart();
                 count = count || 1;
                 Utils.moveProductIconToCart({left: e.pageX, top: e.pageY}, product.imageName);
                 for(var entry, i = 0; entry = $scope.cartProducts[i]; i++) {
@@ -63,4 +64,8 @@ angular.module('gsoapApp.controllers')
                     });
                 }
             };
+
+            function ensureProductsInCart() {
+                $scope.cartProducts = $cookies.getObject('cartProducts') || [];
+            }
         }]);
