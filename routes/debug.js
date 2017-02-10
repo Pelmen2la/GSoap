@@ -237,6 +237,18 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/utils/transliterate/products', function(req, res, next) {
+        Product.find({}, function(err, data) {
+            data.forEach(function(entry) {
+                Brand.find({ name: entry.brand}, function(err, brandsData) {
+                    entry.brandId = brandsData[0]._id;
+                    entry.save();
+                });
+            });
+        });
+        res.json('products brands update');
+    });
+
     app.get('/utils/products/createsmallimages', function(req, res, next) {
         var imagesFolderPath = './public/resources/images/products/';
         fs.readdir(imagesFolderPath, function(err, files) {
