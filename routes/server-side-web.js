@@ -156,7 +156,7 @@ module.exports = {
                     }),
                     type = getStringResources().productTypes[productData.type];
                 callback({
-                    title: productData.name + 'от бренда ' + brandData.name,
+                    title: productData.name + ' от бренда ' + brandData.name,
                     description: description,
                     keywords: [productData.name, brandData.name, type].concat(properties).join(', ')
                 });
