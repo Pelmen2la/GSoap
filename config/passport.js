@@ -33,13 +33,4 @@ module.exports = function (app) {
                 : done(null, user);
         });
     });
-
-    User.count(function (err, count) {
-        if (!count) {
-            User.create({
-                username: 'elen',
-                password: '05062014'
-            });
-        }
-    });
 };
