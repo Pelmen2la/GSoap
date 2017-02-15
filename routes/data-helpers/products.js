@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     Product = mongoose.model('product'),
     buttonFilters =require('./buttonfilters'),
+    debugModule = require('../debug'),
     emailHelper = require('app/email-helper');
 
 module.exports = function(app) {
@@ -22,6 +23,9 @@ module.exports = function(app) {
 
     app.post('/products', function(req, res, next) {
         var product = new Product(req.body);
+        if(!product.id) {
+            product.id = debugModule.transliterate(product.name);
+        }
         product.save(function(err, data) {
             if(err) return next(err);
             res.json(data);
