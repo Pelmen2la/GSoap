@@ -50,7 +50,6 @@ angular.module('gsoapAdminApp.adminControllers')
             $state.go('index');
         };
         $scope.deleteArrayMember = function(array, index) {
-            var properties = $scope.product.properties;
             array.splice(index, 1);
         };
         $scope.addCapacity = function(product) {
