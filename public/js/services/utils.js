@@ -4,7 +4,7 @@ angular.module('gsoapApp.services').service('Utils', function() {
         return getImageUrl(product, 'products' + (isFullSize ? '' : '/small'));
     };
     this.getSliderItemImageUrl= function(imageName) {
-        return getImageUrl(imageName, 'slideritems');
+        return getImageUrl(imageName, 'sliderItems');
     };
     this.getProductLabelImageUrl = function(product) {
         var imageName = '';
