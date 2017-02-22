@@ -73,6 +73,11 @@ textarea {/**/
     vertical-align: middle;
 }
 
+.list .admin-slider-image {
+    width: 300px;
+    height: 100px;
+}
+
 .edit-page .back-button {
     display: block;
 }

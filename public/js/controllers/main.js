@@ -1,15 +1,15 @@
 angular.module('gsoapApp.controllers', []);
 
 angular.module('gsoapApp.controllers')
-    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', '$http', 'Utils', 'ButtonFilter', 'StringResources',
-        function($scope, $state, $stateParams, $cookies, $http, Utils, ButtonFilter, StringResources) {
+    .controller('MainController', ['$scope', '$state', '$stateParams', '$cookies', '$http', 'Utils', 'ButtonFilter', 'SliderItem', 'StringResources',
+        function($scope, $state, $stateParams, $cookies, $http, Utils, ButtonFilter, SliderItem, StringResources) {
             ensureProductsInCart();
             $scope.cartText = '';
             $scope.carouselIndex = 0;
             $scope.subscribeEmail = '';
             $scope.carouselImages = ['NewLogona.jpg'].map(Utils.getCarouselImageUrl);
-            $scope.filterButtonsData = ButtonFilter.query({}, function() {
-            });
+            $scope.filterButtonsData = ButtonFilter.query({});
+            $scope.sliderItems = SliderItem.query({});
             $scope.utils = Utils;
             $scope.stringResources = StringResources;
 

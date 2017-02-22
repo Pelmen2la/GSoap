@@ -1,0 +1,20 @@
+<button class='add-record-button' ui-sref='newSliderItem'>
+    Добавить слайд
+</button>
+
+<table class="list">
+    <tr ng-repeat="item in sliderItems">
+        <td>
+            <a ng-href="#/slideritems/{{item._id}}/">
+                <img class="admin-slider-image" ng-src="{{utils.getSliderItemImageUrl(item.imageName)}}"><br/>
+                <a ng-href="{{item.url}}">{{item.url}}</a>
+            </a>
+        </td>
+        <td>
+            <a ng-href="#/slideritems/{{item._id}}/" class="main-sprite-icon edit-icon"></a>
+        </td>
+        <td>
+            <span class="main-sprite-icon delete-icon" ng-click="tryDeleteSliderItem(item._id)"></span>
+        </td>
+    </tr>
+</table>

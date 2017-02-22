@@ -2,9 +2,9 @@
         <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls-allow-loop rn-carousel-buffered
             rn-carousel-controls rn-carousel-auto-slide="5" rn-carousel-pause-on-hover
             class="image carousel">
-            <li ng-repeat="image in carouselImages">
-                <a href="/#/!/naturalnaya_kosmetika/dlja_polosti_rta">
-                    <img ng-src="{{image}}"/>
+            <li ng-repeat="item in sliderItems">
+                <a ng-href="{{item.url}}">
+                    <img ng-src="{{utils.getSliderItemImageUrl(item.imageName)}}"/>
                 </a>
             </li>
         </ul>

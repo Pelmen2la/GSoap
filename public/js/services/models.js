@@ -44,4 +44,10 @@ angular.module('gsoapApp.services')
                 method: 'PUT'
             }
         });
+    }).factory('SliderItem', function($resource) {
+        return $resource('/slideritems/:id', null, {
+            update: {
+                method: 'PUT'
+            }
+        });
     });

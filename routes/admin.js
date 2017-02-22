@@ -62,6 +62,10 @@ module.exports = function(app) {
         tryUploadFile('public/resources/images/articles/', req, res);
     });
 
+    app.post('/admin/upload/slideritem/image/', multerInstance.single('file'), function(req, res) {
+        tryUploadFile('public/resources/images/sliderItems/', req, res);
+    });
+
     function tryUploadFile(targetPath, req, res) {
         function getImageName() {
             var name = req.file.originalname,

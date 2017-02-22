@@ -1,0 +1,21 @@
+<div ng-controller="SliderItemFormController" uploader="uploader" class="edit-page">
+    <button ng-click="back()">
+        Назад
+    </button>
+
+    <img class="main-image" ng-src="{{utils.getSliderItemImageUrl(sliderItem)}}">
+    <input class="upload-input" type="file" nv-file-select="" class="form-control" uploader="uploader"/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Ссылка</label>
+
+        <div class="col-sm-10">
+            <input type="text"
+                   ng-model="sliderItem.url">
+        </div>
+    </div>
+
+    <button type="submit" ng-click="submitSliderItem()">
+        Сохранить
+    </button>
+</div>

@@ -60,6 +60,18 @@ angular.module('gsoapAdminApp').config(function ($stateProvider) {
         url: '/promocodes/',
         templateUrl: '/partials/admin/promocodes.html',
         controller: 'PromocodesController'
+    }).state('sliderItems', {
+        url: '/slideritems/',
+        templateUrl: '/partials/admin/slideritemlist.html',
+        controller: 'SliderItemListController'
+    }).state('newSliderItem', {
+        url: '/slideritems/new',
+        templateUrl: '/partials/admin/slideritemform.html',
+        controller: 'SliderItemCreateController'
+    }).state('sliderItemForm', {
+        url: '/slideritems/:id/',
+        templateUrl: '/partials/admin/slideritemform.html',
+        controller: 'SliderItemEditController'
     });
 }).run(function ($state) {
     $state.go('index');

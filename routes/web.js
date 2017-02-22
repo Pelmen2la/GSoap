@@ -14,6 +14,7 @@ module.exports = function(app) {
     require("./data-helpers/orders")(app);
     require("./data-helpers/promocodes")(app);
     require("./data-helpers/articles")(app);
+    require("./data-helpers/slideritems")(app);
 
     app.get('/', function(req, res) {
         if(req.query._escaped_fragment_ !== undefined) {
