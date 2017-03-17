@@ -6,9 +6,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             totalItemsCount: 0
         };
         $scope.filters = {
-            withDiscount: false,
-            isBestseller: false,
-            isNovelty: false,
+            typeFilter : null,
             searchFilter: '',
             buttonFilterId: $stateParams.buttonFilterId
         };
@@ -27,10 +25,16 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
                 loadPageData();
             }, 500);
         };
-        $scope.onFilterCheckboxChange = function() {
+        $scope.onFilterRadiobuttonClick = function(filterName) {
+            if(filterName === $scope.lastRadiobuttonFilterName && filterName === $scope.filters.typeFilter) {
+                $scope.filters.typeFilter = false;
+                $scope.lastRadiobuttonFilterName = null;
+            } else {
+                $scope.lastRadiobuttonFilterName = filterName;
+            }
             $scope.pagingOptions.pageIndex = 0;
             loadPageData();
-        },
+        };
         $scope.onPagerClick = function(pageIndex) {
             $scope.pagingOptions.pageIndex = pageIndex;
             loadPageData(function() {
@@ -40,7 +44,7 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
 
         function loadPageData(callback) {
             var params = {};
-            ['searchFilter', 'buttonFilterId', 'withDiscount', 'isBestseller', 'isNovelty'].forEach(function(param) {
+            ['searchFilter', 'buttonFilterId', 'typeFilter'].forEach(function(param) {
                 params[param] = $scope.filters[param];
             });
             params['pagingOptions'] = $scope.pagingOptions;

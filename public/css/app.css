@@ -453,7 +453,7 @@ body:not(.mobile) .page {
 	overflow: auto;
 }
 
-.main-product-list-filters-panel input[type=checkbox] {
+.main-product-list-filters-panel input[type=radio] {
 	display: none;
 }
 
@@ -472,7 +472,7 @@ body:not(.mobile) .page {
 	color: #8AA108;
 }
 
-.main-product-list-filters-panel label.selected {
+.main-product-list-filters-panel input[type=radio]:checked + label {
 	border-style: solid;
 	background: #8AA108;
 	color: white;

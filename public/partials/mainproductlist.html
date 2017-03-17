@@ -1,15 +1,15 @@
 <div class="main-product-list-filters-panel" ng-hide="hideFilterControls">
     <input class="products-list-search-input" placeholder="Поиск"
            ng-model="filters.searchFilter" ng-keyup="onFilterInputKeyUp()">
-    <input id="DiscountFilterCheckbox" type="checkbox" ng-model="filters.withDiscount"
-           ng-change="onFilterCheckboxChange()">
-    <label for="DiscountFilterCheckbox" ng-class="{selected: filters.withDiscount}">Со скидкой</label>
-    <input id="BestsellertFilterCheckbox" type="checkbox" ng-model="filters.isBestseller"
-           ng-change="onFilterCheckboxChange()">
-    <label for="BestsellertFilterCheckbox" ng-class="{selected: filters.isBestseller}">Бестселлеры</label>
-    <input id="NoveltytFilterCheckbox" type="checkbox" ng-model="filters.isNovelty"
-           ng-change="onFilterCheckboxChange()">
-    <label for="NoveltytFilterCheckbox" ng-class="{selected: filters.isNovelty}">Новинки</label>
+    <input id="DiscountFilterRadiobutton" type="radio" ng-model="filters.typeFilter" name="typeFilter"
+           value="withDiscount" ng-click="onFilterRadiobuttonClick('withDiscount')">
+    <label for="DiscountFilterRadiobutton">Со скидкой</label>
+    <input id="BestsellertFilterRadiobutton" type="radio" ng-model="filters.typeFilter" name="typeFilter"
+           value="isBestseller" ng-click="onFilterRadiobuttonClick('isBestseller')">
+    <label for="BestsellertFilterRadiobutton">Бестселлеры</label>
+    <input id="NoveltytFilterRadiobutton" type="radio" ng-model="filters.typeFilter" name="typeFilter"
+           value="isNovelty" ng-click="onFilterRadiobuttonClick('isNovelty')">
+    <label for="NoveltytFilterRadiobutton">Новинки</label>
 </div>
 <div class="products-container">
     <div ng-repeat="product in products track by $index" class="product-container"
