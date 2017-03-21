@@ -15,7 +15,7 @@ module.exports = function(app) {
                     filter.pageText = '';
                 });
             });
-            res.setHeader('Cache-Control', 'public, max-age=86400');
+            res.setHeader('Cache-Control', 'public, max-age=' + global.cacheTime);
             res.json(data);
         });
     });

@@ -6,11 +6,10 @@ var express = require('express'),
     flash = require('connect-flash'),
     expressSession = require('express-session'),
     mongoose = require('mongoose'),
-    MongoStore = require('connect-mongo')(expressSession),
-    cacheTime = 86400000 * 7; //7 days
+    MongoStore = require('connect-mongo')(expressSession);
 
 module.exports = function (app) {
-    app.use(express.static(path.join(__dirname, '..', 'public'), { maxAge: cacheTime }));
+    app.use(express.static(path.join(__dirname, '..', 'public'), { maxAge: global.cacheTime * 1000 }));
     app.use('/bower_components', express.static(path.join(__dirname, '..', 'bower_components')));
     app.use(bodyParser.json());
     app.set('views', path.join(__dirname, '..', 'views'));
