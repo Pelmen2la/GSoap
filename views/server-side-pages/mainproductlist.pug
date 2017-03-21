@@ -15,8 +15,8 @@ block maincontent
       each product in products
         .product-container(ng-repeat='product in products track by $index', ng-class='{bestseller: product.isBestseller}')
           a(href=  '/#!/products/' + product.id + '/')
-            img.label-image(src= '/resources/images/products/' + product.imageName ng-src='{{utils.getProductLabelImageUrl(product)}}', ng-show='utils.getProductLabelImageUrl(product)')
-            img.main-image(ng-src='{{utils.getProductImageUrl(product)}}')
+            img.label-image(ng-src='{{utils.getProductLabelImageUrl(product)}}', ng-show='utils.getProductLabelImageUrl(product)')
+            img.main-image(src= '/resources/images/products/small/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}')
           a.product-name(href=  '/#!/products/' + product.id + '/')= product.name
           .product-price
             b= product.capacityList[0].price + ' руб.'

@@ -1,6 +1,5 @@
 angular.module('gsoapApp.services').service('Utils', function() {
     this.getProductImageUrl = function(product, isFullSize) {
-        isFullSize = true;
         return getImageUrl(product, 'products' + (isFullSize ? '' : '/small'));
     };
     this.getSliderItemImageUrl= function(imageName) {
