@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 module.exports = function(app) {
     app.get('/slideritems', function (req, res) {
         SliderItem.find({}, function(err, data) {
+            res.setHeader('Cache-Control', 'public, max-age=86400');
             res.json(data);
         });
     });

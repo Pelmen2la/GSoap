@@ -7,7 +7,7 @@ var express = require('express'),
     expressSession = require('express-session'),
     mongoose = require('mongoose'),
     MongoStore = require('connect-mongo')(expressSession),
-    cacheTime = 86400000 * 7; //7 days
+    cacheTime = 86400 * 7; //7 days
 
 module.exports = function (app) {
     app.use(express.static(path.join(__dirname, '..', 'public'), { maxAge: cacheTime }));
