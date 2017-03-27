@@ -87,13 +87,16 @@ function getProductDataById(id, callback) {
     });
 };
 function getPagingOptions(pagingOptions) {
-    if(!pagingOptions.pageSize) {
-        return null;
-    }
-    return {
-        skip: pagingOptions.pageSize * ((pagingOptions.pageIndex || 1) - 1),
-        limit: parseInt(pagingOptions.pageSize)
+    var options = {
+        sort: {
+            isActive: -1
+        }
     };
+    if(pagingOptions.pageSize) {
+        options.skip = pagingOptions.pageSize * ((pagingOptions.pageIndex || 1) - 1);
+        options.limit = parseInt(pagingOptions.pageSize);
+    }
+    return options;
 };
 function getProducts(query, buttonFilterId, pagingOptions, callback) {
     getFilters(query, buttonFilterId, function(filters) {
