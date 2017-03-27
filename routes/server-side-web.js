@@ -212,7 +212,9 @@ module.exports = {
                     foam: 'Пена',
                     powder2: 'Порошок',
                     milk: 'Молочко',
-                    means: 'Средства'
+                    means: 'Средства',
+                    mascara: 'Тушь',
+                    cosmeticPencil: 'Карандаш'
                 },
                 productCapacityUnitTypes: {
                     gram: 'г',

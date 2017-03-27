@@ -24,7 +24,9 @@ angular.module('gsoapApp.services').constant('StringResources', {
         foam: 'Пена',
         powder2: 'Порошок',
         milk: 'Молочко',
-        means: 'Средства'
+        means: 'Средства',
+        mascara: 'Тушь',
+        cosmeticPencil: 'Карандаш'
     },
     productCapacityUnitTypes: {
         gram: 'г',
