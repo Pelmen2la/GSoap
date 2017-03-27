@@ -7,6 +7,7 @@ angular.module('gsoapApp.controllers')
             $scope.cartText = '';
             $scope.carouselIndex = 0;
             $scope.subscribeEmail = '';
+            $scope.mobileMenuVisible = false;
             $scope.carouselImages = ['NewLogona.jpg'].map(Utils.getCarouselImageUrl);
             $scope.filterButtonsData = ButtonFilter.query({});
             $scope.sliderItems = SliderItem.query({});
@@ -46,6 +47,12 @@ angular.module('gsoapApp.controllers')
             $scope.onUpButtonClick = function() {
                 document.body.scrollTop = 0;
                 document.getElementsByTagName('HTML')[0].scrollTop = 0;
+            };
+            $scope.onMobileMenuButtonClick = function() {
+                $scope.mobileMenuVisible = true;
+            };
+            $scope.onProductsMenuWrapperClick = function(e) {
+                $scope.mobileMenuVisible = e.target.className.indexOf('products-menu-wrapper') === -1;
             };
             $scope.onButtonFilterClick = function() {
                 window.setTimeout(function() {
