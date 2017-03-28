@@ -121,6 +121,7 @@ function getFilters(query, buttonFilterId, callback) {
         query.typeFilter === 'withDiscount' && filters.push({discount: {$gt: 0}});
         query.typeFilter === 'isBestseller' && filters.push({isBestseller: true});
         query.typeFilter === 'isNovelty' && filters.push({isNovelty: true});
+        query.brandIdFilter && filters.push({brandId: query.brandIdFilter});
         if(!query.showHiddenItems) {
             filters.push({isHiddenInList: false});
         }

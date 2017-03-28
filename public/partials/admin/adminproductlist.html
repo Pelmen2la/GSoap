@@ -2,7 +2,14 @@
     Добавить товар
 </button>
 
-Поиск <input id="grid-filter-input" ng-model='searchFilter' ng-keyup="onFilterInputKeyUp()"/>
+Поиск <input id="grid-filter-input" ng-model='filters.searchFilter' ng-keyup="onFilterInputKeyUp()"/>
+<div class="radiobutton-filters" >
+    <span ng-repeat="brand in brands">
+        <input ng-attr-id="{{'Brand_' + brand._id}}" type="radio" ng-model="filters.brandIdFilter" name="brandIdFilter"
+           ng-attr-value="{{brand._id}}"  ng-click="onBrandFilterButtonClick(brand._id)">
+        <label ng-attr-for="{{'Brand_' + brand._id}}">{{brand.name}}</label>
+    </span>
+</div>
 <table id="AdminProductList" class="list">
     <tr ng-repeat="product in products">
         <td ng-click="openProductForm(product.getId())">

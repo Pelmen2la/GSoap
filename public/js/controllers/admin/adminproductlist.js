@@ -1,10 +1,14 @@
-angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListController', ['$scope', '$state', '$stateParams', 'Product',
-    function($scope, $state, $stateParams, Product) {
-        $scope.searchFilter = '';
+angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListController', ['$scope', '$state', '$stateParams', 'Product', 'Brand',
+    function($scope, $state, $stateParams, Product, Brand) {
+        $scope.filters = {
+            searchFilter: '',
+            brandIdFilter: ''
+        }
         $scope.pagingOptions = {
             pageSize: 20,
             pageIndex: 1
         };
+        $scope.brands = Brand.query({}, function(data) {});
         loadPageData(true);
 
         $(window).scroll(function() {
@@ -36,6 +40,15 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
                 loadPageData(true);
             }, 500);
         };
+        $scope.onBrandFilterButtonClick = function(brandId) {
+            if(brandId === $scope.lastBrandFilterId && brandId === $scope.filters.brandIdFilter) {
+                $scope.filters.brandIdFilter = '';
+                $scope.lastBrandFilterId = null;
+            } else {
+                $scope.lastBrandFilterId = brandId;
+            }
+            loadPageData(true);
+        };
 
         function loadPageData(resetPageIndex) {
             var params = {};
@@ -44,16 +57,14 @@ angular.module('gsoapAdminApp.adminControllers').controller('AdminProductListCon
             }
             $scope.dataLoading = true;
             $scope.pagingOptions.pageIndex = resetPageIndex ? 1 : $scope.pagingOptions.pageIndex + 1;
-            ['searchFilter', 'pagingOptions'].forEach(function(param) {
-                params[param] = $scope[param]
+            ['searchFilter', 'brandIdFilter'].forEach(function(param) {
+                params[param] = $scope.filters[param]
             });
+            params['pagingOptions'] = $scope.pagingOptions;
             params['showHiddenItems'] = true;
             Product.query(params, function(data) {
                 $scope.dataLoading = false;
                 $scope.pagingOptions.totalCount = data.pop();
-                data.forEach(function(product) {
-                    product.selectedCapacity = product.capacityList[0];
-                });
                 if($scope.pagingOptions.pageIndex === 1) {
                     $scope.products = data;
                 } else {
