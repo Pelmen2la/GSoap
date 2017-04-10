@@ -6,4 +6,5 @@ Disallow: /images/*
 Disallow: /*.php
 Disallow: /*.html
 Disallow: /?_escaped_fragment_=/products/5*
+Disallow: /?_escaped_fragment_=/brands/5*
 Disallow: /?_escaped_fragment_=/products?buttonFilter*
