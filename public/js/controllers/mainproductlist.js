@@ -6,9 +6,9 @@ angular.module('gsoapApp.controllers').controller('MainProductListController', [
             totalItemsCount: 0
         };
         $scope.filters = {
-            typeFilter : null,
+            typeFilter : $stateParams.filterId === 'skidki' ? 'withDiscount' : null,
             searchFilter: '',
-            buttonFilterId: $stateParams.buttonFilterId
+            buttonFilterId: $stateParams.filterId === 'skidki' ? null : $stateParams.filterId
         };
         if(!$scope.products) {
             $scope.products = [];
