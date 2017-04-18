@@ -72,6 +72,10 @@ angular.module('gsoapAdminApp').config(function ($stateProvider) {
         url: '/slideritems/:id/',
         templateUrl: '/partials/admin/slideritemform.html',
         controller: 'SliderItemEditController'
+    }).state('discounts', {
+        url: '/discounts/',
+        templateUrl: '/partials/admin/discounts.html',
+        controller: 'DiscountsController'
     });
 }).run(function ($state) {
     $state.go('index');

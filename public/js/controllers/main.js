@@ -8,7 +8,6 @@ angular.module('gsoapApp.controllers')
             $scope.carouselIndex = 0;
             $scope.subscribeEmail = '';
             $scope.mobileMenuVisible = false;
-            $scope.carouselImages = ['NewLogona.jpg'].map(Utils.getCarouselImageUrl);
             $scope.filterButtonsData = ButtonFilter.query({});
             $scope.sliderItems = SliderItem.query({});
             $scope.utils = Utils;

@@ -1,0 +1,44 @@
+<div ng-controller="DiscountsController">
+    <div class="form-inline">
+        <div class="form-group">
+            <label>Скидка</label>
+            <input type="number" class="form-control" ng-model="discount.value">
+        </div>
+        <div class="form-group">
+            <label>Бренд</label>
+            <select class="form-control" ng-model="discount.brandId"
+                    ng-options="brand._id as brand.name for brand in brands">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Тип продукта</label>
+            <select class="form-control" ng-model="discount.productType"
+                    ng-options="key as value for (key, value) in stringResources.productTypes">
+            </select>
+        </div>
+
+        <button ng-click="submitDiscount()">Создать скдику</button>
+    </div>
+    <br>
+    <table class="list">
+        <tr>
+            <th>Скидка</th>
+            <th>Бренд</th>
+            <th>Тип продукта</th>
+        </tr>
+        <tr ng-repeat="discount in Discounts">
+            <td>
+                {{discount.value}}
+            </td>
+            <td>
+                {{getBrandName(discount.brandId)}}
+            </td>
+            <td>
+                {{stringResources.productTypes[discount.productType]}}
+            </td>
+            <td>
+                <span class="main-sprite-icon delete-icon" ng-click="tryDeleteDiscount(discount._id)"></span>
+            </td>
+        </tr>
+    </table>
+</div>

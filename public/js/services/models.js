@@ -50,4 +50,10 @@ angular.module('gsoapApp.services')
                 method: 'PUT'
             }
         });
+    }).factory('Discount', function($resource) {
+        return $resource('/discounts/:id', null, {
+            update: {
+                method: 'PUT'
+            }
+        });
     });

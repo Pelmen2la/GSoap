@@ -24,6 +24,10 @@ button:not(.btn) {
     margin: 0.3125em; /* 5 / 16 */
 }
 
+button.top-menu-button {
+    margin-bottom: 20px;
+}
+
 input[type=text],
 input[type=date],
 select,
@@ -160,6 +164,10 @@ textarea {
 .edit-page .order-customer-info {
     line-height: 1.5em;
     padding-left: 10px;
+}
+
+.radiobutton-filters {
+    margin: 10px 0;
 }
 
 .radiobutton-filters input[type=radio] {

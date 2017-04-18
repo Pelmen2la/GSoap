@@ -4,9 +4,6 @@ angular.module('gsoapAdminApp.adminControllers').controller('PromocodesControlle
     loadPageData();
     $scope.promocode = new Promocode();
 
-    $scope.openOrderForm = function(id) {
-        $state.go('orderForm', {id: id});
-    };
     $scope.tryDeletePromocode = function(id) {
         if(window.confirm('Вы уверены, что хотите удалить промокод?')) {
             Promocode.delete({id: id}, function() {
@@ -20,13 +17,11 @@ angular.module('gsoapAdminApp.adminControllers').controller('PromocodesControlle
             loadPageData();
         });
     };
-    $scope.back = function() {
-        $state.go('brands');
-    };
     $scope.getBrandName = function(brandId) {
-        return brandId ? $scope.brands.find(function(brand) {
+        var brand = $scope.brands.find(function(brand) {
             return brand._id === brandId;
-        }).name : '';
+        });
+        return brand ? brand.name : '';
     };
 
     function loadPageData() {

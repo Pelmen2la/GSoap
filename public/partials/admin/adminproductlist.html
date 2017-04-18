@@ -19,6 +19,9 @@
             {{product.name}}
         </td>
         <td>
+            Скидка {{product.discount}} %
+        </td>
+        <td>
             {{utils.getProductCapacityText(product)}} {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}<br/>
             {{utils.getProductPricesText(product)}} р
         </td>

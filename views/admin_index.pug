@@ -27,6 +27,8 @@ html(ng-app='gsoapAdminApp')
                 span.icon
             button(class='top-menu-button' ui-sref='sliderItems') Слайды
                 span.icon
+            button(class='top-menu-button' ui-sref='discounts') Скидки
+                span.icon
 
             div(ui-view, ng-controller='AdminMainController')
 
@@ -57,6 +59,7 @@ html(ng-app='gsoapAdminApp')
         script(src='/js/controllers/admin/promocodes.js')
         script(src='/js/controllers/admin/slideritemform.js')
         script(src='/js/controllers/admin/slideritems.js')
+        script(src='/js/controllers/admin/discounts.js')
         script(src='/js/services/models.js')
         script(src='/js/services/utils.js')
         script(src='/js/services/stringresources.js')
