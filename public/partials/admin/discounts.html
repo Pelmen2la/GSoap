@@ -16,8 +16,29 @@
                     ng-options="key as value for (key, value) in stringResources.productTypes">
             </select>
         </div>
+        <button ng-click="submitDiscount()">Создать скидку</button>
+        <br>
+        <br>
 
-        <button ng-click="submitDiscount()">Создать скдику</button>
+        <div class="form-group">
+            <label>Продукты</label>
+            <br>
+            <div ng-repeat="productId in discount.productIds track by $index" class="inputs-wrapper">
+                <ui-select ng-model="discount.productIds[$index]">
+                    <ui-select-match>
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="item._id as item in fullProductsList | filter:$select.search track by $index">
+                        {{item.name}}
+                    </ui-select-choices>
+                </ui-select>
+                <span class="main-sprite-icon remove-icon" ng-click="discount.productIds.splice($index, 1)"></span>
+            </div>
+            <button ng-click="discount.productIds.push('')">
+                Добавить продукт
+            </button>
+        </div>
     </div>
     <br>
     <table class="list">
@@ -25,6 +46,7 @@
             <th>Скидка</th>
             <th>Бренд</th>
             <th>Тип продукта</th>
+            <th>Продукты</th>
         </tr>
         <tr ng-repeat="discount in Discounts">
             <td>
@@ -35,6 +57,9 @@
             </td>
             <td>
                 {{stringResources.productTypes[discount.productType]}}
+            </td>
+            <td>
+                {{getProductNames(discount.productIds)}}
             </td>
             <td>
                 <span class="main-sprite-icon delete-icon" ng-click="tryDeleteDiscount(discount._id)"></span>

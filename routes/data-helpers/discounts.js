@@ -32,20 +32,24 @@ module.exports = function(app) {
         var discountDiff = discount.value * (isActive ? 1 : -1);
         changeProductsDiscount('brandId', discount.brandId, discountDiff);
         changeProductsDiscount('type', discount.productType, discountDiff);
+        changeProductsDiscountCore({ '_id': { $in: discount.productIds } }, discountDiff);
     };
     function changeProductsDiscount(filterField, filterVal, discountDiff) {
         if(filterVal) {
             var filterObj = {};
             filterObj[filterField] = filterVal;
-            Product.find(filterObj, function(err, data) {
-                if(!err) {
-                    data.forEach(function(p) {
-                        var newDiscount = p.get('discount') + discountDiff;
-                        p.set('discount', newDiscount < 0 ? 0 : newDiscount);
-                        p.save();
-                    });
-                }
-            });
+            changeProductsDiscountCore(filterObj, discountDiff);
         }
-    }
+    };
+    function changeProductsDiscountCore(filter, discountDiff) {
+        Product.find(filter, function(err, data) {
+            if(!err) {
+                data.forEach(function(p) {
+                    var newDiscount = (p.get('discount') || 0) + discountDiff;
+                    p.set('discount', newDiscount < 0 ? 0 : newDiscount);
+                    p.save();
+                });
+            }
+        });
+    };
 };

@@ -14,6 +14,7 @@ img {
 
 body {
     font-size: 16px;
+    padding: 20px;
 }
 
 button:not(.btn) {
@@ -82,6 +83,12 @@ textarea {
     height: 100px;
 }
 
+.form-inline {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
 .edit-page .back-button {
     display: block;
 }
@@ -130,15 +137,20 @@ textarea {
     float: right;
 }
 
-.edit-page .inputs-wrapper {
+.inputs-wrapper {
     position: relative;
     margin-bottom: 4px;
+    min-width: 400px;
 }
 
-.edit-page .inputs-wrapper .main-sprite-icon {
+.inputs-wrapper .main-sprite-icon {
     position: absolute;
     right: 20px;
     top: 6px;
+}
+
+.inputs-wrapper .btn-default {
+    width: 100%;
 }
 
 .edit-page .review-wrapper > * {
