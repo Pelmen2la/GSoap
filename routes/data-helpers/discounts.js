@@ -42,6 +42,12 @@ module.exports = function(app) {
         }
     };
     function changeProductsDiscountCore(filter, discountDiff) {
+        filter = {
+            $and: [
+                filter,
+                { isActive: true }
+            ]
+        };
         Product.find(filter, function(err, data) {
             if(!err) {
                 data.forEach(function(p) {
