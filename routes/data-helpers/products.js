@@ -10,7 +10,7 @@ module.exports = function(app) {
     app.get('/products', function(req, res) {
         var query = req.query,
             pagingOptions = getPagingOptions(query.pagingOptions ? JSON.parse(query.pagingOptions) : {});
-        pagingOptions.sort = { discount: -1 };
+        pagingOptions.sort = { isActive: -1, discount: -1 };
         getProducts(query, null, pagingOptions, function(data) {
             res.json(data);
         });
