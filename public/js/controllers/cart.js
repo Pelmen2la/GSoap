@@ -4,7 +4,7 @@ angular.module('gsoapApp.controllers')
             var count = 0,
                 price = 0,
                 productsInfo = Utils.getProductsInfo($scope.cartProducts);
-            $cookies.putObject('cartProducts', $scope.cartProducts, { expires: Utils.getNextDayDate() });
+            localStorage.gsoapCartProducts = JSON.stringify($scope.cartProducts);
             $scope.cartText = productsInfo.count + ' шт. на ' + productsInfo.price;
         }, true);
     }]);

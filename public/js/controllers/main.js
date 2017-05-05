@@ -72,6 +72,6 @@ angular.module('gsoapApp.controllers')
             };
 
             function ensureProductsInCart() {
-                $scope.cartProducts = $cookies.getObject('cartProducts') || [];
+                $scope.cartProducts = localStorage.gsoapCartProducts ? JSON.parse(localStorage.gsoapCartProducts) : [];
             }
         }]);
