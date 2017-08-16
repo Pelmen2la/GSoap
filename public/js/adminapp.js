@@ -76,6 +76,10 @@ angular.module('gsoapAdminApp').config(function ($stateProvider) {
         url: '/discounts/',
         templateUrl: '/partials/admin/discounts.html',
         controller: 'DiscountsController'
+    }).state('isActiveSwitcher', {
+        url: '/isactiveswitcher/',
+        templateUrl: '/partials/admin/isactiveswitcher.html',
+        controller: 'IsActiveSwitcherController'
     });
 }).run(function ($state) {
     $state.go('index');

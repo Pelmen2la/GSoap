@@ -1,0 +1,34 @@
+<div ng-controller="IsActiveSwitcherController">
+    <div class="form-inline">
+        <div class="form-group">
+            <label>Есть ли в наличии:</label>
+            <select class="form-control" ng-model="isActiveProps.isActive"
+                    ng-options="key as value for (key, value) in isActiveOptions">
+            </select>
+        </div>
+        <button ng-click="submit()" ng-disabled="!isActiveProps.isActive || !isActiveProps.productIds.length">
+            Выставить значение
+        </button>
+        <br>
+        <br>
+        <div class="form-group">
+            <label>Продукты</label>
+            <br>
+            <div ng-repeat="productId in isActiveProps.productIds track by $index" class="inputs-wrapper">
+                <ui-select ng-model="isActiveProps.productIds[$index]">
+                    <ui-select-match>
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices
+                            repeat="item._id as item in fullProductsList | filter:$select.search track by $index">
+                        {{item.name}}
+                    </ui-select-choices>
+                </ui-select>
+                <span class="main-sprite-icon remove-icon" ng-click="isActiveProps.productIds.splice($index, 1)"></span>
+            </div>
+            <button ng-click="isActiveProps.productIds.push('')">
+                Добавить продукт
+            </button>
+        </div>
+    </div>
+</div>

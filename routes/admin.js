@@ -50,6 +50,18 @@ module.exports = function(app) {
         res.sendFile('../public/index.html');
     });
 
+    app.post('/admin/setisactive/', function(req, res) {
+        var productIds = req.body.productIds,
+            isActive = req.body.isActive === 'true';
+        Product.find({ _id: { $in: productIds } }, function(err, data) {
+            !err && data.forEach(function(rec) {
+                rec.set('isActive', isActive);
+                rec.save();
+            });
+            res.send(true);
+        });
+    });
+
     app.post('/admin/upload/product/image/', multerInstance.single('file'), function(req, res) {
         tryUploadFile('public/resources/images/products/', req, res);
     });

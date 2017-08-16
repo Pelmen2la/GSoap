@@ -25,6 +25,10 @@ button:not(.btn) {
     margin: 0.3125em; /* 5 / 16 */
 }
 
+[disabled] {
+    opacity: 0.5;
+}
+
 button.top-menu-button {
     margin-bottom: 20px;
 }

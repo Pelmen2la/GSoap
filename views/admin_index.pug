@@ -14,21 +14,14 @@ html(ng-app='gsoapAdminApp')
                 span #{user}
                 a(href='/logout') Выйти
             button(class='top-menu-button' ui-sref='index') Товары
-                span.icon
             button(class='top-menu-button' ui-sref='brands') Бренды
-                span.icon
             button(class='top-menu-button' ui-sref='buttonFilters') Фильтры
-                span.icon
             button(class='top-menu-button' ui-sref='orders') Заказы
-                span.icon
             button(class='top-menu-button' ui-sref='promocodes') Промокоды
-                span.icon
             button(class='top-menu-button' ui-sref='articles') Статьи
-                span.icon
             button(class='top-menu-button' ui-sref='sliderItems') Слайды
-                span.icon
             button(class='top-menu-button' ui-sref='discounts') Скидки
-                span.icon
+            button(class='top-menu-button' ui-sref='isActiveSwitcher') Наличие товара
 
             div(ui-view, ng-controller='AdminMainController')
 
@@ -60,6 +53,7 @@ html(ng-app='gsoapAdminApp')
         script(src='/js/controllers/admin/slideritemform.js')
         script(src='/js/controllers/admin/slideritems.js')
         script(src='/js/controllers/admin/discounts.js')
+        script(src='/js/controllers/admin/isactiveswitcher.js')
         script(src='/js/services/models.js')
         script(src='/js/services/utils.js')
         script(src='/js/services/stringresources.js')
