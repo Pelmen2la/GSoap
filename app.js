@@ -18,5 +18,5 @@ var server = app.listen(process.env.PORT || 3001, 'localhost', function () {
 });
 
 process.on('uncaughtException', function(err) {
-    console.error(err);
+    console.error(err + '\n' + err.stack);
 });

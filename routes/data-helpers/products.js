@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Product = mongoose.model('product'),
     buttonFilters =require('./buttonfilters'),
     debugModule = require('../debug'),
+    dataHelperUtils = require('./utils'),
     emailHelper = require('app/email-helper');
 
 module.exports = function(app) {
@@ -68,11 +69,7 @@ module.exports.getProductDataById = getProductDataById;
 module.exports.getProducts = getProducts;
 
 function findById(id, callback) {
-    var conditions = [{id: id}];
-    parseInt(id) && conditions.push({_id: id});
-    Product.find({$or: conditions}, null, null, function(err, data) {
-        callback(data[0]);
-    });
+    dataHelperUtils.findRecById(Product, id, callback);
 };
 function getProductDataById(id, callback) {
     findById(id, function(productData) {

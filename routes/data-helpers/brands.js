@@ -3,6 +3,7 @@
 var mongoose = require('mongoose'),
     Product = mongoose.model('product'),
     Brand = mongoose.model('brand'),
+    dataHelperUtils = require('./utils'),
     debugModule = require('../debug');
 
 module.exports = function(app) {
@@ -13,9 +14,7 @@ module.exports = function(app) {
     });
 
     app.get('/brands/:id', function (req, res, next) {
-        Brand.find({$or: [{ id: req.params.id }, { _id: req.params.id }]}, function (err, data) {
-            if(err) return next(err);
-            var brand = data[0];
+        dataHelperUtils.findRecById(Brand, req.params.id, function(brand) {
             Product.find({brandId: brand._id}, function(err, data) {
                 brand = brand.toObject();
                 brand.products = data;
