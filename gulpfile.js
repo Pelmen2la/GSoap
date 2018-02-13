@@ -7,8 +7,9 @@ var gulp = require('gulp'),
 
 
 gulp.task('js', function() {
-   gulp.src(['./public/js/yandex.js',
-       './bower_components/jquery/dist/jquery.min.js',
+   gulp.src([
+        './public/js/yandex.js',
+        './bower_components/jquery/dist/jquery.min.js',
         './bower_components/angular/angular.min.js',
         './bower_components/angular-sanitize/angular-sanitize.min.js',
         './bower_components/angular-touch/angular-touch.js',
@@ -31,8 +32,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('jsdev', function() {
-   gulp.src(['./public/js/yandex.js',
-       './bower_components/jquery/dist/jquery.min.js',
+   gulp.src([
+        './public/js/yandex.js',
+        './bower_components/jquery/dist/jquery.min.js',
         './bower_components/angular/angular.min.js',
         './bower_components/angular-sanitize/angular-sanitize.min.js',
         './bower_components/angular-touch/angular-touch.js',

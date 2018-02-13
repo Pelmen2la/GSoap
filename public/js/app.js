@@ -49,3 +49,4 @@ angular.module('gsoapApp').config(function ($stateProvider) {
 }).run(function ($state) {
     $state.go('index');
 });
+VK.Widgets.CommunityMessages('VkWidget', 92734411, {expanded: '1',tooltipButtonText: 'Здравствуйте! Какую косметику выбираете? '});
