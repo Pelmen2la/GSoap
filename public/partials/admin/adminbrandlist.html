@@ -5,13 +5,13 @@
 <table class="list">
     <tr ng-repeat="brand in brands">
         <td>
-            <img class="main-image" ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandForm(brand.id)">
+            <img class="main-image" ng-src="{{utils.getBrandImageUrl(brand)}}" ng-click="openBrandForm(brand._id)">
         </td>
-        <td class="brand-name" ng-click="openBrandForm(brand.id)">
+        <td class="brand-name" ng-click="openBrandForm(brand._id)">
             {{brand.name}}
         </td>
         <td>
-            <span class="main-sprite-icon edit-icon" ng-click="openBrandForm(brand.id)"></span>
+            <span class="main-sprite-icon edit-icon" ng-click="openBrandForm(brand._id)"></span>
         </td>
         <td>
             <span class="main-sprite-icon delete-icon" ng-click="tryDeleteBrand(brand._id)"></span>

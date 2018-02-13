@@ -67,3 +67,8 @@ gulp.task('app', function() {
     gulp.run('js');
     gulp.run('css');
 });
+
+gulp.task('appdev', function() {
+    gulp.run('jsdev');
+    gulp.run('css');
+});
