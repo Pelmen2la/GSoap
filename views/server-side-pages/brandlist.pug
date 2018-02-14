@@ -9,6 +9,5 @@ block maincontent
     for brand in brands
       .brand-container(ng-repeat='brand in brands')
         a(href=  '/#!/brands/' + brand.name + '/')
-          img(src= '/resources/images/brands/' + brand.imageName ng-src='{{utils.getBrandImageUrl(brand)}}')
           h2= brand.name
-        p.brand-description(ng-bind-html='brand.description')!= brand.description
+          img(src= '/resources/images/brands/' + brand.imageName ng-src='{{utils.getBrandImageUrl(brand)}}')
