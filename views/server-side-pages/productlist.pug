@@ -1,0 +1,20 @@
+.products-container
+    each product in products
+        .product-container(ng-repeat='product in products track by $index', ng-class='{bestseller: product.isBestseller}')
+            a(href=  '/#!/products/' + product.id + '/')
+                img.label-image(ng-src='{{utils.getProductLabelImageUrl(product)}}', ng-show='utils.getProductLabelImageUrl(product)')
+                img.main-image(src= '/resources/images/products/small/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}')
+            a.product-name(href=  '/#!/products/' + product.id + '/')= product.name
+            .product-price
+                b= product.capacityList[0].price + ' руб.'
+            ul.product-capacity
+                each capacityInfo in product.capacityList
+                    li(ng-repeat='capacityInfo in product.capacityList')
+                        button(ng-class='{ selected: capacityInfo == product.selectedCapacity }', ng-click='selectProductCapacity(product, capacityInfo)')= capacityInfo.capacity + ' мл'
+            .product-buy-button-container
+                if product.isActive
+                    button(ng-click='onBuyProductButtonClick($event, product)')
+                        img(src='/resources/images/icons/cart.png')
+                        span Купить
+                else
+                    span Нет в наличии

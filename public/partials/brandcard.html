@@ -10,38 +10,13 @@
 
     <div class="filters-panel">
         <button class="category-filter-button" ng-repeat="(key, value) in categories"
-              ng-class="{selected: typeFilter == key}" ng-click="onFilterButtonClick(key)">
+              ng-class="{selected: productListFilter.type == key}" ng-click="onFilterButtonClick(key)">
             {{stringResources.productTypes[key] + ' (' + value + ')'}}
         </button>
     </div>
-    <input ng-model='searchFilter' class="search-input" placeholder="Поиск" />
+    <input ng-model='productListFilter.$' class="search-input" placeholder="Поиск" />
 
-    <table class="products-grid without-header" ng-show="brand.products.length">
-        <tr ng-repeat="product in brand.products | filter: { $: searchFilter, type: typeFilter }">
-            <td>
-                <a ng-href="#!/products/{{product.id || product._id}}/">
-                    <img ng-src="{{utils.getProductImageUrl(product)}}">
-                </a>
-            </td>
-            <td colspan="2" class="product-name">
-                <a ng-href="#!/products/{{product.id || product._id}}/">{{product.name}}</a>
-            </td>
-            <td class="product-capacity">
-                <select
-                        ng-model="product.selectedCapacity"
-                        ng-options="entry as entry.capacity for entry in product.capacityList">
-                </select>
-                {{stringResources.productCapacityUnitTypes[product.capacityUnit]}}
-            </td>
-            <td>
-                <span>{{utils.getProductPrice(product, product.selectedCapacity, 1)}}</span>
-            </td>
-            <td>
-                <button class="product-buy-button" ng-click="onBuyProductButtonClick($event, product)" ng-show="product.isActive">
-                    <img src="/resources/images/icons/cart.png"><span>Купить</span>
-                </button>
-                <span class="not-active-label" ng-show="!product.isActive">Нет в наличии</span>
-            </td>
-        </tr>
-    </table>
+    <div ng-controller="MainProductListController" ng-include src="'/partials/mainproductlist.html'"
+         ng-init="hideFilterControls=true; productListLocalFilter=productListFilter" ng-show="products.length">
+    </div>
 </div>

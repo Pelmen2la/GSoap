@@ -12,7 +12,7 @@
     <label for="NoveltytFilterRadiobutton">Новинки</label>
 </div>
 <div class="products-container">
-    <div ng-repeat="product in products track by $index" class="product-container"
+    <div ng-repeat="product in products | filter: productListLocalFilter track by $index" class="product-container"
          ng-class="{bestseller: product.isBestseller}">
         <a ng-href="#!/products/{{product.id || product._id}}/">
             <img class="label-image" ng-src="{{utils.getProductLabelImageUrl(product)}}" ng-show="utils.getProductLabelImageUrl(product)">

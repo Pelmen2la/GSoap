@@ -11,20 +11,4 @@ block maincontent
         each category in Object.keys(productCategories)
           button.category-filter-button(ng-repeat='(key, value) in categories', ng-class='{selected: typeFilter == key}', ng-click='onFilterButtonClick(key)')= stringResources.productTypes[category] + ' (' + productCategories[category] + ')'
       input.search-input(ng-model='searchFilter', placeholder='Поиск')
-      table.products-grid.without-header(ng-show='brand.products.length')
-        for product in productsData
-          tr(ng-repeat='product in brand.products | filter: { $: searchFilter, type: typeFilter }')
-            td
-              img(src= '/resources/images/products/' + product.imageName ng-src='{{utils.getProductImageUrl(product)}}', ng-click='openProductCard(product._id)')
-            td.product-name(colspan='2')
-              a(href=  '/#!/products/' + product._id + '/')= product.name
-            td.product-capacity
-              select(ng-model='product.selectedCapacity', ng-options='entry as entry.capacity for entry in product.capacityList')
-                for capacityInfo in product.capacityList
-                  option= capacityInfo.capacity + stringResources.productCapacityUnitTypes[product.capacityUnit]
-            td
-              span= product.capacityList[0].price + 'руб.'
-            td
-              button.product-buy-button(ng-click='onBuyProductButtonClick($event, product)')
-                img(src='/resources/images/icons/cart.png')
-                span Купить
+      include ./productlist.pug

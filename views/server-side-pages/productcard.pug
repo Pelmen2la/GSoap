@@ -50,7 +50,7 @@ block aboveproductslist
       | Вы уже оставляли отзыв к этому товару, повторно оставить отзыв можно будет не ранее, чем через сутки.
   - if (totalProductsCount > 0) {
     h2.bought-together-header(ng-show='products.length') С этим товаром покупают
-    .bought-together-container(ng-controller='MainProductListController', ng-include='', src="'/partials/mainproductlist.html'", ng-init='hideFilterControls=true;')
+    include ./productlist.pug
   - }
 
 

@@ -100,7 +100,7 @@ module.exports = {
                     });
                     sendResult(res, 'brandcard', {
                         brand: brand,
-                        productsData: productsData,
+                        products: productsData,
                         productCategories: productCategories,
                         seoData: brand.seoData
                     });

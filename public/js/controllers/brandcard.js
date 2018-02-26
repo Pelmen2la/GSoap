@@ -3,15 +3,11 @@ angular.module('gsoapApp.controllers')
         loadRecord($stateParams.name);
         $scope.searchFilter = '';
         $scope.typeFilter = '';
+        $scope.products = [];
+        $scope.productListFilter = { $: '', type: '' };
 
         $scope.onFilterButtonClick = function(type) {
-            $scope.typeFilter = $scope.typeFilter == type ? '' : type;
-        };
-        $scope.selectProductCapacity = function(product, capacity) {
-            product.selectedCapacity = capacity;
-        };
-        $scope.productListFilterFunction = function(product) {
-            return product.name.indexOf($scope.searchFilter) > -1 && (!$scope.typeFilter || product.type === $scope.typeFilter);
+            $scope.productListFilter.type = $scope.productListFilter.type == type ? '' : type;
         };
 
         function loadRecord(name) {
@@ -24,6 +20,7 @@ angular.module('gsoapApp.controllers')
                     }
                     product.selectedCapacity = product.capacityList[0];
                 });
+                $scope.products = data.products;
             });
         }
     }]);
