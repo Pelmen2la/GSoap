@@ -15,7 +15,8 @@ module.exports = function(app) {
 
     app.get('/brands/:id', function (req, res, next) {
         dataHelperUtils.findRecById(Brand, req.params.id, function(brand) {
-            Product.find({brandId: brand._id}, function(err, data) {
+            var sortOptions = { sort: { isActive: -1 } };
+            Product.find({brandId: brand._id}, null, sortOptions, function(err, data) {
                 brand = brand.toObject();
                 brand.products = data;
                 res.json(brand);
