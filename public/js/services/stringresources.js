@@ -26,7 +26,13 @@ angular.module('gsoapApp.services').constant('StringResources', {
         milk: 'Молочко',
         means: 'Средства',
         mascara: 'Тушь',
-        cosmeticPencil: 'Карандаш'
+        cosmeticPencil: 'Карандаш',
+        tonalBasis: 'Тональная основа',
+        eyeshadow: 'Тени для век',
+        eyebrowShadows: 'Тени для бровей',
+        hailer: 'Хайлайтер',
+        concealer: 'Консилер',
+        baseMakeup: 'База под макияж'
     },
     productCapacityUnitTypes: {
         gram: 'г',
