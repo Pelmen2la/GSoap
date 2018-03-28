@@ -220,7 +220,9 @@ module.exports = {
                     eyebrowShadows: 'Тени для бровей',
                     hailer: 'Хайлайтер',
                     concealer: 'Консилер',
-                    baseMakeup: 'База под макияж'
+                    baseMakeup: 'База под макияж',
+                    rouge: 'Румяна',
+                    pomade: 'Помада'
                 },
                 productCapacityUnitTypes: {
                     gram: 'г',
