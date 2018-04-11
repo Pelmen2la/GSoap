@@ -272,6 +272,10 @@ body:not(.mobile) .page {
 	list-style: none;
 }
 
+.products-menu button {
+	overflow: visible;
+}
+
 @media (max-width: 960px) {
 	.products-menu {
 		font-size: 1.076923em; /* 14 / 13 */
