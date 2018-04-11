@@ -382,7 +382,7 @@ body.mobile .products-menu-wrapper.visible {
 }
 
 body.mobile .products-menu {
-	font-size: 2em; /* 26 / 13 */
+	font-size: 2.461538em; /* 32 / 13 */
 	background: white;
 	position: absolute;
 	height: 100%;
@@ -392,7 +392,11 @@ body.mobile .products-menu {
 
 body.mobile .products-menu > li {
 	float: none;
-	margin: 1em 0;
+	margin: 1.5em 0;
+}
+
+body.mobile .products-menu > li:first-child {
+	margin-top: 0;
 }
 
 body.mobile .products-menu .dropdown-menu > li {
@@ -588,11 +592,15 @@ body.mobile .brand-container {
 
 .product-container .product-name {
 	display: block;
+	display: -webkit-box;
 	height: 3.692307em; /* 16 * 3 / 13 */
 	line-height: 1.230769em; /* 16 / 13 */
 	margin: 4.207119% 9.677419%; /* 13 / 209, 21 / 217 */
 	color: black;
 	cursor: pointer;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .product-container .product-price {
@@ -1154,7 +1162,7 @@ body:not(.mobile) .subscribe-block {
 .delivery-page .right-info-container {
 	display: block;
 	width: 50%; /* 470 / 940 */
-	padding-left: 8.510638%; /* 80 / 940 */
+	padding-left: 80px;
 	line-height: 1.5em;
 }
 
@@ -1166,6 +1174,16 @@ body:not(.mobile) .subscribe-block {
 .delivery-page .right-info-container {
 	float: right;
 	background: url('../resources/images/icons/delivery-russia.png') no-repeat;
+}
+
+body.mobile .delivery-page .left-info-container {
+	margin-bottom: 3em;
+}
+
+body.mobile .delivery-page .left-info-container,
+body.mobile .delivery-page .right-info-container {
+	float: none;
+	width: 100%;
 }
 /* /Delivery page */
 

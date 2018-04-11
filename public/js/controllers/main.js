@@ -13,6 +13,11 @@ angular.module('gsoapApp.controllers')
             $scope.utils = Utils;
             $scope.stringResources = StringResources;
 
+            $scope.$on('$stateChangeSuccess', function() {
+                $scope.mobileMenuVisible = false;
+                resetScroll();
+            });
+
             $scope.onBuyProductButtonClick = function(e, product, count) {
                 ensureProductsInCart();
                 count = count || 1;
@@ -44,8 +49,7 @@ angular.module('gsoapApp.controllers')
                 $state.go(name, params, {reload: $state.current.name === name});
             };
             $scope.onUpButtonClick = function() {
-                document.body.scrollTop = 0;
-                document.getElementsByTagName('HTML')[0].scrollTop = 0;
+                resetScroll();
             };
             $scope.onMobileMenuButtonClick = function() {
                 $scope.mobileMenuVisible = true;
@@ -73,5 +77,10 @@ angular.module('gsoapApp.controllers')
 
             function ensureProductsInCart() {
                 $scope.cartProducts = localStorage.gsoapCartProducts ? JSON.parse(localStorage.gsoapCartProducts) : [];
-            }
+            };
+
+            function resetScroll() {
+                document.body.scrollTop = 0;
+                document.getElementsByTagName('HTML')[0].scrollTop = 0;
+            };
         }]);
