@@ -3,6 +3,9 @@ angular.module('gsoapApp.controllers')
         $scope.products = [];
 
         $scope.article = Article.get({id: $stateParams.id}, function(data) {
+            (data.boughtTogetherProducts || []).forEach(function(p) {
+                p.selectedCapacity = p.capacityList[0];
+            });
             $scope.products = data.boughtTogetherProducts;
         });
     }]);
