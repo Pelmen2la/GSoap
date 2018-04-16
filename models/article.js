@@ -12,7 +12,8 @@ var Article = new mongoose.Schema({
     },
     description: {
         type: String
-    }
+    },
+    boughtTogetherProductIds: [String]
 });
 
 mongoose.model('article', Article);

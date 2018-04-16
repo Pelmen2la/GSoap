@@ -1,12 +1,17 @@
 angular.module('gsoapAdminApp.adminControllers')
     .controller('ArticleEditController', ['$scope', '$stateParams', 'Article', function($scope, $stateParams, Article) {
         $scope.article = Article.get({id: $stateParams.id}, function() {
+            $scope.boughtTogetherProductIds = $scope.article.boughtTogetherProductIds;
         });
     }])
     .controller('ArticleCreateController', ['$scope', 'Article', function($scope, Article) {
         $scope.article = new Article();
+        $scope.article.boughtTogetherProductIds = [];
+        $scope.boughtTogetherProductIds = $scope.article.boughtTogetherProductIds;
     }])
-    .controller('ArticleFormController', ['$scope', '$state', 'FileUploader', function($scope, $state, FileUploader) {
+    .controller('ArticleFormController', ['$scope', '$state', 'Product', 'FileUploader', function($scope, $state, Product, FileUploader) {
+        $scope.fullProductsList = Product.query({}, function(data) {
+        });
         $scope.uploader = new FileUploader({
             url: 'admin/upload/article/image/'
         });

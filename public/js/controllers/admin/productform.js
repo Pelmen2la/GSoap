@@ -1,6 +1,7 @@
 angular.module('gsoapAdminApp.adminControllers')
     .controller('ProductEditController', ['$scope', '$stateParams', 'Product', function($scope, $stateParams, Product) {
         $scope.product = Product.get({id: $stateParams.id}, function() {
+            $scope.boughtTogetherProductIds = $scope.product.boughtTogetherProductIds;
         });
     }])
     .controller('ProductCreateController', ['$scope', 'Product', function($scope, Product) {
@@ -12,6 +13,7 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.product.orderCount = 0;
         $scope.product.isHiddenInList = false;
         $scope.product.imageName = 'product-default-image.jpg';
+        $scope.boughtTogetherProductIds = $scope.product.boughtTogetherProductIds;
     }])
     .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', 'Product', function($scope, $state, FileUploader, Brand, Product) {
         $scope.brands = Brand.query({}, function(data) {
@@ -49,17 +51,10 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.back = function() {
             $state.go('index');
         };
-        $scope.deleteArrayMember = function(array, index) {
-            array.splice(index, 1);
-        };
         $scope.addCapacity = function(product) {
             $scope.addMemberToArray($scope.product.capacityList, {capacity: '', price: ''});
-        };
-        $scope.addMemberToArray = function(array, member) {
-            array.push(member || '');
         };
         $scope.deleteReview = function(index) {
             $scope.product.reviews.splice(index, 1);
         };
     }]);
-

@@ -4,4 +4,7 @@
         <h1>{{article.name}}</h1>
         <p ng-bind-html="article.description"></p>
     </div>
+    <div ng-controller="MainProductListController" ng-include src="'/partials/mainproductlist.html'"
+             ng-init="hideFilterControls=true;" class="bought-together-container" ng-show="products.length">
+    </div>
 </div>

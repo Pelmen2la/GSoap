@@ -125,7 +125,12 @@ angular.module('gsoapApp.services').service('Utils', function() {
     this.getTotalCost = function(products, promocodeInfo, deliveryType) {
         return this.formatPrice(this.getProductsCost(products, promocodeInfo) + this.getDeliveryCost(products, promocodeInfo, deliveryType));
     };
-
+    this.deleteArrayMember = function(array, index) {
+        array.splice(index, 1);
+    };
+    this.addMemberToArray = function(array, member) {
+        array.push(member || '');
+    };
 
     function getImageUrl(imageName, folderName) {
         imageName = imageName instanceof Object ? imageName.imageName : imageName;

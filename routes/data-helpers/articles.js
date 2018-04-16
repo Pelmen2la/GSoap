@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    Products = require('./products'),
     Acticle = mongoose.model('article');
 
 module.exports = function(app) {
@@ -11,9 +12,18 @@ module.exports = function(app) {
     });
 
     app.get('/articles/:id', function (req, res, next) {
-        Acticle.findById(req.params.id, function (err, data) {
+        Acticle.findById(req.params.id, function (err, aData) {
             if(err) return next(err);
-            res.json(data);
+
+            if(aData) {
+                aData = aData.toObject();
+                Products.getProductsDataByIds(aData.boughtTogetherProductIds, function(boughtTogetherProductsData) {
+                    aData.boughtTogetherProducts = boughtTogetherProductsData || [];
+                    res.json(aData);
+                });
+            } else {
+                res.json(aData);
+            }
         });
     });
 

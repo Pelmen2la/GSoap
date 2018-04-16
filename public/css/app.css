@@ -1304,7 +1304,7 @@ body.mobile .delivery-page .right-info-container {
 }
 /* /Articles page */
 
-/* Brand card */
+/* Article card */
 .article-card {
 	padding: 1.923076em 7.272727%; /* 25 / 13, 80 / 1100 */
 	background: white;
@@ -1324,7 +1324,11 @@ body.mobile .delivery-page .right-info-container {
 	float: left;
 }
 
-.article-card .article-text-wrapper p {
+.article-card .article-text-wrapper > p {
 	margin-top: 2.076923em; /* 27 / 13 */
 }
-/* /Brand card */
+
+.article-card .article-text-wrapper > p p {
+	margin-top: 0.5em;
+}
+/* /Article card */

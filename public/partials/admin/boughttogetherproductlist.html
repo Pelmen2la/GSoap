@@ -1,0 +1,28 @@
+<div class="form-group with-ui-select">
+    <label class="col-sm-2 control-label">С этим покупают</label>
+
+    <div class="col-sm-10">
+        <div ng-repeat="boughtTogetherProductId in boughtTogetherProductIds track by $index"
+             class="inputs-wrapper">
+            <ui-select ng-model="boughtTogetherProductIds[$index]">
+                <ui-select-match>
+                    {{$select.selected.name}}
+                </ui-select-match>
+                <ui-select-choices
+                        repeat="item._id as item in fullProductsList | filter:$select.search track by $index">
+                    {{item.name}}
+                </ui-select-choices>
+            </ui-select>
+            <span class="main-sprite-icon remove-icon"
+                  ng-click="utils.deleteArrayMember(boughtTogetherProductIds, $index)"></span>
+        </div>
+        <br>
+        <button
+                ng-click="utils.addMemberToArray(boughtTogetherProductIds)">
+            Добавить продукт
+        </button>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

@@ -66,6 +66,7 @@ module.exports = function(app) {
 
 module.exports.findById = findById;
 module.exports.getProductDataById = getProductDataById;
+module.exports.getProductsDataByIds = getProductsDataByIds;
 module.exports.getProducts = getProducts;
 
 function findById(id, callback) {
@@ -74,7 +75,7 @@ function findById(id, callback) {
 function getProductDataById(id, callback) {
     findById(id, function(productData) {
         if(productData) {
-            Product.find({_id: {$in: productData.boughtTogetherProductIds}}, null, null, function(err, boughtTogetherProductsData) {
+            getProductsDataByIds(productData.boughtTogetherProductIds, function(boughtTogetherProductsData) {
                 productData = productData.toObject();
                 productData.boughtTogetherProducts = boughtTogetherProductsData || [];
                 callback(productData);
@@ -82,6 +83,11 @@ function getProductDataById(id, callback) {
         } else {
             callback({});
         }
+    });
+};
+function getProductsDataByIds(ids, callback) {
+    Product.find({_id: {$in: ids}}, null, null, function(err, productsData) {
+        callback(productsData);
     });
 };
 function getPagingOptions(pagingOptions) {

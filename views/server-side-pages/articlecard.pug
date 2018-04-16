@@ -9,3 +9,4 @@ block maincontent
       img(src= '/resources/images/articles/' + article.imageName ng-src='{{utils.getArticleImageUrl(article)}}')
       h1= article.name
       p(ng-bind-html='article.description')!= article.description
+    include ./productlist.pug
