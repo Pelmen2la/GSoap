@@ -15,7 +15,8 @@ angular.module('gsoapAdminApp.adminControllers')
         $scope.product.imageName = 'product-default-image.jpg';
         $scope.boughtTogetherProductIds = $scope.product.boughtTogetherProductIds;
     }])
-    .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', 'Product', function($scope, $state, FileUploader, Brand, Product) {
+    .controller('ProductFormController', ['$scope', '$state', 'FileUploader', 'Brand', 'Product', 'Utils',
+            function($scope, $state, FileUploader, Brand, Product, Utils) {
         $scope.brands = Brand.query({}, function(data) {
         });
         $scope.fullProductsList = Product.query({}, function(data) {
@@ -52,7 +53,7 @@ angular.module('gsoapAdminApp.adminControllers')
             $state.go('index');
         };
         $scope.addCapacity = function(product) {
-            $scope.addMemberToArray($scope.product.capacityList, {capacity: '', price: ''});
+            Utils.addMemberToArray($scope.product.capacityList, {capacity: '', price: ''});
         };
         $scope.deleteReview = function(index) {
             $scope.product.reviews.splice(index, 1);
