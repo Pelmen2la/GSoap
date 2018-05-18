@@ -1202,7 +1202,8 @@ body.mobile .delivery-page .right-info-container {
 	margin-bottom: 4em;
 }
 
-.brands-page .brand-container img {
+.brands-page .brand-container img.main-image {
+	height: 5.5em;
 }
 /* /Brands page */
 
