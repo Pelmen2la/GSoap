@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 
 var Product = mongoose.model('product'),
     Brand = mongoose.model('brand'),
+    Article = mongoose.model('article'),
     ButtonFilter = mongoose.model('buttonFilter');
 
 module.exports = function(app) {
@@ -308,6 +309,18 @@ module.exports = function(app) {
             });
         });
         res.json('button filters transliterating');
+    });
+
+    app.get('/utils/articles/set_dates', function(req, res, next) {
+        Article.find({}, function(err, data) {
+            data.forEach(function(article, i) {
+                var date = new Date();
+                date.setDate(date.getDate() - i);
+                article.set('date', date);
+                article.save();
+            });
+            res.json('articles dates added');
+        });
     });
 };
 

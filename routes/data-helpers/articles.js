@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 module.exports = function(app) {
     app.get('/articles', function (req, res) {
-        Acticle.find({}, function(err, data) {
+        Acticle.find({}, null, { sort: { date: -1 } }, function(err, data) {
             res.json(data);
         });
     });
@@ -28,7 +28,9 @@ module.exports = function(app) {
     });
 
     app.post('/articles', function (req, res, next) {
-        var article = new Acticle(req.body);
+        var data = req.body;
+        data.date = new Date();
+        var article = new Acticle(data);
         article.save(function (err, data) {
             if (err) return next(err);
             res.json(data);

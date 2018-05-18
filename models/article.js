@@ -13,6 +13,7 @@ var Article = new mongoose.Schema({
     description: {
         type: String
     },
+    date: Date,
     boughtTogetherProductIds: [String]
 });
 
