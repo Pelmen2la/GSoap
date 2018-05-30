@@ -240,7 +240,8 @@ module.exports = {
                     packaging: 'Упаковка',
                     Sale: 'Распродажа',
                     Children: 'Для детей',
-                    Home: 'Для дома'
+                    Home: 'Для дома',
+                    sunscreen: 'Солнцезащитный крем'
                 },
                 deliveryTypes: {
                     tulaTokareva: 'Самовывоз, г. Тула ул. Токарева',

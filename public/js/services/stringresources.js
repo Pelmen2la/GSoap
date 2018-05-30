@@ -52,7 +52,8 @@ angular.module('gsoapApp.services').constant('StringResources', {
         packaging: 'Упаковка',
         Sale: 'Распродажа',
         Children: 'Для детей',
-        Home: 'Для дома'
+        Home: 'Для дома',
+        sunscreen: 'Солнцезащитный крем'
     },
     deliveryTypes: {
         self: 'Самовывоз, г. Тула',
